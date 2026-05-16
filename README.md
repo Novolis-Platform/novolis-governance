@@ -18,5 +18,11 @@ Organization-wide policies, contribution model, naming rules, package rules, sec
 | Contribution policy | [docs/contribution-policy.md](docs/contribution-policy.md) |
 | Maintainer guide | [docs/maintainer-guide.md](docs/maintainer-guide.md) |
 | Migration checklist | [docs/migration-checklist.md](docs/migration-checklist.md) |
+| Bootstrap gate | [docs/bootstrap-gate-assessment.md](docs/bootstrap-gate-assessment.md) |
+| Frank.\* inventory | [docs/frank-inventory.md](docs/frank-inventory.md) |
+| P0 deep-dive | [docs/frank-p0-deep-dive.md](docs/frank-p0-deep-dive.md) |
+| P1 spikes | [docs/frank-p1-spikes.md](docs/frank-p1-spikes.md) |
+| GameEngine reference policy | [docs/gameengine-reference-policy.md](docs/gameengine-reference-policy.md) |
+| Extraction briefs | [docs/extraction-briefs/](docs/extraction-briefs/) |
 | Roadmap | [docs/roadmap.md](docs/roadmap.md) |
 | NuGet setup | [docs/nuget-setup.md](docs/nuget-setup.md) |
