@@ -19,3 +19,4 @@ Organization-wide policies, contribution model, naming rules, package rules, sec
 | Maintainer guide | [docs/maintainer-guide.md](docs/maintainer-guide.md) |
 | Migration checklist | [docs/migration-checklist.md](docs/migration-checklist.md) |
 | Roadmap | [docs/roadmap.md](docs/roadmap.md) |
+| NuGet setup | [docs/nuget-setup.md](docs/nuget-setup.md) |
