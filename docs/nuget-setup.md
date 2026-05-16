@@ -34,6 +34,15 @@ On nuget.org (under the **organization**):
 | Workflow file | `release.yml` |
 | Environment (optional) | `nuget.org` |
 
+**novolis-install** (global tool `Novolis.Install`):
+
+| Field | Value |
+|-------|--------|
+| Repository owner | `Novolis-Platform` |
+| Repository | `novolis-install` |
+| Workflow file | `release.yml` |
+| Environment | `nuget.org` |
+
 Repeat per repo when you add more package repositories.
 
 > If Trusted Publishing is not visible yet, NuGet is still rolling it out. Use a **scoped** push API key temporarily (push only, `Novolis.*` glob), store it only in the `nuget.org` environment as `NUGET_API_KEY`, and switch to OIDC when available.
