@@ -4,12 +4,10 @@ Use a **NuGet.org organization**, not a personal account alone, so package owner
 
 ## 1. Sign in and create the org
 
-1. Sign in at [nuget.org](https://www.nuget.org/) with your Microsoft account (the one you already use is fine).
-2. Create an organization: [Add organization](https://www.nuget.org/organizations/add).
-   - Suggested name: **Novolis** (profile URL becomes `https://www.nuget.org/profiles/Novolis` or similar).
-3. Add at least one other maintainer as org member when available (governance requires two people with access).
+- Organization: [nuget.org/organization/Novolis](https://www.nuget.org/organization/Novolis)
+- GitHub org variable `NUGET_USERNAME` = `Novolis` (matches the org profile name)
 
-Your personal account stays the admin who created the org; packages should be owned by the **organization**.
+Add at least one other maintainer as org member when available (governance requires two people with access). Packages must be owned by the **organization**, not your personal account.
 
 ## 2. Reserve the package ID prefix (recommended)
 
