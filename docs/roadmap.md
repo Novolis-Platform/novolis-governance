@@ -24,6 +24,7 @@ Docs: [frank-inventory.md](frank-inventory.md), [frank-naming-and-structure.md](
 | 3 | `novolis-storage` — Abstractions/Json/Sqlite | **Code migrated** |
 | 4 | `novolis-security` — Cryptography/HIBP | **Code migrated** |
 | 5 | `novolis-analyzers` / `novolis-codegen` | **Code migrated** — Reflection/Dump/Mermaid + AutoMapper/CodeLength |
+| 6 | `novolis-templates` — `Novolis.Templates` | **Code migrated** |
 | — | `novolis-raylib` | Active; GameEngine reference-only |
 
 ## Next

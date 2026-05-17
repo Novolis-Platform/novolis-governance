@@ -12,12 +12,24 @@ param(
     [Parameter(Mandatory)][string]$DestProject,
     [string]$FrankTestsRoot,
     [string]$DestTests,
-    [string[]]$ExtraReplacements = @()
+    [string[]]$ExtraReplacements = @(),
+    [switch]$TemplatePack
 )
 
 $ErrorActionPreference = 'Stop'
 
 $replacements = @(
+    'Frank.Templates.TestContainerTemplate|Novolis.Templates.TestContainerTemplate',
+    'Frank.Templates.NoXaml.Solution|Novolis.Templates.NoXaml.Solution',
+    'Frank.Templates.NoXaml.App|Novolis.Templates.NoXaml.App',
+    'Frank.Templates.SemanticKernel|Novolis.Templates.SemanticKernel',
+    'Frank.Templates.GitHubSolution|Novolis.Templates.GitHubSolution',
+    'Frank.Templates.Microservice|Novolis.Templates.Microservice',
+    'Frank.Templates.MonoGame|Novolis.Templates.MonoGame',
+    'Frank.Templates.NugetSolution|Novolis.Templates.NugetSolution',
+    'Frank.Templates|Novolis.Templates',
+    'frankmicroservice|novolismicroservice',
+    'frankmonogame|novolismonogame',
     'Frank.Reflection.Mermaid|Novolis.CodeGen.Reflection.Mermaid',
     'Frank.Reflection.Dump|Novolis.CodeGen.Reflection.Dump',
     'Frank.Reflection|Novolis.CodeGen.Reflection',
@@ -48,17 +60,29 @@ $replacements = @(
     'Frank.Security|Novolis.Security'
 ) + $ExtraReplacements
 
+$textExtensions = @(
+    '.cs', '.csproj', '.props', '.targets', '.json', '.md', '.xml', '.xaml', '.slnx',
+    '.config', '.editorconfig', '.gitignore', '.gitattributes', '.yml', '.yaml', '.txt', '.ruleset'
+)
+
 function Copy-And-Rename {
     param([string]$Source, [string]$Destination)
     if (-not (Test-Path $Source)) { throw "Source not found: $Source" }
     New-Item -ItemType Directory -Force -Path $Destination | Out-Null
     Get-ChildItem $Source -Recurse -File | Where-Object {
-        $_.Extension -in '.cs', '.csproj', '.props', '.targets', '.json', '.md'
+        $rel = $_.FullName.Substring($Source.Length).TrimStart('\', '/')
+        if ($rel -match '(^|[\\/])(bin|obj|artifacts)([\\/]|$)') { return $false }
+        if ($TemplatePack) { return $true }
+        return $_.Extension -in $textExtensions
     } | ForEach-Object {
         $rel = $_.FullName.Substring($Source.Length).TrimStart('\', '/')
         $target = Join-Path $Destination $rel
         $dir = Split-Path $target -Parent
         New-Item -ItemType Directory -Force -Path $dir | Out-Null
+        if ($TemplatePack -and $_.Extension -notin $textExtensions) {
+            Copy-Item -Path $_.FullName -Destination $target -Force
+            return
+        }
         $text = Get-Content $_.FullName -Raw -Encoding UTF8
         foreach ($pair in $replacements) {
             $from, $to = $pair -split '\|', 2

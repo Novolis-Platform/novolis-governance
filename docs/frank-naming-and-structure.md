@@ -24,6 +24,7 @@ Related: [naming.md](naming.md), [frank-inventory.md](frank-inventory.md), [fran
 | `novolis-security` | Security | Cryptography, HIBP | Multi-package |
 | `novolis-codegen` | CodeGen | Reflection subset | Multi-package |
 | `novolis-analyzers` | Analyzers | AutoMapper, CodeLength | Multi-package |
+| `novolis-templates` | Templates | Frank.Templates (7 packs) | Single template NuGet pack |
 
 ## Structural rule (Frank → Novolis)
 
@@ -73,6 +74,7 @@ On extract: **move** projects into `src/` / `tests/`; do not preserve Frank flat
 | `Frank.Reflection.Mermaid` | `Novolis.CodeGen.Reflection.Mermaid` | `src/Novolis.CodeGen.Reflection.Mermaid/` |
 | `Frank.Analyzers.AutoMapper` | `Novolis.Analyzers.AutoMapper` | `src/Novolis.Analyzers.AutoMapper/` |
 | `Frank.Analyzers.CodeLength` | `Novolis.Analyzers.CodeLength` | `src/Novolis.Analyzers.CodeLength/` |
+| `Frank.Templates` | `Novolis.Templates` | `src/Novolis.Templates/` (`PackageType=Template`) |
 
 **Facet decisions:**
 
@@ -175,6 +177,10 @@ Entries: `Novolis.CodeGen.Reflection`, `.Reflection.Dump`, `.Reflection.Mermaid`
 
 Entries: `Novolis.Analyzers.AutoMapper`, `.CodeLength`.
 
+### `novolis-templates` (wave 6)
+
+Entry: `Novolis.Templates` — paths include `src/Novolis.Templates/content/**`, `Novolis.Templates.slnx`.
+
 ## Solution and dependency graph
 
 | Repo | Solution | Package references |
@@ -194,6 +200,14 @@ Use [scripts/migrate-frank-slice.ps1](../scripts/migrate-frank-slice.ps1) with t
 
 | From | To |
 |------|-----|
+| `Frank.Templates.TestContainerTemplate` | `Novolis.Templates.TestContainerTemplate` |
+| `Frank.Templates.NoXaml.Solution` | `Novolis.Templates.NoXaml.Solution` |
+| `Frank.Templates.NoXaml.App` | `Novolis.Templates.NoXaml.App` |
+| `Frank.Templates.SemanticKernel` | `Novolis.Templates.SemanticKernel` |
+| `Frank.Templates.GitHubSolution` | `Novolis.Templates.GitHubSolution` |
+| `Frank.Templates.Microservice` | `Novolis.Templates.Microservice` |
+| `Frank.Templates.MonoGame` | `Novolis.Templates.MonoGame` |
+| `Frank.Templates` | `Novolis.Templates` |
 | `Frank.Reflection.Mermaid` | `Novolis.CodeGen.Reflection.Mermaid` |
 | `Frank.Reflection.Dump` | `Novolis.CodeGen.Reflection.Dump` |
 | `Frank.Reflection` | `Novolis.CodeGen.Reflection` |

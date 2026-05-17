@@ -114,7 +114,7 @@ flowchart TB
 | 3 | `novolis-storage` | DataStorage subset | [extraction-briefs/wave-3-storage.md](extraction-briefs/wave-3-storage.md) |
 | 4 | `novolis-security` | Frank.Security | [extraction-briefs/wave-4-security.md](extraction-briefs/wave-4-security.md) |
 | 5 | `novolis-analyzers` / `novolis-codegen` | Analyzers, Reflection subset | [wave-5-codegen.md](extraction-briefs/wave-5-codegen.md), [wave-5-analyzers.md](extraction-briefs/wave-5-analyzers.md) |
-| 6 | `novolis-templates` | Frank.Templates | TBD |
+| 6 | `novolis-templates` | Frank.Templates | [wave-6-templates.md](extraction-briefs/wave-6-templates.md) |
 | 7 | `novolis-install` | SimpleInstaller ideas | Rebuild only |
 
 **Pilot:** [extraction-briefs/pilot-channels.md](extraction-briefs/pilot-channels.md)

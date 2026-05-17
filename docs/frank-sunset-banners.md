@@ -21,3 +21,4 @@ Apply to Frank source README files when each wave ships on NuGet.
 | Frank.Security | `Novolis.Security.*` |
 | Frank.Reflection (subset) | `Novolis.CodeGen.Reflection*` |
 | Frank.Analyzers (subset) | `Novolis.Analyzers.AutoMapper`, `Novolis.Analyzers.CodeLength` |
+| Frank.Templates | `Novolis.Templates` (`novolis-templates`) |
