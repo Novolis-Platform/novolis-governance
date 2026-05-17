@@ -19,6 +19,9 @@ Required package metadata:
 <PublishRepositoryUrl>true</PublishRepositoryUrl>
 <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
 <EmbedUntrackedSources>true</EmbedUntrackedSources>
+<EnableSourceLink>true</EnableSourceLink>
 <IncludeSymbols>true</IncludeSymbols>
 <SymbolPackageFormat>snupkg</SymbolPackageFormat>
 ```
+
+SourceLink (via `Microsoft.SourceLink.GitHub` in `Directory.Build.props` / `Directory.Packages.props`) maps published assemblies to GitHub source for debugger stepping.
