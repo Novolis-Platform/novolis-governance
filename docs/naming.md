@@ -4,7 +4,7 @@
 
 Use `novolis-<domain>` (lowercase, kebab-case).
 
-Examples: `novolis-math`, `novolis-raylib`, `novolis-transports`.
+Examples: `novolis-math`, `novolis-physics`, `novolis-simulation`, `novolis-raylib`, `novolis-transports`.
 
 Avoid: personal names, `core`, `common`, `utils`, `shared`, vague junk-drawer names.
 

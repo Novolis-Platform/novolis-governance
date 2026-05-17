@@ -32,6 +32,7 @@ Governs how [Frank.GameEngine](https://github.com/frankhaugen/Frank.GameEngine) 
 |--------------|-----------------|------|
 | `Frank.GameEngine.Primitives/SubPrimitives/*` | `Novolis.Math.Arrays` | `novolis-math` |
 | Geometry subset (Polygon, TriangleMesh, transforms, cameras, …) | `Novolis.Math.Geometry` | `novolis-math` |
+| Dogfood-grown occupancy / view controllers | `Novolis.Simulation.*` | `novolis-simulation` (see [simulation-layer-policy.md](simulation-layer-policy.md)) |
 
 Brief: [extraction-briefs/wave-7-gameengine-math.md](extraction-briefs/wave-7-gameengine-math.md)
 
