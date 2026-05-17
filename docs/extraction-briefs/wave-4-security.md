@@ -7,21 +7,25 @@
 
 | Frank | Novolis |
 |-------|---------|
-| `Frank.Security.Cryptography` | `Novolis.Security.Cryptography` |
+| `Frank.Security.Cryptography` (generation) | `Novolis.Security.Secrets` |
+| `Frank.Security.Cryptography` (hashing) | `Novolis.Security.PasswordHashing` |
+| `Frank.Security.Cryptography` (string AES) | `Novolis.Security.Encryption` |
 | `Frank.Security.HaveIBeenPwned` | `Novolis.Security.HaveIBeenPwned` |
-| Tests | Per-facet under `tests/` |
+| `Frank.Security.Resources` (word lists) | `Novolis.Security.WordLists` (internal, not packable) |
+| Tests | `tests/Novolis.Security.Tests` |
 
 ## Out of scope
 
-- `Frank.Security.Resources` unless a product needs embedded assets
+- Meta package `Novolis.Security` umbrella
 
 ## Dependencies
 
 - `Novolis.Testing.*` for tests (wave 1)
+- `Novolis.Security.Secrets` → `Novolis.Security.WordLists`
 - No `Frank.*` in production code
 
 ## Done when
 
-- Both packages on `net10.0`, CI green
-- Registry entries
+- All facets on `net10.0`, CI green
+- Registry entries for packable facets
 - Frank.Security README banner

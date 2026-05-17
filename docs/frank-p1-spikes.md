@@ -44,7 +44,7 @@ Spike date: 2026-05-17. Method: shallow clone, project/package enumeration, rele
 
 - **Packages:** 1 (`Frank.Mermaid`)
 - **Tests:** flowchart, pie, timeline, git graph, xy chart
-- **Verdict:** **`novolis-markup`** with `Novolis.Markup.Mermaid`; distinct from `Novolis.CodeGen.Reflection.Mermaid`
+- **Verdict:** **`novolis-markup`** with `Novolis.Markup.Mermaid`; distinct from `Novolis.CodeGen.Reflection.ClassDiagram`
 - **Re-score:** 9 — wave 10 extract
 
 ## Frank.Networking — defer

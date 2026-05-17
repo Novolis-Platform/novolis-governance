@@ -9,7 +9,7 @@
 |-------|---------|
 | `Frank.Reflection` | `Novolis.CodeGen.Reflection` |
 | `Frank.Reflection.Dump` | `Novolis.CodeGen.Reflection.Dump` |
-| `Frank.Reflection.Mermaid` | `Novolis.CodeGen.Reflection.Mermaid` |
+| `Frank.Reflection.Mermaid` | `Novolis.CodeGen.Reflection.ClassDiagram` |
 | `TypeExtensionsTests`, `DumpExtensionsTests` | TUnit in `tests/Novolis.CodeGen.*.Tests` |
 
 ## Out of scope (defer)
@@ -21,7 +21,7 @@
 ## Dependencies
 
 - `Novolis.CodeGen.Reflection.Dump` → `Novolis.CodeGen.Reflection`
-- `Novolis.CodeGen.Reflection.Mermaid` → `Novolis.CodeGen.Reflection`
+- `Novolis.CodeGen.Reflection.ClassDiagram` → `Novolis.CodeGen.Reflection`
 - Dump: `Humanizer.Core`, `VarDump`, `Microsoft.CodeAnalysis.CSharp` (central `4.14.0`)
 - Tests: TUnit only ([naming.md](../naming.md))
 

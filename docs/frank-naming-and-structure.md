@@ -19,7 +19,7 @@ Related: [naming.md](naming.md), [frank-inventory.md](frank-inventory.md), [fran
 |-------------|--------|-------------------|--------|
 | `novolis-messaging` | Messaging | Channels.DI, PulseFlow | Multi-package |
 | `novolis-testing` | Testing | Frank.Testing (5 publishable facets) | Multi-package |
-| `novolis-transports` | Transports | BedrockSlim, Http | Multi-package |
+| `novolis-transports` | Transports | BedrockSlim, Http, WireFish | Multi-package |
 | `novolis-storage` | Storage | DataStorage subset | Multi-package |
 | `novolis-security` | Security | Cryptography, HIBP | Multi-package |
 | `novolis-codegen` | CodeGen | Reflection subset | Multi-package |
@@ -27,7 +27,6 @@ Related: [naming.md](naming.md), [frank-inventory.md](frank-inventory.md), [fran
 | `novolis-templates` | Templates | Frank.Templates (7 packs) | Single template NuGet pack |
 | `novolis-math` | Math | GameEngine Primitives subset | Multi-package |
 | `novolis-machinelearning` | MachineLearning | Frank.ML neural foundation | Multi-package |
-| `novolis-wirefish` | WireFish | Frank.WireFish (package id retained) | Single package |
 | `novolis-markup` | Markup | Frank.Markdown, Frank.Mermaid | Multi-package |
 
 ## Structural rule (Frank → Novolis)
@@ -71,11 +70,14 @@ On extract: **move** projects into `src/` / `tests/`; do not preserve Frank flat
 | `Frank.DataStorage` (meta) | *(do not port)* | — |
 | `Frank.DataStorage.Json` | `Novolis.Storage.Json` | `src/Novolis.Storage.Json/` |
 | `Frank.DataStorage.Sqlite` | `Novolis.Storage.Sqlite` | `src/Novolis.Storage.Sqlite/` |
-| `Frank.Security.Cryptography` | `Novolis.Security.Cryptography` | `src/Novolis.Security.Cryptography/` |
+| `Frank.Security.Cryptography` (generation) | `Novolis.Security.Secrets` | `src/Novolis.Security.Secrets/` |
+| `Frank.Security.Cryptography` (hashing) | `Novolis.Security.PasswordHashing` | `src/Novolis.Security.PasswordHashing/` |
+| `Frank.Security.Cryptography` (string AES) | `Novolis.Security.Encryption` | `src/Novolis.Security.Encryption/` |
 | `Frank.Security.HaveIBeenPwned` | `Novolis.Security.HaveIBeenPwned` | `src/Novolis.Security.HaveIBeenPwned/` |
+| `Frank.Security.Resources` | `Novolis.Security.WordLists` *(internal)* | `src/Novolis.Security.WordLists/` |
 | `Frank.Reflection` | `Novolis.CodeGen.Reflection` | `src/Novolis.CodeGen.Reflection/` |
 | `Frank.Reflection.Dump` | `Novolis.CodeGen.Reflection.Dump` | `src/Novolis.CodeGen.Reflection.Dump/` |
-| `Frank.Reflection.Mermaid` | `Novolis.CodeGen.Reflection.Mermaid` | `src/Novolis.CodeGen.Reflection.Mermaid/` |
+| `Frank.Reflection.Mermaid` | `Novolis.CodeGen.Reflection.ClassDiagram` | `src/Novolis.CodeGen.Reflection.ClassDiagram/` |
 | `Frank.Analyzers.AutoMapper` | `Novolis.Analyzers.AutoMapper` | `src/Novolis.Analyzers.AutoMapper/` |
 | `Frank.Analyzers.CodeLength` | `Novolis.Analyzers.CodeLength` | `src/Novolis.Analyzers.CodeLength/` |
 | `Frank.Templates` | `Novolis.Templates` | `src/Novolis.Templates/` (`PackageType=Template`) |
@@ -84,7 +86,7 @@ On extract: **move** projects into `src/` / `tests/`; do not preserve Frank flat
 | `Frank.ML.Foundation.Core` | `Novolis.MachineLearning.Core` | `src/Novolis.MachineLearning.Core/` |
 | `Frank.ML.Foundation.Neural.Abstractions` | `Novolis.MachineLearning.Neural.Abstractions` | `src/Novolis.MachineLearning.Neural.Abstractions/` |
 | `Frank.ML.Foundation.Neural.Implementation` | `Novolis.MachineLearning.Neural` | `src/Novolis.MachineLearning.Neural/` |
-| `Frank.WireFish` | `Frank.WireFish` *(id retained)* | `src/Frank.WireFish/` |
+| `Frank.WireFish` | `Novolis.Transports.WireFish` | `src/Novolis.Transports.WireFish/` |
 | `Frank.Markdown` | `Novolis.Markup.Markdown` | `src/Novolis.Markup.Markdown/` |
 | `Frank.Mermaid` | `Novolis.Markup.Mermaid` | `src/Novolis.Markup.Mermaid/` |
 
@@ -171,7 +173,7 @@ Entries: `Novolis.Testing.TUnit`, `.Logging`, `.TestBases`, `.Testcontainers`, `
 
 ### `novolis-transports`
 
-Entries: `Novolis.Transports.Tcp.Server`, `.Tcp.Client`, `.Http`, `.Http.Abstractions`, `.Http.Authentication`, `.Http.Extensions`.
+Entries: `Novolis.Transports.Tcp.Server`, `.Tcp.Client`, `.Http`, `.Http.Abstractions`, `.Http.Authentication`, `.Http.Extensions`, `.WireFish`.
 
 ### `novolis-storage` (wave 3)
 
@@ -179,11 +181,11 @@ Entries: `Novolis.Storage.Abstractions`, `.Json`, `.Sqlite`.
 
 ### `novolis-security` (wave 4)
 
-Entries: `Novolis.Security.Cryptography`, `.HaveIBeenPwned`.
+Entries: `Novolis.Security.Secrets`, `.PasswordHashing`, `.Encryption`, `.HaveIBeenPwned`.
 
 ### `novolis-codegen` (wave 5)
 
-Entries: `Novolis.CodeGen.Reflection`, `.Reflection.Dump`, `.Reflection.Mermaid`.
+Entries: `Novolis.CodeGen.Reflection`, `.Reflection.Dump`, `.Reflection.ClassDiagram`.
 
 ### `novolis-analyzers` (wave 5)
 
@@ -227,7 +229,7 @@ Use [scripts/migrate-frank-slice.ps1](../scripts/migrate-frank-slice.ps1) with t
 | `Frank.Templates.Microservice` | `Novolis.Templates.Microservice` |
 | `Frank.Templates.MonoGame` | `Novolis.Templates.MonoGame` |
 | `Frank.Templates` | `Novolis.Templates` |
-| `Frank.Reflection.Mermaid` | `Novolis.CodeGen.Reflection.Mermaid` |
+| `Frank.Reflection.Mermaid` | `Novolis.CodeGen.Reflection.ClassDiagram` |
 | `Frank.Reflection.Dump` | `Novolis.CodeGen.Reflection.Dump` |
 | `Frank.Reflection` | `Novolis.CodeGen.Reflection` |
 | `Frank.Analyzers.AutoMapper` | `Novolis.Analyzers.AutoMapper` |
@@ -253,7 +255,7 @@ Use [scripts/migrate-frank-slice.ps1](../scripts/migrate-frank-slice.ps1) with t
 | `Frank.DataStorage.Sqlite` | `Novolis.Storage.Sqlite` |
 | `Frank.DataStorage` | `Novolis.Storage` |
 | `Frank.Security.HaveIBeenPwned` | `Novolis.Security.HaveIBeenPwned` |
-| `Frank.Security.Cryptography` | `Novolis.Security.Cryptography` |
+| `Frank.Security.Cryptography` | `Novolis.Security.Secrets` / `.PasswordHashing` / `.Encryption` |
 | `Frank.Security` | `Novolis.Security` |
 | `Frank.ML.Foundation.Neural.Implementation` | `Novolis.MachineLearning.Neural` |
 | `Frank.ML.Foundation.Neural.Abstractions` | `Novolis.MachineLearning.Neural.Abstractions` |

@@ -54,7 +54,7 @@ flowchart TB
 | [Frank.Testing](https://github.com/frankhaugen/Frank.Testing) | 5/4/4 | **13** | `novolis-testing` | `Novolis.Testing.TUnit`, `.Logging`, `.Testcontainers`, `.TestBases`, `.TestServer` | Extract | 2.0 | sparse | Reflection | Wave 1 — unblocks all migrations |
 | [Frank.DataStorage](https://github.com/frankhaugen/Frank.DataStorage) | 4/4/4 | **12** | `novolis-storage` | **Wave 3 subset:** `.Json`, `.Sqlite` + `Abstractions` | Extract subset | 3.1 | 6 facts | Reflection, Testing | 10 packable backends — do not migrate all at once |
 | [Frank.Http](https://github.com/frankhaugen/Frank.Http) | 4/4/4 | **12** | `novolis-transports` | `Novolis.Transports.Http` (+ abstractions/auth/extensions) | Extract | 1.1 | 0 facts | none | Add tests during migration |
-| [Frank.Security](https://github.com/frankhaugen/Frank.Security) | 4/4/3 | **11** | `novolis-security` | `Novolis.Security.Cryptography`, `.HaveIBeenPwned` | Extract | 0.2 | 8 facts | Testing | Skip `Resources` unless needed |
+| [Frank.Security](https://github.com/frankhaugen/Frank.Security) | 4/4/3 | **11** | `novolis-security` | `Novolis.Security.Secrets`, `.PasswordHashing`, `.Encryption`, `.HaveIBeenPwned`; `WordLists` internal | Extract | 0.2 | 8 facts | Testing | Word lists in `Novolis.Security.WordLists` |
 
 ## P1 — Evaluate (spike complete)
 
@@ -66,7 +66,7 @@ flowchart TB
 | [Frank.Templates](https://github.com/frankhaugen/Frank.Templates) | 4/3/4 | 11 | `novolis-templates` | **Merge** — align with `novolis-template-dotnet`; drop duplicate NuGetSolution template | Merge |
 | [Frank.Mermaid](https://github.com/frankhaugen/Frank.Mermaid) | 3/3/3 | 9 | `novolis-markup` | **Wave 10** — fluent diagram text; archive after ship | Extract |
 | [Frank.Markdown](https://github.com/frankhaugen/Frank.Markdown) | 3/3/4 | 10 | `novolis-markup` | **Wave 10** — 38 facts, fluent API | Extract |
-| [Frank.WireFish](https://github.com/frankhaugen/Frank.WireFish) | 3/3/3 | 9 | `novolis-wirefish` | **Migrated** — keep `Frank.WireFish` package name; depends on Messaging.Channels | Extract (wave 9) |
+| [Frank.WireFish](https://github.com/frankhaugen/Frank.WireFish) | 3/3/3 | 9 | `novolis-transports` | **Migrated** — `Novolis.Transports.WireFish`; depends on Messaging.Channels | Extract (wave 9) |
 | [Frank.Networking](https://github.com/frankhaugen/Frank.Networking) | 3/3/3 | 9 | `novolis-transports` | **Defer** — no NuGet releases; audit overlap with Bedrock/Http first | Partial later |
 | [Frank.Collections](https://github.com/frankhaugen/Frank.Collections) | 3/3/3 | 9 | `novolis-math`? | **Defer** — `Array2D`, `ObservableList`; 27 facts; low strategic fit | Extract if demanded |
 | [Frank.ML](https://github.com/frankhaugen/Frank.ML) | 2/2/2 | 6 | `novolis-machinelearning` | **Partial** — neural foundation only (wave 8); AutoML/apps stay private | Extract subset |
@@ -100,13 +100,13 @@ flowchart TB
 | `Frank.Http` (+ abstractions) | `Novolis.Transports.Http` (+ facets) | `novolis-transports` |
 | `Frank.Testing.*` | `Novolis.Testing.*` | `novolis-testing` |
 | `Frank.DataStorage.Json` / `.Sqlite` | `Novolis.Storage.Json` / `.Sqlite` | `novolis-storage` |
-| `Frank.Security.Cryptography` / `.HaveIBeenPwned` | `Novolis.Security.*` | `novolis-security` |
+| `Frank.Security.Cryptography` / `.HaveIBeenPwned` | `Novolis.Security.Secrets`, `.PasswordHashing`, `.Encryption`, `.HaveIBeenPwned` | `novolis-security` |
 | `Frank.CronJobs` | `Novolis.Scheduling` (TBD) | TBD |
 | `Frank.Reflection` (subset) | `Novolis.CodeGen.*` | `novolis-codegen` |
 | `Frank.Analyzers.*` (subset) | `Novolis.Analyzers.*` | `novolis-analyzers` |
 | `Frank.GameEngine.Primitives` (subset) | `Novolis.Math.Arrays`, `Novolis.Math.Geometry` | `novolis-math` |
 | `Frank.ML.Foundation.Neural.*` | `Novolis.MachineLearning.Neural.*` | `novolis-machinelearning` |
-| `Frank.WireFish` | `Frank.WireFish` (name retained) | `novolis-wirefish` |
+| `Frank.WireFish` | `Novolis.Transports.WireFish` | `novolis-transports` |
 | `Frank.Markdown` | `Novolis.Markup.Markdown` | `novolis-markup` |
 | `Frank.Mermaid` | `Novolis.Markup.Mermaid` | `novolis-markup` |
 | `Frank.GameEngine.*` (remainder) | *none* | see game policy |
