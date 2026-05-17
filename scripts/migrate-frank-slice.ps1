@@ -64,7 +64,9 @@ $replacements = @(
     'Frank.ML.Foundation|Novolis.MachineLearning',
     'Frank.GameEngine.Primitives.SubPrimitives|Novolis.Math.Arrays',
     'Frank.GameEngine.Primitives|Novolis.Math.Geometry',
-    'Frank.GameEngine|Novolis.Math'
+    'Frank.GameEngine|Novolis.Math',
+    'Frank.Markdown|Novolis.Markup.Markdown',
+    'Frank.Mermaid|Novolis.Markup.Mermaid'
 ) + $ExtraReplacements
 
 $textExtensions = @(

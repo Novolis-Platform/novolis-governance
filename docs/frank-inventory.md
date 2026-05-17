@@ -64,7 +64,8 @@ flowchart TB
 | [Frank.Reflection](https://github.com/frankhaugen/Frank.Reflection) | 4/4/4 | 12 | `novolis-codegen` | **Partial** — bring `Reflection`, `Dump`, `Mermaid`; defer Roslyn stack until needed | Extract subset |
 | [Frank.Analyzers](https://github.com/frankhaugen/Frank.Analyzers) | 4/3/4 | 11 | `novolis-analyzers`, `novolis-codegen` | **Partial** — `AutoMapper`, `CodeLength` analyzers; skip CppInteropts unless native lane | Extract subset |
 | [Frank.Templates](https://github.com/frankhaugen/Frank.Templates) | 4/3/4 | 11 | `novolis-templates` | **Merge** — align with `novolis-template-dotnet`; drop duplicate NuGetSolution template | Merge |
-| [Frank.Markdown](https://github.com/frankhaugen/Frank.Markdown) | 3/3/4 | 10 | *no reserved repo* | **Defer** — 38 facts, fluent API; only if `novolis-docs` approved | P1 hold |
+| [Frank.Mermaid](https://github.com/frankhaugen/Frank.Mermaid) | 3/3/3 | 9 | `novolis-markup` | **Wave 10** — fluent diagram text; archive after ship | Extract |
+| [Frank.Markdown](https://github.com/frankhaugen/Frank.Markdown) | 3/3/4 | 10 | `novolis-markup` | **Wave 10** — 38 facts, fluent API | Extract |
 | [Frank.WireFish](https://github.com/frankhaugen/Frank.WireFish) | 3/3/3 | 9 | `novolis-wirefish` | **Migrated** — keep `Frank.WireFish` package name; depends on Messaging.Channels | Extract (wave 9) |
 | [Frank.Networking](https://github.com/frankhaugen/Frank.Networking) | 3/3/3 | 9 | `novolis-transports` | **Defer** — no NuGet releases; audit overlap with Bedrock/Http first | Partial later |
 | [Frank.Collections](https://github.com/frankhaugen/Frank.Collections) | 3/3/3 | 9 | `novolis-math`? | **Defer** — `Array2D`, `ObservableList`; 27 facts; low strategic fit | Extract if demanded |
@@ -106,6 +107,8 @@ flowchart TB
 | `Frank.GameEngine.Primitives` (subset) | `Novolis.Math.Arrays`, `Novolis.Math.Geometry` | `novolis-math` |
 | `Frank.ML.Foundation.Neural.*` | `Novolis.MachineLearning.Neural.*` | `novolis-machinelearning` |
 | `Frank.WireFish` | `Frank.WireFish` (name retained) | `novolis-wirefish` |
+| `Frank.Markdown` | `Novolis.Markup.Markdown` | `novolis-markup` |
+| `Frank.Mermaid` | `Novolis.Markup.Mermaid` | `novolis-markup` |
 | `Frank.GameEngine.*` (remainder) | *none* | see game policy |
 
 ## Extraction waves
@@ -122,6 +125,7 @@ flowchart TB
 | 7 | `novolis-math` | GameEngine Primitives subset | [wave-7-gameengine-math.md](extraction-briefs/wave-7-gameengine-math.md) |
 | 8 | `novolis-machinelearning` | Frank.ML neural foundation | [wave-8-machinelearning-neural.md](extraction-briefs/wave-8-machinelearning-neural.md) |
 | 9 | `novolis-wirefish` | Frank.WireFish | [wave-9-wirefish.md](extraction-briefs/wave-9-wirefish.md) |
+| 10 | `novolis-markup` | Frank.Markdown, Frank.Mermaid | [wave-10-markup.md](extraction-briefs/wave-10-markup.md) |
 | — | `novolis-install` | SimpleInstaller ideas | Rebuild only |
 
 **Pilot:** [extraction-briefs/pilot-channels.md](extraction-briefs/pilot-channels.md)
@@ -130,7 +134,7 @@ flowchart TB
 
 - Bulk migrate [Frank.Libraries](https://github.com/frankhaugen/Frank.Libraries) monolith
 - Migrate `Frank.GameEngine.Rendering.*` while `Novolis.Raylib` is active
-- Create `novolis-docs` for Markdown without governance approval
+- Migrate Markdown/Mermaid outside `novolis-markup` (wave 10)
 - Transfer git history by default
 - Publish production Novolis packages before bootstrap gate opens
 

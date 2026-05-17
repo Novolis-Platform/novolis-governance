@@ -33,12 +33,19 @@ Spike date: 2026-05-17. Method: shallow clone, project/package enumeration, rele
 - **Verdict:** Merge into `novolis-templates` policy; **do not duplicate** `novolis-template-dotnet` — templates install via `dotnet new` with Novolis branding
 - **Re-score:** 11 — P1 merge, not raw extract
 
-## Frank.Markdown — defer
+## Frank.Markdown — wave 10
 
 - **Packages:** 1 (`Frank.Markdown`)
 - **Tests:** 38 facts (strongest test story in P1 set)
-- **Verdict:** No `novolis-docs` repo reserved — **defer** until governance adds domain or folds into codegen doc-gen
-- **Re-score:** 10 — P1 hold
+- **Verdict:** **`novolis-markup`** with `Novolis.Markup.Markdown`; archive personal repo after preview
+- **Re-score:** 10 — wave 10 extract
+
+## Frank.Mermaid — wave 10
+
+- **Packages:** 1 (`Frank.Mermaid`)
+- **Tests:** flowchart, pie, timeline, git graph, xy chart
+- **Verdict:** **`novolis-markup`** with `Novolis.Markup.Mermaid`; distinct from `Novolis.CodeGen.Reflection.Mermaid`
+- **Re-score:** 9 — wave 10 extract
 
 ## Frank.Networking — defer
 
@@ -70,7 +77,8 @@ Spike date: 2026-05-17. Method: shallow clone, project/package enumeration, rele
 | Reflection | P1 partial | Wave 5 brief |
 | Analyzers | P1 partial | Wave 5 brief |
 | Templates | P1 merge | Template policy doc + wave 6 |
-| Markdown | P1 hold | Discuss `novolis-docs` |
+| Markdown | Wave 10 | `novolis-markup` |
+| Mermaid | Wave 10 | `novolis-markup` |
 | Networking | P2 defer | Revisit after transports wave 2 |
 | Collections | P2 defer | Optional math adjunct |
 | Frank.ML | P3 | None |

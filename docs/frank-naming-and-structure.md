@@ -28,6 +28,7 @@ Related: [naming.md](naming.md), [frank-inventory.md](frank-inventory.md), [fran
 | `novolis-math` | Math | GameEngine Primitives subset | Multi-package |
 | `novolis-machinelearning` | MachineLearning | Frank.ML neural foundation | Multi-package |
 | `novolis-wirefish` | WireFish | Frank.WireFish (package id retained) | Single package |
+| `novolis-markup` | Markup | Frank.Markdown, Frank.Mermaid | Multi-package |
 
 ## Structural rule (Frank → Novolis)
 
@@ -84,6 +85,8 @@ On extract: **move** projects into `src/` / `tests/`; do not preserve Frank flat
 | `Frank.ML.Foundation.Neural.Abstractions` | `Novolis.MachineLearning.Neural.Abstractions` | `src/Novolis.MachineLearning.Neural.Abstractions/` |
 | `Frank.ML.Foundation.Neural.Implementation` | `Novolis.MachineLearning.Neural` | `src/Novolis.MachineLearning.Neural/` |
 | `Frank.WireFish` | `Frank.WireFish` *(id retained)* | `src/Frank.WireFish/` |
+| `Frank.Markdown` | `Novolis.Markup.Markdown` | `src/Novolis.Markup.Markdown/` |
+| `Frank.Mermaid` | `Novolis.Markup.Mermaid` | `src/Novolis.Markup.Mermaid/` |
 
 **Facet decisions:**
 
@@ -190,6 +193,10 @@ Entries: `Novolis.Analyzers.AutoMapper`, `.CodeLength`.
 
 Entry: `Novolis.Templates` — paths include `src/Novolis.Templates/content/**`, `Novolis.Templates.slnx`.
 
+### `novolis-markup` (wave 10)
+
+Entries: `Novolis.Markup.Markdown`, `Novolis.Markup.Mermaid`.
+
 ## Solution and dependency graph
 
 | Repo | Solution | Package references |
@@ -204,6 +211,7 @@ Entry: `Novolis.Templates` — paths include `src/Novolis.Templates/content/**`,
 | `novolis-testing` | `Novolis.Testing.slnx` | `Novolis.Testing.TUnit` → `Novolis.CodeGen.Reflection.Dump` |
 | `novolis-math` | `Novolis.Math.slnx` | Geometry independent; Arrays has no deps |
 | `novolis-machinelearning` | `Novolis.MachineLearning.slnx` | Neural → Abstractions; Core independent |
+| `novolis-markup` | `Novolis.Markup.slnx` | Markdown and Mermaid independent |
 
 ## Namespace replacement table (automation)
 
@@ -252,6 +260,8 @@ Use [scripts/migrate-frank-slice.ps1](../scripts/migrate-frank-slice.ps1) with t
 | `Frank.ML.Foundation.Core` | `Novolis.MachineLearning.Core` |
 | `Frank.GameEngine.Primitives.SubPrimitives` | `Novolis.Math.Arrays` |
 | `Frank.GameEngine.Primitives` | `Novolis.Math.Geometry` |
+| `Frank.Markdown` | `Novolis.Markup.Markdown` |
+| `Frank.Mermaid` | `Novolis.Markup.Mermaid` |
 
 ## Preview versioning
 
