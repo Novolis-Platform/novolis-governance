@@ -25,6 +25,8 @@ Related: [naming.md](naming.md), [frank-inventory.md](frank-inventory.md), [fran
 | `novolis-codegen` | CodeGen | Reflection subset | Multi-package |
 | `novolis-analyzers` | Analyzers | AutoMapper, CodeLength | Multi-package |
 | `novolis-templates` | Templates | Frank.Templates (7 packs) | Single template NuGet pack |
+| `novolis-math` | Math | GameEngine Primitives subset | Multi-package |
+| `novolis-machinelearning` | MachineLearning | Frank.ML neural foundation | Multi-package |
 
 ## Structural rule (Frank → Novolis)
 
@@ -75,6 +77,11 @@ On extract: **move** projects into `src/` / `tests/`; do not preserve Frank flat
 | `Frank.Analyzers.AutoMapper` | `Novolis.Analyzers.AutoMapper` | `src/Novolis.Analyzers.AutoMapper/` |
 | `Frank.Analyzers.CodeLength` | `Novolis.Analyzers.CodeLength` | `src/Novolis.Analyzers.CodeLength/` |
 | `Frank.Templates` | `Novolis.Templates` | `src/Novolis.Templates/` (`PackageType=Template`) |
+| `Frank.GameEngine.Primitives/SubPrimitives` | `Novolis.Math.Arrays` | `src/Novolis.Math.Arrays/` |
+| `Frank.GameEngine.Primitives` (geometry subset) | `Novolis.Math.Geometry` | `src/Novolis.Math.Geometry/` |
+| `Frank.ML.Foundation.Core` | `Novolis.MachineLearning.Core` | `src/Novolis.MachineLearning.Core/` |
+| `Frank.ML.Foundation.Neural.Abstractions` | `Novolis.MachineLearning.Neural.Abstractions` | `src/Novolis.MachineLearning.Neural.Abstractions/` |
+| `Frank.ML.Foundation.Neural.Implementation` | `Novolis.MachineLearning.Neural` | `src/Novolis.MachineLearning.Neural/` |
 
 **Facet decisions:**
 
@@ -193,6 +200,8 @@ Entry: `Novolis.Templates` — paths include `src/Novolis.Templates/content/**`,
 | `novolis-codegen` | `Novolis.CodeGen.slnx` | Dump/Mermaid → Reflection |
 | `novolis-analyzers` | `Novolis.Analyzers.slnx` | Independent analyzer packages |
 | `novolis-testing` | `Novolis.Testing.slnx` | `Novolis.Testing.TUnit` → `Novolis.CodeGen.Reflection.Dump` |
+| `novolis-math` | `Novolis.Math.slnx` | Geometry independent; Arrays has no deps |
+| `novolis-machinelearning` | `Novolis.MachineLearning.slnx` | Neural → Abstractions; Core independent |
 
 ## Namespace replacement table (automation)
 
@@ -236,6 +245,11 @@ Use [scripts/migrate-frank-slice.ps1](../scripts/migrate-frank-slice.ps1) with t
 | `Frank.Security.HaveIBeenPwned` | `Novolis.Security.HaveIBeenPwned` |
 | `Frank.Security.Cryptography` | `Novolis.Security.Cryptography` |
 | `Frank.Security` | `Novolis.Security` |
+| `Frank.ML.Foundation.Neural.Implementation` | `Novolis.MachineLearning.Neural` |
+| `Frank.ML.Foundation.Neural.Abstractions` | `Novolis.MachineLearning.Neural.Abstractions` |
+| `Frank.ML.Foundation.Core` | `Novolis.MachineLearning.Core` |
+| `Frank.GameEngine.Primitives.SubPrimitives` | `Novolis.Math.Arrays` |
+| `Frank.GameEngine.Primitives` | `Novolis.Math.Geometry` |
 
 ## Preview versioning
 

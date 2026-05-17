@@ -67,13 +67,13 @@ flowchart TB
 | [Frank.Markdown](https://github.com/frankhaugen/Frank.Markdown) | 3/3/4 | 10 | *no reserved repo* | **Defer** — 38 facts, fluent API; only if `novolis-docs` approved | P1 hold |
 | [Frank.Networking](https://github.com/frankhaugen/Frank.Networking) | 3/3/3 | 9 | `novolis-transports` | **Defer** — no NuGet releases; audit overlap with Bedrock/Http first | Partial later |
 | [Frank.Collections](https://github.com/frankhaugen/Frank.Collections) | 3/3/3 | 9 | `novolis-math`? | **Defer** — `Array2D`, `ObservableList`; 27 facts; low strategic fit | Extract if demanded |
-| [Frank.ML](https://github.com/frankhaugen/Frank.ML) | 2/2/2 | 6 | `novolis-machinelearning` | **Skip** — private, learning sandbox | Archive |
+| [Frank.ML](https://github.com/frankhaugen/Frank.ML) | 2/2/2 | 6 | `novolis-machinelearning` | **Partial** — neural foundation only (wave 8); AutoML/apps stay private | Extract subset |
 
 ## P2 — Reference / archive
 
 | Repo | Total | Treatment |
 |------|-------|-----------|
-| [Frank.GameEngine](https://github.com/frankhaugen/Frank.GameEngine) | — | [gameengine-reference-policy.md](gameengine-reference-policy.md) — reference only |
+| [Frank.GameEngine](https://github.com/frankhaugen/Frank.GameEngine) | — | [gameengine-reference-policy.md](gameengine-reference-policy.md) — selective mining (wave 7 math); repo stays active |
 | [Frank.Libraries](https://github.com/frankhaugen/Frank.Libraries) | — | Decompose catalog only; author disclaims production use |
 | [Frank.SimpleInstaller](https://github.com/frankhaugen/Frank.SimpleInstaller) | — | Rebuild ideas into `novolis-install` |
 | [Frank.IRC](https://github.com/frankhaugen/Frank.IRC) | — | Skip — learning project |
@@ -85,7 +85,7 @@ flowchart TB
 | Repo | Reason |
 |------|--------|
 | Frank.IRC | Educational; overlaps Networking.Irc |
-| Frank.ML | Private learning repo |
+| Frank.ML (apps/domain) | Apps and domain code remain on private Frank.ML |
 | Frank.Libraries.Wpf / CrossPlatformWindow | No Novolis lane |
 
 ## Frank → Novolis package mapping
@@ -102,7 +102,9 @@ flowchart TB
 | `Frank.CronJobs` | `Novolis.Scheduling` (TBD) | TBD |
 | `Frank.Reflection` (subset) | `Novolis.CodeGen.*` | `novolis-codegen` |
 | `Frank.Analyzers.*` (subset) | `Novolis.Analyzers.*` | `novolis-analyzers` |
-| `Frank.GameEngine.*` | *none by default* | see game policy |
+| `Frank.GameEngine.Primitives` (subset) | `Novolis.Math.Arrays`, `Novolis.Math.Geometry` | `novolis-math` |
+| `Frank.ML.Foundation.Neural.*` | `Novolis.MachineLearning.Neural.*` | `novolis-machinelearning` |
+| `Frank.GameEngine.*` (remainder) | *none* | see game policy |
 
 ## Extraction waves
 
@@ -115,7 +117,9 @@ flowchart TB
 | 4 | `novolis-security` | Frank.Security | [extraction-briefs/wave-4-security.md](extraction-briefs/wave-4-security.md) |
 | 5 | `novolis-analyzers` / `novolis-codegen` | Analyzers, Reflection subset | [wave-5-codegen.md](extraction-briefs/wave-5-codegen.md), [wave-5-analyzers.md](extraction-briefs/wave-5-analyzers.md) |
 | 6 | `novolis-templates` | Frank.Templates | [wave-6-templates.md](extraction-briefs/wave-6-templates.md) |
-| 7 | `novolis-install` | SimpleInstaller ideas | Rebuild only |
+| 7 | `novolis-math` | GameEngine Primitives subset | [wave-7-gameengine-math.md](extraction-briefs/wave-7-gameengine-math.md) |
+| 8 | `novolis-machinelearning` | Frank.ML neural foundation | [wave-8-machinelearning-neural.md](extraction-briefs/wave-8-machinelearning-neural.md) |
+| 9 | `novolis-install` | SimpleInstaller ideas | Rebuild only |
 
 **Pilot:** [extraction-briefs/pilot-channels.md](extraction-briefs/pilot-channels.md)
 

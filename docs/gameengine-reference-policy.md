@@ -5,7 +5,7 @@ Governs how [Frank.GameEngine](https://github.com/frankhaugen/Frank.GameEngine) 
 ## Decision (locked)
 
 - **Primary graphics path:** [novolis-raylib](https://github.com/Novolis-Platform/novolis-raylib) → `Novolis.Raylib.*` per [raylib ecosystem spec](https://github.com/Novolis-Platform/.github/blob/main/plans/raylib-package-ecosystem.md).
-- **Frank.GameEngine:** **reference / archive** — no bulk migration into Novolis.
+- **Frank.GameEngine:** **active selective mining** — no bulk migration; personal repo stays **unarchived**.
 
 ## Rationale
 
@@ -24,39 +24,39 @@ Governs how [Frank.GameEngine](https://github.com/frankhaugen/Frank.GameEngine) 
 | `Frank.GameEngine.Rendering.MonoGame` | Out of scope unless Novolis adds MonoGame lane |
 | `Frank.GameEngine.Rendering.Experimental` | Unstable |
 | `Frank.GameEngine.Core` | Orchestrates rendering stack — rebuild under Novolis if needed |
-| Samples / AppHost | Reference only |
+| Samples / AppHost | Stay on personal repo |
 
-## May mine (with issue + review)
+## Migrated (wave 7)
 
-Renderer-agnostic modules may inform **`novolis-physics`** or future simulation repos **only** if:
+| Frank source | Novolis package | Repo |
+|--------------|-----------------|------|
+| `Frank.GameEngine.Primitives/SubPrimitives/*` | `Novolis.Math.Arrays` | `novolis-math` |
+| Geometry subset (Polygon, TriangleMesh, transforms, cameras, …) | `Novolis.Math.Geometry` | `novolis-math` |
+
+Brief: [extraction-briefs/wave-7-gameengine-math.md](extraction-briefs/wave-7-gameengine-math.md)
+
+## May mine later (with issue + review)
+
+Renderer-agnostic modules may inform **`novolis-physics`**, **`novolis-raylib`**, or **`novolis-math`** only if:
 
 1. No dependency on `Frank.GameEngine.Rendering.*`
 2. Clear Novolis API redesign (not copy-paste)
 3. Tests ported or rewritten
-4. Documented in a `novolis-physics` or `novolis-math` extraction issue
+4. Documented in an extraction brief
 
 | Module | Candidate Novolis home | Condition |
 |--------|------------------------|-----------|
-| `Frank.GameEngine.Physics` | `novolis-physics` | Abstract collision/integrator only |
-| `Frank.GameEngine.Primitives` | `novolis-math` | Vectors/types without engine coupling |
+| `Frank.GameEngine.Physics` | `novolis-physics` or game2D facet | Scene/`GameObject` model — redesign required |
+| `Frank.GameEngine.Assets` (`ObjHelper`) | `novolis-raylib` | Wave 7b after geometry ships |
 | `Frank.GameEngine.Input` | `Novolis.Raylib` or hosting | Prefer Raylib input path first |
 | `Frank.GameEngine.Audio` | Defer | Platform-specific |
+| `GameObject`, `Scene`, `Scene2D` | Stay in Frank.GameEngine | Engine graph, not math |
 
-## Frank.GameEngine inventory (reference)
-
-- **SDK:** 10.0.203
-- **Packable projects:** 11
-- **Latest release:** 0.3
-- **Test projects:** 3 (32 test files; sparse xUnit Fact count in scan)
-- **Samples:** Pong, Hello2D, FPS, Battleship, BouncingBall + Aspire AppHost
-
-## Old repo sunset (when mining completes)
-
-Leave [frankhaugen/Frank.GameEngine](https://github.com/frankhaugen/Frank.GameEngine) archived with README banner:
+## Personal repo README (partial migration — do not archive)
 
 ```markdown
-> Superseded for graphics by [Novolis.Raylib](https://github.com/Novolis-Platform/novolis-raylib).
-> Novolis does not maintain a drop-in replacement for Frank.GameEngine.
+> **Partially on Novolis:** `Novolis.Math.Arrays` and `Novolis.Math.Geometry` live in [novolis-math](https://github.com/Novolis-Platform/novolis-math).
+> Graphics: use [Novolis.Raylib](https://github.com/Novolis-Platform/novolis-raylib). This repo remains the home for samples, engine core, and unmigrated code.
 ```
 
 ## Related

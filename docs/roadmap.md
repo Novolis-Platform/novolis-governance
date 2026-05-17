@@ -25,11 +25,14 @@ Docs: [frank-inventory.md](frank-inventory.md), [frank-naming-and-structure.md](
 | 4 | `novolis-security` — Cryptography/HIBP | **Code migrated** |
 | 5 | `novolis-analyzers` / `novolis-codegen` | **Code migrated** — Reflection/Dump/Mermaid + AutoMapper/CodeLength |
 | 6 | `novolis-templates` — `Novolis.Templates` | **Code migrated** |
-| — | `novolis-raylib` | Active; GameEngine reference-only |
+| 7 | `novolis-math` — Arrays + Geometry (GameEngine subset) | **Code migrated** |
+| 8 | `novolis-machinelearning` — neural foundation (Frank.ML subset) | **Code migrated** |
+| — | `novolis-raylib` | Active; GameEngine rendering not migrated |
 
 ## Next
 
 - Configure NuGet trusted publishing for `novolis-messaging`; ship `0.1.0-preview.1`
-- Frank README banners per [frank-sunset-banners.md](frank-sunset-banners.md); archive Frank P0 repos
+- Partial-migration README blocks on Frank.GameEngine and Frank.ML (no archive)
+- Wave 7b: OBJ helpers → `novolis-raylib` when geometry is stable
 - Expand registry entries as packages publish
 - Signing, SBOM, and provenance (post-v0)

@@ -57,7 +57,14 @@ $replacements = @(
     'Frank.DataStorage|Novolis.Storage',
     'Frank.Security.HaveIBeenPwned|Novolis.Security.HaveIBeenPwned',
     'Frank.Security.Cryptography|Novolis.Security.Cryptography',
-    'Frank.Security|Novolis.Security'
+    'Frank.Security|Novolis.Security',
+    'Frank.ML.Foundation.Neural.Implementation|Novolis.MachineLearning.Neural',
+    'Frank.ML.Foundation.Neural.Abstractions|Novolis.MachineLearning.Neural.Abstractions',
+    'Frank.ML.Foundation.Core|Novolis.MachineLearning.Core',
+    'Frank.ML.Foundation|Novolis.MachineLearning',
+    'Frank.GameEngine.Primitives.SubPrimitives|Novolis.Math.Arrays',
+    'Frank.GameEngine.Primitives|Novolis.Math.Geometry',
+    'Frank.GameEngine|Novolis.Math'
 ) + $ExtraReplacements
 
 $textExtensions = @(
