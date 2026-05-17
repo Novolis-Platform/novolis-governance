@@ -19,3 +19,5 @@ Apply to Frank source README files when each wave ships on NuGet.
 | Frank.Http | `Novolis.Transports.Http.*` |
 | Frank.DataStorage (subset) | `Novolis.Storage.*` |
 | Frank.Security | `Novolis.Security.*` |
+| Frank.Reflection (subset) | `Novolis.CodeGen.Reflection*` |
+| Frank.Analyzers (subset) | `Novolis.Analyzers.AutoMapper`, `Novolis.Analyzers.CodeLength` |

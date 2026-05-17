@@ -22,6 +22,8 @@ Related: [naming.md](naming.md), [frank-inventory.md](frank-inventory.md), [fran
 | `novolis-transports` | Transports | BedrockSlim, Http | Multi-package |
 | `novolis-storage` | Storage | DataStorage subset | Multi-package |
 | `novolis-security` | Security | Cryptography, HIBP | Multi-package |
+| `novolis-codegen` | CodeGen | Reflection subset | Multi-package |
+| `novolis-analyzers` | Analyzers | AutoMapper, CodeLength | Multi-package |
 
 ## Structural rule (Frank → Novolis)
 
@@ -66,6 +68,11 @@ On extract: **move** projects into `src/` / `tests/`; do not preserve Frank flat
 | `Frank.DataStorage.Sqlite` | `Novolis.Storage.Sqlite` | `src/Novolis.Storage.Sqlite/` |
 | `Frank.Security.Cryptography` | `Novolis.Security.Cryptography` | `src/Novolis.Security.Cryptography/` |
 | `Frank.Security.HaveIBeenPwned` | `Novolis.Security.HaveIBeenPwned` | `src/Novolis.Security.HaveIBeenPwned/` |
+| `Frank.Reflection` | `Novolis.CodeGen.Reflection` | `src/Novolis.CodeGen.Reflection/` |
+| `Frank.Reflection.Dump` | `Novolis.CodeGen.Reflection.Dump` | `src/Novolis.CodeGen.Reflection.Dump/` |
+| `Frank.Reflection.Mermaid` | `Novolis.CodeGen.Reflection.Mermaid` | `src/Novolis.CodeGen.Reflection.Mermaid/` |
+| `Frank.Analyzers.AutoMapper` | `Novolis.Analyzers.AutoMapper` | `src/Novolis.Analyzers.AutoMapper/` |
+| `Frank.Analyzers.CodeLength` | `Novolis.Analyzers.CodeLength` | `src/Novolis.Analyzers.CodeLength/` |
 
 **Facet decisions:**
 
@@ -107,7 +114,7 @@ On extract: **move** projects into `src/` / `tests/`; do not preserve Frank flat
 | Former dep | Replacement |
 |------------|-------------|
 | `Frank.Channels.DependencyInjection` | `Novolis.Messaging.Channels` project reference |
-| `Frank.Reflection` / `Frank.Reflection.Dump` | Remove; use `Novolis.Testing.Internal` type helpers + `VarDump` in TUnit package |
+| `Frank.Reflection` / `Frank.Reflection.Dump` | `Novolis.CodeGen.Reflection` / `Novolis.CodeGen.Reflection.Dump` (TUnit references Dump package) |
 | `Frank.Testing.*` | `Novolis.Testing.*` package references |
 | `Frank.DataStorage.Abstractions` → Reflection package | Remove unused package reference |
 
@@ -160,6 +167,14 @@ Entries: `Novolis.Storage.Abstractions`, `.Json`, `.Sqlite`.
 
 Entries: `Novolis.Security.Cryptography`, `.HaveIBeenPwned`.
 
+### `novolis-codegen` (wave 5)
+
+Entries: `Novolis.CodeGen.Reflection`, `.Reflection.Dump`, `.Reflection.Mermaid`.
+
+### `novolis-analyzers` (wave 5)
+
+Entries: `Novolis.Analyzers.AutoMapper`, `.CodeLength`.
+
 ## Solution and dependency graph
 
 | Repo | Solution | Package references |
@@ -169,6 +184,9 @@ Entries: `Novolis.Security.Cryptography`, `.HaveIBeenPwned`.
 | `novolis-transports` | `Novolis.Transports.slnx` | Http facets → Abstractions; Tcp Server/Client independent |
 | `novolis-storage` | `Novolis.Storage.slnx` | Json/Sqlite → Abstractions |
 | `novolis-security` | `Novolis.Security.slnx` | Independent facets |
+| `novolis-codegen` | `Novolis.CodeGen.slnx` | Dump/Mermaid → Reflection |
+| `novolis-analyzers` | `Novolis.Analyzers.slnx` | Independent analyzer packages |
+| `novolis-testing` | `Novolis.Testing.slnx` | `Novolis.Testing.TUnit` → `Novolis.CodeGen.Reflection.Dump` |
 
 ## Namespace replacement table (automation)
 
@@ -176,6 +194,11 @@ Use [scripts/migrate-frank-slice.ps1](../scripts/migrate-frank-slice.ps1) with t
 
 | From | To |
 |------|-----|
+| `Frank.Reflection.Mermaid` | `Novolis.CodeGen.Reflection.Mermaid` |
+| `Frank.Reflection.Dump` | `Novolis.CodeGen.Reflection.Dump` |
+| `Frank.Reflection` | `Novolis.CodeGen.Reflection` |
+| `Frank.Analyzers.AutoMapper` | `Novolis.Analyzers.AutoMapper` |
+| `Frank.Analyzers.CodeLength` | `Novolis.Analyzers.CodeLength` |
 | `Frank.Channels.DependencyInjection` | `Novolis.Messaging.Channels` |
 | `Frank.PulseFlow.Internal` | `Novolis.Messaging.Internal` |
 | `Frank.PulseFlow` | `Novolis.Messaging` |

@@ -23,7 +23,7 @@ Docs: [frank-inventory.md](frank-inventory.md), [frank-naming-and-structure.md](
 | 2 | `novolis-transports` — Tcp + Http | **Code migrated** (Http TUnit tests excluded from slnx until CI adapter) |
 | 3 | `novolis-storage` — Abstractions/Json/Sqlite | **Code migrated** |
 | 4 | `novolis-security` — Cryptography/HIBP | **Code migrated** |
-| 5 | `novolis-analyzers` / `novolis-codegen` | P1 partial |
+| 5 | `novolis-analyzers` / `novolis-codegen` | **Code migrated** — Reflection/Dump/Mermaid + AutoMapper/CodeLength |
 | — | `novolis-raylib` | Active; GameEngine reference-only |
 
 ## Next

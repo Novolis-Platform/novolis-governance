@@ -18,6 +18,11 @@ param(
 $ErrorActionPreference = 'Stop'
 
 $replacements = @(
+    'Frank.Reflection.Mermaid|Novolis.CodeGen.Reflection.Mermaid',
+    'Frank.Reflection.Dump|Novolis.CodeGen.Reflection.Dump',
+    'Frank.Reflection|Novolis.CodeGen.Reflection',
+    'Frank.Analyzers.AutoMapper|Novolis.Analyzers.AutoMapper',
+    'Frank.Analyzers.CodeLength|Novolis.Analyzers.CodeLength',
     'Frank.Channels.DependencyInjection|Novolis.Messaging.Channels',
     'Frank.PulseFlow.Internal|Novolis.Messaging.Internal',
     'Frank.PulseFlow|Novolis.Messaging',
@@ -59,7 +64,7 @@ function Copy-And-Rename {
             $from, $to = $pair -split '\|', 2
             $text = $text -replace [regex]::Escape($from), $to
         }
-        $text = $text -replace 'Frank\.Reflection\.Dump', 'VarDump'
+        $text = $text -replace 'Frank\.Reflection\.Dump', 'Novolis.CodeGen.Reflection.Dump'
         $text = $text -replace 'PackageReference Include="Frank\.[^"]+"', '# removed Frank package'
         Set-Content -Path $target -Value $text -Encoding UTF8 -NoNewline
     }

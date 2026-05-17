@@ -111,9 +111,9 @@ flowchart TB
 | 0 | `novolis-messaging` | Channels.DI → PulseFlow | [extraction-briefs/wave-0-messaging.md](extraction-briefs/wave-0-messaging.md) |
 | 1 | `novolis-testing` | Frank.Testing | [extraction-briefs/wave-1-testing.md](extraction-briefs/wave-1-testing.md) |
 | 2 | `novolis-transports` | BedrockSlim, Http | [extraction-briefs/wave-2-transports.md](extraction-briefs/wave-2-transports.md) |
-| 3 | `novolis-storage` | DataStorage subset | TBD after wave 2 |
-| 4 | `novolis-security` | Frank.Security | TBD |
-| 5 | `novolis-analyzers` / `novolis-codegen` | Analyzers, Reflection subset | TBD |
+| 3 | `novolis-storage` | DataStorage subset | [extraction-briefs/wave-3-storage.md](extraction-briefs/wave-3-storage.md) |
+| 4 | `novolis-security` | Frank.Security | [extraction-briefs/wave-4-security.md](extraction-briefs/wave-4-security.md) |
+| 5 | `novolis-analyzers` / `novolis-codegen` | Analyzers, Reflection subset | [wave-5-codegen.md](extraction-briefs/wave-5-codegen.md), [wave-5-analyzers.md](extraction-briefs/wave-5-analyzers.md) |
 | 6 | `novolis-templates` | Frank.Templates | TBD |
 | 7 | `novolis-install` | SimpleInstaller ideas | Rebuild only |
 
