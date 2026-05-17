@@ -28,6 +28,16 @@ cd d:\novolis\novolis-math
 
 Pack order (handled by `pack-novolis-local.ps1`): math → physics → simulation → raylib → messaging → transports → avalonia → testing.
 
+## Stack boundary verification
+
+Before packing math / physics / simulation:
+
+```powershell
+.\novolis-governance\scripts\verify-stack-boundaries.ps1
+```
+
+See [library-boundaries.md](library-boundaries.md).
+
 ## Consumer setup
 
 1. Ensure `nuget.config` includes the `novolis-local` source (repo root or machine-wide).

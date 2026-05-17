@@ -39,14 +39,31 @@ Math is one library family with **facets** (separate packages, same repo). Geome
 | Facet (current / planned) | Role |
 |---------------------------|------|
 | `Novolis.Math.Arrays` | Dense grids, indices |
-| Core numerics (TBD) | `Vector3D`, `QuaternionD`, `Matrix4x4D`, `Transform3D`, `Interval`, units, tolerances |
-| `Novolis.Math.Geometry` | `Ray`, `Mesh`, primitives, intersections, BVH structure/queries |
-| `Novolis.Math.Topology` (planned) | Connectivity, faces/edges, meshes-as-topology when distinct from metric geometry |
+| `Novolis.Math.Geometry` | BCL-backed primitives (`Ray3`, `Sphere3`, meshes), intersections, BVH |
+| `Novolis.Math.Topology` (planned) | Connectivity, faces/edges when distinct from metric geometry |
+
+### BCL type first — always, no exception
+
+When the BCL provides a type, **use it**. Do **not** add Novolis duplicates.
+
+| Use (BCL) | Do not add |
+|-----------|------------|
+| `System.Numerics.Vector3` | `Vector3d`, `Vector3D`, custom 3-vectors |
+| `System.Numerics.Quaternion` | `Quaterniond`, custom quaternions |
+| `System.Numerics.Matrix4x4` | `Matrix4x4d`, custom 4×4 |
+| `System.Numerics.Plane` | custom plane types mirroring BCL |
+
+**Allowed Novolis types** only where the BCL has **no** equivalent: `Ray3`, `Sphere3`, `TriangleMesh`, `DenseGrid<T>`, topology records — composed from BCL primitives.
+
+### No 2D vectors in the stack
+
+- **Forbidden:** `System.Numerics.Vector2`, `Vector2D`, or any Novolis 2D vector type.
+- **Planar XZ:** `System.Numerics.Vector3` with **`Y = 0`** (optional extension helpers on `Vector3`, not new vector types).
 
 **Owns:**
 
-- Pure spatial and numeric types and operations
-- Static helpers (e.g. `LookAt` matrix from eye/at/up) that do **not** imply a clock, tick, or observer lifecycle
+- Pure spatial operations on BCL numerics
+- Static helpers (e.g. `Matrix4x4.CreateLookAt`) that do **not** imply a clock, tick, or observer lifecycle
 
 **Hard rule — no time in Math:**
 
@@ -134,8 +151,8 @@ Product rules, HUD, networking, highly specific camera feel (run bobbing, recoil
 
 | Concept | Home |
 |---------|------|
-| `Vector3D`, `Matrix4x4D`, mesh, BVH, ray hit | Math (Geometry / Topology facets) |
-| `LookAt` matrix helper (no clock) | Math |
+| `Vector3`, `Matrix4x4`, mesh, BVH, `Ray3` hit | Math (Geometry facet; BCL vectors) |
+| `Matrix4x4.CreateLookAt` (no camera record) | BCL / Math extension |
 | `RigidBody` + integrate with `dt` | Physics |
 | Sphere sweep + restitution | Physics |
 | `SimulationClock`, tick order, replay | Simulation |
@@ -177,7 +194,7 @@ Wave 7–11 migrations may still place types in legacy packages. Prefer the boun
 | `Novolis.Math.Geometry.GridCollision2D` | `Novolis.Simulation.World` |
 | `Novolis.Physics.Collision.Simple.RoomMeshBuilder` | `Novolis.Simulation.World.Builders` |
 | `Novolis.Physics.Collision.Simple.GridPhysicsMovement` | `Novolis.Simulation.Kinematics` |
-| Vectors in `Novolis.Physics.Numerics` | Math core numerics facet |
+| `Novolis.Physics.Numerics` (`Vector3d`, …) | `System.Numerics` + `Novolis.Math.Geometry` primitives |
 | BVH structure in Physics | `Novolis.Math.Geometry`; response stays Physics |
 
 ---

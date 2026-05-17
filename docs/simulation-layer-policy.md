@@ -27,6 +27,11 @@ simulation → math, physics
 
 **Forbidden:** `Novolis.Raylib.*` ↔ `Novolis.Simulation.*` (either direction). Same for dogfooding/SCR inside platform Simulation packages.
 
+## Type rules
+
+- **BCL first, always:** `System.Numerics.Vector3`, `Quaternion`, `Matrix4x4` — no `Vector3d` / `Novolis.Physics.Numerics` duplicates.
+- **No Vector2** in stack; planar XZ = `Vector3` with `Y = 0`.
+
 ## Time rule
 
 | Need | Home |

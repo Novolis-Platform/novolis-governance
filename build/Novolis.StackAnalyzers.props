@@ -1,0 +1,9 @@
+<Project>
+  <ItemGroup Condition="'$(NovolisStackAnalyzers)' != 'false'">
+    <ProjectReference
+      Condition="$(MSBuildProjectName.StartsWith('Novolis.Math.')) OR $(MSBuildProjectName.StartsWith('Novolis.Physics.')) OR $(MSBuildProjectName.StartsWith('Novolis.Simulation.'))"
+      Include="$(MSBuildThisFileDirectory)..\..\novolis-analyzers\src\Novolis.Analyzers.StackBoundaries\Novolis.Analyzers.StackBoundaries.csproj"
+      OutputItemType="Analyzer"
+      ReferenceOutputAssembly="false" />
+  </ItemGroup>
+</Project>
