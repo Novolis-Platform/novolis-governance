@@ -23,6 +23,8 @@ Organization-wide policies, contribution model, naming rules, package rules, sec
 | P0 deep-dive | [docs/frank-p0-deep-dive.md](docs/frank-p0-deep-dive.md) |
 | P1 spikes | [docs/frank-p1-spikes.md](docs/frank-p1-spikes.md) |
 | GameEngine reference policy | [docs/gameengine-reference-policy.md](docs/gameengine-reference-policy.md) |
+| Library boundaries (Math / Physics / Simulation) | [docs/library-boundaries.md](docs/library-boundaries.md) |
+| Simulation layer policy (summary) | [docs/simulation-layer-policy.md](docs/simulation-layer-policy.md) |
 | Extraction briefs | [docs/extraction-briefs/](docs/extraction-briefs/) |
 | Roadmap | [docs/roadmap.md](docs/roadmap.md) |
 | NuGet setup | [docs/nuget-setup.md](docs/nuget-setup.md) |

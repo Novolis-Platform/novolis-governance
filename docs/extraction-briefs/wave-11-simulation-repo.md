@@ -31,7 +31,7 @@
 ## Done when
 
 - `novolis-simulation` builds, tests pass, packs to `artifacts/nuget-local`
-- Policies: [simulation-layer-policy.md](../simulation-layer-policy.md), [local-nuget-development.md](../local-nuget-development.md)
+- Policies: [library-boundaries.md](../library-boundaries.md), [simulation-layer-policy.md](../simulation-layer-policy.md), [local-nuget-development.md](../local-nuget-development.md)
 - DoomLite3D and SCR build with `PackageReference` only against local feed
 - Math/physics retain obsolete forwards only (one release)
 
