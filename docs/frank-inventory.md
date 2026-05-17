@@ -65,6 +65,7 @@ flowchart TB
 | [Frank.Analyzers](https://github.com/frankhaugen/Frank.Analyzers) | 4/3/4 | 11 | `novolis-analyzers`, `novolis-codegen` | **Partial** — `AutoMapper`, `CodeLength` analyzers; skip CppInteropts unless native lane | Extract subset |
 | [Frank.Templates](https://github.com/frankhaugen/Frank.Templates) | 4/3/4 | 11 | `novolis-templates` | **Merge** — align with `novolis-template-dotnet`; drop duplicate NuGetSolution template | Merge |
 | [Frank.Markdown](https://github.com/frankhaugen/Frank.Markdown) | 3/3/4 | 10 | *no reserved repo* | **Defer** — 38 facts, fluent API; only if `novolis-docs` approved | P1 hold |
+| [Frank.WireFish](https://github.com/frankhaugen/Frank.WireFish) | 3/3/3 | 9 | `novolis-wirefish` | **Migrated** — keep `Frank.WireFish` package name; depends on Messaging.Channels | Extract (wave 9) |
 | [Frank.Networking](https://github.com/frankhaugen/Frank.Networking) | 3/3/3 | 9 | `novolis-transports` | **Defer** — no NuGet releases; audit overlap with Bedrock/Http first | Partial later |
 | [Frank.Collections](https://github.com/frankhaugen/Frank.Collections) | 3/3/3 | 9 | `novolis-math`? | **Defer** — `Array2D`, `ObservableList`; 27 facts; low strategic fit | Extract if demanded |
 | [Frank.ML](https://github.com/frankhaugen/Frank.ML) | 2/2/2 | 6 | `novolis-machinelearning` | **Partial** — neural foundation only (wave 8); AutoML/apps stay private | Extract subset |
@@ -104,6 +105,7 @@ flowchart TB
 | `Frank.Analyzers.*` (subset) | `Novolis.Analyzers.*` | `novolis-analyzers` |
 | `Frank.GameEngine.Primitives` (subset) | `Novolis.Math.Arrays`, `Novolis.Math.Geometry` | `novolis-math` |
 | `Frank.ML.Foundation.Neural.*` | `Novolis.MachineLearning.Neural.*` | `novolis-machinelearning` |
+| `Frank.WireFish` | `Frank.WireFish` (name retained) | `novolis-wirefish` |
 | `Frank.GameEngine.*` (remainder) | *none* | see game policy |
 
 ## Extraction waves
@@ -119,7 +121,8 @@ flowchart TB
 | 6 | `novolis-templates` | Frank.Templates | [wave-6-templates.md](extraction-briefs/wave-6-templates.md) |
 | 7 | `novolis-math` | GameEngine Primitives subset | [wave-7-gameengine-math.md](extraction-briefs/wave-7-gameengine-math.md) |
 | 8 | `novolis-machinelearning` | Frank.ML neural foundation | [wave-8-machinelearning-neural.md](extraction-briefs/wave-8-machinelearning-neural.md) |
-| 9 | `novolis-install` | SimpleInstaller ideas | Rebuild only |
+| 9 | `novolis-wirefish` | Frank.WireFish | [wave-9-wirefish.md](extraction-briefs/wave-9-wirefish.md) |
+| — | `novolis-install` | SimpleInstaller ideas | Rebuild only |
 
 **Pilot:** [extraction-briefs/pilot-channels.md](extraction-briefs/pilot-channels.md)
 

@@ -27,6 +27,7 @@ Related: [naming.md](naming.md), [frank-inventory.md](frank-inventory.md), [fran
 | `novolis-templates` | Templates | Frank.Templates (7 packs) | Single template NuGet pack |
 | `novolis-math` | Math | GameEngine Primitives subset | Multi-package |
 | `novolis-machinelearning` | MachineLearning | Frank.ML neural foundation | Multi-package |
+| `novolis-wirefish` | WireFish | Frank.WireFish (package id retained) | Single package |
 
 ## Structural rule (Frank → Novolis)
 
@@ -82,6 +83,7 @@ On extract: **move** projects into `src/` / `tests/`; do not preserve Frank flat
 | `Frank.ML.Foundation.Core` | `Novolis.MachineLearning.Core` | `src/Novolis.MachineLearning.Core/` |
 | `Frank.ML.Foundation.Neural.Abstractions` | `Novolis.MachineLearning.Neural.Abstractions` | `src/Novolis.MachineLearning.Neural.Abstractions/` |
 | `Frank.ML.Foundation.Neural.Implementation` | `Novolis.MachineLearning.Neural` | `src/Novolis.MachineLearning.Neural/` |
+| `Frank.WireFish` | `Frank.WireFish` *(id retained)* | `src/Frank.WireFish/` |
 
 **Facet decisions:**
 

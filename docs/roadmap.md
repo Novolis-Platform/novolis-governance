@@ -27,6 +27,7 @@ Docs: [frank-inventory.md](frank-inventory.md), [frank-naming-and-structure.md](
 | 6 | `novolis-templates` — `Novolis.Templates` | **Code migrated** |
 | 7 | `novolis-math` — Arrays + Geometry (GameEngine subset) | **Code migrated** |
 | 8 | `novolis-machinelearning` — neural foundation (Frank.ML subset) | **Code migrated** |
+| 9 | `novolis-wirefish` — `Frank.WireFish` (name retained) | **Code migrated** — pending messaging NuGet + capture hardening ([TODO](https://github.com/Novolis-Platform/novolis-wirefish/blob/main/TODO.md)) |
 | — | `novolis-raylib` | Active; GameEngine rendering not migrated |
 
 ## Next

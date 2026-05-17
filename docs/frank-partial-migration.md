@@ -17,3 +17,4 @@ Do **not** use archive sunset language from [frank-sunset-banners.md](frank-suns
 |------------|--------------|-------|
 | Frank.GameEngine | `novolis-math`, `novolis-raylib` (graphics) | 7, 7b |
 | Frank.ML | `novolis-machinelearning` (neural only) | 8 |
+| Frank.WireFish | `novolis-wirefish` (package id unchanged) | 9 |
