@@ -69,14 +69,33 @@ On `novolis-smoketest` (and later package repos):
 
 The release workflow uses `environment: nuget.org` and `NuGet/login@v1` with OIDC.
 
-## 5. Validate with smoke test only
+## 5. Validate org bootstrap (smoketest)
 
 1. Ensure `Novolis.TemplateSmokeTest` builds on `main`.
 2. Create a GitHub release with tag `v0.1.0` matching the package version in the `.csproj`.
 3. Approve the `nuget.org` environment deployment when prompted.
 4. Confirm the package appears under the **org** on nuget.org.
 
-Do not publish migrated production libraries until this path is verified.
+This validates **template/CI only**. It does not gate Frank migration.
+
+## Migration gate (`novolis-messaging`)
+
+First **Frank migration** publish uses trusted publishing on the real library repo:
+
+| Field | Value |
+|-------|--------|
+| Repository owner | `Novolis-Platform` |
+| Repository | `novolis-messaging` |
+| Workflow file | `release.yml` |
+| Environment | `nuget.org` |
+| First package | `Novolis.Messaging.Channels` `0.1.0-preview.1` |
+
+Steps:
+
+1. Add trusted publishing policy for `novolis-messaging` (same org environment `nuget.org`).
+2. After pilot extract merges, tag release `v0.1.0-preview.1` (or matching semver).
+3. Confirm `dotnet add package Novolis.Messaging.Channels --version 0.1.0-preview.1` from the org feed.
+4. Record sign-off in [bootstrap-gate-assessment.md](bootstrap-gate-assessment.md).
 
 ## 6. Local development (optional)
 

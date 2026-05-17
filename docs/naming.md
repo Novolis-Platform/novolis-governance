@@ -14,4 +14,8 @@ Use `Novolis.<Domain>` (PascalCase segments).
 
 Examples: `Novolis.Math`, `Novolis.Raylib`.
 
-Adapters use suffixes: `Novolis.Storage.SqlServer`, `Novolis.Messaging.AzureServiceBus`, `Novolis.Testing.Xunit`.
+Adapters use suffixes: `Novolis.Storage.SqlServer`, `Novolis.Messaging.AzureServiceBus`, `Novolis.Testing.TUnit`.
+
+## Testing
+
+Use **[TUnit](https://tunit.dev)** exclusively. Do not add xUnit, NUnit, or MSTest test SDKs to Novolis repositories.

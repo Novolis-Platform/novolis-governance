@@ -8,7 +8,7 @@
 
 | Frank | Novolis |
 |-------|---------|
-| `Frank.Testing.TestOutputExtensions` | `Novolis.Testing.Xunit` (or `.TestOutput`) |
+| `Frank.Testing.TestOutputExtensions` | `Novolis.Testing.TUnit` |
 | `Frank.Testing.Logging` | `Novolis.Testing.Logging` |
 | `Frank.Testing.TestBases` | `Novolis.Testing.TestBases` |
 | `Frank.Testing.Testcontainers` | `Novolis.Testing.Testcontainers` |
@@ -26,7 +26,7 @@ Many Frank repos reference `Frank.Testing.*` in tests. Unblocks cleaner migratio
 
 ## In scope
 
-- xUnit `ITestOutputHelper` JSON/C#/XML writers
+- TUnit `TestContext` JSON/C#/XML/table writers
 - Test logging adapters
 - Testcontainers helpers (if still current on net10)
 

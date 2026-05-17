@@ -3,7 +3,9 @@
 Master inventory for migrating legacy [frankhaugen](https://github.com/frankhaugen) libraries into [Novolis-Platform](https://github.com/Novolis-Platform).
 
 - **Assessed:** 2026-05-17 (shallow clone + metadata; SDK **10.0.203** / **net10.0** on sampled repos)
-- **Gate:** [bootstrap-gate-assessment.md](bootstrap-gate-assessment.md) — planning allowed; extraction blocked until NuGet trusted publishing validated
+- **Naming:** [frank-naming-and-structure.md](frank-naming-and-structure.md) — package/folder/namespace sign-off
+- **Gate:** [bootstrap-gate-assessment.md](bootstrap-gate-assessment.md) — org bootstrap done; migration publish gate on `novolis-messaging`
+- **Runbook:** [frank-migration-runbook.md](frank-migration-runbook.md)
 - **Policy:** Extract/rebuild into `novolis-*`; no default history transfer
 - **Game:** [gameengine-reference-policy.md](gameengine-reference-policy.md) — `novolis-raylib` first
 
@@ -49,7 +51,7 @@ flowchart TB
 | [Frank.Channels.DependencyInjection](https://github.com/frankhaugen/Frank.Channels.DependencyInjection) | 5/5/5 | **15** | `novolis-messaging` | `Novolis.Messaging.Channels` | Extract | 2.2 | 2 facts | `Frank.Testing.TestBases` (tests only) | **Pilot** — 1 packable project |
 | [Frank.PulseFlow](https://github.com/frankhaugen/Frank.PulseFlow) | 5/4/5 | **14** | `novolis-messaging` | `Novolis.Messaging` | Extract | 3.0 | 8 facts | Channels, Reflection, Testing | docs/; after Channels |
 | [Frank.BedrockSlim](https://github.com/frankhaugen/Frank.BedrockSlim) | 5/4/4 | **13** | `novolis-transports` | `Novolis.Transports.Tcp.Server`, `.Client` | Extract | 1.1 | 1 fact | Cryptography (internal) | Skip Cryptography unless needed |
-| [Frank.Testing](https://github.com/frankhaugen/Frank.Testing) | 5/4/4 | **13** | `novolis-testing` | `Novolis.Testing.Xunit`, `.Logging`, `.Testcontainers`, `.TestOutputExtensions` | Extract | 2.0 | sparse | Reflection | Wave 1 — unblocks all migrations |
+| [Frank.Testing](https://github.com/frankhaugen/Frank.Testing) | 5/4/4 | **13** | `novolis-testing` | `Novolis.Testing.TUnit`, `.Logging`, `.Testcontainers`, `.TestBases`, `.TestServer` | Extract | 2.0 | sparse | Reflection | Wave 1 — unblocks all migrations |
 | [Frank.DataStorage](https://github.com/frankhaugen/Frank.DataStorage) | 4/4/4 | **12** | `novolis-storage` | **Wave 3 subset:** `.Json`, `.Sqlite` + `Abstractions` | Extract subset | 3.1 | 6 facts | Reflection, Testing | 10 packable backends — do not migrate all at once |
 | [Frank.Http](https://github.com/frankhaugen/Frank.Http) | 4/4/4 | **12** | `novolis-transports` | `Novolis.Transports.Http` (+ abstractions/auth/extensions) | Extract | 1.1 | 0 facts | none | Add tests during migration |
 | [Frank.Security](https://github.com/frankhaugen/Frank.Security) | 4/4/3 | **11** | `novolis-security` | `Novolis.Security.Cryptography`, `.HaveIBeenPwned` | Extract | 0.2 | 8 facts | Testing | Skip `Resources` unless needed |

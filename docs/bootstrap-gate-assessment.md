@@ -1,49 +1,52 @@
-# Bootstrap gate assessment
+# Bootstrap and migration gates
 
-Assessment date: 2026-05-17. Used to gate **Frank.\* code extraction** per [bootstrapping-organization.md](https://github.com/Novolis-Platform/.github/blob/main/plans/bootstrapping-organization.md) §20.
+Assessment date: 2026-05-17. Split per [frank-naming-and-structure.md](frank-naming-and-structure.md).
 
-## Verdict
+## Two gates (do not conflate)
 
-| Activity | Allowed now? |
-|----------|----------------|
-| Frank inventory, scoring, extraction **planning** docs | Yes |
-| Copying Frank source into `novolis-*` repos | **No** — blocked on NuGet trusted publishing validation |
-| Preview releases on Novolis packages | **No** |
+| Gate | Purpose | Status |
+|------|---------|--------|
+| **Org bootstrap** | GitHub org, template, workflows, registry, reserved repos, template CI | **Done** (smoketest validates template/workflows) |
+| **Migration readiness** | Naming sign-off + first real library NuGet from a domain repo | **In progress** — pilot on `novolis-messaging` |
 
-**Evaluation phase may proceed.** **Implementation extraction** starts only after the blocking items below are checked off.
+## Org bootstrap — verdict
 
-## Completion criteria (from bootstrap plan §20)
+| Activity | Allowed? |
+|----------|----------|
+| Frank inventory, scoring, planning docs | Yes |
+| Governance and extraction briefs | Yes |
+| Template / smoketest CI | Yes |
+| Copying Frank source into `novolis-*` | Yes (after [frank-naming-and-structure.md](frank-naming-and-structure.md) sign-off) |
 
-| Criterion | Status | Evidence |
-|-----------|--------|----------|
-| Organization exists | Done | [Novolis-Platform](https://github.com/Novolis-Platform) |
-| Governance repo exists | Done | `novolis-governance` |
-| Template repo exists | Done | `novolis-template-dotnet` (CI + Release workflows active) |
-| Workflow repo exists | Done | `novolis-workflows` |
-| Installer repos exist | Done | `novolis-install`, `novolis-installer-inno` |
-| Registry repo exists | Done | `novolis-registry` |
-| Initial reserved repos exist | Done | `novolis-messaging`, `novolis-transports`, `novolis-storage`, `novolis-testing`, `novolis-security`, `novolis-raylib`, etc. |
-| Branch rules configured | Partial | Not verified on all repos — track in roadmap |
-| CI works on template repos | Done | `novolis-template-dotnet` workflows active |
-| Smoke-test package builds | Done | `novolis-smoketest` CI success (2026-05-16) |
-| NuGet trusted publishing validated | **Not done** | [roadmap.md](roadmap.md) open item |
-| Registry PR flow validated | Unknown | Confirm manually before first package publish |
-| No real library migration started | Done | Reserved repos remain scaffold-only |
+### Org bootstrap criteria
 
-## Blocking item for extraction
+| Criterion | Status |
+|-----------|--------|
+| Organization exists | Done |
+| Governance, template, workflows, installer, registry | Done |
+| Reserved domain repos exist | Done |
+| CI on template / smoketest | Done |
+| .NET 10 standard | Done (2026-05-17) |
 
-1. **NuGet trusted publishing validation** — complete smoketest publish path per [nuget-setup.md](nuget-setup.md), then mark roadmap item done.
+`novolis-smoketest` validates **org bootstrap only** (`Novolis.TemplateSmokeTest`). It is **not** the Frank migration publish gate.
+
+## Migration readiness gate
+
+| Step | Status |
+|------|--------|
+| [frank-naming-and-structure.md](frank-naming-and-structure.md) signed off | Done (2026-05-17) |
+| Trusted publishing on `novolis-messaging` | Configure per [nuget-setup.md](nuget-setup.md#migration-gate-novolis-messaging) |
+| Ship `Novolis.Messaging.Channels` `0.1.0-preview.1` | After pilot extract + release |
+| Registry entry for pilot package | Pending first publish |
+
+### Sign-off (migration gate)
+
+```text
+Migration publish gate opened: YYYY-MM-DD — Novolis.Messaging.Channels 0.1.0-preview.1 from novolis-messaging (trusted publishing).
+```
 
 ## Non-blocking follow-ups
 
 - Branch rulesets on all org repos
-- Registry PR flow sign-off
-- Document trusted publishing runbook in maintainer guide
-
-## Sign-off
-
-When NuGet trusted publishing is validated, update [roadmap.md](roadmap.md) and add a line here:
-
-```text
-Extraction gate opened: YYYY-MM-DD — trusted publishing validated on novolis-smoketest.
-```
+- Registry PR flow sign-off for all packages
+- Maintainer runbook for per-repo trusted publishing policies
