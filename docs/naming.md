@@ -18,4 +18,8 @@ Adapters use suffixes: `Novolis.Storage.SqlServer`, `Novolis.Messaging.AzureServ
 
 ## Testing
 
-Use **[TUnit](https://tunit.dev)** exclusively. Do not add xUnit, NUnit, or MSTest test SDKs to Novolis repositories.
+Use **[TUnit](https://tunit.dev)** exclusively at **1.44.39** (central pin in `Directory.Packages.props`). Run tests via **Microsoft.Testing.Platform** (`"test": { "runner": "Microsoft.Testing.Platform" }` in `global.json`).
+
+- Do not add xUnit, NUnit, MSTest, `Microsoft.NET.Test.Sdk`, Coverlet, or **FluentAssertions**.
+- Use TUnit assertions only: `await Assert.That(...)` from `TUnit.Core`.
+- Test projects reference **TUnit** only (no Test.Sdk); ML-style test exes may set `<OutputType>Exe</OutputType>`.

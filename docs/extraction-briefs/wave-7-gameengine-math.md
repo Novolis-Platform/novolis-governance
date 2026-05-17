@@ -22,7 +22,7 @@
 ## Dependencies
 
 - No `Frank.*` package references in production code
-- TUnit + FluentAssertions for tests
+- TUnit assertions only for tests
 
 ## Done when
 

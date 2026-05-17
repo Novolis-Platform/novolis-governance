@@ -20,7 +20,7 @@
 ## Dependencies
 
 - Independent packages; no cross-`ProjectReference` between Markdown and Mermaid
-- Tests: TUnit + FluentAssertions only ([naming.md](../naming.md))
+- Tests: TUnit assertions only ([naming.md](../naming.md))
 
 ## Done when
 
