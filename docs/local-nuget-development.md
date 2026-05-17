@@ -64,6 +64,13 @@ See [library-boundaries.md](library-boundaries.md).
 | NU1102 package not found | Run `pack-novolis-local.ps1` |
 | Stale assembly after pull | Re-pack changed repos |
 | Wrong version resolved | Clear `obj/` / global-packages cache or bump `PackageVersion` |
+| `Access to the path 'Microsoft.SourceLink.*.dll' is denied` on restore/pack | Another process (Rider, Visual Studio, `dotnet`) has locked DLLs under `%USERPROFILE%\.nuget\packages`. Close IDEs, run `dotnet build-server shutdown`, retry. `pack-novolis-local.ps1` uses a dedicated cache at `artifacts/nuget-packages-pack` and `/p:NovolisLocalPack=true` to reduce lock contention. If it still fails, delete the locked package folder (e.g. `microsoft.sourcelink.github`) while nothing is using it. |
+
+**PowerShell 7:** `pack-novolis-local.ps1` requires `pwsh` (`#Requires -Version 7.0`). From Windows PowerShell 5.1 use:
+
+```powershell
+pwsh -File D:\novolis\scripts\pack-novolis-local.ps1
+```
 
 ## Related
 

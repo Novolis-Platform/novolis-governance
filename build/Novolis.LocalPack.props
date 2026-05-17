@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <!--
+    Local feed packs pass /p:NovolisLocalPack=true to skip SourceLink and avoid
+    file-lock failures on Microsoft.SourceLink.* / Microsoft.Build.Tasks.Git in the global packages folder.
+  -->
+  <PropertyGroup Condition="'$(NovolisLocalPack)' == 'true'">
+    <EnableSourceLink>false</EnableSourceLink>
+    <EmbedUntrackedSources>false</EmbedUntrackedSources>
+    <PublishRepositoryUrl>false</PublishRepositoryUrl>
+    <ContinuousIntegrationBuild>false</ContinuousIntegrationBuild>
+    <IncludeSymbols>false</IncludeSymbols>
+  </PropertyGroup>
+  <ItemGroup Condition="'$(NovolisLocalPack)' == 'true'">
+    <PackageReference Remove="Microsoft.SourceLink.GitHub" />
+  </ItemGroup>
+</Project>
