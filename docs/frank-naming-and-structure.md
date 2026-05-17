@@ -28,6 +28,7 @@ Related: [naming.md](naming.md), [frank-inventory.md](frank-inventory.md), [fran
 | `novolis-math` | Math | GameEngine Primitives subset | Multi-package |
 | `novolis-machinelearning` | MachineLearning | Frank.ML neural foundation | Multi-package |
 | `novolis-markup` | Markup | Frank.Markdown, Frank.Mermaid | Multi-package |
+| `novolis-commands` | Commands | Greenfield (parse → envelope → queue) | Multi-package |
 
 ## Structural rule (Frank → Novolis)
 
@@ -199,6 +200,10 @@ Entry: `Novolis.Templates` — paths include `src/Novolis.Templates/content/**`,
 
 Entries: `Novolis.Markup.Markdown`, `Novolis.Markup.Mermaid`.
 
+### `novolis-commands`
+
+Entries: `Novolis.Commands.Abstractions`, `Novolis.Commands.Engine`, `Novolis.Commands.Queueing`, `Novolis.Commands.DependencyInjection`, `Novolis.Commands.Testing` — v0 `0.1.0-preview.1`.
+
 ## Solution and dependency graph
 
 | Repo | Solution | Package references |
@@ -214,6 +219,7 @@ Entries: `Novolis.Markup.Markdown`, `Novolis.Markup.Mermaid`.
 | `novolis-math` | `Novolis.Math.slnx` | Geometry independent; Arrays has no deps |
 | `novolis-machinelearning` | `Novolis.MachineLearning.slnx` | Neural → Abstractions; Core independent |
 | `novolis-markup` | `Novolis.Markup.slnx` | Markdown and Mermaid independent |
+| `novolis-commands` | `Novolis.Commands.slnx` | Engine/Queueing/Testing/DI → Abstractions; DI → Engine + Queueing |
 
 ## Namespace replacement table (automation)
 
