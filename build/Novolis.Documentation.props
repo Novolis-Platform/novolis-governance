@@ -1,0 +1,6 @@
+<Project>
+  <PropertyGroup Label="Novolis API documentation (strict)">
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <!-- Strict: CS1591 (missing XML) and CS1574 (bad cref) are errors when TreatWarningsAsErrors is true. -->
+  </PropertyGroup>
+</Project>
