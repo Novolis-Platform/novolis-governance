@@ -8,7 +8,7 @@ Novolis library repos publish to a **shared local feed** for consumers (`novolis
 |---------|----------|
 | `d:\novolis\artifacts\nuget-local` | Environment variable `NOVOLIS_LOCAL_FEED` |
 
-Root [`nuget.config`](../../nuget.config) (monorepo checkout) registers source `novolis-local` → `artifacts/nuget-local`.
+Root [`nuget.config`](../../nuget.config) (monorepo checkout only) registers source `novolis-local` → `artifacts/nuget-local`. **Do not** add `novolis-local` to per-repo `nuget.config` files committed to GitHub — CI runners have no `../artifacts/nuget-local` path and restore fails with NU1301.
 
 ## Pack workflow
 

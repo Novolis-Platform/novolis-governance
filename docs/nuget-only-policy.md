@@ -1,6 +1,8 @@
 # NuGet-only dependency policy
 
-**Indisputable rule:** Any dependency on another Novolis repository is consumed **only** via `PackageReference` from GitHub Packages (or a local feed during iterative work). Cross-repo `ProjectReference`, sibling-checkout MSBuild properties (`NovolisRenderingSrc`, etc.), and conditional dual reference blocks are **forbidden**.
+**Indisputable rule:** Any dependency on another Novolis repository is consumed **only** via `PackageReference` from **GitHub Packages** or **nuget.org**. Cross-repo `ProjectReference`, sibling-checkout MSBuild properties (`NovolisRenderingSrc`, etc.), conditional dual reference blocks, and **local folder feeds** in `nuget.config` are **forbidden**.
+
+> **Cursor agents:** Use GPR only — never `artifacts/nuget-local`, `pack-local.ps1`, or `novolis-local` sources. See `.cursor/rules/nuget-only-dependencies.mdc`.
 
 ## Allowed
 
@@ -30,8 +32,8 @@ CI should run this script on every library repo and on `novolis-dogfooding`.
 A dependency cleanup is **not complete** until:
 
 1. `verify-nuget-only.ps1` exits 0 across the org checkout.
-2. Affected libraries are **published** (merge to `main` → GitHub Packages, or `pack-local.ps1` → `artifacts/nuget-local`).
-3. Consumers **restore and build** using packages only (`dotnet restore`, `dotnet build`).
+2. Affected libraries are **published** to GitHub Packages (merge to `main` → CI publish).
+3. Consumers **restore and build** using **nuget.org + github** only (`dotnet restore`, `dotnet build`).
 
 See [nuget-setup.md](nuget-setup.md) and [local-nuget-development.md](local-nuget-development.md).
 
