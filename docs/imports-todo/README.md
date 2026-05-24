@@ -1,6 +1,9 @@
-# Imports TODO — local repo scan
+# Imports TODO — detail appendices
 
-Actionable backlog for **what to add** to Novolis platform libraries from local checkouts. Each doc: **what**, **why**, **how**, and **provenance**.
+> **Canonical plan:** [platform-import-plan.md](../platform-import-plan.md) — phases, status, dependencies.  
+> Files here are **appendices only** (what / why / how). Do not maintain parallel P0/P1 priority tables.
+
+Actionable detail for **what to add** to Novolis platform libraries from local checkouts.
 
 | Source root | Role |
 |-------------|------|
@@ -17,34 +20,34 @@ Cross-check [frank-inventory.md](../frank-inventory.md). In-repo completion item
 
 ## `D:\frankrepos` (migration)
 
-| Doc | Priority |
-|-----|----------|
+| Doc | Phase (master plan) |
+|-----|---------------------|
 | [frankrepos-catalog.md](frankrepos-catalog.md) | Reference |
-| [gameengine-assets-mesh-import.md](gameengine-assets-mesh-import.md) | **P0** |
-| [gameengine-input.md](gameengine-input.md) | **P0** |
-| [frank-mapping.md](frank-mapping.md) | **P0** |
-| [gameengine-audio.md](gameengine-audio.md) | **P1** |
-| [gameengine-2d-scene-rendering.md](gameengine-2d-scene-rendering.md) | **P1** |
-| [frank-messaging-facade.md](frank-messaging-facade.md) | **P1** |
-| [frank-scheduling-cronjobs.md](frank-scheduling-cronjobs.md) | **P1** |
-| [frank-workflow-engine.md](frank-workflow-engine.md) | **P2** |
-| [frank-entityframeworkcore.md](frank-entityframeworkcore.md) | **P2** |
-| [frank-codegen-devtools.md](frank-codegen-devtools.md) | **P2** |
-| [frank-ml-remainder.md](frank-ml-remainder.md) | **P2** |
-| [frank-networking-caching.md](frank-networking-caching.md) | **P3** |
+| [frank-mapping.md](frank-mapping.md) | **1** — done → `novolis-mapping` |
+| [gameengine-assets-mesh-import.md](gameengine-assets-mesh-import.md) | **1** — done → `Novolis.Raylib.Loaders` |
+| [gameengine-input.md](gameengine-input.md) | **1** — done → `Novolis.Raylib.Input` |
+| [frank-scheduling-cronjobs.md](frank-scheduling-cronjobs.md) | **2** — done → `novolis-scheduling` |
+| [frank-messaging-facade.md](frank-messaging-facade.md) | **2** — done → `Novolis.Messaging.Abstractions` |
+| [gameengine-audio.md](gameengine-audio.md) | **2** — done → `novolis-audio` stub |
+| [gameengine-2d-scene-rendering.md](gameengine-2d-scene-rendering.md) | **cancelled** — see `Novolis.Rendering.TwoD` |
+| [frank-workflow-engine.md](frank-workflow-engine.md) | **4** |
+| [frank-entityframeworkcore.md](frank-entityframeworkcore.md) | **4** |
+| [frank-codegen-devtools.md](frank-codegen-devtools.md) | **4** |
+| [frank-ml-remainder.md](frank-ml-remainder.md) | **4** audit |
+| [frank-networking-caching.md](frank-networking-caching.md) | Defer |
 | [frank-repos-explicit-skip.md](frank-repos-explicit-skip.md) | Skip |
 
 ---
 
 ## `D:\github` + `D:\repos` (mine — pieces)
 
-| Doc | Priority |
-|-----|----------|
-| [star-conflicts-revolt-patterns.md](star-conflicts-revolt-patterns.md) | **P1** — SCR on `D:\github` (event sourcing; not in frankrepos) |
-| [github-frank-mine-extra.md](github-frank-mine-extra.md) | **P1** — repos on GitHub not in `frankrepos` |
-| [fleetcommander-patterns-for-platform.md](fleetcommander-patterns-for-platform.md) | **P1** — WEGO replay (**implemented:** `Novolis.Simulation.Replay`) |
-| [agent-contracts-novolis-governance.md](agent-contracts-novolis-governance.md) | **P1** — ACS alignment |
-| [workflows-and-release-ci.md](workflows-and-release-ci.md) | **P2** — reusable Actions |
+| Doc | Phase |
+|-----|-------|
+| [fleetcommander-patterns-for-platform.md](fleetcommander-patterns-for-platform.md) | **done** + **3** product adoption |
+| [star-conflicts-revolt-patterns.md](star-conflicts-revolt-patterns.md) | **3** |
+| [github-frank-mine-extra.md](github-frank-mine-extra.md) | **5** maintainer tools |
+| [agent-contracts-novolis-governance.md](agent-contracts-novolis-governance.md) | **5** — done |
+| [workflows-and-release-ci.md](workflows-and-release-ci.md) | **5** — reusable workflow in governance |
 
 ---
 
@@ -65,10 +68,6 @@ Cross-check [frank-inventory.md](../frank-inventory.md). In-repo completion item
 - Stack: [library-boundaries.md](../library-boundaries.md).
 - **Skip real duplicates** (already in Novolis, or upstream consumed via NuGet).
 
-## Suggested order
+## Execution order
 
-```text
-Frank migration (frankrepos): Mapping → Cron → Messaging → GameEngine Assets/Input
-Parallel: ACS governance + FleetCommander replay spike → Simulation facet
-Transports: Bedrock inspiration review (no fork) after Tcp GPR stable
-```
+See [platform-import-plan.md](../platform-import-plan.md#implementation-order).

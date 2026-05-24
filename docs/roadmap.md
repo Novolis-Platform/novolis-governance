@@ -31,6 +31,12 @@ Docs: [frank-inventory.md](frank-inventory.md), [frank-naming-and-structure.md](
 | 10 | `novolis-markup` — Markdown + Mermaid | **Code migrated** — pending NuGet publish |
 | — | `novolis-raylib` | Active; GameEngine rendering not migrated |
 
+## Platform imports
+
+Canonical phased plan: **[platform-import-plan.md](platform-import-plan.md)** (status, dependencies, skip list). Detail briefs: [imports-todo/](imports-todo/README.md).
+
+Recent waves (2026-05-25): `novolis-mapping`, `novolis-scheduling`, `novolis-audio`; `Novolis.Raylib.Loaders` / `.Input`; messaging abstractions; Simulation ViewPose bridge + optional event store.
+
 ## Next
 
 - Configure NuGet trusted publishing for `novolis-messaging`; ship `0.1.0-preview.1`

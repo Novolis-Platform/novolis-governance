@@ -1,5 +1,7 @@
 # Bedrock Framework — transports inspiration (third-party)
 
+> **Status (2026-05-25):** Tcp middleware slice **shipped** in `Novolis.Transports.Tcp.Abstractions` (`MemoryTcpTransport`, connection pipeline). Bedrock fork still **out of scope**; optional logging middleware only. Master plan: [platform-import-plan.md](../platform-import-plan.md).
+
 **Source:** `D:\dotnetrepos\BedrockFramework` (David Fowler / [BedrockFramework](https://github.com/davidfowl/BedrockFramework))  
 **Related mine:** `D:\frankrepos\Frank.BedrockSlim` → already **`novolis-transports`** (`Novolis.Transports.Tcp.*`)
 

@@ -1,5 +1,7 @@
 # FleetCommander — platform patterns (mine, pieces only)
 
+> **Status (2026-05-25):** WEGO replay **shipped** as `Novolis.Simulation.Replay` (+ optional `ISimulationEventStore<T>` spike). FleetCommander repo should adopt via PackageReference in headless tests. Master plan: [platform-import-plan.md](../platform-import-plan.md).
+
 **Source:** `D:\repos\FleetCommander` (also on `D:\github\FleetCommander`)  
 **Verdict:** **Product — do not import the repo.** Extract **patterns** into `novolis-simulation`, `novolis-transports`, `novolis-storage`, `novolis-machinelearning` as needed.
 
@@ -18,7 +20,7 @@
 
 ## Why
 
-- [simulation-layer-policy.md](../simulation-layer-policy.md) lists **replay** under Simulation; Novolis has **no** `Replay`/`MessagePack` implementation yet (racing uses ticks, not WEGO rounds).
+- [simulation-layer-policy.md](../simulation-layer-policy.md) lists **replay** under Simulation; **`Novolis.Simulation.Replay`** is implemented (WEGO-style timelines; racing still uses ticks).
 - FleetCommander is the most mature **deterministic sim + replay + transport** Frank product on disk.
 - Full import would violate boundaries (Veldrid, SignalR, Azure storage, game domain in platform).
 

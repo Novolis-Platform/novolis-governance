@@ -6,6 +6,7 @@ Master inventory for migrating legacy [frankhaugen](https://github.com/frankhaug
 - **Naming:** [frank-naming-and-structure.md](frank-naming-and-structure.md) — package/folder/namespace sign-off
 - **Gate:** [bootstrap-gate-assessment.md](bootstrap-gate-assessment.md) — org bootstrap done; migration publish gate on `novolis-messaging`
 - **Runbook:** [frank-migration-runbook.md](frank-migration-runbook.md)
+- **Imports:** [platform-import-plan.md](platform-import-plan.md)
 - **Policy:** Extract/rebuild into `novolis-*`; no default history transfer
 - **Game:** [gameengine-reference-policy.md](gameengine-reference-policy.md) — `novolis-raylib` first
 
@@ -101,7 +102,12 @@ flowchart TB
 | `Frank.Testing.*` | `Novolis.Testing.*` | `novolis-testing` |
 | `Frank.DataStorage.Json` / `.Sqlite` | `Novolis.Storage.Json` / `.Sqlite` | `novolis-storage` |
 | `Frank.Security.Cryptography` / `.HaveIBeenPwned` | `Novolis.Security.Secrets`, `.PasswordHashing`, `.Encryption`, `.HaveIBeenPwned` | `novolis-security` |
-| `Frank.CronJobs` | `Novolis.Scheduling` (TBD) | TBD |
+| `Frank.CronJobs` | `Novolis.Scheduling`, `Novolis.Scheduling.Cron` | `novolis-scheduling` |
+| `Frank.Mapping` | `Novolis.Mapping` | `novolis-mapping` |
+| `Frank.Messaging` (abstractions) | `Novolis.Messaging.Abstractions` | `novolis-messaging` |
+| `Frank.GameEngine.Assets` (OBJ) | `Novolis.Raylib.Loaders` | `novolis-raylib` |
+| `Frank.GameEngine.Input` | `Novolis.Raylib.Input` | `novolis-raylib` |
+| `Frank.GameEngine.Audio` | `Novolis.Audio` (stub) | `novolis-audio` |
 | `Frank.Reflection` (subset) | `Novolis.CodeGen.*` | `novolis-codegen` |
 | `Frank.Analyzers.*` (subset) | `Novolis.Analyzers.*` | `novolis-analyzers` |
 | `Frank.GameEngine.Primitives` (subset) | `Novolis.Math.Arrays`, `Novolis.Math.Geometry` | `novolis-math` |
@@ -130,6 +136,8 @@ flowchart TB
 | 9 | `novolis-wirefish` | Frank.WireFish | [wave-9-wirefish.md](extraction-briefs/wave-9-wirefish.md) |
 | 10 | `novolis-markup` | Frank.Markdown, Frank.Mermaid | [wave-10-markup.md](extraction-briefs/wave-10-markup.md) |
 | 12 | `novolis-simulation` | Frank.ML.Domain.Racing (sim) | [wave-12-simulation-racing.md](extraction-briefs/wave-12-simulation-racing.md) |
+| 13 | `novolis-mapping` | Frank.Mapping | [platform-import-plan.md](platform-import-plan.md) — **done** |
+| 7b | `novolis-raylib` | OBJ + Input | `Novolis.Raylib.Loaders`, `.Input` — **done** |
 | — | `novolis-install` | SimpleInstaller ideas | Rebuild only |
 
 **Pilot:** [extraction-briefs/pilot-channels.md](extraction-briefs/pilot-channels.md)
