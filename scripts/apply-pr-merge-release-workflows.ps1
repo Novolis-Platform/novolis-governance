@@ -35,6 +35,7 @@ jobs:
     with:
       skip_publish: `${{ inputs.skip_publish == true }}
     permissions:
+      contents: read
       packages: write
 "@
 
