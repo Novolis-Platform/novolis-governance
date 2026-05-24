@@ -15,7 +15,7 @@ Human-owned intent: [`build/version.json`](../build/version.json) (do not use `e
 
 MSBuild projection: `build/version.props` (regenerate via `scripts/sync-version-props.ps1`).
 
-Cross-repo package references use floating **`2026.1.*`** (aligned to `sdkYear.apiBreak.*` in `version.json`).
+Cross-repo package references use floating **`2026.1.*-*`** in `Directory.Packages.props` so CI can restore `2026.1.0-ci.{run}` packages from GitHub Packages. After stable `2026.1.0` is on nuget.org, **`2026.1.*`** is enough for stable-only consumers.
 
 ## Registries
 
@@ -73,4 +73,4 @@ dotnet pack -c Release /p:NovolisLocalPack=true
 
 ## Floating versions and CI packages
 
-NuGet floating `2026.1.*` resolves **stable** versions. Internal `-ci.{run}` packages on GitHub Packages are for continuous consumption; publish the first stable `2026.1.0` to GPR or nuget.org before downstream repos can restore via `2026.1.*` alone.
+NuGet floating `2026.1.*` resolves **stable** versions only; `2026.1.*-*` includes `-ci` builds on GitHub Packages.
