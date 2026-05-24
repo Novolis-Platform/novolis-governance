@@ -52,7 +52,7 @@ function Ensure-PackageVersions([string]$PropsPath, [string[]]$PackageIds) {
     $text = Get-Content $PropsPath -Raw
     foreach ($id in $PackageIds) {
         if ($text -match [regex]::Escape($id)) { continue }
-        $entry = "    <PackageVersion Include=`"$id`" Version=`"*`" />"
+        $entry = "    <PackageVersion Include=`"$id`" Version=`"0.0.1.1`" />"
         if ($text -match '</ItemGroup>') {
             $text = $text -replace '</ItemGroup>', "$entry`n  </ItemGroup>"
         }
