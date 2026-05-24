@@ -86,32 +86,6 @@ jobs:
       packages: write
 "@
 
-$dogfoodingPullRequestYml = @"
-name: Pull request
-on:
-  pull_request:
-    branches: [main]
-jobs:
-  ci:
-    uses: $Uses/dotnet-pull-request.yml@main
-    with:
-      solution: Novolis.Dogfooding.slnx
-      run_tests: false
-"@
-
-$dogfoodingMergeYml = @"
-name: Merge
-on:
-  push:
-    branches: [main]
-jobs:
-  ci:
-    uses: $Uses/dotnet-pull-request.yml@main
-    with:
-      solution: Novolis.Dogfooding.slnx
-      run_tests: false
-"@
-
 function Write-Utf8([string]$Path, [string]$Content) {
     $dir = Split-Path $Path -Parent
     if ($dir) { New-Item -ItemType Directory -Force -Path $dir | Out-Null }
@@ -157,13 +131,13 @@ if (Test-Path $raylib) {
 
 $dog = Join-Path $Root 'novolis-dogfooding'
 if (Test-Path $dog) {
-    Write-Host 'Workflows: novolis-dogfooding'
+    Write-Host 'Workflows: novolis-dogfooding (no CI — consumes published packages only)'
     $wf = Join-Path $dog '.github/workflows'
-    Write-Utf8 (Join-Path $wf 'pull-request.yml') $dogfoodingPullRequestYml
-    Write-Utf8 (Join-Path $wf 'merge.yml') $dogfoodingMergeYml
+    if (Test-Path $wf) {
+        Get-ChildItem $wf -Filter '*.yml' -ErrorAction SilentlyContinue | Remove-Item -Force
+        if (-not (Get-ChildItem $wf -ErrorAction SilentlyContinue)) { Remove-Item $wf -Force -ErrorAction SilentlyContinue }
+    }
     Remove-WorkflowExtras $dog
-    $rel = Join-Path $wf 'release.yml'
-    if (Test-Path $rel) { Remove-Item $rel -Force }
 }
 
 $templateWf = Join-Path $Root 'novolis-templates/src/Novolis.Templates/content/Novolis.Templates.GitHubSolution/.github/workflows'
