@@ -1,6 +1,6 @@
 # GitHub Packages — organization settings (Novolis-Platform)
 
-Published Novolis NuGet packages should be **public** so dogfooding and other repos can restore them with `GITHUB_TOKEN` / `gh` (no org PAT).
+Published Novolis NuGet packages should be **public** so any authenticated GitHub user (`gh` token) and CI `GITHUB_TOKEN` can restore them without an org-wide `NOVOLIS_GPR_TOKEN`. **Public does not mean anonymous**: the NuGet feed still requires authentication on every request.
 
 ## Required one-time org setting (makes new publishes public by default)
 
@@ -43,7 +43,7 @@ Publishing sets `RepositoryUrl` via `Novolis.GitHubPackages.props` so packages l
 ## Dogfooding restore
 
 - CI: `GITHUB_TOKEN` with `packages: read` (no `NOVOLIS_GPR_TOKEN` when packages are public and linked).
-- Local: `gh auth refresh -h github.com -s read:packages`
+- Local: `.\novolis-governance\scripts\configure-gpr-user-nuget.ps1` (user `%APPDATA%\NuGet\NuGet.Config`, not repo `nuget.config`)
 
 ## References
 

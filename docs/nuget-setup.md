@@ -25,7 +25,7 @@ Publishing on merge uses `GITHUB_TOKEN` (`packages: write`) for packages in that
 |--------|--------|---------|
 | `NOVOLIS_GPR_TOKEN` | `read:packages` | CI restore of Novolis packages from other repos |
 
-Public packages can often be restored without a token; if restore returns 403, add `NOVOLIS_GPR_TOKEN` or confirm package visibility is public.
+**Public** on GitHub Packages means any authenticated GitHub user can download them (your existing `gh` token is enough for local restore). It does **not** mean anonymous NuGet restore: unauthenticated requests to `nuget.pkg.github.com` return **401**. Configure credentials once in user `%APPDATA%\NuGet\NuGet.Config` via `configure-gpr-user-nuget.ps1`; never commit tokens into repo `nuget.config`.
 
 See [github-packages-org-settings.md](./github-packages-org-settings.md) for org defaults.
 
@@ -38,11 +38,20 @@ The release workflow packs at that version, pushes to nuget.org (`--skip-duplica
 
 ## Consuming packages
 
-Add a `nuget.config` with nuget.org + GitHub feed mapping (`Novolis.*` → github). For private packages or 403 on restore, use a PAT with `read:packages` or `gh auth refresh -s read:packages`.
+Each repo has a `nuget.config` with nuget.org + GitHub feed mapping (`Novolis.*` → `github`) only — no credentials in git.
+
+**Local restore:** run once per machine:
+
+```powershell
+.\novolis-governance\scripts\configure-gpr-user-nuget.ps1
+```
+
+That writes the `github` source and token into `%APPDATA%\NuGet\NuGet.Config`. Re-run after `gh auth` token rotation.
 
 ## Scripts
 
 | Script | Purpose |
 |--------|---------|
+| `configure-gpr-user-nuget.ps1` | User-level GitHub Packages credentials (`%APPDATA%\NuGet\NuGet.Config`) |
 | `configure-package-publishing.ps1` | Version props, targets, `nuget.config`, workflows |
 | `apply-pr-merge-release-workflows.ps1` | Write `pull-request.yml`, `merge.yml`, `release.yml`; remove `ci.yml` |
