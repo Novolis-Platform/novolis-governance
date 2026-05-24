@@ -52,40 +52,6 @@ jobs:
       contents: write
 "@
 
-$raylibPullRequestYml = @"
-name: Pull request
-on:
-  pull_request:
-    branches: [main]
-jobs:
-  ci:
-    uses: $Uses/dotnet-raylib-pull-request.yml@main
-"@
-
-$raylibMergeYml = @"
-name: Merge
-on:
-  push:
-    branches: [main]
-    paths-ignore:
-      - '.novolis/version.props'
-      - 'docs/**'
-      - '**.md'
-  workflow_dispatch:
-    inputs:
-      skip_publish:
-        type: boolean
-        default: false
-jobs:
-  ci:
-    uses: $Uses/dotnet-raylib-merge-publish.yml@main
-    with:
-      skip_publish: `${{ inputs.skip_publish == true }}
-    permissions:
-      contents: write
-      packages: write
-"@
-
 function Write-Utf8([string]$Path, [string]$Content) {
     $dir = Split-Path $Path -Parent
     if ($dir) { New-Item -ItemType Directory -Force -Path $dir | Out-Null }
@@ -102,7 +68,7 @@ function Remove-WorkflowExtras([string]$RepoPath) {
 $packageRepos = @(
     'novolis-analyzers', 'novolis-aspire', 'novolis-avalonia', 'novolis-codegen',
     'novolis-commands', 'novolis-install', 'novolis-machinelearning', 'novolis-markup',
-    'novolis-math', 'novolis-messaging', 'novolis-physics', 'novolis-rendering',
+    'novolis-math', 'novolis-messaging', 'novolis-physics', 'novolis-raylib', 'novolis-rendering',
     'novolis-security', 'novolis-simulation', 'novolis-smoketest', 'novolis-storage',
     'novolis-template-dotnet', 'novolis-templates', 'novolis-testing',
     'novolis-transports', 'novolis-wirefish'
@@ -117,16 +83,6 @@ foreach ($name in $packageRepos) {
     Write-Utf8 (Join-Path $wf 'merge.yml') $mergeYml
     Write-Utf8 (Join-Path $wf 'release.yml') $releaseYml
     Remove-WorkflowExtras $repo
-}
-
-$raylib = Join-Path $Root 'novolis-raylib'
-if (Test-Path $raylib) {
-    Write-Host 'Workflows: novolis-raylib'
-    $wf = Join-Path $raylib '.github/workflows'
-    Write-Utf8 (Join-Path $wf 'pull-request.yml') $raylibPullRequestYml
-    Write-Utf8 (Join-Path $wf 'merge.yml') $raylibMergeYml
-    Write-Utf8 (Join-Path $wf 'release.yml') $releaseYml
-    Remove-WorkflowExtras $raylib
 }
 
 $dog = Join-Path $Root 'novolis-dogfooding'
