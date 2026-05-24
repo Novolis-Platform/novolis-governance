@@ -28,6 +28,14 @@ Guidelines:
 
 ## Package README
 
+**Authoritative copy:** `src/<Project>/README.md` (or `codegen/<Project>/README.md`) is packed into each `.nupkg` via `PackageReadmeFile` and appears in Visual Studio / nuget.org.
+
+**GitHub Packages UI:** The package page often shows the **repository root** `README.md` for every package in the repo ([NuGet/Home#14849](https://github.com/NuGet/Home/issues/14849)). Mitigations:
+
+1. Run `scripts/sync-repo-package-index-readme.ps1` on multi-package repos so the repo README links to each package README.
+2. Set `PackageProjectUrl` to the blob URL of that package’s README (`src/Directory.Build.props` pattern in `novolis-raylib`).
+3. After pack, run `scripts/verify-nupkg-package-readme.ps1` to confirm the `.nupkg` H1 matches `PackageId`.
+
 Each packable project directory must contain `README.md` with:
 
 1. Title and one-line purpose
