@@ -6,28 +6,39 @@ Package repos use a **4-part version**: `major.minor.patch.build` (starting at *
 
 | Segment | When it changes |
 |---------|-----------------|
-| major / minor / patch | Manual edit of `.novolis/version.props` (or a tagged GitHub Release for legacy flows) |
-| build (4th) | **Automatically** after each successful merge to `main` (CI build, test, pack, publish) |
+| major / minor / patch | Manual edit of `.novolis/version.props` |
+| build (4th) | After each successful merge publish to **GitHub Packages** |
 
-The build number is stored in `.novolis/version.props` (`NovolisVersionBuild`) and committed by `merge.yml` with `[skip ci]`.
+## Registry
+
+Packages are published to **[GitHub Packages](https://github.com/orgs/Novolis-Platform/packages)** only. **Do not** publish to nuget.org until explicitly enabled.
+
+Org NuGet feed:
+
+```text
+https://nuget.pkg.github.com/Novolis-Platform/index.json
+```
 
 ## Workflows
 
 | Workflow | Trigger | Purpose |
 |----------|---------|---------|
 | `pull-request.yml` | PR to `main` | Build + test only |
-| `merge.yml` | Push to `main` | Build, test, pack, publish to nuget.org, bump build |
-| `release.yml` | GitHub Release (optional) | Tag-driven publish for manual semver bumps |
+| `merge.yml` | Push to `main` | Build, test, pack, push to GitHub Packages, bump build |
+| `release.yml` | GitHub Release (optional) | Tag-driven pack + push |
 
-## NuGet
+## Permissions
 
-- Publish via **Trusted Publishing** (OIDC). Configure each repo on nuget.org with workflow file **`merge.yml`** and environment **`nuget.org`**.
-- Org variable: `NUGET_USERNAME` = `Novolis`.
-- Do not publish from PRs or forks.
+`merge.yml` requires:
+
+```yaml
+permissions:
+  contents: write
+  packages: write
+```
 
 ## Local development
 
-- Version comes from `.novolis/version.props` via `Novolis.Version.targets` (imported in `Directory.Build.targets`).
-- Local packs without bumping CI: `dotnet pack /p:NovolisLocalPack=true`.
+Version: `.novolis/version.props` via `Novolis.Version.targets`.
 
-Tag examples for manual releases: `v0.0.2.0`, `v0.1.0.0`.
+Local pack without publishing: `dotnet pack /p:NovolisLocalPack=true`.

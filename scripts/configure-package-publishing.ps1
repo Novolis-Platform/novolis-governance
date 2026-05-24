@@ -1,5 +1,5 @@
 #Requires -Version 7.0
-# Configures Novolis package repos for org NuGet publish with 4-part versioning (0.0.1.1 + build bump on merge).
+# Configures Novolis package repos for GitHub Packages publish with 4-part versioning (0.0.1.1 + build bump on merge).
 $ErrorActionPreference = 'Stop'
 $Root = Split-Path (Split-Path $PSScriptRoot -Parent) -Parent
 
@@ -33,13 +33,13 @@ on:
   workflow_dispatch:
     inputs:
       skip_publish:
-        description: Build and bump only; do not push to nuget.org
+        description: Build and bump only; do not push to GitHub Packages
         type: boolean
         default: false
 
 permissions:
   contents: write
-  id-token: write
+  packages: write
 
 jobs:
   merge_job:
@@ -47,7 +47,6 @@ jobs:
     uses: Novolis-Platform/novolis-workflows/.github/workflows/dotnet-merge-publish.yml@main
     with:
       skip_publish: ${{ inputs.skip_publish == true }}
-      nuget-username: ${{ vars.NUGET_USERNAME }}
     secrets: inherit
 '@
 
@@ -58,6 +57,9 @@ on:
   pull_request:
     branches: [main]
   workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
   pull_request_job:
@@ -75,7 +77,7 @@ on:
 
 permissions:
   contents: read
-  id-token: write
+  packages: write
 
 jobs:
   publish:

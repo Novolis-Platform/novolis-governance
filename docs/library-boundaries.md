@@ -170,7 +170,11 @@ Product rules, HUD, networking, highly specific camera feel (run bobbing, recoil
 | `SimulationClock`, tick order, replay | Simulation |
 | Any `*Camera*`, `ViewPose`, observer rig | Simulation |
 | Run bobbing / recoil / game-specific camera juice | App |
-| Bridge Simulation camera → `Camera3D` for draw | App (uses Raylib + Simulation; neither lib references the other) |
+| Bridge Simulation camera → `RenderCamera` / `CameraSnapshot` for trace | App (uses Rendering + Simulation; neither lib references the other) |
+| `IMaterial`, `Scene`, `CompiledScene`, `IRayTracingBackend` | Rendering (`Novolis.Rendering.*`) |
+| `IFramePresenter`, CPU/GPU blit adapters | `Novolis.Raylib.Presentation`, `Novolis.Silk.Presentation`, or `Novolis.Rendering.Presentation.Silk` stub |
+| Material compile → `GpuMaterial` | `Novolis.Rendering.Materials` |
+| Scene compile → BVH + flat buffers | `Novolis.Rendering.Compile` (+ BVH structure in `Novolis.Math.Geometry`) |
 | `Camera3D`, draw loop | Raylib only |
 | Planar occupancy, LOS on a world | Simulation |
 
