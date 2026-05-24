@@ -39,8 +39,8 @@ Math is one library family with **facets** (separate packages, same repo). Geome
 | Facet (current / planned) | Role |
 |---------------------------|------|
 | `Novolis.Math.Arrays` | Dense grids, indices |
-| `Novolis.Math.Geometry` | BCL-backed primitives (`Ray3`, `Sphere3`, meshes), intersections, BVH |
-| `Novolis.Math.Topology` (planned) | Connectivity, faces/edges when distinct from metric geometry |
+| `Novolis.Math.Geometry` | BCL-backed primitives (`Ray`, `Sphere`, meshes), intersections, BVH |
+| `Novolis.Math.Topology` | Connectivity: polygon, face, edge, shape |
 
 ### BCL type first — always, no exception
 
@@ -53,10 +53,11 @@ When the BCL provides a type, **use it**. Do **not** add Novolis duplicates.
 | `System.Numerics.Matrix4x4` | `Matrix4x4d`, custom 4×4 |
 | `System.Numerics.Plane` | custom plane types mirroring BCL |
 
-**Allowed Novolis types** only where the BCL has **no** equivalent: `Ray3`, `Sphere3`, `TriangleMesh`, `DenseGrid<T>`, topology records — composed from BCL primitives.
+**Allowed Novolis types** only where the BCL has **no** equivalent: `Ray`, `Sphere`, `AxisAlignedBox`, `TriangleMesh`, `DenseGrid<T>`, topology records — composed from BCL primitives.
 
-### No 2D vectors in the stack
+### No dimension suffixes or 2D types in Math public APIs
 
+- **Forbidden:** `*3` / `*2D` suffixes on public Math types or members (`Ray3`, `Sphere3`, `AxisAlignedBox3`, …).
 - **Forbidden:** `System.Numerics.Vector2`, `Vector2D`, or any Novolis 2D vector type.
 - **Planar XZ:** `System.Numerics.Vector3` with **`Y = 0`** (optional extension helpers on `Vector3`, not new vector types).
 
@@ -164,7 +165,7 @@ Product rules, HUD, networking, highly specific camera feel (run bobbing, recoil
 
 | Concept | Home |
 |---------|------|
-| `Vector3`, `Matrix4x4`, mesh, BVH, `Ray3` hit | Math (Geometry facet; BCL vectors) |
+| `Vector3`, `Matrix4x4`, mesh, BVH, `Ray` hit | Math (Geometry facet; BCL vectors) |
 | `Matrix4x4.CreateLookAt` (no camera record) | BCL / Math extension |
 | `RigidBody` + integrate with `dt` | Physics |
 | Sphere sweep + restitution | Physics |
