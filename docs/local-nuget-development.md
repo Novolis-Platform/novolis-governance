@@ -1,6 +1,6 @@
 # Local NuGet development
 
-Novolis library repos publish to a **shared local feed** for consumers (`novolis-dogfooding`, StarConflictsRevolt, etc.). Cross-repo `ProjectReference` is not used for compile-time dependencies.
+Novolis library repos publish to a **shared local feed** for consumers (`novolis-dogfooding`, StarConflictsRevolt, etc.). Cross-repo `ProjectReference` is **forbidden** — see [nuget-only-policy.md](nuget-only-policy.md). Enforce with `scripts/verify-nuget-only.ps1`.
 
 ## Feed location
 

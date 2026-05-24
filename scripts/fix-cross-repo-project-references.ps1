@@ -1,7 +1,9 @@
 #Requires -Version 7.0
 # Replace sibling-repo ProjectReference paths with GitHub Packages PackageReference (CI-safe).
+# Prefer verify-nuget-only.ps1 after manual edits; this script is a one-shot migrator.
 $ErrorActionPreference = 'Stop'
 $Root = Split-Path (Split-Path $PSScriptRoot -Parent) -Parent
+$novolisVersion = '2026.1.*'
 
 $fixes = @(
     @{
@@ -12,18 +14,18 @@ $fixes = @(
         Packages = @('Novolis.Messaging.Channels')
     },
     @{
-        Repo     = 'novolis-testing'
-        File     = 'src/Novolis.Testing.TUnit/Novolis.Testing.TUnit.csproj'
-        Remove   = '<ProjectReference Include="..\..\..\novolis-codegen\src\Novolis.CodeGen.Reflection.Dump\Novolis.CodeGen.Reflection.Dump.csproj" />'
-        Add      = '<PackageReference Include="Novolis.CodeGen.Reflection.Dump" />'
-        Packages = @('Novolis.CodeGen.Reflection.Dump')
+        Repo     = 'novolis-wirefish'
+        File     = 'src/Frank.WireFish/Frank.WireFish.csproj'
+        Remove   = '<ProjectReference Include="..\..\..\novolis-messaging\src\Novolis.Messaging.Channels\Novolis.Messaging.Channels.csproj" />'
+        Add      = '<PackageReference Include="Novolis.Messaging.Channels" />'
+        Packages = @('Novolis.Messaging.Channels')
     },
     @{
         Repo     = 'novolis-messaging'
-        File     = 'tests/Novolis.Messaging.Tests/Novolis.Messaging.Tests.csproj'
+        File     = 'tests/Novolis.Messaging.Unit/Novolis.Messaging.Unit.csproj'
         Remove   = @(
-            '<ProjectReference Include="..\..\..\novolis-testing\src\Novolis.Testing.TestBases\Novolis.Testing.TestBases.csproj" />'
-            '<ProjectReference Include="..\..\..\novolis-testing\src\Novolis.Testing.TUnit\Novolis.Testing.TUnit.csproj" />'
+            '<ProjectReference Include="../../../novolis-testing/src/Novolis.Testing.TestBases/Novolis.Testing.TestBases.csproj" />'
+            '<ProjectReference Include="../../../novolis-testing/src/Novolis.Testing.TUnit/Novolis.Testing.TUnit.csproj" />'
         )
         Add      = @(
             '<PackageReference Include="Novolis.Testing.TestBases" />'
@@ -32,18 +34,47 @@ $fixes = @(
         Packages = @('Novolis.Testing.TestBases', 'Novolis.Testing.TUnit')
     },
     @{
-        Repo     = 'novolis-messaging'
-        File     = 'tests/Novolis.Messaging.Channels.Tests/Novolis.Messaging.Channels.Tests.csproj'
-        Remove   = '<ProjectReference Include="..\..\..\novolis-testing\src\Novolis.Testing.TestBases\Novolis.Testing.TestBases.csproj" />'
-        Add      = '<PackageReference Include="Novolis.Testing.TestBases" />'
-        Packages = @('Novolis.Testing.TestBases')
-    },
-    @{
         Repo     = 'novolis-security'
-        File     = 'tests/Novolis.Security.Tests/Novolis.Security.Tests.csproj'
+        File     = 'tests/Novolis.Security.Unit/Novolis.Security.Unit.csproj'
         Remove   = '<ProjectReference Include="..\..\..\novolis-testing\src\Novolis.Testing.Logging\Novolis.Testing.Logging.csproj" />'
         Add      = '<PackageReference Include="Novolis.Testing.Logging" />'
         Packages = @('Novolis.Testing.Logging')
+    },
+    @{
+        Repo     = 'novolis-raylib'
+        File     = 'codegen/Novolis.Raylib.Manifests/Novolis.Raylib.Manifests.csproj'
+        Remove   = '<ProjectReference Include="..\..\..\novolis-codegen\src\Novolis.CodeGen.Bindings\Novolis.CodeGen.Bindings.csproj" />'
+        Add      = '<PackageReference Include="Novolis.CodeGen.Bindings" />'
+        Packages = @('Novolis.CodeGen.Bindings')
+    },
+    @{
+        Repo     = 'novolis-raylib'
+        File     = 'codegen/Novolis.Raylib.CodeGen.Abstractions/Novolis.Raylib.CodeGen.Abstractions.csproj'
+        Remove   = @(
+            '<ProjectReference Include="..\..\..\novolis-codegen\src\Novolis.CodeGen.Bindings\Novolis.CodeGen.Bindings.csproj" />'
+            '<ProjectReference Include="..\..\..\novolis-codegen\src\Novolis.CodeGen.Bindings.Roslyn\Novolis.CodeGen.Bindings.Roslyn.csproj" />'
+            '<ProjectReference Include="..\..\..\novolis-codegen\src\Novolis.CodeGen.Pipeline\Novolis.CodeGen.Pipeline.csproj" />'
+        )
+        Add      = @(
+            '<PackageReference Include="Novolis.CodeGen.Bindings" />'
+            '<PackageReference Include="Novolis.CodeGen.Bindings.Roslyn" />'
+            '<PackageReference Include="Novolis.CodeGen.Pipeline" />'
+        )
+        Packages = @('Novolis.CodeGen.Bindings', 'Novolis.CodeGen.Bindings.Roslyn', 'Novolis.CodeGen.Pipeline')
+    },
+    @{
+        Repo     = 'novolis-raylib'
+        File     = 'codegen/Novolis.Raylib.Pipeline/Novolis.Raylib.Pipeline.csproj'
+        Remove   = '<ProjectReference Include="..\..\..\novolis-codegen\src\Novolis.CodeGen.Pipeline\Novolis.CodeGen.Pipeline.csproj" />'
+        Add      = '<PackageReference Include="Novolis.CodeGen.Pipeline" />'
+        Packages = @('Novolis.CodeGen.Pipeline')
+    },
+    @{
+        Repo     = 'novolis-codegen'
+        File     = 'tests/Novolis.CodeGen.Bindings.Unit/Novolis.CodeGen.Bindings.Unit.csproj'
+        Remove   = '<ProjectReference Include="../../../novolis-raylib/codegen/Novolis.Raylib.Manifests/Novolis.Raylib.Manifests.csproj" />'
+        Add      = '<PackageReference Include="Novolis.Raylib.Manifests" />'
+        Packages = @('Novolis.Raylib.Manifests')
     }
 )
 
@@ -52,7 +83,7 @@ function Ensure-PackageVersions([string]$PropsPath, [string[]]$PackageIds) {
     $text = Get-Content $PropsPath -Raw
     foreach ($id in $PackageIds) {
         if ($text -match [regex]::Escape($id)) { continue }
-        $entry = "    <PackageVersion Include=`"$id`" Version=`"0.0.1.1`" />"
+        $entry = "    <PackageVersion Include=`"$id`" Version=`"$novolisVersion`" />"
         if ($text -match '</ItemGroup>') {
             $text = $text -replace '</ItemGroup>', "$entry`n  </ItemGroup>"
         }
@@ -80,4 +111,4 @@ foreach ($fix in $fixes) {
     Write-Host "Fixed $($fix.Repo)/$($fix.File)"
 }
 
-Write-Host 'Done.'
+Write-Host 'Done. Run verify-nuget-only.ps1 to confirm.'
