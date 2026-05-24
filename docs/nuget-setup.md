@@ -29,9 +29,13 @@ Public packages can often be restored **without** a token; if restore returns 40
 
 No NuGet.org API keys or trusted publishing setup is required.
 
-## Consuming packages
+## Organization settings (public org, no custom PAT)
 
-Add a `nuget.config` (or user-level config) with a GitHub PAT that has `read:packages`:
+See [github-packages-org-settings.md](./github-packages-org-settings.md) for org defaults (public packages, inherit from repository, grant `novolis-dogfooding` Actions access).
+
+## Consuming packages (manual PAT optional)
+
+Add a `nuget.config` (or user-level config) with a GitHub PAT that has `read:packages`, or use `gh auth refresh -s read:packages`:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
