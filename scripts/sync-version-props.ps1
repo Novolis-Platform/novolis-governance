@@ -1,5 +1,5 @@
 #Requires -Version 7.0
-# Regenerate build/version.props from build/version.json
+# Regenerate build/version.props from build/version.json (YEAR.MAJOR.MINOR; BUILD from CI).
 param(
     [string]$RepoPath = '.'
 )
@@ -14,22 +14,23 @@ if (-not (Test-Path $jsonPath)) {
 }
 
 $v = Get-Content $jsonPath -Raw | ConvertFrom-Json
-$sdkYear = [int]$v.sdkYear
-$apiBreak = [int]$v.apiBreak
-$feature = [int]$v.feature
-$stable = "$sdkYear.$apiBreak.$feature"
-$float = "$sdkYear.$apiBreak.*"
+$year = [int]($v.year ?? $v.sdkYear)
+$major = [int]($v.major ?? $v.apiBreak)
+$minor = [int]($v.minor ?? $v.feature)
+$platform = "$year.$major.$minor"
+$float = "$platform.*"
 
 $props = @"
 <?xml version="1.0" encoding="utf-8"?>
 <Project>
   <!-- Generated from build/version.json via scripts/sync-version-props.ps1 -->
-  <PropertyGroup Label="Novolis platform version">
-    <NovolisSdkYear>$sdkYear</NovolisSdkYear>
-    <NovolisApiBreak>$apiBreak</NovolisApiBreak>
-    <NovolisFeature>$feature</NovolisFeature>
-    <NovolisStableVersion>$stable</NovolisStableVersion>
+  <PropertyGroup Label="Novolis platform version (YEAR.MAJOR.MINOR; BUILD from CI)">
+    <NovolisYear>$year</NovolisYear>
+    <NovolisMajor>$major</NovolisMajor>
+    <NovolisMinor>$minor</NovolisMinor>
+    <NovolisPlatformVersion>$platform</NovolisPlatformVersion>
     <NovolisPackageFloatVersion>$float</NovolisPackageFloatVersion>
+    <NovolisLocalBuild Condition="'`$(NovolisLocalBuild)' == ''">1</NovolisLocalBuild>
   </PropertyGroup>
 </Project>
 "@
@@ -40,4 +41,4 @@ if (-not (Test-Path $dir)) {
 }
 
 Set-Content -Path $propsPath -Value $props.TrimEnd() -Encoding utf8NoBOM
-Write-Host "Wrote $propsPath ($stable, float $float)"
+Write-Host "Wrote $propsPath ($platform, float $float)"

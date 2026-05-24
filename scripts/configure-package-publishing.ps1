@@ -4,7 +4,16 @@ $ErrorActionPreference = 'Stop'
 $Root = Split-Path (Split-Path $PSScriptRoot -Parent) -Parent
 $SyncScript = Join-Path $PSScriptRoot 'sync-version-props.ps1'
 $GovVersionJson = Join-Path $PSScriptRoot '..\build\version.json'
-$versionJson = Get-Content $GovVersionJson -Raw
+$versionJsonTemplate = @'
+{
+  "year": 2026,
+  "major": 1,
+  "minor": 1,
+  "dotnetBaseline": "net10.0",
+  "publicPackage": true
+}
+'@
+$versionJson = $versionJsonTemplate
 
 $directoryBuildTargets = @'
 <Project>

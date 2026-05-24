@@ -1,30 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project>
   <!--
-    Applied via each repo's Directory.Build.targets (after project evaluation).
-    Version intent: build/version.json -> build/version.props (NovolisSdkYear, NovolisApiBreak, NovolisFeature).
-    CI passes -p:PackageVersion=... which must not be overridden here.
+    Version intent: build/version.json (YEAR.MAJOR.MINOR). BUILD = github.run_number in CI only.
+    CI passes -p:PackageVersion=YEAR.MAJOR.MINOR.BUILD which must not be overridden here.
   -->
-  <PropertyGroup Condition="'$(NovolisSdkYear)' != ''">
-    <NovolisStableVersion Condition="'$(NovolisStableVersion)' == ''">$(NovolisSdkYear).$(NovolisApiBreak).$(NovolisFeature)</NovolisStableVersion>
-    <NovolisPackageFloatVersion Condition="'$(NovolisPackageFloatVersion)' == ''">$(NovolisSdkYear).$(NovolisApiBreak).*</NovolisPackageFloatVersion>
+  <PropertyGroup Condition="'$(NovolisYear)' != ''">
+    <NovolisPlatformVersion Condition="'$(NovolisPlatformVersion)' == ''">$(NovolisYear).$(NovolisMajor).$(NovolisMinor)</NovolisPlatformVersion>
+    <NovolisPackageFloatVersion Condition="'$(NovolisPackageFloatVersion)' == ''">$(NovolisPlatformVersion).*</NovolisPackageFloatVersion>
+  </PropertyGroup>
+  <!-- Back-compat with older generated props -->
+  <PropertyGroup Condition="'$(NovolisSdkYear)' != '' AND '$(NovolisYear)' == ''">
+    <NovolisYear>$(NovolisSdkYear)</NovolisYear>
+    <NovolisMajor>$(NovolisApiBreak)</NovolisMajor>
+    <NovolisMinor>$(NovolisFeature)</NovolisMinor>
+    <NovolisPlatformVersion>$(NovolisSdkYear).$(NovolisApiBreak).$(NovolisFeature)</NovolisPlatformVersion>
+    <NovolisPackageFloatVersion>$(NovolisPlatformVersion).*</NovolisPackageFloatVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
     <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
   </PropertyGroup>
 
-  <!-- Local / non-CI pack: stable 3-part version when CI did not set PackageVersion -->
-  <PropertyGroup Condition="'$(NovolisStableVersion)' != '' AND '$(PackageVersion)' == '' AND ('$(IsPackable)' == 'true' OR '$(GeneratePackageOnBuild)' == 'true')">
-    <Version>$(NovolisStableVersion)</Version>
-    <PackageVersion>$(NovolisStableVersion)</PackageVersion>
-    <AssemblyVersion>$(NovolisSdkYear).$(NovolisApiBreak).0.0</AssemblyVersion>
-    <FileVersion>$(NovolisStableVersion).0</FileVersion>
-    <InformationalVersion>$(NovolisStableVersion)</InformationalVersion>
+  <!-- Local pack: YEAR.MAJOR.MINOR.{NovolisLocalBuild} when CI did not set PackageVersion -->
+  <PropertyGroup Condition="'$(NovolisPlatformVersion)' != '' AND '$(PackageVersion)' == '' AND ('$(IsPackable)' == 'true' OR '$(GeneratePackageOnBuild)' == 'true')">
+    <Version>$(NovolisPlatformVersion).$(NovolisLocalBuild)</Version>
+    <PackageVersion>$(Version)</PackageVersion>
+    <AssemblyVersion>$(NovolisYear).$(NovolisMajor).0.0</AssemblyVersion>
+    <FileVersion>$(Version)</FileVersion>
+    <InformationalVersion>$(Version)</InformationalVersion>
   </PropertyGroup>
 
-  <!-- CI assembly metadata when CI set PackageVersion but not all assembly properties -->
-  <PropertyGroup Condition="'$(PackageVersion)' != '' AND '$(NovolisSdkYear)' != '' AND '$(AssemblyVersion)' == ''">
-    <AssemblyVersion>$(NovolisSdkYear).$(NovolisApiBreak).0.0</AssemblyVersion>
+  <PropertyGroup Condition="'$(PackageVersion)' != '' AND '$(NovolisYear)' != '' AND '$(AssemblyVersion)' == ''">
+    <AssemblyVersion>$(NovolisYear).$(NovolisMajor).0.0</AssemblyVersion>
   </PropertyGroup>
 </Project>

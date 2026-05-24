@@ -5,7 +5,10 @@ $Root = Split-Path (Split-Path $PSScriptRoot -Parent) -Parent
 $RegistryDir = Join-Path $Root 'novolis-registry\packages'
 $VersionJson = Join-Path $PSScriptRoot '..\build\version.json'
 $v = Get-Content $VersionJson -Raw | ConvertFrom-Json
-$stable = "$($v.sdkYear).$($v.apiBreak).$($v.feature)"
+$year = [int]($v.year ?? $v.sdkYear)
+$major = [int]($v.major ?? $v.apiBreak)
+$minor = [int]($v.minor ?? $v.feature)
+$stable = "$year.$major.$minor.0"
 
 function To-RegistryId([string]$PackageId) {
     ($PackageId -replace '^Novolis\.', 'novolis.' -replace '\.', '.').ToLowerInvariant()

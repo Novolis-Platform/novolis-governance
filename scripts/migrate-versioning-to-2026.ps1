@@ -5,7 +5,15 @@ $Root = Split-Path (Split-Path $PSScriptRoot -Parent) -Parent
 $SyncScript = Join-Path $PSScriptRoot 'sync-version-props.ps1'
 $GovVersionJson = Join-Path $PSScriptRoot '..\build\version.json'
 
-$versionJson = Get-Content $GovVersionJson -Raw
+$versionJson = @'
+{
+  "year": 2026,
+  "major": 1,
+  "minor": 1,
+  "dotnetBaseline": "net10.0",
+  "publicPackage": true
+}
+'@
 
 $packageRepos = @(
     'novolis-analyzers', 'novolis-aspire', 'novolis-avalonia', 'novolis-codegen',
@@ -58,14 +66,7 @@ function Update-DirectoryPackages([string]$DpPath) {
         $changed = $true
     }
 
-    if ($text -notmatch 'build\\version\.props' -and $text -match 'Novolis\.') {
-        $import = @'
-  <Import Project="build\version.props" Condition="Exists('build\version.props')" />
-
-'@
-        $text = $text -replace '(<Project>\s*)', "`$1$import"
-        $changed = $true
-    }
+    # version.props is imported from Directory.Build.props; do not duplicate here.
 
     $n = $text
     $n = $n -replace '(Include="Novolis\.[^"]+"\s+Version=")0\.[0-9.]+[^"]*(")', '${1}2026.1.*${2}'
