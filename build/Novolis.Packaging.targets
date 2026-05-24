@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <!-- Non-shipping trees: never publish from merge CI. -->
+  <PropertyGroup Condition="'$(IsPackable)' == '' And (
+      $(MSBuildProjectDirectory.Contains('\codegen\')) Or $(MSBuildProjectDirectory.Contains('/codegen/')) Or
+      $(MSBuildProjectDirectory.Contains('\tests\')) Or $(MSBuildProjectDirectory.Contains('/tests/')) Or
+      $(MSBuildProjectDirectory.Contains('\samples\')) Or $(MSBuildProjectDirectory.Contains('/samples/')))">
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+</Project>
