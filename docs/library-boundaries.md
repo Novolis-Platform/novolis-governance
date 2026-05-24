@@ -136,7 +136,8 @@ Separate repo and dependency island. Owns **CPU framebuffer production** (ray tr
 |------|--------|
 | Rendering → Raylib | **Forbidden** |
 | Rendering → Simulation | **Forbidden** |
-| Raylib → Rendering | **Forbidden** (optional presenter adapters may live under Raylib) |
+| Raylib → Rendering | **Forbidden** |
+| Rendering → Raylib.Runtime | **Only** via `Novolis.Rendering.Presentation.Raylib` (blit adapter) |
 | Rendering → Math | Allowed (`Novolis.Math.Geometry` for `Rgba32`, meshes, rays) |
 | Wiring Simulation ↔ Rendering ↔ Raylib | **Apps only** — `ViewPose` → `RenderCamera` → `IRayTracer` → host blit |
 
@@ -172,7 +173,7 @@ Product rules, HUD, networking, highly specific camera feel (run bobbing, recoil
 | Run bobbing / recoil / game-specific camera juice | App |
 | Bridge Simulation camera → `RenderCamera` / `CameraSnapshot` for trace | App (uses Rendering + Simulation; neither lib references the other) |
 | `IMaterial`, `Scene`, `CompiledScene`, `IRayTracingBackend` | Rendering (`Novolis.Rendering.*`) |
-| `IFramePresenter`, CPU/GPU blit adapters | `Novolis.Raylib.Presentation`, `Novolis.Silk.Presentation`, or `Novolis.Rendering.Presentation.Silk` stub |
+| `IFramePresenter`, CPU/GPU blit adapters | `Novolis.Rendering.Presentation.Raylib`, `Novolis.Rendering.Presentation.Silk` |
 | Material compile → `GpuMaterial` | `Novolis.Rendering.Materials` |
 | Scene compile → BVH + flat buffers | `Novolis.Rendering.Compile` (+ BVH structure in `Novolis.Math.Geometry`) |
 | `Camera3D`, draw loop | Raylib only |
