@@ -23,7 +23,7 @@ $directoryBuildTargets = @'
 '@
 
 $mergeYml = @'
-name: CI: main
+name: 'CI: main'
 
 on:
   push:
@@ -51,7 +51,7 @@ jobs:
 '@
 
 $pullRequestYml = @'
-name: CI: pull request
+name: 'CI: pull request'
 
 on:
   pull_request:
