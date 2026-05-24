@@ -52,12 +52,7 @@ Import [Novolis.Documentation.props](../build/Novolis.Documentation.props) from 
 
 Standard csproj fragment:
 
-```xml
-<PackageReadmeFile>README.md</PackageReadmeFile>
-<ItemGroup>
-  <None Include="README.md" Pack="true" PackagePath="\" Condition="Exists('README.md')" />
-</ItemGroup>
-```
+Import [Novolis.PackageReadme.props](../build/Novolis.PackageReadme.props) from repo `src/Directory.Build.props` (packs README + sets `PackageReadmeFile`; suppresses NU5118 duplicate-readme warning).
 
 Repo-level import (example):
 
