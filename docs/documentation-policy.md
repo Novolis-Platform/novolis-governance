@@ -71,7 +71,7 @@ Apply to packable `src/**/*.csproj` via `Directory.Build.props` under `src/` or 
 
 ## CI audit
 
-Run [scripts/doc-audit.ps1](../scripts/doc-audit.ps1) before merge when a repo is marked documentation-complete (`build/.novolis-documentation-complete` marker file).
+Run [scripts/doc-audit.ps1](../scripts/doc-audit.ps1) before merge when a repo is marked documentation-complete (`build/.novolis-documentation-complete` marker file). The audit fails on missing READMEs, missing **Install** / **Quick start** sections, and placeholder quick starts (`// See docs/getting-started.md`).
 
 ## Scaffold
 

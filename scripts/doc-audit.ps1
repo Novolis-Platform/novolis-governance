@@ -36,12 +36,24 @@ foreach ($proj in $projects) {
     $packableNode = $xml.Project.PropertyGroup.IsPackable | Select-Object -First 1
     if ($packableNode -and $packableNode -eq 'false') { $isPackable = $false }
     if ($proj.FullName -match '[\\/]tests[\\/]') { $isPackable = $false }
+    if ($proj.FullName -match '[\\/]content[\\/]') { continue }
     if (-not $isPackable) { continue }
 
     $dir = $proj.DirectoryName
     $readme = Join-Path $dir 'README.md'
     if (-not (Test-Path $readme)) {
         $failures.Add("Missing README.md: $($proj.FullName)")
+    }
+    else {
+        $readmeText = Get-Content $readme -Raw
+        if ($readmeText -match 'See docs/getting-started\.md for integration') {
+            $failures.Add("Placeholder quick start in README.md: $($proj.FullName)")
+        }
+        $hasInstall = $readmeText -match '## Install' -or $readmeText -match 'dotnet add package' -or $readmeText -match 'PackageReference Include='
+        $hasQuickStart = $readmeText -match '## Quick start' -or $readmeText -match '## Example' -or $readmeText -match '## Getting started' -or $readmeText -match '## Usage'
+        if (-not $hasInstall -or -not $hasQuickStart) {
+            $failures.Add("README.md missing Install or Quick start section: $($proj.FullName)")
+        }
     }
 
     if ($enforceDocs) {
