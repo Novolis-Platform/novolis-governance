@@ -14,10 +14,26 @@
 | `Frank.ML.Foundation.Core.Tests` | `Novolis.MachineLearning.Core.Tests` |
 | `Frank.ML.Foundation.Neural.Tests` | `Novolis.MachineLearning.Neural.Tests` |
 
-## Out of scope (wave 8)
+## Wave 8b (follow-up — absorbed)
 
-- `Frank.ML.Foundation.AutoMl` (Microsoft.ML) — later wave
-- `Frank.ML.Domain.*`, `Frank.ML.Presentation.*`, `Frank.ML.App.*`, Aspire host
+| Frank | Novolis |
+|-------|---------|
+| `Frank.ML.Foundation.AutoMl` | `Novolis.MachineLearning.AutoMl` |
+| `Frank.ML.Domain.MlPipeline` (`MetricsExtensions`) | `Novolis.MachineLearning.AutoMl.Extensions` |
+
+## Racing sim (not in machinelearning repo)
+
+| Frank | Novolis |
+|-------|---------|
+| `Frank.ML.Domain.Racing` (sim) | `Novolis.Simulation.Racing` in `novolis-simulation` |
+| `Frank.ML.Domain.Racing.Tests` (sim) | `Novolis.Simulation.Racing.Tests` |
+| `Frank.ML.Domain.Racing` (trainer + neural controller) | `novolis-dogfooding/apps/NeuralRacing` (composition only) |
+| Trainer tests | `novolis-dogfooding/apps/NeuralRacing.Tests` |
+
+## Out of scope
+
+- `Frank.ML.Domain.Legacy`, `Frank.ML.Domain.MlAssets` (sample datasets / zipped models)
+- `Frank.ML.Presentation.*`, `Frank.ML.App.*`, Aspire host
 
 ## Dependencies
 

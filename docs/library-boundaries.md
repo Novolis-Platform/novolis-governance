@@ -177,6 +177,8 @@ Product rules, HUD, networking, highly specific camera feel (run bobbing, recoil
 | Scene compile → BVH + flat buffers | `Novolis.Rendering.Compile` (+ BVH structure in `Novolis.Math.Geometry`) |
 | `Camera3D`, draw loop | Raylib only |
 | Planar occupancy, LOS on a world | Simulation |
+| Headless racing sim (tracks, sensors, tick loop) | `Novolis.Simulation.Racing` |
+| NN evolution on racing (trainer, neural car controller) | Apps (e.g. `novolis-dogfooding` `NeuralRacing`) — not `Novolis.MachineLearning.*` |
 
 ---
 
@@ -188,9 +190,14 @@ Product rules, HUD, networking, highly specific camera feel (run bobbing, recoil
 novolis-math       (Arrays, Geometry, Topology, core numerics)
 novolis-physics    →  math
 novolis-simulation →  math, physics
+  (facets: Abstractions, World, View, Kinematics, World.Builders, Racing, …)
 ```
 
 **Orthogonal (not in stack, no link to Simulation):**
+
+```text
+novolis-machinelearning  (Core, Neural.*, AutoMl — building blocks only; no domain packages)
+```
 
 ```text
 novolis-raylib       →  math only (if needed); never → simulation

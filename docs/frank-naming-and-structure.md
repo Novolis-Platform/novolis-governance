@@ -87,6 +87,9 @@ On extract: **move** projects into `src/` / `tests/`; do not preserve Frank flat
 | `Frank.ML.Foundation.Core` | `Novolis.MachineLearning.Core` | `src/Novolis.MachineLearning.Core/` |
 | `Frank.ML.Foundation.Neural.Abstractions` | `Novolis.MachineLearning.Neural.Abstractions` | `src/Novolis.MachineLearning.Neural.Abstractions/` |
 | `Frank.ML.Foundation.Neural.Implementation` | `Novolis.MachineLearning.Neural` | `src/Novolis.MachineLearning.Neural/` |
+| `Frank.ML.Foundation.AutoMl` | `Novolis.MachineLearning.AutoMl` | `src/Novolis.MachineLearning.AutoMl/` |
+| `Frank.ML.Domain.Racing` (sim) | `Novolis.Simulation.Racing` | `novolis-simulation/src/Novolis.Simulation.Racing/` |
+| `Frank.ML.Domain.Racing` (ML glue) | *(dogfood app)* `NeuralRacing` | `novolis-dogfooding/apps/NeuralRacing/` |
 | `Frank.WireFish` | `Novolis.Transports.WireFish` | `src/Novolis.Transports.WireFish/` |
 | `Frank.Markdown` | `Novolis.Markup.Markdown` | `src/Novolis.Markup.Markdown/` |
 | `Frank.Mermaid` | `Novolis.Markup.Mermaid` | `src/Novolis.Markup.Mermaid/` |

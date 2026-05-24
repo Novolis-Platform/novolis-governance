@@ -69,7 +69,7 @@ flowchart TB
 | [Frank.WireFish](https://github.com/frankhaugen/Frank.WireFish) | 3/3/3 | 9 | `novolis-transports` | **Migrated** — `Novolis.Transports.WireFish`; depends on Messaging.Channels | Extract (wave 9) |
 | [Frank.Networking](https://github.com/frankhaugen/Frank.Networking) | 3/3/3 | 9 | `novolis-transports` | **Defer** — no NuGet releases; audit overlap with Bedrock/Http first | Partial later |
 | [Frank.Collections](https://github.com/frankhaugen/Frank.Collections) | 3/3/3 | 9 | `novolis-math`? | **Defer** — `Array2D`, `ObservableList`; 27 facts; low strategic fit | Extract if demanded |
-| [Frank.ML](https://github.com/frankhaugen/Frank.ML) | 2/2/2 | 6 | `novolis-machinelearning` | **Partial** — neural foundation only (wave 8); AutoML/apps stay private | Extract subset |
+| [Frank.ML](https://github.com/frankhaugen/Frank.ML) | 2/2/2 | 6 | `novolis-machinelearning` + `novolis-simulation` | **Partial** — neural + AutoML (ML); racing sim (`Simulation.Racing`); apps/presentation stay private | Extract subset |
 
 ## P2 — Reference / archive
 
@@ -106,6 +106,9 @@ flowchart TB
 | `Frank.Analyzers.*` (subset) | `Novolis.Analyzers.*` | `novolis-analyzers` |
 | `Frank.GameEngine.Primitives` (subset) | `Novolis.Math.Arrays`, `Novolis.Math.Geometry` | `novolis-math` |
 | `Frank.ML.Foundation.Neural.*` | `Novolis.MachineLearning.Neural.*` | `novolis-machinelearning` |
+| `Frank.ML.Foundation.AutoMl` | `Novolis.MachineLearning.AutoMl` | `novolis-machinelearning` |
+| `Frank.ML.Domain.Racing` (sim) | `Novolis.Simulation.Racing` | `novolis-simulation` |
+| `Frank.ML.Domain.Racing` (ML glue) | `NeuralRacing` app | `novolis-dogfooding` |
 | `Frank.WireFish` | `Novolis.Transports.WireFish` | `novolis-transports` |
 | `Frank.Markdown` | `Novolis.Markup.Markdown` | `novolis-markup` |
 | `Frank.Mermaid` | `Novolis.Markup.Mermaid` | `novolis-markup` |
@@ -126,6 +129,7 @@ flowchart TB
 | 8 | `novolis-machinelearning` | Frank.ML neural foundation | [wave-8-machinelearning-neural.md](extraction-briefs/wave-8-machinelearning-neural.md) |
 | 9 | `novolis-wirefish` | Frank.WireFish | [wave-9-wirefish.md](extraction-briefs/wave-9-wirefish.md) |
 | 10 | `novolis-markup` | Frank.Markdown, Frank.Mermaid | [wave-10-markup.md](extraction-briefs/wave-10-markup.md) |
+| 12 | `novolis-simulation` | Frank.ML.Domain.Racing (sim) | [wave-12-simulation-racing.md](extraction-briefs/wave-12-simulation-racing.md) |
 | — | `novolis-install` | SimpleInstaller ideas | Rebuild only |
 
 **Pilot:** [extraction-briefs/pilot-channels.md](extraction-briefs/pilot-channels.md)

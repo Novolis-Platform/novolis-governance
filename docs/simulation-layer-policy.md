@@ -10,6 +10,8 @@ Math → Physics → Simulation
 
 Math facets: `Novolis.Math.Arrays`, `Novolis.Math.Geometry`, future `Novolis.Math.Topology`.
 
+Simulation facets include `Novolis.Simulation.Racing` (headless racing sim; ML-agnostic). Neural evolution on racing lives in apps, not in `novolis-machinelearning`.
+
 | Repo | In stack? | Role |
 |------|-----------|------|
 | **novolis-math** | Yes | Numbers, geometry, topology — **never time** |
