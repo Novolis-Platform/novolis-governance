@@ -30,7 +30,7 @@
     <InformationalVersion>$(Version)</InformationalVersion>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(PackageVersion)' != '' AND '$(NovolisYear)' != '' AND '$(AssemblyVersion)' == ''">
+  <PropertyGroup Condition="'$(NovolisYear)' != '' AND '$(AssemblyVersion)' == ''">
     <AssemblyVersion>$(NovolisYear).$(NovolisMajor).0.0</AssemblyVersion>
   </PropertyGroup>
 </Project>
