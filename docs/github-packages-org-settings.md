@@ -19,12 +19,12 @@ Under **Default package settings**:
 
 ## Existing private packages
 
-GitHub does **not** expose a working REST `PATCH` for org-scoped **NuGet** visibility (returns 404; container images use a different API). For packages already published as private:
+GitHub does **not** expose a working REST `PATCH` for org-scoped **NuGet** visibility (returns 404). After enabling **Public** package creation above:
 
-1. Change each under [Packages](https://github.com/orgs/Novolis-Platform/packages?ecosystem=nuget) → **Package settings** → **Change visibility** → **Public**, or  
-2. After step 1 above, **delete** the private package in the UI and re-run that repo’s **CI** merge publish (new default = public).
+1. In each package repo, run **Actions → Republish NuGet as public** (`republish-public.yml`), or  
+2. Manually: [Packages](https://github.com/orgs/Novolis-Platform/packages?ecosystem=nuget) → **Package settings** → **Change visibility** → **Public**.
 
-Optional: run the **Set packages public** workflow in `novolis-math` (lists packages and attempts the API).
+The republish workflow deletes the org NuGet package(s) for that repo and pushes again; with org **Public** creation enabled, the new package should be public. CI verifies visibility at the end of that workflow.
 
 ## CI (automatic after each publish)
 
