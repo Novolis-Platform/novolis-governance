@@ -1,10 +1,10 @@
 <Project>
   <!-- Package README: explicit pack + PackageReadmeFile. NU5118 (duplicate readme) is a known SDK/NuGet interaction when both apply; do not treat as error. -->
-  <PropertyGroup Condition="'$(IsPackable)' == 'true'">
+  <PropertyGroup>
     <PackageReadmeFile Condition="'$(PackageReadmeFile)' == ''">README.md</PackageReadmeFile>
     <WarningsNotAsErrors>$(WarningsNotAsErrors);NU5118</WarningsNotAsErrors>
   </PropertyGroup>
-  <ItemGroup Condition="'$(IsPackable)' == 'true'">
+  <ItemGroup>
     <None Include="README.md" Pack="true" PackagePath="\" Condition="Exists('$(MSBuildProjectDirectory)\README.md')" />
   </ItemGroup>
 </Project>
