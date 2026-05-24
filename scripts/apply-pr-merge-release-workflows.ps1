@@ -20,7 +20,8 @@ on:
   push:
     branches: [main]
     paths-ignore:
-      - '.novolis/version.props'
+      - 'build/version.json'
+      - 'build/version.props'
       - 'docs/**'
       - '**.md'
   workflow_dispatch:
@@ -34,7 +35,6 @@ jobs:
     with:
       skip_publish: `${{ inputs.skip_publish == true }}
     permissions:
-      contents: write
       packages: write
 "@
 
@@ -49,7 +49,8 @@ jobs:
     secrets:
       NUGET_API_KEY: `${{ secrets.NUGET_API_KEY }}
     permissions:
-      contents: write
+      contents: read
+      packages: write
 "@
 
 function Write-Utf8([string]$Path, [string]$Content) {

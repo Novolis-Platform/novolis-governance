@@ -1,5 +1,5 @@
 #Requires -Version 7.0
-# Remove per-project Version tags and -preview/-local suffixes; rely on .novolis/version.props + Novolis.Version.targets.
+# Remove per-project Version tags; normalize Novolis.* refs to 2026.1.* floating line.
 $ErrorActionPreference = 'Stop'
 $Root = Split-Path (Split-Path $PSScriptRoot -Parent) -Parent
 
@@ -13,7 +13,9 @@ function Strip-CsprojVersion([string]$Path) {
     return $false
 }
 
-$repos = Get-ChildItem $Root -Directory -Filter 'novolis-*' | Where-Object { $_.Name -notmatch 'dogfooding|workflows|governance|registry|installer' }
+$repos = Get-ChildItem $Root -Directory -Filter 'novolis-*' |
+    Where-Object { $_.Name -notmatch 'workflows|governance|registry|installer' }
+
 foreach ($repo in $repos) {
     $changed = 0
     Get-ChildItem $repo.FullName -Recurse -Filter '*.csproj' |
@@ -21,10 +23,17 @@ foreach ($repo in $repos) {
         ForEach-Object {
             if (Strip-CsprojVersion $_.FullName) { $changed++ }
         }
+
     $dp = Join-Path $repo.FullName 'Directory.Packages.props'
     if (Test-Path $dp) {
         $t = Get-Content $dp -Raw
-        $n = $t -replace '(Include="Novolis\.[^"]+"\s+Version=")0\.[0-9.]+(-local|-preview[^"]*)(")', '${1}0.0.1.1${3}'
+        $n = $t -replace '(Include="Novolis\.[^"]+"\s+Version=")0\.[0-9.]+[^"]*(")', '${1}2026.1.*${2}'
+        $n = $n -replace '(Include="Novolis\.[^"]+"\s+Version=")\*(")', '${1}2026.1.*${2}'
+        if ($n -notmatch 'CentralPackageFloatingVersionsEnabled') {
+            if ($n -match '<ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>') {
+                $n = $n -replace '(<ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>)', "`$1`n    <CentralPackageFloatingVersionsEnabled>true</CentralPackageFloatingVersionsEnabled>"
+            }
+        }
         if ($n -ne $t) {
             Set-Content $dp $n.TrimEnd() -Encoding utf8NoBOM
             $changed++

@@ -2,13 +2,29 @@
 <Project>
   <!--
     Applied via each repo's Directory.Build.targets (after project evaluation).
-    Overrides per-project <Version> and repo Packaging.props when .novolis/version.props exists.
+    Version intent: build/version.json -> build/version.props (NovolisSdkYear, NovolisApiBreak, NovolisFeature).
+    CI passes -p:PackageVersion=... which must not be overridden here.
   -->
-  <PropertyGroup Condition="'$(NovolisVersionBuild)' != '' AND ('$(IsPackable)' == 'true' OR '$(GeneratePackageOnBuild)' == 'true')">
-    <Version>$(NovolisVersionMajor).$(NovolisVersionMinor).$(NovolisVersionPatch).$(NovolisVersionBuild)</Version>
-    <PackageVersion>$(Version)</PackageVersion>
-    <AssemblyVersion>$(NovolisVersionMajor).$(NovolisVersionMinor).$(NovolisVersionPatch).0</AssemblyVersion>
-    <FileVersion>$(NovolisVersionMajor).$(NovolisVersionMinor).$(NovolisVersionPatch).$(NovolisVersionBuild)</FileVersion>
-    <InformationalVersion>$(Version)</InformationalVersion>
+  <PropertyGroup Condition="'$(NovolisSdkYear)' != ''">
+    <NovolisStableVersion Condition="'$(NovolisStableVersion)' == ''">$(NovolisSdkYear).$(NovolisApiBreak).$(NovolisFeature)</NovolisStableVersion>
+    <NovolisPackageFloatVersion Condition="'$(NovolisPackageFloatVersion)' == ''">$(NovolisSdkYear).$(NovolisApiBreak).*</NovolisPackageFloatVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+  </PropertyGroup>
+
+  <!-- Local / non-CI pack: stable 3-part version when CI did not set PackageVersion -->
+  <PropertyGroup Condition="'$(NovolisStableVersion)' != '' AND '$(PackageVersion)' == '' AND ('$(IsPackable)' == 'true' OR '$(GeneratePackageOnBuild)' == 'true')">
+    <Version>$(NovolisStableVersion)</Version>
+    <PackageVersion>$(NovolisStableVersion)</PackageVersion>
+    <AssemblyVersion>$(NovolisSdkYear).$(NovolisApiBreak).0.0</AssemblyVersion>
+    <FileVersion>$(NovolisStableVersion).0</FileVersion>
+    <InformationalVersion>$(NovolisStableVersion)</InformationalVersion>
+  </PropertyGroup>
+
+  <!-- CI assembly metadata when CI set PackageVersion but not all assembly properties -->
+  <PropertyGroup Condition="'$(PackageVersion)' != '' AND '$(NovolisSdkYear)' != '' AND '$(AssemblyVersion)' == ''">
+    <AssemblyVersion>$(NovolisSdkYear).$(NovolisApiBreak).0.0</AssemblyVersion>
   </PropertyGroup>
 </Project>

@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project>
   <!--
-    Template: copy to <repo>/.novolis/version.props and commit.
-    CI bumps NovolisVersionBuild after each successful merge publish.
+    Template: copy build/version.json and run scripts/sync-version-props.ps1 in each package repo.
+    Do not use eng/ (ambiguous). Do not use .novolis/version.props (deprecated).
   -->
-  <PropertyGroup Label="Novolis package version (major.minor.patch.build)">
-    <NovolisVersionMajor>0</NovolisVersionMajor>
-    <NovolisVersionMinor>0</NovolisVersionMinor>
-    <NovolisVersionPatch>1</NovolisVersionPatch>
-    <NovolisVersionBuild>1</NovolisVersionBuild>
-  </PropertyGroup>
+  <Import Project="$(MSBuildThisFileDirectory)version.props"
+          Condition="Exists('$(MSBuildThisFileDirectory)version.props')" />
 </Project>
