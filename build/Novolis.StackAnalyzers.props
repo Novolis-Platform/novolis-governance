@@ -1,9 +1,18 @@
 <Project>
+  <PropertyGroup>
+    <_NovolisStackBoundariesProj>$(MSBuildThisFileDirectory)..\..\novolis-analyzers\src\Novolis.Analyzers.StackBoundaries\Novolis.Analyzers.StackBoundaries.csproj</_NovolisStackBoundariesProj>
+    <_NovolisStackProject>$(MSBuildProjectName.StartsWith('Novolis.Math.')) OR $(MSBuildProjectName.StartsWith('Novolis.Physics.')) OR $(MSBuildProjectName.StartsWith('Novolis.Simulation.'))</_NovolisStackProject>
+  </PropertyGroup>
   <ItemGroup Condition="'$(NovolisStackAnalyzers)' != 'false'">
     <ProjectReference
-      Condition="$(MSBuildProjectName.StartsWith('Novolis.Math.')) OR $(MSBuildProjectName.StartsWith('Novolis.Physics.')) OR $(MSBuildProjectName.StartsWith('Novolis.Simulation.'))"
-      Include="$(MSBuildThisFileDirectory)..\..\novolis-analyzers\src\Novolis.Analyzers.StackBoundaries\Novolis.Analyzers.StackBoundaries.csproj"
+      Condition="$(_NovolisStackProject) AND Exists('$(_NovolisStackBoundariesProj)')"
+      Include="$(_NovolisStackBoundariesProj)"
       OutputItemType="Analyzer"
       ReferenceOutputAssembly="false" />
+    <PackageReference
+      Condition="$(_NovolisStackProject) AND !Exists('$(_NovolisStackBoundariesProj)')"
+      Include="Novolis.Analyzers.StackBoundaries"
+      PrivateAssets="all"
+      IncludeAssets="runtime; build; native; contentfiles; analyzers; buildtransitive" />
   </ItemGroup>
 </Project>
