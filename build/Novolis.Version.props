@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <!--
+    Template: copy to <repo>/.novolis/version.props and commit.
+    CI bumps NovolisVersionBuild after each successful merge publish.
+  -->
+  <PropertyGroup Label="Novolis package version (major.minor.patch.build)">
+    <NovolisVersionMajor>0</NovolisVersionMajor>
+    <NovolisVersionMinor>0</NovolisVersionMinor>
+    <NovolisVersionPatch>1</NovolisVersionPatch>
+    <NovolisVersionBuild>1</NovolisVersionBuild>
+  </PropertyGroup>
+</Project>

@@ -128,6 +128,18 @@ Primitive third-person, orbit, first-person yaw/pitch, and CAD-style viewport ca
 
 ## Outside the stack
 
+### `novolis-rendering`
+
+Separate repo and dependency island. Owns **CPU framebuffer production** (ray tracing, future software rasterizers). **Does not** open windows, call GPU APIs, or own platform cameras.
+
+| Rule | Detail |
+|------|--------|
+| Rendering → Raylib | **Forbidden** |
+| Rendering → Simulation | **Forbidden** |
+| Raylib → Rendering | **Forbidden** (optional presenter adapters may live under Raylib) |
+| Rendering → Math | Allowed (`Novolis.Math.Geometry` for `Rgba32`, meshes, rays) |
+| Wiring Simulation ↔ Rendering ↔ Raylib | **Apps only** — `ViewPose` → `RenderCamera` → `IRayTracer` → host blit |
+
 ### `novolis-raylib`
 
 Separate repo and dependency island. Owns host loop, draw, input bindings, GPU types (e.g. `Camera3D`).
@@ -177,7 +189,8 @@ novolis-simulation →  math, physics
 **Orthogonal (not in stack, no link to Simulation):**
 
 ```text
-novolis-raylib     →  math only (if needed); never → simulation
+novolis-raylib       →  math only (if needed); never → simulation
+novolis-rendering    →  math only; never → simulation or raylib
 ```
 
 **Apps** may reference any combination; they own cross-repo glue.

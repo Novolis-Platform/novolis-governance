@@ -30,20 +30,11 @@ On nuget.org (under the **organization**):
 | Field | Value |
 |-------|--------|
 | Repository owner | `Novolis-Platform` |
-| Repository | `novolis-smoketest` |
-| Workflow file | `release.yml` |
-| Environment (optional) | `nuget.org` |
-
-**novolis-install** (global tool `Novolis.Install`):
-
-| Field | Value |
-|-------|--------|
-| Repository owner | `Novolis-Platform` |
-| Repository | `novolis-install` |
-| Workflow file | `release.yml` |
+| Repository | `<repo-name>` |
+| Workflow file | `merge.yml` |
 | Environment | `nuget.org` |
 
-Repeat per repo when you add more package repositories.
+Repeat per package repo. Legacy tag-driven repos may also register `release.yml`.
 
 > If Trusted Publishing is not visible yet, NuGet is still rolling it out. Use a **scoped** push API key temporarily (push only, `Novolis.*` glob), store it only in the `nuget.org` environment as `NUGET_API_KEY`, and switch to OIDC when available.
 

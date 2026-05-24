@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <!--
+    Applied via each repo's Directory.Build.targets (after project evaluation).
+    Overrides per-project <Version> and repo Packaging.props when .novolis/version.props exists.
+  -->
+  <PropertyGroup Condition="'$(NovolisVersionBuild)' != '' AND ('$(IsPackable)' == 'true' OR '$(GeneratePackageOnBuild)' == 'true')">
+    <Version>$(NovolisVersionMajor).$(NovolisVersionMinor).$(NovolisVersionPatch).$(NovolisVersionBuild)</Version>
+    <PackageVersion>$(Version)</PackageVersion>
+    <AssemblyVersion>$(NovolisVersionMajor).$(NovolisVersionMinor).$(NovolisVersionPatch).0</AssemblyVersion>
+    <FileVersion>$(NovolisVersionMajor).$(NovolisVersionMinor).$(NovolisVersionPatch).$(NovolisVersionBuild)</FileVersion>
+    <InformationalVersion>$(Version)</InformationalVersion>
+  </PropertyGroup>
+</Project>
