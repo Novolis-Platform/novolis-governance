@@ -1,68 +1,43 @@
 # GitHub Packages — organization settings (Novolis-Platform)
 
-Dogfooding and other repos should restore `Novolis.*` from GitHub Packages **without a custom PAT secret**. GitHub’s NuGet registry still requires *some* credential on every restore (even for **public** packages), but that can be the built-in **`GITHUB_TOKEN` in Actions** or your existing **`gh` login** locally—not a hand-copied token.
+Published Novolis NuGet packages should be **public** so dogfooding and other repos can restore them with `GITHUB_TOKEN` / `gh` (no org PAT).
 
-Configure the org once as below, then publish libraries with `RepositoryUrl` set (see `Novolis.GitHubPackages.props`).
-
-## 1. Organization package defaults
+## Required one-time org setting (makes new publishes public by default)
 
 Open: [Novolis-Platform → Settings → Packages](https://github.com/organizations/Novolis-Platform/settings/packages)
 
-Under **Default package settings**:
-
-- Enable **Inherit access from source repository** (recommended).
-- Do **not** enable “Disable automatic inheritance of access permissions” for new packages.
-
 Under **Package creation**:
 
-- Allow **Public** packages only (required so new publishes can be made public via CI).
-- If **Private** is the only option, new packages stay private until changed manually.
+- Enable **Public**
+- Disable **Private** (and **Internal** unless you need it)
 
-CI (`set-github-packages-public` after each merge publish) calls  
-`PATCH /orgs/Novolis-Platform/packages/nuget/{name}/visibility` with `GITHUB_TOKEN` (`packages: write`).
+GitHub documents this as choosing the visibility members publish **by default**. After this change, **new** package versions published from CI should be public without using the UI per package.
 
-To fix **existing** private packages once:
+Under **Default package settings**:
 
-```powershell
-gh auth refresh -h github.com -s read:packages,write:packages
-pwsh ./novolis-governance/scripts/set-org-nuget-packages-public.ps1
-```
+- Enable **Inherit access from source repository**
 
-## 2. Per-package visibility (existing NuGet packages)
+## Existing private packages
 
-For each package under [Packages](https://github.com/orgs/Novolis-Platform/packages?ecosystem=nuget) (e.g. `Novolis.Math.Geometry`):
+GitHub does **not** expose a working REST `PATCH` for org-scoped **NuGet** visibility (returns 404; container images use a different API). For packages already published as private:
 
-1. **Package settings** → **Danger zone** → **Change visibility** → **Public** (one-way; cannot revert to private).
-2. **Connect repository** → link to the publishing repo (`novolis-math`, `novolis-rendering`, …).
-3. Enable **Inherit access from repository** when offered.
-4. **Manage Actions access** → add **`novolis-dogfooding`** (read) so dogfood CI can restore without `NOVOLIS_GPR_TOKEN`.
+1. Change each under [Packages](https://github.com/orgs/Novolis-Platform/packages?ecosystem=nuget) → **Package settings** → **Change visibility** → **Public**, or  
+2. After step 1 above, **delete** the private package in the UI and re-run that repo’s **CI** merge publish (new default = public).
 
-New publishes that include `RepositoryUrl` in the `.csproj` / pack metadata are linked automatically on first push.
+Optional: run the **Set packages public** workflow in `novolis-math` (lists packages and attempts the API).
 
-## 3. What developers run locally
+## CI (automatic after each publish)
 
-No org secret required. One-time:
+Merge publish runs `set-github-packages-public` after `publish-github-packages`. It succeeds when GitHub accepts the visibility API; otherwise it logs a warning and the org steps above are required.
 
-```powershell
-gh auth refresh -h github.com -s read:packages
-```
+Publishing also sets `RepositoryUrl` via `Novolis.GitHubPackages.props` so packages link to their source repo.
 
-Then:
+## Dogfooding restore
 
-```powershell
-cd novolis-dogfooding
-dotnet restore Novolis.Dogfooding.slnx --configfile nuget.config
-```
-
-`prepare-dogfood-packages.ps1` (Rider/MSBuild) calls the same auth helper.
-
-## 4. CI (dogfooding and library repos)
-
-- **Dogfooding** uses `GITHUB_TOKEN` (`packages: read`) after packages grant **`novolis-dogfooding`** Actions access.
-- **Library repos** publish with the same token (`packages: write`) in their own repo.
-- Cross-repo restore in **library** CI still needs either public packages + linked public repos, or org secret `NOVOLIS_GPR_TOKEN` until all packages are public and linked.
+- CI: `GITHUB_TOKEN` with `packages: read` (no `NOVOLIS_GPR_TOKEN` when packages are public and linked).
+- Local: `gh auth refresh -h github.com -s read:packages`
 
 ## References
 
-- [Working with the NuGet registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-nuget-registry)
 - [Configuring package access and visibility](https://docs.github.com/en/packages/learn-github-packages/configuring-a-packages-access-control-and-visibility)
+- [Working with the NuGet registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-nuget-registry)
