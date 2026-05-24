@@ -6,14 +6,17 @@ Package repos use a **4-part version**: `major.minor.patch.build` (starting at *
 
 | Segment | When it changes |
 |---------|-----------------|
-| major / minor / patch | Manual edit of `.novolis/version.props` |
-| build (4th) | After each successful merge publish to **GitHub Packages** |
+| major / minor / patch | Manual edit of `.novolis/version.props` before a release |
+| build (4th) | After each successful **merge** publish to GitHub Packages |
 
-## Registry
+## Registries
 
-Packages are published to **[GitHub Packages](https://github.com/orgs/Novolis-Platform/packages)** only. **Do not** publish to nuget.org until explicitly enabled.
+| Registry | Trigger | Purpose |
+|----------|---------|---------|
+| GitHub Packages | Push to `main` (`merge.yml`) | Continuous integration builds for org consumption |
+| nuget.org | GitHub Release **published** (`release.yml`) | Public releases; packages also attached to the release |
 
-Org NuGet feed:
+GitHub Packages feed:
 
 ```text
 https://nuget.pkg.github.com/Novolis-Platform/index.json
@@ -21,21 +24,30 @@ https://nuget.pkg.github.com/Novolis-Platform/index.json
 
 ## Workflows
 
-| Workflow | Trigger | Purpose |
-|----------|---------|---------|
+| File | Trigger | Purpose |
+|------|---------|---------|
 | `pull-request.yml` | PR to `main` | Build + test only |
 | `merge.yml` | Push to `main` | Build, test, pack, push to GitHub Packages, bump build |
-| `release.yml` | GitHub Release (optional) | Tag-driven pack + push |
+| `release.yml` | Release published | Pack at tag version, push to nuget.org, upload packages to release |
 
 ## Permissions
 
-`merge.yml` requires:
+`merge.yml`:
 
 ```yaml
 permissions:
   contents: write
   packages: write
 ```
+
+`release.yml`:
+
+```yaml
+permissions:
+  contents: write
+```
+
+Requires repo or org secret **`NUGET_API_KEY`** (passed explicitly to the reusable release workflow).
 
 ## Local development
 

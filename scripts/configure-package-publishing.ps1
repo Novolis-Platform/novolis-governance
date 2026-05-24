@@ -1,6 +1,6 @@
 #Requires -Version 7.0
 
-# Configures Novolis package repos: single CI workflow, GPR publish, 4-part versioning.
+# Configures Novolis package repos: PR/merge/release workflows, GPR on merge, 4-part versioning.
 
 $ErrorActionPreference = 'Stop'
 
@@ -49,114 +49,6 @@ $directoryBuildTargets = @'
           Condition="Exists('$(MSBuildThisFileDirectory)..\novolis-governance\build\Novolis.GitHubPackages.props')" />
 
 </Project>
-
-'@
-
-
-
-$ciYml = @'
-
-name: CI
-
-
-
-on:
-
-  pull_request:
-
-    branches: [main]
-
-  push:
-
-    branches: [main]
-
-    paths-ignore:
-
-      - '.novolis/version.props'
-
-      - 'docs/**'
-
-      - '**.md'
-
-  workflow_dispatch:
-
-    inputs:
-
-      skip_publish:
-
-        description: Build only; do not publish to GitHub Packages
-
-        type: boolean
-
-        default: false
-
-
-
-permissions:
-
-  contents: write
-
-  packages: write
-
-
-
-jobs:
-
-  pull_request:
-
-    if: github.event_name == 'pull_request'
-
-    uses: Novolis-Platform/novolis-workflows/.github/workflows/dotnet-pull-request.yml@main
-
-    secrets: inherit
-
-
-
-  main:
-
-    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
-
-    uses: Novolis-Platform/novolis-workflows/.github/workflows/dotnet-merge-publish.yml@main
-
-    with:
-
-      skip_publish: ${{ github.event_name == 'workflow_dispatch' && inputs.skip_publish }}
-
-    secrets: inherit
-
-'@
-
-
-
-$releaseYml = @'
-
-name: Release
-
-
-
-on:
-
-  release:
-
-    types: [published]
-
-
-
-permissions:
-
-  contents: read
-
-  packages: write
-
-
-
-jobs:
-
-  publish:
-
-    uses: Novolis-Platform/novolis-workflows/.github/workflows/dotnet-publish-nuget.yml@main
-
-    secrets: inherit
 
 '@
 
@@ -276,20 +168,6 @@ foreach ($name in $packageRepos) {
 
     Ensure-VersionImport $repo
 
-    if ($name -ne 'novolis-raylib') {
-
-        Write-Utf8 (Join-Path $repo '.github/workflows/ci.yml') $ciYml
-
-        foreach ($old in @('pull-request.yml', 'merge.yml')) {
-
-            $p = Join-Path $repo ".github/workflows/$old"
-
-            if (Test-Path $p) { Remove-Item $p -Force }
-
-        }
-
-    }
-
     $nuget = Join-Path $repo 'nuget.config'
 
     if (-not (Test-Path $nuget) -and -not (Test-Path (Join-Path $repo 'NuGet.config'))) {
@@ -298,11 +176,11 @@ foreach ($name in $packageRepos) {
 
     }
 
-    Write-Utf8 (Join-Path $repo '.github/workflows/release.yml') $releaseYml
-
 }
 
 
+
+& (Join-Path $PSScriptRoot 'apply-pr-merge-release-workflows.ps1')
 
 Write-Host 'Done.'
 

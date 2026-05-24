@@ -19,18 +19,26 @@ Under **Default package settings**:
 
 ## Existing private packages
 
-GitHub does **not** expose a working REST `PATCH` for org-scoped **NuGet** visibility (returns 404). After enabling **Public** package creation above:
+GitHub’s [Packages REST API](https://docs.github.com/en/rest/packages/packages) has **no** endpoint to change NuGet visibility (`PATCH .../packages/nuget/{name}/visibility` returns 404; there is no `gh package` command). Visibility is UI-only, or delete + republish.
 
-1. In each package repo, run **Actions → Republish NuGet as public** (`republish-public.yml`), or  
-2. Manually: [Packages](https://github.com/orgs/Novolis-Platform/packages?ecosystem=nuget) → **Package settings** → **Change visibility** → **Public**.
+After enabling **Public** package creation above (disable **Private** / **Internal** if you want new publishes to default to public):
 
-The republish workflow deletes the org NuGet package(s) for that repo and pushes again; with org **Public** creation enabled, the new package should be public. CI verifies visibility at the end of that workflow.
+1. [Packages](https://github.com/orgs/Novolis-Platform/packages?ecosystem=nuget) → package → **Package settings** → **Change visibility** → **Public**, or  
+2. Delete the private package and merge to `main` again so CI republishes (with org **Public** creation enabled).
 
-## CI (automatic after each publish)
+Local bulk delete (then merge/republish per repo):
 
-Merge publish runs `set-github-packages-public` after `publish-github-packages`. It succeeds when GitHub accepts the visibility API; otherwise it logs a warning and the org steps above are required.
+```powershell
+gh auth refresh -h github.com -s read:packages,write:packages,delete:packages
+.\novolis-governance\scripts\set-org-nuget-packages-public.ps1 -ListOnly
+.\novolis-governance\scripts\set-org-nuget-packages-public.ps1 -DeletePrivate
+```
 
-Publishing also sets `RepositoryUrl` via `Novolis.GitHubPackages.props` so packages link to their source repo.
+## CI
+
+Merge publish (`merge.yml`) pushes to GitHub Packages. Package visibility is set in the org UI (the REST visibility API is not available for org NuGet packages).
+
+Publishing sets `RepositoryUrl` via `Novolis.GitHubPackages.props` so packages link to their source repo.
 
 ## Dogfooding restore
 
