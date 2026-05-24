@@ -32,7 +32,7 @@ foreach ($repo in $repos) {
     $dp = Join-Path $repo.FullName 'Directory.Packages.props'
     if (Test-Path $dp) {
         $t = Get-Content $dp -Raw
-        $n = $t -replace '(Include="Novolis\.[^"]+"\s+Version=")2026\.[0-9.]+[^"]*(")', '${1}2026.1.1.*${2}'
+        $n = $t -replace '(Include="Novolis\.[^"]+"\s+Version=")2026\.[0-9.]+[^"]*(")', '${1}2026.1.*${2}'
         if ($n -ne $t) { Write-Utf8 $dp $n }
     }
 }

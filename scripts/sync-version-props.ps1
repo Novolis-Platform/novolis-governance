@@ -18,7 +18,8 @@ $year = [int]($v.year ?? $v.sdkYear)
 $major = [int]($v.major ?? $v.apiBreak)
 $minor = [int]($v.minor ?? $v.feature)
 $platform = "$year.$major.$minor"
-$float = "$platform.*"
+# Match any BUILD on this YEAR.MAJOR line (e.g. 2026.1.0.42 and 2026.1.1.366).
+$float = "$year.$major.*"
 
 $props = @"
 <?xml version="1.0" encoding="utf-8"?>

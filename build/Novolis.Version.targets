@@ -6,7 +6,7 @@
   -->
   <PropertyGroup Condition="'$(NovolisYear)' != ''">
     <NovolisPlatformVersion Condition="'$(NovolisPlatformVersion)' == ''">$(NovolisYear).$(NovolisMajor).$(NovolisMinor)</NovolisPlatformVersion>
-    <NovolisPackageFloatVersion Condition="'$(NovolisPackageFloatVersion)' == ''">$(NovolisPlatformVersion).*</NovolisPackageFloatVersion>
+    <NovolisPackageFloatVersion Condition="'$(NovolisPackageFloatVersion)' == ''">$(NovolisYear).$(NovolisMajor).*</NovolisPackageFloatVersion>
   </PropertyGroup>
   <!-- Back-compat with older generated props -->
   <PropertyGroup Condition="'$(NovolisSdkYear)' != '' AND '$(NovolisYear)' == ''">

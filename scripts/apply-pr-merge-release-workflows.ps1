@@ -12,6 +12,10 @@ on:
 jobs:
   ci:
     uses: $Uses/dotnet-pull-request.yml@main
+    secrets: inherit
+    permissions:
+      contents: read
+      packages: read
 "@
 
 $mergeYml = @"
@@ -32,6 +36,7 @@ on:
 jobs:
   ci:
     uses: $Uses/dotnet-merge-publish.yml@main
+    secrets: inherit
     with:
       skip_publish: `${{ inputs.skip_publish == true }}
     permissions:
@@ -47,8 +52,7 @@ on:
 jobs:
   ci:
     uses: $Uses/dotnet-release-publish.yml@main
-    secrets:
-      NUGET_API_KEY: `${{ secrets.NUGET_API_KEY }}
+    secrets: inherit
     permissions:
       contents: read
       packages: write
@@ -64,6 +68,17 @@ function Remove-WorkflowExtras([string]$RepoPath) {
     foreach ($name in @('ci.yml', 'set-packages-public.yml', 'republish-public.yml')) {
         $p = Join-Path $RepoPath ".github/workflows/$name"
         if (Test-Path $p) { Remove-Item $p -Force; Write-Host "  removed $name" }
+    }
+}
+
+function Remove-DuplicateGithubPackagesImport([string]$TargetsPath) {
+    if (-not (Test-Path $TargetsPath)) { return }
+    $t = Get-Content $TargetsPath -Raw
+    $pattern = '(?s)\s*<Import Project="\$\(MSBuildThisFileDirectory\)\.\.\\novolis-governance\\build\\Novolis\.GitHubPackages\.props"[^/]*/>\s*'
+    $n = $t -replace $pattern, "`n"
+    if ($n -ne $t) {
+        Set-Content $TargetsPath $n.TrimEnd() -Encoding utf8NoBOM
+        Write-Host "  fixed Directory.Build.targets duplicate import"
     }
 }
 
@@ -85,11 +100,12 @@ foreach ($name in $packageRepos) {
     Write-Utf8 (Join-Path $wf 'merge.yml') $mergeYml
     Write-Utf8 (Join-Path $wf 'release.yml') $releaseYml
     Remove-WorkflowExtras $repo
+    Remove-DuplicateGithubPackagesImport (Join-Path $repo 'Directory.Build.targets')
 }
 
 $dog = Join-Path $Root 'novolis-dogfooding'
 if (Test-Path $dog) {
-    Write-Host 'Workflows: novolis-dogfooding (no CI — consumes published packages only)'
+    Write-Host 'Workflows: novolis-dogfooding'
     $wf = Join-Path $dog '.github/workflows'
     if (Test-Path $wf) {
         Get-ChildItem $wf -Filter '*.yml' -ErrorAction SilentlyContinue | Remove-Item -Force
