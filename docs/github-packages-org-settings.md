@@ -15,7 +15,18 @@ Under **Default package settings**:
 
 Under **Package creation**:
 
-- Allow **Public** packages (required for org-wide consumption without per-user grants).
+- Allow **Public** packages only (required so new publishes can be made public via CI).
+- If **Private** is the only option, new packages stay private until changed manually.
+
+CI (`set-github-packages-public` after each merge publish) calls  
+`PATCH /orgs/Novolis-Platform/packages/nuget/{name}/visibility` with `GITHUB_TOKEN` (`packages: write`).
+
+To fix **existing** private packages once:
+
+```powershell
+gh auth refresh -h github.com -s read:packages,write:packages
+pwsh ./novolis-governance/scripts/set-org-nuget-packages-public.ps1
+```
 
 ## 2. Per-package visibility (existing NuGet packages)
 
