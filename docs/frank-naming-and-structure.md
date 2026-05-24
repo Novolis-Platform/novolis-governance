@@ -37,7 +37,9 @@ Frank uses **project folders at repo root**. Novolis uses:
 ```text
 novolis-<domain>/
   src/Novolis.<Domain>.<Facet>/
-  tests/Novolis.<Domain>.<Facet>.Tests/
+  tests/Novolis.<Domain>.Unit/     # single TUnit project per solution
+    <Facet>/                       # tests grouped by project under test
+  tests/Novolis.<Domain>.TestSupport/   # optional shared fixtures (not a test runner)
   samples/                    (when Frank had Samples/)
   Novolis.<Domain>.slnx
   .novolis/packages.json
@@ -107,7 +109,8 @@ On extract: **move** projects into `src/` / `tests/`; do not preserve Frank flat
 |------|------------|
 | Root namespace | Matches `PackageId` (e.g. `Novolis.Messaging.Channels`) |
 | Internal types | `Novolis.<Domain>.Internal` (e.g. `Novolis.Messaging.Internal`) |
-| Test namespaces | **Per-facet:** `Novolis.Messaging.Channels.Tests`, `Novolis.Messaging.Tests`, etc. |
+| Test namespaces | **Per-facet:** `Novolis.Messaging.Channels.Tests`, `Novolis.Messaging.Tests`, etc. (unchanged; folder is `tests/Novolis.Messaging.Unit/Channels/`) |
+| Test projects | **One per solution:** `Novolis.<Domain>.Unit` (TUnit). Do not add `Novolis.<Domain>.<Facet>.Tests` unless required (analyzers, golden/integration, template payloads). |
 | Assembly name | Default = `PackageId` |
 | Legacy `Frank.*` | Must not appear in production Novolis code |
 
