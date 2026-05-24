@@ -7,4 +7,9 @@
       $(MSBuildProjectDirectory.Contains('\samples\')) Or $(MSBuildProjectDirectory.Contains('/samples/')))">
     <IsPackable>false</IsPackable>
   </PropertyGroup>
+
+  <!-- Embedded PDBs cannot produce .snupkg; avoid NU5017 on symbol-only pack. -->
+  <PropertyGroup Condition="'$(DebugType)' == 'embedded'">
+    <IncludeSymbols>false</IncludeSymbols>
+  </PropertyGroup>
 </Project>
