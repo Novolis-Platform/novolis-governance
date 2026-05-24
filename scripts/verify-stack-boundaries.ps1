@@ -49,16 +49,14 @@ foreach ($repoRoot in $stackRoots) {
                 Add-Hit $rel 'Vector2 is forbidden in stack src (use Vector3 with Y=0 for planar XZ)'
             }
 
-            if ($rel -notmatch 'ObsoleteNumericsForwards\.cs$') {
-                if ($content -match '\b(struct|readonly struct|record struct)\s+Vector3d\b') {
-                    Add-Hit $rel 'Custom Vector3d duplicates BCL Vector3'
-                }
-                if ($content -match '\b(struct|readonly struct|record struct)\s+Quaterniond\b') {
-                    Add-Hit $rel 'Custom Quaterniond duplicates BCL Quaternion'
-                }
-                if ($content -match '\b(struct|readonly struct|record struct)\s+Vector3D\b') {
-                    Add-Hit $rel 'Custom Vector3D duplicates BCL Vector3'
-                }
+            if ($content -match '\b(struct|readonly struct|record struct)\s+Vector3d\b') {
+                Add-Hit $rel 'Custom Vector3d duplicates BCL Vector3'
+            }
+            if ($content -match '\b(struct|readonly struct|record struct)\s+Quaterniond\b') {
+                Add-Hit $rel 'Custom Quaterniond duplicates BCL Quaternion'
+            }
+            if ($content -match '\b(struct|readonly struct|record struct)\s+Vector3D\b') {
+                Add-Hit $rel 'Custom Vector3D duplicates BCL Vector3'
             }
         }
 

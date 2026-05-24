@@ -140,7 +140,7 @@ Separate repo and dependency island. Owns **CPU framebuffer production** (ray tr
 | Raylib → Rendering | **Forbidden** |
 | Rendering → Raylib.Runtime | **Only** via `Novolis.Rendering.Presentation.Raylib` (blit adapter) |
 | Rendering → Math | Allowed (`Novolis.Math.Geometry` for `Rgba32`, meshes, rays) |
-| Wiring Simulation ↔ Rendering ↔ Raylib | **Apps only** — `ViewPose` → `RenderCamera` → `IRayTracer` → host blit |
+| Wiring Simulation ↔ Rendering ↔ Raylib | **Apps only** — `ViewPose` → `CameraSnapshot` → `IRayTracingBackend` → host blit |
 
 ### `novolis-raylib`
 
@@ -172,7 +172,7 @@ Product rules, HUD, networking, highly specific camera feel (run bobbing, recoil
 | `SimulationClock`, tick order, replay | Simulation |
 | Any `*Camera*`, `ViewPose`, observer rig | Simulation |
 | Run bobbing / recoil / game-specific camera juice | App |
-| Bridge Simulation camera → `RenderCamera` / `CameraSnapshot` for trace | App (uses Rendering + Simulation; neither lib references the other) |
+| Bridge Simulation camera → `CameraSnapshot` for trace | App (uses Rendering + Simulation; neither lib references the other) |
 | `IMaterial`, `Scene`, `CompiledScene`, `IRayTracingBackend` | Rendering (`Novolis.Rendering.*`) |
 | `IFramePresenter`, CPU/GPU blit adapters | `Novolis.Rendering.Presentation.Raylib`, `Novolis.Rendering.Presentation.Silk` |
 | Material compile → `GpuMaterial` | `Novolis.Rendering.Materials` |
@@ -220,7 +220,7 @@ Wave 7–11 migrations may still place types in legacy packages. Prefer the boun
 | `Novolis.Math.Geometry.GridCollision2D` | `Novolis.Simulation.World` |
 | `Novolis.Physics.Collision.Simple.RoomMeshBuilder` | `Novolis.Simulation.World.Builders` |
 | `Novolis.Physics.Collision.Simple.GridPhysicsMovement` | `Novolis.Simulation.Kinematics` |
-| `Novolis.Physics.Numerics` (`Vector3d`, …) | `System.Numerics` + `Novolis.Math.Geometry` primitives |
+| Custom `Vector3d` / `Novolis.Physics.Numerics` (removed) | `System.Numerics` + `Novolis.Math.Geometry` primitives |
 | BVH structure in Physics | `Novolis.Math.Geometry`; response stays Physics |
 
 ---
