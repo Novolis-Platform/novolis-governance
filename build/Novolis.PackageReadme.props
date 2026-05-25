@@ -3,8 +3,13 @@
   <PropertyGroup>
     <PackageReadmeFile Condition="'$(PackageReadmeFile)' == ''">README.md</PackageReadmeFile>
     <WarningsNotAsErrors>$(WarningsNotAsErrors);NU5118</WarningsNotAsErrors>
+    <_NovolisPackageReadmePath>$(MSBuildProjectDirectory)\README.md</_NovolisPackageReadmePath>
   </PropertyGroup>
+  <Target Name="_NovolisRequirePackageReadme" BeforeTargets="PrepareForBuild;Pack"
+          Condition="'$(IsPackable)' == 'true' AND !Exists('$(_NovolisPackageReadmePath)')">
+    <Error Text="Packable project requires README.md next to the .csproj: $(_NovolisPackageReadmePath)" />
+  </Target>
   <ItemGroup>
-    <None Include="README.md" Pack="true" PackagePath="\" Condition="Exists('$(MSBuildProjectDirectory)\README.md')" />
+    <None Include="README.md" Pack="true" PackagePath="\" Condition="Exists('$(_NovolisPackageReadmePath)')" />
   </ItemGroup>
 </Project>

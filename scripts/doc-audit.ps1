@@ -4,10 +4,10 @@
   Audits packable library projects for package README and documentation MSBuild settings.
 
 .PARAMETER RepoRoot
-  Root of a novolis-* repository (contains src/).
+  Root of a novolis-* repository (scans src/ and codegen/ when present).
 
 .PARAMETER RequireDocumentationProps
-  When set, fails if GenerateDocumentationFile is not enabled for packable src projects.
+  When set, fails if GenerateDocumentationFile is not enabled for packable projects.
 #>
 param(
     [Parameter(Mandatory = $true)]
@@ -18,26 +18,37 @@ param(
 
 $ErrorActionPreference = 'Stop'
 $RepoRoot = (Resolve-Path $RepoRoot).Path
+
+$scanRoots = [System.Collections.Generic.List[string]]::new()
 $src = Join-Path $RepoRoot 'src'
-if (-not (Test-Path $src)) {
-    Write-Error "No src/ under $RepoRoot"
+$codegen = Join-Path $RepoRoot 'codegen'
+if (Test-Path $src) { $scanRoots.Add($src) }
+if (Test-Path $codegen) { $scanRoots.Add($codegen) }
+if ($scanRoots.Count -eq 0) {
+    Write-Error "No src/ or codegen/ under $RepoRoot"
 }
 
 $marker = Join-Path $RepoRoot 'build\.novolis-documentation-complete'
 $enforceDocs = $RequireDocumentationProps -or (Test-Path $marker)
 
 $failures = [System.Collections.Generic.List[string]]::new()
-$projects = Get-ChildItem -Path $src -Recurse -Filter '*.csproj' -File
+$projects = [System.Collections.Generic.List[System.IO.FileInfo]]::new()
+foreach ($root in $scanRoots) {
+    Get-ChildItem -Path $root -Recurse -Filter '*.csproj' -File | ForEach-Object { $projects.Add($_) }
+}
+
+function Test-IsPackableProject {
+    param([System.IO.FileInfo] $Proj)
+    if ($Proj.FullName -match '[\\/]tests[\\/]') { return $false }
+    if ($Proj.FullName -match '[\\/]content[\\/]') { return $false }
+    [xml]$xml = Get-Content -LiteralPath $Proj.FullName -Raw
+    $packableNode = $xml.Project.PropertyGroup.IsPackable | Select-Object -First 1
+    if ($packableNode -and $packableNode -eq 'false') { return $false }
+    return $true
+}
 
 foreach ($proj in $projects) {
-    [xml]$xml = Get-Content -LiteralPath $proj.FullName -Raw
-    $ns = New-Object System.Xml.XmlNamespaceManager($xml.NameTable)
-    $isPackable = $true
-    $packableNode = $xml.Project.PropertyGroup.IsPackable | Select-Object -First 1
-    if ($packableNode -and $packableNode -eq 'false') { $isPackable = $false }
-    if ($proj.FullName -match '[\\/]tests[\\/]') { $isPackable = $false }
-    if ($proj.FullName -match '[\\/]content[\\/]') { continue }
-    if (-not $isPackable) { continue }
+    if (-not (Test-IsPackableProject $proj)) { continue }
 
     $dir = $proj.DirectoryName
     $readme = Join-Path $dir 'README.md'
@@ -57,16 +68,18 @@ foreach ($proj in $projects) {
     }
 
     if ($enforceDocs) {
+        [xml]$xml = Get-Content -LiteralPath $proj.FullName -Raw
         $hasGenDoc = $false
         foreach ($pg in $xml.Project.PropertyGroup) {
             if ($pg.GenerateDocumentationFile -eq 'true') { $hasGenDoc = $true }
         }
         if (-not $hasGenDoc) {
-            # May be inherited from Directory.Build.props — dotnet msbuild evaluation is heavy; check repo marker + build props
             $repoBuild = Join-Path $RepoRoot 'build'
-            $dbp = Join-Path $src 'Directory.Build.props'
             $text = ''
-            if (Test-Path $dbp) { $text += Get-Content $dbp -Raw }
+            foreach ($root in $scanRoots) {
+                $dbp = Join-Path $root 'Directory.Build.props'
+                if (Test-Path $dbp) { $text += Get-Content $dbp -Raw }
+            }
             Get-ChildItem -Path $repoBuild -Filter '*.props' -ErrorAction SilentlyContinue | ForEach-Object {
                 $text += Get-Content $_.FullName -Raw
             }
@@ -85,5 +98,5 @@ if ($failures.Count -gt 0) {
     exit 1
 }
 
-Write-Host "doc-audit OK: $($projects.Count) csproj scanned under $RepoRoot"
+Write-Host "doc-audit OK: $($projects.Count) csproj under src/ and codegen/ in $RepoRoot"
 exit 0
