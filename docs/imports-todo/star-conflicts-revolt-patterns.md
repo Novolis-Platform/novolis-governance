@@ -45,7 +45,7 @@ See **`Novolis.Simulation.Replay`** — tick timelines + `SimultaneousPlanBuffer
 
 ### P2 — Storage event line format
 
-`StarConflictsRevolt.Storage.Local` persisted event lines — **inspiration** for `novolis-storage` append-only facet if SCR needs shared tooling (not a full port).
+`StarConflictsRevolt.Storage.Local` persisted event lines — **inspiration only**. Platform `novolis-storage` exposes generic `StreamId` + `IEventStore` (not `IGameEvent` / `WorldId`). SCR keeps product event types in `StarConflictsRevolt.Server.GameModel`.
 
 ### P3 — Garnet coordination
 
@@ -72,7 +72,7 @@ See **`Novolis.Simulation.Replay`** — tick timelines + `SimultaneousPlanBuffer
 ## How SCR should consume platform work
 
 1. **PackageReference** `Novolis.Simulation.Replay` for headless regression timelines.
-2. Keep **`IGameEvent`** in `StarConflictsRevolt.Server.GameModel` — adapter maps tick end state → `SimulationStepRecord` when useful.
+2. Keep product event types in `StarConflictsRevolt.Server.GameModel` — adapter maps tick end state → `SimulationStepRecord` when useful (not in `Novolis.Storage.*`).
 3. **PackageReference** `Novolis.Transports.Tcp.*` / Http for any custom wire protocols (not SignalR replacement).
 4. **`novolis-spatial`** when spec moves from draft — SCR dogfoods first.
 
