@@ -29,6 +29,7 @@ Related: [naming.md](naming.md), [frank-inventory.md](frank-inventory.md), [fran
 | `novolis-machinelearning` | MachineLearning | Frank.ML neural foundation | Multi-package |
 | `novolis-markup` | Markup | Frank.Markdown, Frank.Mermaid | Multi-package |
 | `novolis-commands` | Commands | Greenfield (parse → envelope → queue) | Multi-package |
+| `novolis-gaming` | Game authoring | Greenfield (`Novolis.Game.*`) | Multi-package |
 
 ## Structural rule (Frank → Novolis)
 

@@ -17,7 +17,7 @@ $versionJson = @'
 
 $packageRepos = @(
     'novolis-analyzers', 'novolis-aspire', 'novolis-avalonia', 'novolis-codegen',
-    'novolis-commands', 'novolis-install', 'novolis-machinelearning', 'novolis-markup',
+    'novolis-commands', 'novolis-gaming', 'novolis-install', 'novolis-machinelearning', 'novolis-markup',
     'novolis-math', 'novolis-messaging', 'novolis-physics', 'novolis-raylib',
     'novolis-rendering', 'novolis-security', 'novolis-simulation', 'novolis-smoketest',
     'novolis-storage', 'novolis-template-dotnet', 'novolis-templates', 'novolis-testing',
