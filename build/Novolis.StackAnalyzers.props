@@ -1,14 +1,10 @@
 <Project>
+  <!-- Local monorepo: ProjectReference when novolis-analyzers is checked out. CI single-repo: skip until GPR publishes Novolis.Analyzers.StackBoundaries. -->
   <ItemGroup Condition="'$(NovolisStackAnalyzers)' != 'false'">
     <ProjectReference
       Condition="($(MSBuildProjectName.StartsWith('Novolis.Math.')) OR $(MSBuildProjectName.StartsWith('Novolis.Physics.')) OR $(MSBuildProjectName.StartsWith('Novolis.Simulation.'))) AND Exists('$(MSBuildThisFileDirectory)..\..\novolis-analyzers\src\Novolis.Analyzers.StackBoundaries\Novolis.Analyzers.StackBoundaries.csproj')"
       Include="$(MSBuildThisFileDirectory)..\..\novolis-analyzers\src\Novolis.Analyzers.StackBoundaries\Novolis.Analyzers.StackBoundaries.csproj"
       OutputItemType="Analyzer"
       ReferenceOutputAssembly="false" />
-    <PackageReference
-      Condition="($(MSBuildProjectName.StartsWith('Novolis.Math.')) OR $(MSBuildProjectName.StartsWith('Novolis.Physics.')) OR $(MSBuildProjectName.StartsWith('Novolis.Simulation.'))) AND !Exists('$(MSBuildThisFileDirectory)..\..\novolis-analyzers\src\Novolis.Analyzers.StackBoundaries\Novolis.Analyzers.StackBoundaries.csproj')"
-      Include="Novolis.Analyzers.StackBoundaries"
-      PrivateAssets="all"
-      IncludeAssets="runtime; build; native; contentfiles; analyzers; buildtransitive" />
   </ItemGroup>
 </Project>
