@@ -227,6 +227,7 @@ Wave 7–11 migrations may still place types in legacy packages. Prefer the boun
 
 ## Related
 
+- [workspace-snapshot-timeline.md](architectural-ideals/workspace-snapshot-timeline.md) — editor workspaces, save points, and branchable timelines (`novolis-workspaces`)
 - [gaming-layer-policy.md](gaming-layer-policy.md) — `novolis-gaming` authoring lane (identity, menus, multiplayer glue)
 - [simulation-layer-policy.md](simulation-layer-policy.md) — operational summary
 - [wave-7-gameengine-math.md](extraction-briefs/wave-7-gameengine-math.md)
