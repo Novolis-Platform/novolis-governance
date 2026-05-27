@@ -146,8 +146,6 @@ Avoid defaulting to technical buckets (`Services/`, `Repositories/`, `Helpers/`,
 
 **Requirement:** Must not reference other `Novolis.*` packages.
 
-> **Note:** The [microservice template](../../../novolis-templates/src/Novolis.Templates/content/Novolis.Templates.Microservice/) names this package `*.Client.Models`. That is equivalent to `.Models` for transport contracts; new services should prefer `Novolis.<Service>.Models` (see [Appendix A](#appendix-a-reference-implementations)).
-
 ### 3.4 `Novolis.<Service>.Client`
 
 **Role:** Typed internal SDK for consuming the service.
@@ -403,5 +401,5 @@ When synchronous calls are insufficient, use the owning service’s outbox or me
 
 | Artifact | Status |
 | --- | --- |
-| `Novolis.Templates.Microservice` ([novolis-templates](../../../novolis-templates/)) | Scaffold in progress: uses `*.Client.Models` instead of `*.Models`; may lack `.Data` / `.Data.Migrations` until aligned. Treat this guideline as normative when scaffold and template diverge. |
-| CI enforcement | Not yet automated; package references should be reviewed against [§4](#4-dependency-and-boundary-rules). |
+| `novolismicroservice` ([novolis-templates](../../../novolis-templates/)) | Reference scaffold: `Api`, core, `.Models`, `.Client`, `.Data`, `.Data.Migrations`, `.Tests` (TUnit). |
+| CI enforcement | Package boundaries are not yet verified automatically; review PRs against [§4](#4-dependency-and-boundary-rules). |
