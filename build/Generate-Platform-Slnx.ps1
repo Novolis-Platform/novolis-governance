@@ -112,14 +112,16 @@ if ($slnxFiles.Count -eq 0) {
     throw "No .slnx files found in workspace"
 }
 
-$stats.RepositoriesFound = $slnxFiles.Count
-Write-Verbose "Found $($slnxFiles.Count) repositories with .slnx files"
+$stats.RepositoriesFound = @($slnxFiles | Group-Object DirectoryName).Count
+Write-Verbose "Found $($stats.RepositoriesFound) repositories with .slnx files"
 
-# Build collection of repos to include
+# Group .slnx files by repository directory (to handle repos with multiple .slnx files)
+$reposByDirectory = $slnxFiles | Group-Object DirectoryName
+
 $reposToProcess = @()
 
-foreach ($slnxFile in $slnxFiles) {
-    $repoDir = $slnxFile.DirectoryName
+foreach ($repoGroup in $reposByDirectory) {
+    $repoDir = $repoGroup.Name
     $repoName = Split-Path -Leaf $repoDir
     
     # Check if repo is in exclude list
@@ -128,10 +130,10 @@ foreach ($slnxFile in $slnxFiles) {
         continue
     }
     
-    $reposToProcess += @{
+    $reposToProcess += [PSCustomObject]@{
         Name = $repoName
         Directory = $repoDir
-        SlnxFile = $slnxFile.FullName
+        SlnxFiles = $repoGroup.Group.FullName  # Array of all .slnx files in this repo
     }
 }
 
@@ -150,51 +152,85 @@ Write-Verbose "Phase 2: Parsing and assembling master solution..."
 foreach ($repo in $reposToProcess | Sort-Object Name) {
     Write-Verbose "Processing repository: $($repo.Name)"
     
-    # Read the repo's .slnx file
-    [xml]$repoSlnx = Get-Content -Path $repo.SlnxFile -Raw
-    
-    # Create top-level folder for this repo
-    $repoFolder = $masterSolution.CreateElement("Folder")
-    $repoFolder.SetAttribute("Name", "/$($repo.Name)/")
-    $masterSolution.DocumentElement.AppendChild($repoFolder) | Out-Null
-    
-    # Process each folder in the repo's solution
-    foreach ($sourceFolder in $repoSlnx.Solution.Folder) {
-        $folderName = $sourceFolder.GetAttribute("Name")
-        Write-Verbose "  Processing folder: $folderName"
+    # Process all .slnx files in this repository (most repos have 1, but some like wirefish have 2)
+    foreach ($slnxFilePath in $repo.SlnxFiles) {
+        $slnxFileName = Split-Path -Leaf $slnxFilePath
+        Write-Verbose "  Processing solution file: $slnxFileName"
         
-        # Create nested folder in master solution
-        $nestedFolder = $masterSolution.CreateElement("Folder")
-        $nestedFolder.SetAttribute("Name", $folderName)
-        $repoFolder.AppendChild($nestedFolder) | Out-Null
+        # Read the repo's .slnx file
+        [xml]$repoSlnx = Get-Content -Path $slnxFilePath -Raw
         
-        # Process each project in this folder
-        foreach ($sourceProject in $sourceFolder.Project) {
-            $projectPath = $sourceProject.GetAttribute("Path")
+        # Process each folder in this solution file
+        foreach ($sourceFolder in $repoSlnx.Solution.Folder) {
+            $folderName = $sourceFolder.GetAttribute("Name")
             
-            # Adjust path: prepend repo name to make it relative from workspace root
-            $adjustedPath = Join-Path $repo.Name $projectPath
+            # Create combined folder name
+            $combinedFolderName = "/$($repo.Name)$folderName"
+            Write-Verbose "    Processing folder: $combinedFolderName"
             
-            Write-Verbose "    Adding project: $adjustedPath"
-            
-            # Validate project file exists if requested
-            if ($ValidateProjectReferences) {
-                $fullProjectPath = Join-Path $WorkspaceRoot $adjustedPath
-                if (-not (Test-Path -Path $fullProjectPath)) {
-                    $warning = "Missing project file: $adjustedPath (full path: $fullProjectPath)"
-                    $stats.Warnings += $warning
-                    $stats.MissingProjects++
-                    Write-Warning $warning
-                    continue
+            # Check if this folder already exists in the master solution
+            $existingFolder = $null
+            foreach ($masterFolderElement in $masterSolution.Solution.Folder) {
+                if ($masterFolderElement -and $masterFolderElement.GetAttribute("Name") -eq $combinedFolderName) {
+                    $existingFolder = $masterFolderElement
+                    break
                 }
             }
             
-            # Create project element
-            $project = $masterSolution.CreateElement("Project")
-            $project.SetAttribute("Path", $adjustedPath)
-            $nestedFolder.AppendChild($project) | Out-Null
+            if ($existingFolder) {
+                # Folder already exists, we'll add projects to it
+                $masterFolder = $existingFolder
+                Write-Verbose "      (Merging with existing folder)"
+            }
+            else {
+                # Create new folder in master solution
+                $masterFolder = $masterSolution.CreateElement("Folder")
+                $masterFolder.SetAttribute("Name", $combinedFolderName)
+                $masterSolution.DocumentElement.AppendChild($masterFolder) | Out-Null
+            }
             
-            $stats.ProjectsIncluded++
+            # Process each project in this folder
+            foreach ($sourceProject in $sourceFolder.Project) {
+                $projectPath = $sourceProject.GetAttribute("Path")
+                
+                # Adjust path: prepend repo name to make it relative from workspace root
+                $adjustedPath = Join-Path $repo.Name $projectPath
+                
+                # Check if this project already exists in this folder
+                $projectExists = $false
+                foreach ($masterProjectElement in $masterFolder.Project) {
+                    if ($masterProjectElement -and $masterProjectElement.GetAttribute("Path") -eq $adjustedPath) {
+                        $projectExists = $true
+                        break
+                    }
+                }
+                
+                if ($projectExists) {
+                    Write-Verbose "      Skipping duplicate project: $adjustedPath"
+                    continue
+                }
+                
+                Write-Verbose "      Adding project: $adjustedPath"
+                
+                # Validate project file exists if requested
+                if ($ValidateProjectReferences) {
+                    $fullProjectPath = Join-Path $WorkspaceRoot $adjustedPath
+                    if (-not (Test-Path -Path $fullProjectPath)) {
+                        $warning = "Missing project file: $adjustedPath (full path: $fullProjectPath)"
+                        $stats.Warnings += $warning
+                        $stats.MissingProjects++
+                        Write-Warning $warning
+                        continue
+                    }
+                }
+                
+                # Create project element
+                $project = $masterSolution.CreateElement("Project")
+                $project.SetAttribute("Path", $adjustedPath)
+                $masterFolder.AppendChild($project) | Out-Null
+                
+                $stats.ProjectsIncluded++
+            }
         }
     }
 }
@@ -220,8 +256,8 @@ $xmlWriter.Flush()
 $xmlWriter.Close()
 $xmlContent = $stringWriter.ToString()
 
-# Write to file
-Set-Content -Path $OutputPath -Value $xmlContent -Encoding UTF8
+# Write to file with UTF-16 BOM (standard for .slnx files)
+Set-Content -Path $OutputPath -Value $xmlContent -Encoding Unicode
 
 Write-Verbose "Master solution written to: $OutputPath"
 
