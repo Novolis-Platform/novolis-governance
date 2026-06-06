@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="utf-16"?>
+<Solution>
+  <Folder Name="/novolis-analyzers/">
+    <Folder Name="/src/">
+      <Project Path="novolis-analyzers\src\Novolis.Analyzers.AutoMapper\Novolis.Analyzers.AutoMapper.csproj" />
+      <Project Path="novolis-analyzers\src\Novolis.Analyzers.CodeLength\Novolis.Analyzers.CodeLength.csproj" />
+    </Folder>
+    <Folder Name="/tests/">
+      <Project Path="novolis-analyzers\tests\Novolis.Analyzers.Tests\Novolis.Analyzers.Tests.csproj" />
+    </Folder>
+  </Folder>
+  <Folder Name="/novolis-aspire/">
+    <Folder Name="/src/">
+      <Project Path="novolis-aspire\src\Novolis.Aspire.Hosting.Signoz\Novolis.Aspire.Hosting.Signoz.csproj" />
+    </Folder>
+    <Folder Name="/tests/">
+      <Project Path="novolis-aspire\tests\Novolis.Aspire.Unit\Novolis.Aspire.Unit.csproj" />
+    </Folder>
+  </Folder>
+  <Folder Name="/novolis-audio/">
+    <Folder Name="/codegen/">
+      <Project Path="novolis-audio\codegen\Novolis.Audio.CodeGen.Abstractions\Novolis.Audio.CodeGen.Abstractions.csproj" />
+      <Project Path="novolis-audio\codegen\Novolis.Audio.CodeGen\Novolis.Audio.CodeGen.csproj" />
+      <Project Path="novolis-audio\codegen\Novolis.Audio.Pipeline\Novolis.Audio.Pipeline.csproj" />
+      <Project Path="novolis-audio\codegen\Novolis.Audio.Manifests\Novolis.Audio.Manifests.csproj" />
+    </Folder>
+    <Folder Name="/src/">
+      <Project Path="novolis-audio\src\Novolis.Audio.Analysis\Novolis.Audio.Analysis.csproj" />
+      <Project Path="novolis-audio\src\Novolis.Audio.MusicTheory\Novolis.Audio.MusicTheory.csproj" />
+      <Project Path="novolis-audio\src\Novolis.Audio.Patterns\Novolis.Audio.Patterns.csproj" />
+      <Project Path="novolis-audio\src\Novolis.Audio.Native\Novolis.Audio.Native.csproj" />
+      <Project Path="novolis-audio\src\Novolis.Audio.Bindings\Novolis.Audio.Bindings.csproj" />
+      <Project Path="novolis-audio\src\Novolis.Audio.Abstractions\Novolis.Audio.Abstractions.csproj" />
+      <Project Path="novolis-audio\src\Novolis.Audio.Runtime\Novolis.Audio.Runtime.csproj" />
+      <Project Path="novolis-audio\src\Novolis.Audio\Novolis.Audio.csproj" />
+      <Project Path="novolis-audio\src\Novolis.Audio.Core\Novolis.Audio.Core.csproj" />
+      <Project Path="novolis-audio\src\Novolis.Audio.Codecs\Novolis.Audio.Codecs.csproj" />
+      <Project Path="novolis-audio\src\Novolis.Audio.Filters\Novolis.Audio.Filters.csproj" />
+      <Project Path="novolis-audio\src\Novolis.Audio.Effects\Novolis.Audio.Effects.csproj" />
+      <Project Path="novolis-audio\src\Novolis.Audio.Playback\Novolis.Audio.Playback.csproj" />
+      <Project Path="novolis-audio\src\Novolis.Audio.Voice.Abstractions\Novolis.Audio.Voice.Abstractions.csproj" />
+      <Project Path="novolis-audio\src\Novolis.Audio.Voice.SherpaOnnx\Novolis.Audio.Voice.SherpaOnnx.csproj" />
+      <Project Path="novolis-audio\src\Novolis.Audio.Voice.Kokoro\Novolis.Audio.Voice.Kokoro.csproj" />
+      <Project Path="novolis-audio\src\Novolis.Audio.Voice.Platform.Abstractions\Novolis.Audio.Voice.Platform.Abstractions.csproj" />
+      <Project Path="novolis-audio\src\Novolis.Audio.Voice.Platform.Windows\Novolis.Audio.Voice.Platform.Windows.csproj" />
+      <Project Path="novolis-audio\src\Novolis.Audio.Voice.Phraseology\Novolis.Audio.Voice.Phraseology.csproj" />
+      <Project Path="novolis-audio\src\Novolis.Audio.Voice\Novolis.Audio.Voice.csproj" />
+      <Project Path="novolis-audio\src\Novolis.Audio.Voice.Profiles\Novolis.Audio.Voice.Profiles.csproj" />
+      <Project Path="novolis-audio\src\Novolis.Audio.Voice.Design\Novolis.Audio.Voice.Design.csproj" />
+      <Project Path="novolis-audio\src\Novolis.Audio.Host.Abstractions\Novolis.Audio.Host.Abstractions.csproj" />
+      <Project Path="novolis-audio\src\Novolis.Audio.Host.NAudio\Novolis.Audio.Host.NAudio.csproj" />
+      <Project Path="novolis-audio\src\Novolis.Audio.Live\Novolis.Audio.Live.csproj" />
+      <Project Path="novolis-audio\src\Novolis.Audio.Live.Dsl\Novolis.Audio.Live.Dsl.csproj" />
+      <Project Path="novolis-audio\src\Novolis.Audio.Live.Protocol\Novolis.Audio.Live.Protocol.csproj" />
+      <Project Path="novolis-audio\src\Novolis.Audio.Live.Repl\Novolis.Audio.Live.Repl.csproj" />
+      <Project Path="novolis-audio\src\Novolis.Audio.Live.Visuals\Novolis.Audio.Live.Visuals.csproj" />
+      <Project Path="novolis-audio\src\Novolis.Audio.Live.Host\Novolis.Audio.Live.Host.csproj" />
+    </Folder>
+    <Folder Name="/tests/">
+      <Project Path="novolis-audio\tests\Novolis.Audio.Unit\Novolis.Audio.Unit.csproj" />
+      <Project Path="novolis-audio\tests\Novolis.Audio.Live.Unit\Novolis.Audio.Live.Unit.csproj" />
+    </Folder>
+  </Folder>
+  <Folder Name="/novolis-avalonia/">
+    <Folder Name="/src/">
+      <Project Path="novolis-avalonia\src\Novolis.Avalonia.Layout\Novolis.Avalonia.Layout.csproj" />
+      <Project Path="novolis-avalonia\src\Novolis.Avalonia.Controls\Novolis.Avalonia.Controls.csproj" />
+      <Project Path="novolis-avalonia\src\Novolis.Avalonia.Rendering\Novolis.Avalonia.Rendering.csproj" />
+      <Project Path="novolis-avalonia\src\Novolis.Avalonia.Raylib\Novolis.Avalonia.Raylib.csproj" />
+      <Project Path="novolis-avalonia\src\Novolis.Avalonia.Studio\Novolis.Avalonia.Studio.csproj" />
+      <Project Path="novolis-avalonia\src\Novolis.Avalonia.Packaging.Inno\Novolis.Avalonia.Packaging.Inno.csproj" />
+      <Project Path="novolis-avalonia\src\Novolis.Avalonia.Live\Novolis.Avalonia.Live.csproj" />
+      <Project Path="novolis-avalonia\src\Novolis.Avalonia.Voice\Novolis.Avalonia.Voice.csproj" />
+      <Project Path="novolis-avalonia\src\Novolis.Avalonia.Timeline\Novolis.Avalonia.Timeline.csproj" />
+    </Folder>
+    <Folder Name="/samples/">
+      <Project Path="novolis-avalonia\samples\RenderingAvalonia\RenderingAvalonia.csproj" />
+      <Project Path="novolis-avalonia\samples\LiveAvalonia\LiveAvalonia.csproj" />
+    </Folder>
+    <Folder Name="/tests/">
+      <Project Path="novolis-avalonia\tests\Novolis.Avalonia.Unit\Novolis.Avalonia.Unit.csproj" />
+    </Folder>
+  </Folder>
+  <Folder Name="/novolis-codegen/">
+    <Folder Name="/src/">
+      <Project Path="novolis-codegen\src\Novolis.CodeGen.Reflection\Novolis.CodeGen.Reflection.csproj" />
+      <Project Path="novolis-codegen\src\Novolis.CodeGen.Reflection.Dump\Novolis.CodeGen.Reflection.Dump.csproj" />
+      <Project Path="novolis-codegen\src\Novolis.CodeGen.Reflection.ClassDiagram\Novolis.CodeGen.Reflection.ClassDiagram.csproj" />
+      <Project Path="novolis-codegen\src\Novolis.CodeGen.Pipeline\Novolis.CodeGen.Pipeline.csproj" />
+      <Project Path="novolis-codegen\src\Novolis.CodeGen.Bindings\Novolis.CodeGen.Bindings.csproj" />
+      <Project Path="novolis-codegen\src\Novolis.CodeGen.Bindings.Roslyn\Novolis.CodeGen.Bindings.Roslyn.csproj" />
+    </Folder>
+    <Folder Name="/tests/">
+      <Project Path="novolis-codegen\tests\Novolis.CodeGen.Unit\Novolis.CodeGen.Unit.csproj" />
+      <Project Path="novolis-codegen\tests\Novolis.CodeGen.Bindings.Unit\Novolis.CodeGen.Bindings.Unit.csproj" />
+    </Folder>
+  </Folder>
+  <Folder Name="/novolis-commands/">
+    <Folder Name="/src/">
+      <Project Path="novolis-commands\src\Novolis.Commands.Abstractions\Novolis.Commands.Abstractions.csproj" />
+      <Project Path="novolis-commands\src\Novolis.Commands.Engine\Novolis.Commands.Engine.csproj" />
+      <Project Path="novolis-commands\src\Novolis.Commands.Queueing\Novolis.Commands.Queueing.csproj" />
+      <Project Path="novolis-commands\src\Novolis.Commands.DependencyInjection\Novolis.Commands.DependencyInjection.csproj" />
+      <Project Path="novolis-commands\src\Novolis.Commands.Testing\Novolis.Commands.Testing.csproj" />
+    </Folder>
+    <Folder Name="/tests/">
+      <Project Path="novolis-commands\tests\Novolis.Commands.Unit\Novolis.Commands.Unit.csproj" />
+    </Folder>
+  </Folder>
+  <Folder Name="/novolis-gaming/">
+    <Folder Name="/src/">
+      <Project Path="novolis-gaming\src\Novolis.Game.Identity.Abstractions\Novolis.Game.Identity.Abstractions.csproj" />
+      <Project Path="novolis-gaming\src\Novolis.Game.Identity\Novolis.Game.Identity.csproj" />
+      <Project Path="novolis-gaming\src\Novolis.Game.Identity.AspNetCore\Novolis.Game.Identity.AspNetCore.csproj" />
+      <Project Path="novolis-gaming\src\Novolis.Game.MenuFlows\Novolis.Game.MenuFlows.csproj" />
+      <Project Path="novolis-gaming\src\Novolis.Game.Packaging.Inno\Novolis.Game.Packaging.Inno.csproj" />
+      <Project Path="novolis-gaming\src\Novolis.Game.Multiplayer.Abstractions\Novolis.Game.Multiplayer.Abstractions.csproj" />
+      <Project Path="novolis-gaming\src\Novolis.Game.Multiplayer.AspNetCore\Novolis.Game.Multiplayer.AspNetCore.csproj" />
+    </Folder>
+    <Folder Name="/tests/">
+      <Project Path="novolis-gaming\tests\Novolis.Gaming.Unit\Novolis.Gaming.Unit.csproj" />
+    </Folder>
+  </Folder>
+  <Folder Name="/novolis-io/">
+    <Folder Name="/src/">
+      <Project Path="novolis-io\src\Novolis.IO.Workspace\Novolis.IO.Workspace.csproj" />
+      <Project Path="novolis-io\src\Novolis.IO.Workspace.Testing\Novolis.IO.Workspace.Testing.csproj" />
+    </Folder>
+  </Folder>
+  <Folder Name="/novolis-logging/">
+    <Folder Name="/src/">
+      <Project Path="novolis-logging\src\Novolis.Logging.Contracts\Novolis.Logging.Contracts.csproj" />
+    </Folder>
+  </Folder>
+  <Folder Name="/novolis-machinelearning/">
+    <Folder Name="/src/">
+      <Project Path="novolis-machinelearning\src\Novolis.MachineLearning.Core\Novolis.MachineLearning.Core.csproj" />
+      <Project Path="novolis-machinelearning\src\Novolis.MachineLearning.AutoMl\Novolis.MachineLearning.AutoMl.csproj" />
+      <Project Path="novolis-machinelearning\src\Novolis.MachineLearning.Neural.Abstractions\Novolis.MachineLearning.Neural.Abstractions.csproj" />
+      <Project Path="novolis-machinelearning\src\Novolis.MachineLearning.Neural\Novolis.MachineLearning.Neural.csproj" />
+    </Folder>
+    <Folder Name="/tests/">
+      <Project Path="novolis-machinelearning\tests\Novolis.MachineLearning.Unit\Novolis.MachineLearning.Unit.csproj" />
+      <Project Path="novolis-machinelearning\tests\Novolis.MachineLearning.TestSupport\Novolis.MachineLearning.TestSupport.csproj" />
+      <Project Path="novolis-machinelearning\tests\Novolis.MachineLearning.Neural.TestSupport\Novolis.MachineLearning.Neural.TestSupport.csproj" />
+    </Folder>
+  </Folder>
+  <Folder Name="/novolis-mapping/">
+    <Folder Name="/src/">
+      <Project Path="novolis-mapping\src\Novolis.Mapping\Novolis.Mapping.csproj" />
+    </Folder>
+    <Folder Name="/tests/">
+      <Project Path="novolis-mapping\tests\Novolis.Mapping.Unit\Novolis.Mapping.Unit.csproj" />
+    </Folder>
+  </Folder>
+  <Folder Name="/novolis-markup/">
+    <Folder Name="/src/">
+      <Project Path="novolis-markup\src\Novolis.Markup.Markdown\Novolis.Markup.Markdown.csproj" />
+      <Project Path="novolis-markup\src\Novolis.Markup.Mermaid\Novolis.Markup.Mermaid.csproj" />
+    </Folder>
+    <Folder Name="/tests/">
+      <Project Path="novolis-markup\tests\Novolis.Markup.Unit\Novolis.Markup.Unit.csproj" />
+    </Folder>
+  </Folder>
+  <Folder Name="/novolis-math/">
+    <Folder Name="/src/">
+      <Project Path="novolis-math\src\Novolis.Math.Arrays\Novolis.Math.Arrays.csproj" />
+      <Project Path="novolis-math\src\Novolis.Math.Topology\Novolis.Math.Topology.csproj" />
+      <Project Path="novolis-math\src\Novolis.Math.Geometry\Novolis.Math.Geometry.csproj" />
+    </Folder>
+    <Folder Name="/tests/">
+      <Project Path="novolis-math\tests\Novolis.Math.Unit\Novolis.Math.Unit.csproj" />
+    </Folder>
+  </Folder>
+  <Folder Name="/novolis-messaging/">
+    <Folder Name="/src/">
+      <Project Path="novolis-messaging\src\Novolis.Messaging.Abstractions\Novolis.Messaging.Abstractions.csproj" />
+      <Project Path="novolis-messaging\src\Novolis.Messaging.Channels\Novolis.Messaging.Channels.csproj" />
+      <Project Path="novolis-messaging\src\Novolis.Messaging\Novolis.Messaging.csproj" />
+      <Project Path="novolis-messaging\src\Novolis.Messaging.Coordination.Abstractions\Novolis.Messaging.Coordination.Abstractions.csproj" />
+      <Project Path="novolis-messaging\src\Novolis.Messaging.Coordination.InMemory\Novolis.Messaging.Coordination.InMemory.csproj" />
+      <Project Path="novolis-messaging\src\Novolis.Messaging.Coordination.Redis\Novolis.Messaging.Coordination.Redis.csproj" />
+    </Folder>
+    <Folder Name="/tests/">
+      <Project Path="novolis-messaging\tests\Novolis.Messaging.Unit\Novolis.Messaging.Unit.csproj" />
+    </Folder>
+  </Folder>
+  <Folder Name="/novolis-physics/">
+    <Folder Name="/src/">
+      <Project Path="novolis-physics\src\Novolis.Physics.Abstractions\Novolis.Physics.Abstractions.csproj" />
+      <Project Path="novolis-physics\src\Novolis.Physics.Motion\Novolis.Physics.Motion.csproj" />
+      <Project Path="novolis-physics\src\Novolis.Physics.Gravity\Novolis.Physics.Gravity.csproj" />
+      <Project Path="novolis-physics\src\Novolis.Physics.Aerodynamics\Novolis.Physics.Aerodynamics.csproj" />
+      <Project Path="novolis-physics\src\Novolis.Physics.Collision.Simple\Novolis.Physics.Collision.Simple.csproj" />
+      <Project Path="novolis-physics\src\Novolis.Physics.Joints\Novolis.Physics.Joints.csproj" />
+      <Project Path="novolis-physics\src\Novolis.Physics.Ballistics\Novolis.Physics.Ballistics.csproj" />
+      <Project Path="novolis-physics\src\Novolis.Physics.Orbits\Novolis.Physics.Orbits.csproj" />
+      <Project Path="novolis-physics\src\Novolis.Physics\Novolis.Physics.csproj" />
+    </Folder>
+    <Folder Name="/tests/">
+      <Project Path="novolis-physics\tests\Novolis.Physics.TestSupport\Novolis.Physics.TestSupport.csproj" />
+      <Project Path="novolis-physics\tests\Novolis.Physics.Unit\Novolis.Physics.Unit.csproj" />
+    </Folder>
+  </Folder>
+  <Folder Name="/novolis-raylib/">
+    <Folder Name="/codegen/">
+      <Project Path="novolis-raylib\codegen\Novolis.Raylib.CodeGen.Abstractions\Novolis.Raylib.CodeGen.Abstractions.csproj" />
+      <Project Path="novolis-raylib\codegen\Novolis.Raylib.CodeGen.Hooks\Novolis.Raylib.CodeGen.Hooks.csproj" />
+      <Project Path="novolis-raylib\codegen\Novolis.Raylib.CodeGen\Novolis.Raylib.CodeGen.csproj" />
+      <Project Path="novolis-raylib\codegen\Novolis.Raylib.Pipeline\Novolis.Raylib.Pipeline.csproj" />
+    </Folder>
+    <Folder Name="/src/">
+      <Project Path="novolis-raylib\src\Novolis.Raylib.Native\Novolis.Raylib.Native.csproj" />
+      <Project Path="novolis-raylib\src\Novolis.Raylib.Bindings\Novolis.Raylib.Bindings.csproj" />
+      <Project Path="novolis-raylib\src\Novolis.Raylib.Abstractions\Novolis.Raylib.Abstractions.csproj" />
+      <Project Path="novolis-raylib\src\Novolis.Raylib.Runtime\Novolis.Raylib.Runtime.csproj" />
+      <Project Path="novolis-raylib\src\Novolis.Raylib.Hosting\Novolis.Raylib.Hosting.csproj" />
+      <Project Path="novolis-raylib\src\Novolis.Raylib.Game\Novolis.Raylib.Game.csproj" />
+      <Project Path="novolis-raylib\src\Novolis.Raylib\Novolis.Raylib.csproj" />
+      <Project Path="novolis-raylib\src\Novolis.Raylib.Testing\Novolis.Raylib.Testing.csproj" />
+      <Project Path="novolis-raylib\src\Novolis.Raylib.Capture\Novolis.Raylib.Capture.csproj" />
+      <Project Path="novolis-raylib\src\Novolis.Raylib.Raygui\Novolis.Raylib.Raygui.csproj" />
+      <Project Path="novolis-raylib\src\Novolis.Raylib.Raygui.Native\Novolis.Raylib.Raygui.Native.csproj" />
+      <Project Path="novolis-raylib\src\Novolis.Raylib.Loaders\Novolis.Raylib.Loaders.csproj" />
+      <Project Path="novolis-raylib\src\Novolis.Raylib.Input\Novolis.Raylib.Input.csproj" />
+    </Folder>
+    <Folder Name="/tests/">
+      <Project Path="novolis-raylib\tests\Novolis.Raylib.CodeGen.Unit\Novolis.Raylib.CodeGen.Unit.csproj" />
+      <Project Path="novolis-raylib\tests\Novolis.Raylib.Pipeline.Unit\Novolis.Raylib.Pipeline.Unit.csproj" />
+      <Project Path="novolis-raylib\tests\Novolis.Raylib.Testing.Unit\Novolis.Raylib.Testing.Unit.csproj" />
+      <Project Path="novolis-raylib\tests\Novolis.Raylib.Capture.Unit\Novolis.Raylib.Capture.Unit.csproj" />
+      <Project Path="novolis-raylib\tests\Novolis.Raylib.Runtime.Unit\Novolis.Raylib.Runtime.Unit.csproj" />
+      <Project Path="novolis-raylib\tests\Novolis.Raylib.Hosting.Unit\Novolis.Raylib.Hosting.Unit.csproj" />
+      <Project Path="novolis-raylib\tests\Novolis.Raylib.Game.Unit\Novolis.Raylib.Game.Unit.csproj" />
+      <Project Path="novolis-raylib\tests\Novolis.Raylib.Loaders.Unit\Novolis.Raylib.Loaders.Unit.csproj" />
+      <Project Path="novolis-raylib\tests\Novolis.Raylib.Testing.Integration\Novolis.Raylib.Testing.Integration.csproj" />
+      <Project Path="novolis-raylib\tests\Novolis.Raylib.Golden\Novolis.Raylib.Golden.csproj" />
+      <Project Path="novolis-raylib\tests\Novolis.Raylib.Golden.Seed\Novolis.Raylib.Golden.Seed.csproj" />
+    </Folder>
+    <Folder Name="/samples/">
+      <Project Path="novolis-raylib\samples\HelloGame\HelloGame.csproj" />
+      <Project Path="novolis-raylib\samples\HelloRuntime\HelloRuntime.csproj" />
+      <Project Path="novolis-raylib\samples\HelloHosting\HelloHosting.csproj" />
+      <Project Path="novolis-raylib\samples\HelloTesting\HelloTesting.csproj" />
+      <Project Path="novolis-raylib\samples\HelloCapture\HelloCapture.csproj" />
+      <Project Path="novolis-raylib\samples\HelloGui\HelloGui.csproj" />
+      <Project Path="novolis-raylib\samples\HelloRaygui\HelloRaygui.csproj" />
+    </Folder>
+  </Folder>
+  <Folder Name="/novolis-rendering/">
+    <Folder Name="/src/">
+      <Project Path="novolis-rendering\src\Novolis.Rendering.Abstractions\Novolis.Rendering.Abstractions.csproj" />
+      <Project Path="novolis-rendering\src\Novolis.Rendering.Presentation.Abstractions\Novolis.Rendering.Presentation.Abstractions.csproj" />
+      <Project Path="novolis-rendering\src\Novolis.Rendering.Runtime\Novolis.Rendering.Runtime.csproj" />
+      <Project Path="novolis-rendering\src\Novolis.Rendering.Materials\Novolis.Rendering.Materials.csproj" />
+      <Project Path="novolis-rendering\src\Novolis.Rendering.Scene\Novolis.Rendering.Scene.csproj" />
+      <Project Path="novolis-rendering\src\Novolis.Rendering.Compile\Novolis.Rendering.Compile.csproj" />
+      <Project Path="novolis-rendering\src\Novolis.Rendering.Backends.Cpu\Novolis.Rendering.Backends.Cpu.csproj" />
+      <Project Path="novolis-rendering\src\Novolis.Rendering.Backends.Igpu\Novolis.Rendering.Backends.Igpu.csproj" />
+      <Project Path="novolis-rendering\src\Novolis.Rendering.Backends.Vulkan\Novolis.Rendering.Backends.Vulkan.csproj" />
+      <Project Path="novolis-rendering\src\Novolis.Rendering.DependencyInjection\Novolis.Rendering.DependencyInjection.csproj" />
+      <Project Path="novolis-rendering\src\Novolis.Rendering.PathTrace.Demos\Novolis.Rendering.PathTrace.Demos.csproj" />
+      <Project Path="novolis-rendering\src\Novolis.Rendering.Presentation.Silk\Novolis.Rendering.Presentation.Silk.csproj" />
+      <Project Path="novolis-rendering\src\Novolis.Rendering.TwoD\Novolis.Rendering.TwoD.csproj" />
+      <Project Path="novolis-rendering\src\Novolis.Rendering.Backends.TwoD.Silk\Novolis.Rendering.Backends.TwoD.Silk.csproj" />
+      <Project Path="novolis-rendering\src\Novolis.Rendering.Presentation.Raylib\Novolis.Rendering.Presentation.Raylib.csproj" />
+      <Project Path="novolis-rendering\src\Novolis.Rendering.Testing\Novolis.Rendering.Testing.csproj" />
+      <Project Path="novolis-rendering\src\Novolis.Rendering\Novolis.Rendering.csproj" />
+    </Folder>
+    <Folder Name="/tests/">
+      <Project Path="novolis-rendering\tests\Novolis.Rendering.Unit\Novolis.Rendering.Unit.csproj" />
+      <Project Path="novolis-rendering\tests\Novolis.Rendering.TwoD.Unit\Novolis.Rendering.TwoD.Unit.csproj" />
+    </Folder>
+  </Folder>
+  <Folder Name="/novolis-scheduling/">
+    <Folder Name="/src/">
+      <Project Path="novolis-scheduling\src\Novolis.Scheduling.Cron\Novolis.Scheduling.Cron.csproj" />
+      <Project Path="novolis-scheduling\src\Novolis.Scheduling\Novolis.Scheduling.csproj" />
+    </Folder>
+    <Folder Name="/tests/">
+      <Project Path="novolis-scheduling\tests\Novolis.Scheduling.Unit\Novolis.Scheduling.Unit.csproj" />
+    </Folder>
+  </Folder>
+  <Folder Name="/novolis-security/">
+    <Folder Name="/src/">
+      <Project Path="novolis-security\src\Novolis.Security.WordLists\Novolis.Security.WordLists.csproj" />
+      <Project Path="novolis-security\src\Novolis.Security.Secrets\Novolis.Security.Secrets.csproj" />
+      <Project Path="novolis-security\src\Novolis.Security.PasswordHashing\Novolis.Security.PasswordHashing.csproj" />
+      <Project Path="novolis-security\src\Novolis.Security.Encryption\Novolis.Security.Encryption.csproj" />
+      <Project Path="novolis-security\src\Novolis.Security.HaveIBeenPwned\Novolis.Security.HaveIBeenPwned.csproj" />
+    </Folder>
+    <Folder Name="/tests/">
+      <Project Path="novolis-security\tests\Novolis.Security.Unit\Novolis.Security.Unit.csproj" />
+    </Folder>
+  </Folder>
+  <Folder Name="/novolis-simulation/">
+    <Folder Name="/src/">
+      <Project Path="novolis-simulation\src\Novolis.Simulation.Abstractions\Novolis.Simulation.Abstractions.csproj" />
+      <Project Path="novolis-simulation\src\Novolis.Simulation.World\Novolis.Simulation.World.csproj" />
+      <Project Path="novolis-simulation\src\Novolis.Simulation.View\Novolis.Simulation.View.csproj" />
+      <Project Path="novolis-simulation\src\Novolis.Simulation.Kinematics\Novolis.Simulation.Kinematics.csproj" />
+      <Project Path="novolis-simulation\src\Novolis.Simulation.World.Builders\Novolis.Simulation.World.Builders.csproj" />
+      <Project Path="novolis-simulation\src\Novolis.Simulation\Novolis.Simulation.csproj" />
+      <Project Path="novolis-simulation\src\Novolis.Simulation.Racing\Novolis.Simulation.Racing.csproj" />
+      <Project Path="novolis-simulation\src\Novolis.Simulation.Replay\Novolis.Simulation.Replay.csproj" />
+    </Folder>
+    <Folder Name="/tests/">
+      <Project Path="novolis-simulation\tests\Novolis.Simulation.Unit\Novolis.Simulation.Unit.csproj" />
+    </Folder>
+  </Folder>
+  <Folder Name="/novolis-storage/">
+    <Folder Name="/src/">
+      <Project Path="novolis-storage\src\Novolis.IO.Workspace\Novolis.IO.Workspace.csproj" />
+      <Project Path="novolis-storage\src\Novolis.IO.Workspace.Testing\Novolis.IO.Workspace.Testing.csproj" />
+      <Project Path="novolis-storage\src\Novolis.Storage.Abstractions\Novolis.Storage.Abstractions.csproj" />
+      <Project Path="novolis-storage\src\Novolis.Storage.InMemory\Novolis.Storage.InMemory.csproj" />
+      <Project Path="novolis-storage\src\Novolis.Storage.Json\Novolis.Storage.Json.csproj" />
+      <Project Path="novolis-storage\src\Novolis.Storage.LiteDb\Novolis.Storage.LiteDb.csproj" />
+    </Folder>
+    <Folder Name="/tests/">
+      <Project Path="novolis-storage\tests\Novolis.Storage.Unit\Novolis.Storage.Unit.csproj" />
+    </Folder>
+  </Folder>
+  <Folder Name="/novolis-templates/">
+    <Folder Name="/src/">
+      <Project Path="novolis-templates\src\Novolis.Templates\Novolis.Templates.csproj" />
+    </Folder>
+    <Folder Name="/tests/">
+      <Project Path="novolis-templates\tests\Novolis.Templates.SmokeTests\Novolis.Templates.SmokeTests.csproj" />
+    </Folder>
+  </Folder>
+  <Folder Name="/novolis-testing/">
+    <Folder Name="/src/">
+      <Project Path="novolis-testing\src\Novolis.Testing.TestBases\Novolis.Testing.TestBases.csproj" />
+      <Project Path="novolis-testing\src\Novolis.Testing.Logging\Novolis.Testing.Logging.csproj" />
+      <Project Path="novolis-testing\src\Novolis.Testing.TUnit\Novolis.Testing.TUnit.csproj" />
+      <Project Path="novolis-testing\src\Novolis.Testing.Testcontainers\Novolis.Testing.Testcontainers.csproj" />
+      <Project Path="novolis-testing\src\Novolis.Testing.TestServer\Novolis.Testing.TestServer.csproj" />
+    </Folder>
+  </Folder>
+  <Folder Name="/novolis-transports/">
+    <Folder Name="/src/">
+      <Project Path="novolis-transports\src\Novolis.Transports.Tcp.Abstractions\Novolis.Transports.Tcp.Abstractions.csproj" />
+      <Project Path="novolis-transports\src\Novolis.Transports.Tcp.Cryptography\Novolis.Transports.Tcp.Cryptography.csproj" />
+      <Project Path="novolis-transports\src\Novolis.Transports.Tcp.Server\Novolis.Transports.Tcp.Server.csproj" />
+      <Project Path="novolis-transports\src\Novolis.Transports.Tcp.Client\Novolis.Transports.Tcp.Client.csproj" />
+      <Project Path="novolis-transports\src\Novolis.Transports.LocalIpc\Novolis.Transports.LocalIpc.csproj" />
+      <Project Path="novolis-transports\src\Novolis.Transports.Http.Abstractions\Novolis.Transports.Http.Abstractions.csproj" />
+      <Project Path="novolis-transports\src\Novolis.Transports.Http.Authentication\Novolis.Transports.Http.Authentication.csproj" />
+      <Project Path="novolis-transports\src\Novolis.Transports.Http.Extensions\Novolis.Transports.Http.Extensions.csproj" />
+      <Project Path="novolis-transports\src\Novolis.Transports.Http\Novolis.Transports.Http.csproj" />
+      <Project Path="novolis-transports\src\Novolis.Transports.WireFish\Novolis.Transports.WireFish.csproj" />
+    </Folder>
+    <Folder Name="/tests/">
+      <Project Path="novolis-transports\tests\Novolis.Transports.Unit\Novolis.Transports.Unit.csproj" />
+    </Folder>
+  </Folder>
+  <Folder Name="/novolis-wirefish/">
+    <Folder Name="/src/">
+      <Project Path="novolis-wirefish\src\Frank.WireFish\Frank.WireFish.csproj" />
+    </Folder>
+    <Folder Name="/tests/">
+      <Project Path="novolis-wirefish\tests\Frank.WireFish.Tests\Frank.WireFish.Tests.csproj" />
+    </Folder>
+  </Folder>
+  <Folder Name="/novolis-wirefish/">
+    <Folder Name="/src/">
+      <Project Path="novolis-wirefish\src\Frank.WireFish\Frank.WireFish.csproj" />
+    </Folder>
+    <Folder Name="/tests/">
+      <Project Path="novolis-wirefish\tests\Frank.WireFish.Tests\Frank.WireFish.Tests.csproj" />
+    </Folder>
+  </Folder>
+  <Folder Name="/novolis-workspaces/">
+    <Folder Name="/src/">
+      <Project Path="novolis-workspaces\src\Novolis.Snapshots.Abstractions\Novolis.Snapshots.Abstractions.csproj" />
+      <Project Path="novolis-workspaces\src\Novolis.Snapshots.Memory\Novolis.Snapshots.Memory.csproj" />
+      <Project Path="novolis-workspaces\src\Novolis.Snapshots.Json\Novolis.Snapshots.Json.csproj" />
+      <Project Path="novolis-workspaces\src\Novolis.Snapshots.FileSystem\Novolis.Snapshots.FileSystem.csproj" />
+      <Project Path="novolis-workspaces\src\Novolis.Snapshots.Zip\Novolis.Snapshots.Zip.csproj" />
+      <Project Path="novolis-workspaces\src\Novolis.Timeline.Abstractions\Novolis.Timeline.Abstractions.csproj" />
+      <Project Path="novolis-workspaces\src\Novolis.Timeline.Memory\Novolis.Timeline.Memory.csproj" />
+      <Project Path="novolis-workspaces\src\Novolis.Timeline.FileSystem\Novolis.Timeline.FileSystem.csproj" />
+      <Project Path="novolis-workspaces\src\Novolis.Timeline.Presentation\Novolis.Timeline.Presentation.csproj" />
+      <Project Path="novolis-workspaces\src\Novolis.Workspaces.Abstractions\Novolis.Workspaces.Abstractions.csproj" />
+      <Project Path="novolis-workspaces\src\Novolis.Workspaces.FileSystem\Novolis.Workspaces.FileSystem.csproj" />
+      <Project Path="novolis-workspaces\src\Novolis.Workspaces.Snapshots\Novolis.Workspaces.Snapshots.csproj" />
+      <Project Path="novolis-workspaces\src\Novolis.Workspaces.Timeline\Novolis.Workspaces.Timeline.csproj" />
+      <Project Path="novolis-workspaces\src\Novolis.Workspaces.Projects.Timeline\Novolis.Workspaces.Projects.Timeline.csproj" />
+    </Folder>
+    <Folder Name="/tests/">
+      <Project Path="novolis-workspaces\tests\Novolis.Workspaces.Unit\Novolis.Workspaces.Unit.csproj" />
+    </Folder>
+    <Folder Name="/samples/">
+      <Project Path="novolis-workspaces\samples\MinimalWorkspaceTimeline\MinimalWorkspaceTimeline.csproj" />
+      <Project Path="novolis-workspaces\samples\MeshBench\MeshBench.csproj" />
+      <Project Path="novolis-workspaces\samples\ProjectTimelineBench\ProjectTimelineBench.csproj" />
+    </Folder>
+  </Folder>
+</Solution>
