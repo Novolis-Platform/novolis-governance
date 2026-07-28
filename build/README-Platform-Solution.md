@@ -162,7 +162,7 @@ Solution/
 
 Each project path is relative to `d:\novolis`:
 ```
-novolis-audio\src\Novolis.Audio.Analysis\Novolis.Audio.Analysis.csproj
+novolis-audio\src\Novolis.Audio.Live.Visuals\Novolis.Audio.Live.Visuals.csproj
 ```
 
 ---
