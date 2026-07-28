@@ -5,12 +5,17 @@
 
 .DESCRIPTION
   Runs:
-    1. gpr-package-overview.ps1 (summary; always continues)
-    2. gpr-find-junk-versions.ps1
-    3. find-build-line-floats.ps1
-    4. verify-nuget-only.ps1
+    Remote (unless -SkipRemote):
+      1. gpr-package-overview.ps1 (report; soft)
+      2. gpr-find-junk-versions.ps1
+      3. gpr-find-broken-deps.ps1 (only with -CheckBrokenDeps; slow)
+    Local (unless -SkipLocal):
+      4. find-build-line-floats.ps1
+      5. find-local-nuget-feeds.ps1
+      6. find-stale-package-ids.ps1
+      7. verify-nuget-only.ps1
 
-  Exit non-zero if any check fails. Use after publish waves or when restore looks wrong.
+  Exit non-zero if any hard check fails. Use after publish waves or when restore looks wrong.
 
 .PARAMETER Org
   GitHub organization (default Novolis-Platform).
@@ -21,13 +26,20 @@
 .PARAMETER SkipLocal
   Skip local checkout scans (GPR only).
 
+.PARAMETER CheckBrokenDeps
+  Also download latest nuspecs and verify Novolis dependency versions exist on GPR.
+  Slow on a full org inventory; prefer targeting with gpr-find-broken-deps.ps1 -Package.
+
 .EXAMPLE
   pwsh -File novolis-governance/scripts/gpr-health-check.ps1
+  pwsh -File novolis-governance/scripts/gpr-health-check.ps1 -SkipRemote
+  pwsh -File novolis-governance/scripts/gpr-health-check.ps1 -CheckBrokenDeps
 #>
 param(
     [string]$Org = 'Novolis-Platform',
     [switch]$SkipRemote,
-    [switch]$SkipLocal
+    [switch]$SkipLocal,
+    [switch]$CheckBrokenDeps
 )
 
 $ErrorActionPreference = 'Stop'
@@ -37,12 +49,12 @@ function Invoke-Check {
     param(
         [Parameter(Mandatory)][string]$Name,
         [Parameter(Mandatory)][string]$ScriptPath,
-        [string[]]$Arguments = @()
+        [hashtable]$ArgumentTable = @{}
     )
 
     Write-Host ''
     Write-Host "=== $Name ===" -ForegroundColor Cyan
-    & $ScriptPath @Arguments
+    & $ScriptPath @ArgumentTable
     $code = $LASTEXITCODE
     if ($code -ne 0) {
         $failed.Add("$Name (exit $code)")
@@ -67,11 +79,18 @@ if (-not $SkipRemote) {
         Write-Host 'PASS: gpr-package-overview' -ForegroundColor Green
     }
 
-    Invoke-Check -Name 'gpr-find-junk-versions' -ScriptPath (Join-Path $scripts 'gpr-find-junk-versions.ps1') -Arguments @('-Org', $Org)
+    # Hashtable splat — string arrays would bind "-Org" as the Org *value*.
+    Invoke-Check -Name 'gpr-find-junk-versions' -ScriptPath (Join-Path $scripts 'gpr-find-junk-versions.ps1') -ArgumentTable @{ Org = $Org }
+
+    if ($CheckBrokenDeps) {
+        Invoke-Check -Name 'gpr-find-broken-deps' -ScriptPath (Join-Path $scripts 'gpr-find-broken-deps.ps1') -ArgumentTable @{ Org = $Org }
+    }
 }
 
 if (-not $SkipLocal) {
     Invoke-Check -Name 'find-build-line-floats' -ScriptPath (Join-Path $scripts 'find-build-line-floats.ps1')
+    Invoke-Check -Name 'find-local-nuget-feeds' -ScriptPath (Join-Path $scripts 'find-local-nuget-feeds.ps1')
+    Invoke-Check -Name 'find-stale-package-ids' -ScriptPath (Join-Path $scripts 'find-stale-package-ids.ps1')
     Invoke-Check -Name 'verify-nuget-only' -ScriptPath (Join-Path $scripts 'verify-nuget-only.ps1')
 }
 

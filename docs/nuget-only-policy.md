@@ -20,9 +20,14 @@ Never publish throwaway versions such as `2026.1.99` or `1.0.0` to GitHub Packag
 
 ```powershell
 pwsh -File D:\novolis\novolis-governance\scripts\gpr-health-check.ps1
+pwsh -File D:\novolis\novolis-governance\scripts\gpr-health-check.ps1 -SkipRemote
 ```
 
-Full runbook: [gpr-maintenance.md](gpr-maintenance.md) (inventory, junk-version find/delete, build-line float scan).
+Covers: junk versions, build-line floats, local folder feeds, stale package ids
+(`Host.NAudio` → `Output.NAudio`, …), and cross-repo `ProjectReference` leaks.
+Optional: `-CheckBrokenDeps` for latest-nuspec → missing dependency versions.
+
+Full runbook: [gpr-maintenance.md](gpr-maintenance.md).
 
 ## Forbidden
 
