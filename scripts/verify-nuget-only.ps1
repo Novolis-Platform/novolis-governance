@@ -26,12 +26,12 @@ Get-ChildItem $Root -Directory -Filter 'novolis-*' | ForEach-Object {
 }
 
 if ($violations.Count -gt 0) {
-    $msg = @(
-        'NuGet-only policy violations:',
-        ($violations | ForEach-Object { "  - $_" }),
-        'See novolis-governance/docs/nuget-only-policy.md'
-    ) -join "`n"
-    Write-Error $msg
+    $lines = @('NuGet-only policy violations:')
+    foreach ($v in $violations) {
+        $lines += "  - $v"
+    }
+    $lines += 'See novolis-governance/docs/nuget-only-policy.md'
+    Write-Error ($lines -join [Environment]::NewLine)
     exit 1
 }
 
