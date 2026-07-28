@@ -22,6 +22,19 @@ Requires .NET 10 SDK (MTP `--coverage`) and `reportgenerator` (`dotnet tool inst
 
 Do **not** pass `--nologo` to `dotnet test` under MTP — it is treated as an unknown argument and yields exit code 5 with zero tests.
 
+## Test gaps (no coverage run needed)
+
+```powershell
+pwsh -File novolis-governance/scripts/get-test-gap-report.ps1 -FailOnGaps:`$false
+```
+
+Reports:
+
+1. Repos/solutions with **no test hosts**
+2. Production assemblies under `src/` / `codegen/` with **no direct test `ProjectReference`**
+
+Same `-Exclude` / `coverage-excludes.txt` / `-Include` as the coverage collector. Output: `artifacts/test-gaps/SUMMARY.md`.
+
 ## Outputs
 
 Under `<Root>/artifacts/coverage/` (gitignored via repo `artifacts/`):

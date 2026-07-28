@@ -13,6 +13,7 @@ Portable agent instructions (ACS-aligned). Editor-specific rules may also exist 
 
 ```powershell
 pwsh -File scripts/gpr-health-check.ps1
+pwsh -File scripts/get-test-gap-report.ps1 -FailOnGaps:`$false
 pwsh -File scripts/get-coverage-report.ps1 -ListRepos
 pwsh -File scripts/verify-nuget-only.ps1
 pwsh -File scripts/Verify-AcsRepo.ps1

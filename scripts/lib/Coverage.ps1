@@ -51,7 +51,7 @@ function Read-CoverageExcludeList {
     return @($set)
 }
 
-function Get-NovolisReposWithTests {
+function Get-NovolisRepoDirectories {
     param(
         [Parameter(Mandatory)]
         [string]$Root,
@@ -70,29 +70,116 @@ function Get-NovolisReposWithTests {
             [StringComparer]::OrdinalIgnoreCase)
     }
 
-    $repos = [System.Collections.Generic.List[object]]::new()
+    $dirs = [System.Collections.Generic.List[object]]::new()
     Get-ChildItem -LiteralPath $Root -Directory -Filter 'novolis-*' | Sort-Object Name | ForEach-Object {
         $name = $_.Name
         if ($excludeSet.Contains($name)) { return }
         if ($includeSet -and -not $includeSet.Contains($name)) { return }
+        $dirs.Add([pscustomobject]@{ Name = $name; Path = $_.FullName })
+    }
+    return $dirs
+}
 
-        $testProjects = @(
-            Get-ChildItem -LiteralPath $_.FullName -Recurse -Filter '*.csproj' -ErrorAction SilentlyContinue |
-                Where-Object {
-                    $_.FullName -match '[\\/]tests[\\/]' -and
-                    (Select-String -LiteralPath $_.FullName -Pattern 'TUnit|Microsoft\.NET\.Test\.Sdk|xunit|NUnit' -Quiet)
-                }
-        )
-        if ($testProjects.Count -eq 0) { return }
+function Test-NovolisTestHostProject {
+    param([Parameter(Mandatory)][string]$ProjectPath)
+    if ($ProjectPath -notmatch '[\\/]tests[\\/]') { return $false }
+    return [bool](Select-String -LiteralPath $ProjectPath -Pattern 'TUnit|Microsoft\.NET\.Test\.Sdk|xunit|NUnit' -Quiet)
+}
 
-        $slnx = Get-ChildItem -LiteralPath $_.FullName -Filter '*.slnx' -File -ErrorAction SilentlyContinue |
+function Get-NovolisTestHostProjects {
+    param([Parameter(Mandatory)][string]$RepoPath)
+    @(
+        Get-ChildItem -LiteralPath $RepoPath -Recurse -Filter '*.csproj' -ErrorAction SilentlyContinue |
+            Where-Object { Test-NovolisTestHostProject -ProjectPath $_.FullName } |
+            ForEach-Object { $_.FullName }
+    )
+}
+
+function Get-NovolisProductionProjects {
+    param(
+        [Parameter(Mandatory)][string]$RepoPath,
+        [switch]$PackableOnly,
+        [switch]$IncludeExecutables
+    )
+
+    $skipPath = [regex]'[\\/](tests|samples|benchmarks|tools|artifacts|obj|bin)[\\/]'
+    $projects = [System.Collections.Generic.List[object]]::new()
+
+    foreach ($dirName in @('src', 'codegen')) {
+        $dir = Join-Path $RepoPath $dirName
+        if (-not (Test-Path -LiteralPath $dir)) { continue }
+
+        Get-ChildItem -LiteralPath $dir -Recurse -Filter '*.csproj' -ErrorAction SilentlyContinue | ForEach-Object {
+            if ($skipPath.IsMatch($_.FullName)) { return }
+
+            $text = Get-Content -LiteralPath $_.FullName -Raw
+            if ($text -match '(?i)<IsTestProject>\s*true\s*</IsTestProject>') { return }
+            if ($text -match '(?i)<OutputType>\s*(WinExe|Exe)\s*</OutputType>' -and -not $IncludeExecutables) { return }
+
+            $isPackable = $true
+            if ($text -match '(?i)<IsPackable>\s*false\s*</IsPackable>') {
+                $isPackable = $false
+            }
+            if ($PackableOnly -and -not $isPackable) { return }
+
+            $packageId = $null
+            if ($text -match '(?i)<PackageId>\s*([^<]+)\s*</PackageId>') {
+                $packageId = $Matches[1].Trim()
+            }
+
+            $projects.Add([pscustomobject]@{
+                Path      = $_.FullName
+                Name      = [IO.Path]::GetFileNameWithoutExtension($_.FullName)
+                PackageId = if ($packageId) { $packageId } else { [IO.Path]::GetFileNameWithoutExtension($_.FullName) }
+                Packable  = $isPackable
+                RelPath   = $_.FullName.Substring($RepoPath.Length).TrimStart('\', '/')
+            })
+        }
+    }
+
+    return $projects
+}
+
+function Get-NovolisProjectReferenceTargets {
+    param(
+        [Parameter(Mandatory)][string]$ProjectPath,
+        [Parameter(Mandatory)][string]$RepoPath
+    )
+
+    $dir = Split-Path $ProjectPath -Parent
+    $targets = [System.Collections.Generic.HashSet[string]]::new([StringComparer]::OrdinalIgnoreCase)
+    $text = Get-Content -LiteralPath $ProjectPath -Raw
+    foreach ($m in [regex]::Matches($text, 'ProjectReference\s+Include="([^"]+)"')) {
+        $raw = $m.Groups[1].Value -replace '/', '\'
+        $resolved = [IO.Path]::GetFullPath((Join-Path $dir $raw))
+        if ($resolved.StartsWith($RepoPath, [StringComparison]::OrdinalIgnoreCase)) {
+            [void]$targets.Add($resolved)
+        }
+    }
+    return @($targets)
+}
+
+function Get-NovolisReposWithTests {
+    param(
+        [Parameter(Mandatory)]
+        [string]$Root,
+        [string[]]$Exclude = @(),
+        [string[]]$Include = @()
+    )
+
+    $repos = [System.Collections.Generic.List[object]]::new()
+    foreach ($repo in (Get-NovolisRepoDirectories -Root $Root -Exclude $Exclude -Include $Include)) {
+        $testProjects = @(Get-NovolisTestHostProjects -RepoPath $repo.Path)
+        if ($testProjects.Count -eq 0) { continue }
+
+        $slnx = Get-ChildItem -LiteralPath $repo.Path -Filter '*.slnx' -File -ErrorAction SilentlyContinue |
             Select-Object -First 1
 
         $repos.Add([pscustomobject]@{
-            Name         = $name
-            Path         = $_.FullName
+            Name         = $repo.Name
+            Path         = $repo.Path
             Solution     = if ($slnx) { $slnx.FullName } else { $null }
-            TestProjects = @($testProjects | ForEach-Object { $_.FullName })
+            TestProjects = $testProjects
         })
     }
 
