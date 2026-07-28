@@ -26,11 +26,13 @@ Get-ChildItem $Root -Directory -Filter 'novolis-*' | ForEach-Object {
 }
 
 if ($violations.Count -gt 0) {
-    Write-Error @(
+    $msg = @(
         'NuGet-only policy violations:',
         ($violations | ForEach-Object { "  - $_" }),
         'See novolis-governance/docs/nuget-only-policy.md'
     ) -join "`n"
+    Write-Error $msg
+    exit 1
 }
 
 Write-Host "verify-nuget-only: OK ($((Get-ChildItem $Root -Directory -Filter 'novolis-*').Count) repos scanned)"

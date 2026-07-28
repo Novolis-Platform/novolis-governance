@@ -14,6 +14,8 @@
 
 Float Novolis packages only on the **platform line** (`2026.1.*`). Do **not** use build-line floats such as `2026.1.10.*` or `2026.1.1.*` — those resolve to the latest CI build number and fail restore when that build was never published (publish race / failed merge).
 
+Never publish throwaway versions such as `2026.1.99` or `1.0.0` to GitHub Packages. Under a `2026.1.*` float, `2026.1.99` sorts **above** real CI builds like `2026.1.10.36` and will silently win restore. Delete such versions from the org feed if they appear.
+
 ## Forbidden
 
 - `ProjectReference` whose path crosses into a sibling `novolis-*` directory (e.g. `..\..\..\novolis-codegen\...`)
