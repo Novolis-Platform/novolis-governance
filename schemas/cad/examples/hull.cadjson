@@ -1,0 +1,70 @@
+{
+  "format": "novolis.cad",
+  "schemaVersion": 1,
+  "name": "Hull blockout",
+  "generator": { "name": "DraftStudio", "version": "2026.1.0" },
+  "createdAt": "2026-07-28T20:00:00Z",
+  "modifiedAt": "2026-07-28T20:00:00Z",
+  "unitScaleMeters": 1,
+  "linearUnit": "meter",
+  "angleUnit": "radian",
+  "coordinateSystem": {
+    "handedness": "right",
+    "upAxis": "y",
+    "forwardAxis": "z"
+  },
+  "layers": [
+    {
+      "id": "a0000000-0000-4000-8000-000000000001",
+      "name": "0",
+      "visible": true,
+      "locked": false,
+      "color": [0.8, 0.8, 0.8]
+    }
+  ],
+  "linetypes": [
+    { "name": "Continuous" },
+    { "name": "Dashed", "pattern": [6, -3] }
+  ],
+  "entities": [
+    {
+      "id": "a0000000-0000-4000-8000-000000000010",
+      "kind": "line",
+      "layerId": "a0000000-0000-4000-8000-000000000001",
+      "name": "keel",
+      "style": { "linetype": "Continuous", "lineWeightMm": 0.25 },
+      "a": [0, 0, 0],
+      "b": [0, 0, 12]
+    },
+    {
+      "id": "a0000000-0000-4000-8000-000000000012",
+      "kind": "spline",
+      "layerId": "a0000000-0000-4000-8000-000000000001",
+      "name": "sheer",
+      "degree": 3,
+      "closed": false,
+      "controlPoints": [[0, 0, 0], [2, 0, 3], [2, 0, 9], [0, 0, 12]],
+      "knots": [0, 0, 0, 0, 1, 1, 1, 1],
+      "weights": [1, 1, 1, 1],
+      "fitPoints": [[0, 0, 0], [2, 0, 6], [0, 0, 12]],
+      "normal": [0, 1, 0]
+    },
+    {
+      "id": "a0000000-0000-4000-8000-000000000011",
+      "kind": "box",
+      "layerId": "a0000000-0000-4000-8000-000000000001",
+      "name": "hull",
+      "center": [0, 1, 6],
+      "halfExtents": [2, 1, 6],
+      "material": "hull",
+      "color": [0.72, 0.35, 0.28]
+    }
+  ],
+  "camera": {
+    "yaw": 0.9,
+    "pitch": 0.35,
+    "distance": 40,
+    "target": [0, 1, 0]
+  },
+  "properties": {}
+}

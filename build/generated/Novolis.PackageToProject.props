@@ -137,6 +137,12 @@
     <NovolisPackageProject Include="Novolis.Audio.Voice.SherpaOnnx">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-audio\src\Novolis.Audio.Voice.SherpaOnnx\Novolis.Audio.Voice.SherpaOnnx.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Avalonia.Agent">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-avalonia\src\Novolis.Avalonia.Agent\Novolis.Avalonia.Agent.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Avalonia.Agent.Protocol">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-avalonia\src\Novolis.Avalonia.Agent.Protocol\Novolis.Avalonia.Agent.Protocol.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Avalonia.Briefing">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-avalonia\src\Novolis.Avalonia.Briefing\Novolis.Avalonia.Briefing.csproj</ProjectPath>
     </NovolisPackageProject>
@@ -199,6 +205,9 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Commands.Engine">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-commands\src\Novolis.Commands.Engine\Novolis.Commands.Engine.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Commands.Expressions">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-commands\src\Novolis.Commands.Expressions\Novolis.Commands.Expressions.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Commands.Queueing">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-commands\src\Novolis.Commands.Queueing\Novolis.Commands.Queueing.csproj</ProjectPath>

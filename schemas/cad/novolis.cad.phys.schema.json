@@ -1,0 +1,135 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://novolis.dev/schemas/cad/novolis.cad.phys.schema.json",
+  "title": "novolis.cad.phys",
+  "description": "Extension of novolis.cad with explicit triangle meshes and colliders. File extension: .cadphys.json. May inline entities or reference a base .cadjson via baseDocument.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["format", "schemaVersion", "name", "unitScaleMeters", "meshes", "colliders"],
+  "properties": {
+    "format": { "const": "novolis.cad.phys" },
+    "schemaVersion": { "type": "integer", "const": 1 },
+    "name": { "type": "string", "minLength": 1 },
+    "generator": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "version"],
+      "properties": {
+        "name": { "type": "string" },
+        "version": { "type": "string" }
+      }
+    },
+    "createdAt": { "type": "string", "format": "date-time" },
+    "modifiedAt": { "type": "string", "format": "date-time" },
+    "unitScaleMeters": { "type": "number", "exclusiveMinimum": 0 },
+    "linearUnit": { "const": "meter" },
+    "angleUnit": { "const": "radian" },
+    "upAxis": { "enum": ["x", "y", "z"], "default": "y" },
+    "coordinateSystem": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "handedness": { "enum": ["right", "left"] },
+        "upAxis": { "enum": ["x", "y", "z"] },
+        "forwardAxis": { "enum": ["x", "y", "z"] }
+      }
+    },
+    "baseDocument": {
+      "type": "string",
+      "description": "Relative path to a .cadjson when this file is a sidecar (meshes/colliders + id bindings)"
+    },
+    "layers": { "type": "array" },
+    "linetypes": { "type": "array" },
+    "entities": { "type": "array" },
+    "camera": { "type": "object" },
+    "properties": {
+      "type": "object",
+      "additionalProperties": {
+        "oneOf": [
+          { "type": "string" },
+          { "type": "number" },
+          { "type": "boolean" }
+        ]
+      }
+    },
+    "meshes": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/mesh" }
+    },
+    "colliders": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/collider" }
+    }
+  },
+  "$defs": {
+    "vec3": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": { "type": "number" }
+    },
+    "vec2": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": { "type": "number" }
+    },
+    "uuid": { "type": "string", "format": "uuid" },
+    "mesh": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "vertices", "indices"],
+      "properties": {
+        "id": { "$ref": "#/$defs/uuid" },
+        "name": { "type": "string" },
+        "entityId": { "$ref": "#/$defs/uuid" },
+        "vertices": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/vec3" }
+        },
+        "indices": {
+          "type": "array",
+          "items": { "type": "integer", "minimum": 0 }
+        },
+        "normals": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/vec3" }
+        },
+        "uvs": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/vec2" },
+          "description": "Per-vertex UV; allowed only in phys mesh payload (not Math stack Vector2)"
+        },
+        "winding": { "enum": ["ccw", "cw"], "default": "ccw" },
+        "space": { "enum": ["local", "world"], "default": "local" },
+        "material": { "type": "string" }
+      }
+    },
+    "collider": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind"],
+      "properties": {
+        "id": { "$ref": "#/$defs/uuid" },
+        "entityId": { "$ref": "#/$defs/uuid" },
+        "kind": { "enum": ["box", "sphere", "capsule", "triangleMesh"] },
+        "center": { "$ref": "#/$defs/vec3" },
+        "halfExtents": { "$ref": "#/$defs/vec3" },
+        "radius": { "type": "number", "exclusiveMinimum": 0 },
+        "a": { "$ref": "#/$defs/vec3" },
+        "b": { "$ref": "#/$defs/vec3" },
+        "meshId": { "$ref": "#/$defs/uuid" },
+        "isTrigger": { "type": "boolean", "default": false },
+        "body": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "mass": { "type": "number", "minimum": 0 },
+            "inertiaDiagonal": { "$ref": "#/$defs/vec3" },
+            "kinematic": { "type": "boolean" }
+          }
+        }
+      }
+    }
+  }
+}

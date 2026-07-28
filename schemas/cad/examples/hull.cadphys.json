@@ -1,0 +1,42 @@
+{
+  "format": "novolis.cad.phys",
+  "schemaVersion": 1,
+  "name": "Hull blockout",
+  "generator": { "name": "DraftStudio", "version": "2026.1.0" },
+  "unitScaleMeters": 1,
+  "linearUnit": "meter",
+  "angleUnit": "radian",
+  "upAxis": "y",
+  "baseDocument": "hull.cadjson",
+  "meshes": [
+    {
+      "id": "b0000000-0000-4000-8000-000000000001",
+      "entityId": "a0000000-0000-4000-8000-000000000011",
+      "name": "hull-mesh",
+      "space": "local",
+      "winding": "ccw",
+      "vertices": [
+        [-2, -1, -6], [2, -1, -6], [2, 1, -6], [-2, 1, -6],
+        [-2, -1, 6], [2, -1, 6], [2, 1, 6], [-2, 1, 6]
+      ],
+      "indices": [
+        0, 1, 2, 0, 2, 3,
+        4, 6, 5, 4, 7, 6,
+        0, 4, 5, 0, 5, 1,
+        2, 6, 7, 2, 7, 3,
+        0, 3, 7, 0, 7, 4,
+        1, 5, 6, 1, 6, 2
+      ]
+    }
+  ],
+  "colliders": [
+    {
+      "id": "c0000000-0000-4000-8000-000000000001",
+      "entityId": "a0000000-0000-4000-8000-000000000011",
+      "kind": "box",
+      "center": [0, 1, 6],
+      "halfExtents": [2, 1, 6],
+      "body": { "mass": 1, "inertiaDiagonal": [1, 1, 1], "kinematic": false }
+    }
+  ]
+}

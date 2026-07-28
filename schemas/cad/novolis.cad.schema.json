@@ -1,0 +1,388 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://novolis.dev/schemas/cad/novolis.cad.schema.json",
+  "title": "novolis.cad",
+  "description": "Authoring description of 2D sketch + 3D solid objects (parametric), layers, styles, and view state. File extension: .cadjson",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["format", "schemaVersion", "name", "unitScaleMeters", "linearUnit", "angleUnit", "coordinateSystem", "layers", "entities"],
+  "properties": {
+    "format": { "const": "novolis.cad" },
+    "schemaVersion": { "type": "integer", "const": 1 },
+    "name": { "type": "string", "minLength": 1 },
+    "generator": { "$ref": "#/$defs/generator" },
+    "createdAt": { "type": "string", "format": "date-time" },
+    "modifiedAt": { "type": "string", "format": "date-time" },
+    "unitScaleMeters": { "type": "number", "exclusiveMinimum": 0 },
+    "linearUnit": { "const": "meter" },
+    "angleUnit": { "const": "radian" },
+    "coordinateSystem": { "$ref": "#/$defs/coordinateSystem" },
+    "layers": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/layer" }
+    },
+    "linetypes": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/linetype" }
+    },
+    "entities": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/entity" }
+    },
+    "camera": { "$ref": "#/$defs/camera" },
+    "properties": { "$ref": "#/$defs/propertiesBag" }
+  },
+  "$defs": {
+    "vec3": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": { "type": "number" },
+      "description": "[x, y, z]"
+    },
+    "quat": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": { "type": "number" },
+      "description": "[x, y, z, w]"
+    },
+    "rgb": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": { "type": "number", "minimum": 0, "maximum": 1 }
+    },
+    "rgba": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": { "type": "number", "minimum": 0, "maximum": 1 }
+    },
+    "uuid": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "propertiesBag": {
+      "type": "object",
+      "additionalProperties": {
+        "oneOf": [
+          { "type": "string" },
+          { "type": "number" },
+          { "type": "boolean" }
+        ]
+      }
+    },
+    "generator": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "version"],
+      "properties": {
+        "name": { "type": "string" },
+        "version": { "type": "string" }
+      }
+    },
+    "coordinateSystem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["handedness", "upAxis", "forwardAxis"],
+      "properties": {
+        "handedness": { "enum": ["right", "left"] },
+        "upAxis": { "enum": ["x", "y", "z"] },
+        "forwardAxis": { "enum": ["x", "y", "z"] }
+      }
+    },
+    "layer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name"],
+      "properties": {
+        "id": { "$ref": "#/$defs/uuid" },
+        "name": { "type": "string" },
+        "visible": { "type": "boolean", "default": true },
+        "locked": { "type": "boolean", "default": false },
+        "color": { "$ref": "#/$defs/rgb" },
+        "properties": { "$ref": "#/$defs/propertiesBag" }
+      }
+    },
+    "linetype": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name"],
+      "properties": {
+        "name": { "type": "string" },
+        "pattern": {
+          "type": "array",
+          "items": { "type": "number" },
+          "description": "Dash pattern lengths (positive = draw, negative = gap), millimetres or drawing units"
+        }
+      }
+    },
+    "style": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "linetype": { "type": "string", "default": "Continuous" },
+        "lineWeightMm": { "type": "number", "minimum": 0 },
+        "color": { "$ref": "#/$defs/rgb" },
+        "colorIndex": { "type": "integer", "minimum": 1, "maximum": 255 }
+      }
+    },
+    "camera": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "yaw": { "type": "number" },
+        "pitch": { "type": "number" },
+        "distance": { "type": "number", "exclusiveMinimum": 0 },
+        "target": { "$ref": "#/$defs/vec3" }
+      }
+    },
+    "entityBase": {
+      "type": "object",
+      "required": ["id", "kind"],
+      "properties": {
+        "id": { "$ref": "#/$defs/uuid" },
+        "name": { "type": "string" },
+        "layerId": { "$ref": "#/$defs/uuid" },
+        "parentId": { "$ref": "#/$defs/uuid" },
+        "kind": { "type": "string" },
+        "style": { "$ref": "#/$defs/style" },
+        "material": { "type": "string" },
+        "color": { "$ref": "#/$defs/rgb" },
+        "properties": { "$ref": "#/$defs/propertiesBag" }
+      }
+    },
+    "entity": {
+      "oneOf": [
+        { "$ref": "#/$defs/entityGroup" },
+        { "$ref": "#/$defs/entityLine" },
+        { "$ref": "#/$defs/entityPolyline" },
+        { "$ref": "#/$defs/entityCircle" },
+        { "$ref": "#/$defs/entityArc" },
+        { "$ref": "#/$defs/entityRect" },
+        { "$ref": "#/$defs/entitySpline" },
+        { "$ref": "#/$defs/entityBox" },
+        { "$ref": "#/$defs/entitySphere" },
+        { "$ref": "#/$defs/entityCylinder" },
+        { "$ref": "#/$defs/entityCone" },
+        { "$ref": "#/$defs/entityWedge" }
+      ]
+    },
+    "entityGroup": {
+      "allOf": [
+        { "$ref": "#/$defs/entityBase" },
+        {
+          "type": "object",
+          "properties": { "kind": { "const": "group" } },
+          "required": ["kind"]
+        }
+      ]
+    },
+    "entityLine": {
+      "allOf": [
+        { "$ref": "#/$defs/entityBase" },
+        {
+          "type": "object",
+          "required": ["kind", "a", "b"],
+          "properties": {
+            "kind": { "const": "line" },
+            "a": { "$ref": "#/$defs/vec3" },
+            "b": { "$ref": "#/$defs/vec3" }
+          }
+        }
+      ]
+    },
+    "entityPolyline": {
+      "allOf": [
+        { "$ref": "#/$defs/entityBase" },
+        {
+          "type": "object",
+          "required": ["kind", "points", "closed"],
+          "properties": {
+            "kind": { "const": "polyline" },
+            "points": {
+              "type": "array",
+              "minItems": 2,
+              "items": { "$ref": "#/$defs/vec3" }
+            },
+            "closed": { "type": "boolean" },
+            "bulges": {
+              "type": "array",
+              "items": { "type": "number" }
+            }
+          }
+        }
+      ]
+    },
+    "entityCircle": {
+      "allOf": [
+        { "$ref": "#/$defs/entityBase" },
+        {
+          "type": "object",
+          "required": ["kind", "center", "radius"],
+          "properties": {
+            "kind": { "const": "circle" },
+            "center": { "$ref": "#/$defs/vec3" },
+            "radius": { "type": "number", "exclusiveMinimum": 0 },
+            "normal": { "$ref": "#/$defs/vec3" }
+          }
+        }
+      ]
+    },
+    "entityArc": {
+      "allOf": [
+        { "$ref": "#/$defs/entityBase" },
+        {
+          "type": "object",
+          "required": ["kind", "center", "radius", "startAngle", "endAngle"],
+          "properties": {
+            "kind": { "const": "arc" },
+            "center": { "$ref": "#/$defs/vec3" },
+            "radius": { "type": "number", "exclusiveMinimum": 0 },
+            "startAngle": { "type": "number" },
+            "endAngle": { "type": "number" },
+            "normal": { "$ref": "#/$defs/vec3" }
+          }
+        }
+      ]
+    },
+    "entityRect": {
+      "allOf": [
+        { "$ref": "#/$defs/entityBase" },
+        {
+          "type": "object",
+          "required": ["kind"],
+          "properties": {
+            "kind": { "const": "rect" },
+            "center": { "$ref": "#/$defs/vec3" },
+            "halfExtents": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 3,
+              "items": { "type": "number", "exclusiveMinimum": 0 }
+            },
+            "min": { "$ref": "#/$defs/vec3" },
+            "max": { "$ref": "#/$defs/vec3" },
+            "a": { "$ref": "#/$defs/vec3" },
+            "b": { "$ref": "#/$defs/vec3" },
+            "normal": { "$ref": "#/$defs/vec3" }
+          }
+        }
+      ]
+    },
+    "entitySpline": {
+      "allOf": [
+        { "$ref": "#/$defs/entityBase" },
+        {
+          "type": "object",
+          "required": ["kind", "degree", "controlPoints", "knots"],
+          "properties": {
+            "kind": { "const": "spline" },
+            "degree": { "type": "integer", "minimum": 1 },
+            "controlPoints": {
+              "type": "array",
+              "minItems": 2,
+              "items": { "$ref": "#/$defs/vec3" }
+            },
+            "knots": {
+              "type": "array",
+              "minItems": 4,
+              "items": { "type": "number" },
+              "description": "Nondecreasing; length = controlPoints.length + degree + 1 for clamped open curves"
+            },
+            "weights": {
+              "type": "array",
+              "items": { "type": "number", "exclusiveMinimum": 0 }
+            },
+            "closed": { "type": "boolean", "default": false },
+            "periodic": { "type": "boolean", "default": false },
+            "fitPoints": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/vec3" }
+            },
+            "normal": { "$ref": "#/$defs/vec3" }
+          }
+        }
+      ]
+    },
+    "entityBox": {
+      "allOf": [
+        { "$ref": "#/$defs/entityBase" },
+        {
+          "type": "object",
+          "required": ["kind", "center", "halfExtents"],
+          "properties": {
+            "kind": { "const": "box" },
+            "center": { "$ref": "#/$defs/vec3" },
+            "halfExtents": { "$ref": "#/$defs/vec3" },
+            "rotationY": { "type": "number" },
+            "rotation": { "$ref": "#/$defs/quat" }
+          }
+        }
+      ]
+    },
+    "entitySphere": {
+      "allOf": [
+        { "$ref": "#/$defs/entityBase" },
+        {
+          "type": "object",
+          "required": ["kind", "center", "radius"],
+          "properties": {
+            "kind": { "const": "sphere" },
+            "center": { "$ref": "#/$defs/vec3" },
+            "radius": { "type": "number", "exclusiveMinimum": 0 }
+          }
+        }
+      ]
+    },
+    "entityCylinder": {
+      "allOf": [
+        { "$ref": "#/$defs/entityBase" },
+        {
+          "type": "object",
+          "required": ["kind", "center", "radius", "height"],
+          "properties": {
+            "kind": { "const": "cylinder" },
+            "center": { "$ref": "#/$defs/vec3" },
+            "radius": { "type": "number", "exclusiveMinimum": 0 },
+            "height": { "type": "number", "exclusiveMinimum": 0 },
+            "rotationY": { "type": "number" }
+          }
+        }
+      ]
+    },
+    "entityCone": {
+      "allOf": [
+        { "$ref": "#/$defs/entityBase" },
+        {
+          "type": "object",
+          "required": ["kind", "center", "radius", "height"],
+          "properties": {
+            "kind": { "const": "cone" },
+            "center": { "$ref": "#/$defs/vec3" },
+            "radius": { "type": "number", "exclusiveMinimum": 0 },
+            "height": { "type": "number", "exclusiveMinimum": 0 },
+            "rotationY": { "type": "number" }
+          }
+        }
+      ]
+    },
+    "entityWedge": {
+      "allOf": [
+        { "$ref": "#/$defs/entityBase" },
+        {
+          "type": "object",
+          "required": ["kind", "center", "halfExtents"],
+          "properties": {
+            "kind": { "const": "wedge" },
+            "center": { "$ref": "#/$defs/vec3" },
+            "halfExtents": { "$ref": "#/$defs/vec3" },
+            "rotationY": { "type": "number" }
+          }
+        }
+      ]
+    }
+  }
+}
