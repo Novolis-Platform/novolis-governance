@@ -1,0 +1,15 @@
+# One novolis-* folder name per line.
+# Used by get-coverage-report.ps1 (merged with -Exclude).
+# Lines starting with # are ignored.
+
+novolis-governance
+novolis-workflows
+novolis-templates
+novolis-template-dotnet
+novolis-install
+novolis-installer-inno
+novolis-registry
+novolis-workspaces
+novolis-experimental
+novolis-apps
+novolis-smoketest

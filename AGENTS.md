@@ -13,8 +13,10 @@ Portable agent instructions (ACS-aligned). Editor-specific rules may also exist 
 
 ```powershell
 pwsh -File scripts/gpr-health-check.ps1
+pwsh -File scripts/get-coverage-report.ps1 -ListRepos
 pwsh -File scripts/verify-nuget-only.ps1
 pwsh -File scripts/Verify-AcsRepo.ps1
 ```
 
-GPR feed inventory and junk-version cleanup: [docs/gpr-maintenance.md](docs/gpr-maintenance.md).
+GPR feed inventory and junk-version cleanup: [docs/gpr-maintenance.md](docs/gpr-maintenance.md).  
+Coverage: [docs/coverage-report.md](docs/coverage-report.md).
