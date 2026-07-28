@@ -10,7 +10,9 @@
 |-------|-----------------|
 | Same repository | `ProjectReference` to projects under that repo's `src/`, `codegen/`, or `tests/` |
 | Another Novolis repo | `PackageReference` + version in `Directory.Packages.props` (`2026.1.*` for GPR) |
-| Third-party | `PackageReference` (nuget.org) |
+| Third-party | `PackageReference` with a **pinned** version on nuget.org |
+
+Float Novolis packages only on the **platform line** (`2026.1.*`). Do **not** use build-line floats such as `2026.1.10.*` or `2026.1.1.*` — those resolve to the latest CI build number and fail restore when that build was never published (publish race / failed merge).
 
 ## Forbidden
 
