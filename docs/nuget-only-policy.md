@@ -16,6 +16,14 @@ Float Novolis packages only on the **platform line** (`2026.1.*`). Do **not** us
 
 Never publish throwaway versions such as `2026.1.99` or `1.0.0` to GitHub Packages. Under a `2026.1.*` float, `2026.1.99` sorts **above** real CI builds like `2026.1.10.36` and will silently win restore. Delete such versions from the org feed if they appear.
 
+## GPR maintenance
+
+```powershell
+pwsh -File D:\novolis\novolis-governance\scripts\gpr-health-check.ps1
+```
+
+Full runbook: [gpr-maintenance.md](gpr-maintenance.md) (inventory, junk-version find/delete, build-line float scan).
+
 ## Forbidden
 
 - `ProjectReference` whose path crosses into a sibling `novolis-*` directory (e.g. `..\..\..\novolis-codegen\...`)
@@ -43,5 +51,6 @@ See [nuget-setup.md](nuget-setup.md) and [local-nuget-development.md](local-nuge
 
 ## Related
 
+- [gpr-maintenance.md](gpr-maintenance.md) — GitHub Packages inventory and junk-version cleanup
 - [repository-policy.md](repository-policy.md)
 - [novolis-dogfooding design](../../novolis-dogfooding/docs/design.md)

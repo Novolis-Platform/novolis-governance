@@ -53,5 +53,11 @@ That writes the `github` source and token into `%APPDATA%\NuGet\NuGet.Config`. R
 | Script | Purpose |
 |--------|---------|
 | `configure-gpr-user-nuget.ps1` | User-level GitHub Packages credentials (`%APPDATA%\NuGet\NuGet.Config`) |
+| `gpr-health-check.ps1` | One-shot feed + float + nuget-only health check |
+| `gpr-package-overview.ps1` | Org package inventory (latest, repo link, junk flags) |
+| `gpr-find-junk-versions.ps1` / `gpr-remove-junk-versions.ps1` | Find/delete throwaway versions that poison `2026.1.*` |
+| `find-build-line-floats.ps1` | Fail on `2026.1.N.*` floats in `Directory.Packages.props` |
 | `configure-package-publishing.ps1` | Version props, targets, `nuget.config`, workflows |
 | `apply-pr-merge-release-workflows.ps1` | Write `pull-request.yml`, `merge.yml`, `release.yml`; remove `ci.yml` |
+
+See [gpr-maintenance.md](gpr-maintenance.md) for the operational runbook.
