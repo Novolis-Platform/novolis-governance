@@ -1,5 +1,10 @@
 <Project>
-  <!-- Local monorepo: ProjectReference when novolis-analyzers is checked out. CI single-repo: skip until GPR publishes Novolis.Analyzers.StackBoundaries. -->
+  <!--
+    Analyzer ProjectReference when novolis-analyzers is checked out.
+    Independent of ProjectReference mode: there is no PackageReference to StackBoundaries
+    in csproj files, so Novolis.ProjectReferenceMode.targets does not substitute it.
+    Keep OutputItemType=Analyzer here; do not dual-wire via substitution.
+  -->
   <ItemGroup Condition="'$(NovolisStackAnalyzers)' != 'false'">
     <ProjectReference
       Condition="($(MSBuildProjectName.StartsWith('Novolis.Math.')) OR $(MSBuildProjectName.StartsWith('Novolis.Physics.')) OR $(MSBuildProjectName.StartsWith('Novolis.Simulation.'))) AND Exists('$(MSBuildThisFileDirectory)..\..\novolis-analyzers\src\Novolis.Analyzers.StackBoundaries\Novolis.Analyzers.StackBoundaries.csproj')"

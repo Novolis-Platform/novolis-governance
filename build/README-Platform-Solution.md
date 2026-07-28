@@ -30,7 +30,9 @@ pwsh -ExecutionPolicy Bypass -File .\Generate-Platform-Slnx.ps1 -Verbose
 2. Navigate to: `d:\novolis\novolis-governance\build\Novolis.Platform.slnx`
 3. Click **Open**
 
-All 231 projects will load organized by repository and folder type (src/, tests/, codegen/, samples/).
+All projects load organized by repository and folder type (src/, tests/, codegen/, samples/).
+
+**ProjectReference mode:** building this solution sets `SolutionName` to `Novolis.Platform`, which substitutes each project's existing `Novolis.*` PackageReferences for sibling ProjectReferences (intersect only). See [platform-project-ref-mode.md](../docs/platform-project-ref-mode.md). The generator also writes `build/generated/Novolis.PackageToProject.props`.
 
 ---
 

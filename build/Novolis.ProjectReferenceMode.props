@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <!--
+    ProjectReference mode: when building Novolis.Platform (meta solution), substitute
+    Novolis.* PackageReferences with sibling ProjectReferences via generated map.
+    See docs/platform-project-ref-mode.md
+  -->
+
+  <!-- Workspace root = parent of novolis-governance (this file lives in build/). -->
+  <PropertyGroup>
+    <NovolisWorkspaceRoot Condition="'$(NovolisWorkspaceRoot)' == ''">$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\..\'))</NovolisWorkspaceRoot>
+  </PropertyGroup>
+
+  <!-- Explicit -p / env wins; otherwise auto-enable for meta solution. -->
+  <PropertyGroup>
+    <NovolisUseProjectReferences Condition="'$(NovolisUseProjectReferences)' == '' and '$(SolutionName)' == 'Novolis.Platform'">true</NovolisUseProjectReferences>
+    <NovolisUseProjectReferences Condition="'$(NovolisUseProjectReferences)' == '' and ('$(NOVOLIS_USE_PROJECT_REFERENCES)' == 'true' or '$(NOVOLIS_USE_PROJECT_REFERENCES)' == '1')">true</NovolisUseProjectReferences>
+    <NovolisUseProjectReferences Condition="'$(NovolisUseProjectReferences)' == ''">false</NovolisUseProjectReferences>
+  </PropertyGroup>
+
+  <!-- Cross-repo graph evaluates multiple nuget.configs; CPM + nuget.org+github raises NU1507. -->
+  <PropertyGroup Condition="'$(NovolisUseProjectReferences)' == 'true'">
+    <WarningsNotAsErrors>$(WarningsNotAsErrors);NU1507</WarningsNotAsErrors>
+  </PropertyGroup>
+
+  <Import Project="$(MSBuildThisFileDirectory)generated\Novolis.PackageToProject.props"
+          Condition="Exists('$(MSBuildThisFileDirectory)generated\Novolis.PackageToProject.props')" />
+</Project>

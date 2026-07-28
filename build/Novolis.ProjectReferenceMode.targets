@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <!--
+    Intersect-only substitution: only PackageReferences that exist on this project
+    and appear in NovolisPackageProject become ProjectReferences. Never invent refs.
+  -->
+
+  <Import Project="$(MSBuildThisFileDirectory)Novolis.ProjectReferenceMode.props"
+          Condition="Exists('$(MSBuildThisFileDirectory)Novolis.ProjectReferenceMode.props')" />
+
+  <Target Name="NovolisSubstituteProjectReferences"
+          BeforeTargets="CollectPackageReferences;ResolvePackageAssets;Restore;ResolvePackageFileConflicts"
+          Condition="'$(NovolisUseProjectReferences)' == 'true' and '@(NovolisPackageProject)' != ''">
+    <ItemGroup>
+      <!--
+        Start from the map (has ProjectPath), drop entries not referenced by this project.
+        Remaining = PackageReference ∩ map, with correct paths.
+      -->
+      <_NovolisMapNotReferenced Include="@(NovolisPackageProject)" />
+      <_NovolisMapNotReferenced Remove="@(PackageReference)" />
+
+      <_NovolisToReplace Include="@(NovolisPackageProject)" />
+      <_NovolisToReplace Remove="@(_NovolisMapNotReferenced)" />
+
+      <ProjectReference Include="%(_NovolisToReplace.ProjectPath)"
+                        Condition="'%(_NovolisToReplace.ProjectPath)' != ''
+                                   and Exists('%(_NovolisToReplace.ProjectPath)')
+                                   and $([System.IO.Path]::GetFullPath('%(_NovolisToReplace.ProjectPath)')) != $([System.IO.Path]::GetFullPath('$(MSBuildProjectFullPath)'))" />
+
+      <PackageReference Remove="@(_NovolisToReplace)" />
+    </ItemGroup>
+  </Target>
+</Project>

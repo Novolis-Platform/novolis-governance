@@ -1,5 +1,7 @@
 #Requires -Version 7.0
 # Fail if any .csproj uses cross-repo ProjectReference or sibling-src MSBuild hacks.
+# Does NOT flag MSBuild ProjectReference mode (Novolis.ProjectReferenceMode.targets) —
+# that substitutes at build time when SolutionName is Novolis.Platform; committed csproj stay PackageReference-only.
 $ErrorActionPreference = 'Stop'
 $Root = if ($env:NOVOLIS_ROOT) { $env:NOVOLIS_ROOT } else { Split-Path (Split-Path $PSScriptRoot -Parent) -Parent }
 

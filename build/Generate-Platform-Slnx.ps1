@@ -16,7 +16,8 @@
 
 .PARAMETER OutputPath
     Path where the master .slnx file will be written.
-    Defaults to: <WorkspaceRoot>/novolis-governance/build/Novolis.Platform.slnx
+    Defaults to: <WorkspaceRoot>/Novolis.Platform.slnx
+    (Also copies to novolis-governance/build/Novolis.Platform.slnx and regenerates the PackageToProject map.)
 
 .PARAMETER ValidateProjectReferences
     If $true, validates that all referenced .csproj files exist. Warnings issued for missing files.
@@ -61,11 +62,11 @@ param(
 # Configuration & Initialization
 # ============================================================================
 
+# Script is at: <WorkspaceRoot>/novolis-governance/build/Generate-Platform-Slnx.ps1
+$scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
+
 # Determine workspace root if not provided
 if (-not $WorkspaceRoot) {
-    $scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
-    # Script is at: <WorkspaceRoot>/novolis-governance/build/Generate-Platform-Slnx.ps1
-    # Go up 3 levels to workspace root
     $WorkspaceRoot = Split-Path -Parent (Split-Path -Parent $scriptDir)
 }
 
@@ -275,6 +276,23 @@ catch {
     throw "Generated XML is invalid: $_"
 }
 
+# Also write the checked-in copy under novolis-governance/build when output is elsewhere
+$governanceSlnx = Join-Path $scriptDir "Novolis.Platform.slnx"
+if ($OutputPath -ne $governanceSlnx) {
+    Copy-Item -Path $OutputPath -Destination $governanceSlnx -Force
+    Write-Verbose "Also wrote: $governanceSlnx"
+}
+
+# ============================================================================
+# Phase 4: PackageId → project map (ProjectReference mode)
+# ============================================================================
+
+Write-Verbose "Phase 4: Generating PackageToProject map..."
+$mapScript = Join-Path $scriptDir "Generate-PackageToProjectMap.ps1"
+$mapResult = & $mapScript -WorkspaceRoot $WorkspaceRoot
+$mapPath = $mapResult.OutputPath
+$mapCount = $mapResult.Count
+
 # ============================================================================
 # Summary & Reporting
 # ============================================================================
@@ -285,6 +303,7 @@ Write-Host "Novolis Platform Solution Generation Complete" -ForegroundColor Cyan
 Write-Host "================================================" -ForegroundColor Cyan
 Write-Host ""
 Write-Host "Output File:           $OutputPath" -ForegroundColor Green
+Write-Host "Package→Project map:   $mapPath ($mapCount entries)" -ForegroundColor Green
 Write-Host "Repositories Found:    $($stats.RepositoriesFound)"
 Write-Host "Repositories Included: $($stats.RepositoriesIncluded)"
 Write-Host "Total Projects:        $($stats.ProjectsIncluded)"
@@ -306,12 +325,14 @@ Write-Host ""
 Write-Host "Next steps:" -ForegroundColor Cyan
 Write-Host "  1. Review the generated solution: $OutputPath"
 Write-Host "  2. Open in Visual Studio: File > Open > Solution"
-Write-Host "  3. Verify all projects load correctly"
+Write-Host "  3. Build via Novolis.Platform.slnx for ProjectReference mode (see docs/platform-project-ref-mode.md)"
 Write-Host ""
 
 # Return summary object
 $summary = @{
     OutputPath = $OutputPath
+    PackageToProjectMap = $mapPath
+    PackageToProjectCount = $mapCount
     RepositoriesFound = $stats.RepositoriesFound
     RepositoriesIncluded = $stats.RepositoriesIncluded
     TotalProjects = $stats.ProjectsIncluded

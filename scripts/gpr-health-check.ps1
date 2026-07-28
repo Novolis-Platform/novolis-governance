@@ -14,7 +14,7 @@
       5. find-local-nuget-feeds.ps1
       6. find-stale-package-ids.ps1
       7. verify-nuget-only.ps1
-
+      8. verify-project-ref-mode.ps1 (-SkipBuild for speed in health check)
   Exit non-zero if any hard check fails. Use after publish waves or when restore looks wrong.
 
 .PARAMETER Org
@@ -92,6 +92,7 @@ if (-not $SkipLocal) {
     Invoke-Check -Name 'find-local-nuget-feeds' -ScriptPath (Join-Path $scripts 'find-local-nuget-feeds.ps1')
     Invoke-Check -Name 'find-stale-package-ids' -ScriptPath (Join-Path $scripts 'find-stale-package-ids.ps1')
     Invoke-Check -Name 'verify-nuget-only' -ScriptPath (Join-Path $scripts 'verify-nuget-only.ps1')
+    Invoke-Check -Name 'verify-project-ref-mode' -ScriptPath (Join-Path $scripts 'verify-project-ref-mode.ps1') -ArgumentTable @{ SkipBuild = $true }
 }
 
 Write-Host ''

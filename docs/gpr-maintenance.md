@@ -8,7 +8,7 @@ Operational runbook for keeping the Novolis org NuGet feed healthy. Floats (`202
 # Full health check (GPR + local checkout)
 pwsh -File novolis-governance/scripts/gpr-health-check.ps1
 
-# Local-only (floats, local feeds, stale ids, ProjectReference leaks)
+# Local-only (floats, local feeds, stale ids, ProjectReference leaks, project-ref mode)
 pwsh -File novolis-governance/scripts/gpr-health-check.ps1 -SkipRemote
 
 # Also verify latest nuspecs do not require missing Novolis dependency versions (slow)
@@ -24,7 +24,7 @@ Requires `gh` authenticated with `read:packages` (delete needs `delete:packages`
 
 | Script | Purpose | Exit |
 |--------|---------|------|
-| [`gpr-health-check.ps1`](../scripts/gpr-health-check.ps1) | One-shot: overview + junk + floats + local feeds + stale ids + nuget-only | 1 if any hard check fails |
+| [`gpr-health-check.ps1`](../scripts/gpr-health-check.ps1) | One-shot: overview + junk + floats + local feeds + stale ids + nuget-only + project-ref mode | 1 if any hard check fails |
 | [`gpr-package-overview.ps1`](../scripts/gpr-package-overview.ps1) | Package inventory (latest, versions, linked repo, visibility) | 1 if unlinked or junk present |
 | [`gpr-find-junk-versions.ps1`](../scripts/gpr-find-junk-versions.ps1) | List throwaway versions that poison `2026.1.*` | 1 if any found |
 | [`gpr-remove-junk-versions.ps1`](../scripts/gpr-remove-junk-versions.ps1) | Delete junk versions (`-WhatIf` first) | 1 on API failure |
@@ -34,7 +34,8 @@ Requires `gh` authenticated with `read:packages` (delete needs `delete:packages`
 | [`find-local-nuget-feeds.ps1`](../scripts/find-local-nuget-feeds.ps1) | Scan `nuget.config` for `novolis-local` / folder feeds | 1 if found |
 | [`find-stale-package-ids.ps1`](../scripts/find-stale-package-ids.ps1) | Scan for renamed ids (`Host.NAudio`, `Live.Repl`, …) | 1 if found |
 | [`fix-novolis-platform-floats.ps1`](../scripts/fix-novolis-platform-floats.ps1) | Rewrite build-line floats (and optional pins) to `2026.1.*` | 0 |
-| [`verify-nuget-only.ps1`](../scripts/verify-nuget-only.ps1) | Cross-repo `ProjectReference` / sibling-src hacks | 1 if found |
+| [`verify-nuget-only.ps1`](../scripts/verify-nuget-only.ps1) | Cross-repo `ProjectReference` / sibling-src hacks in committed `.csproj` | 1 if found |
+| [`verify-project-ref-mode.ps1`](../scripts/verify-project-ref-mode.ps1) | Package→project map + intersect-only MSBuild smoke | 1 if map/substitution wrong |
 | [`set-org-nuget-packages-public.ps1`](../scripts/set-org-nuget-packages-public.ps1) | List package visibility (public via UI only) | 1 if any private |
 | [`configure-gpr-user-nuget.ps1`](../scripts/configure-gpr-user-nuget.ps1) | Local restore credentials | 0 |
 
