@@ -203,9 +203,6 @@
     <NovolisPackageProject Include="Novolis.Commands.Testing">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-commands\src\Novolis.Commands.Testing\Novolis.Commands.Testing.csproj</ProjectPath>
     </NovolisPackageProject>
-    <NovolisPackageProject Include="Novolis.Economy">
-      <ProjectPath>$(NovolisWorkspaceRoot)novolis-economy\src\Novolis.Economy\Novolis.Economy.csproj</ProjectPath>
-    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Economy.Accounting">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-economy\src\Novolis.Economy.Accounting\Novolis.Economy.Accounting.csproj</ProjectPath>
     </NovolisPackageProject>
