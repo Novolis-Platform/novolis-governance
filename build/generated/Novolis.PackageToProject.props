@@ -188,6 +188,9 @@
     <NovolisPackageProject Include="Novolis.Avalonia.Voice">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-avalonia\src\Novolis.Avalonia.Voice\Novolis.Avalonia.Voice.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Cad.Primitives">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-cad\src\Novolis.Cad.Primitives\Novolis.Cad.Primitives.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.CodeGen.Bindings">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-codegen\src\Novolis.CodeGen.Bindings\Novolis.CodeGen.Bindings.csproj</ProjectPath>
     </NovolisPackageProject>

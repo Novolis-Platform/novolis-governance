@@ -590,19 +590,27 @@
         { "$ref": "#/$defs/entityBase" },
         {
           "type": "object",
-          "required": ["kind", "prototypeId", "baseTransform", "counts", "spacing"],
+          "required": ["kind", "prototypeId"],
           "properties": {
             "kind": { "const": "arrayInstance" },
             "prototypeId": { "$ref": "#/$defs/uuid" },
+            "sourceId": { "$ref": "#/$defs/uuid", "description": "Alias for prototypeId." },
             "baseTransform": { "$ref": "#/$defs/transform" },
             "counts": {
               "type": "array",
-              "minItems": 3,
+              "minItems": 1,
               "maxItems": 3,
               "items": { "type": "integer", "minimum": 1 },
-              "description": "Counts in X,Y,Z directions."
+              "description": "Linear: Counts in X,Y,Z. Radial: Counts[0] copies about Axis."
             },
-            "spacing": { "$ref": "#/$defs/vec3", "description": "Spacing between adjacent instances (meters)." }
+            "spacing": { "$ref": "#/$defs/vec3", "description": "Spacing between adjacent linear instances (meters)." },
+            "axis": { "$ref": "#/$defs/vec3", "description": "Radial clone axis." },
+            "stepRadians": { "type": "number", "description": "Angular step between radial copies." },
+            "realization": {
+              "type": "string",
+              "enum": ["instances", "separateCopies", "fusedSolid"],
+              "description": "How copies are realized in the evaluator."
+            }
           }
         }
       ]

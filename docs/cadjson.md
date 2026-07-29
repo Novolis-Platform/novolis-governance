@@ -41,20 +41,25 @@ Document `properties` conventions for multi-deck ships: `deckSpacingMeters`, `sh
 
 These additions keep `.cadjson` forward-compatible: apps may *store* the operation graph, but derive concrete `wall`/`space`/renderable solids in a later derivation step.
 
+**C# package:** [`Novolis.Cad.Primitives`](https://github.com/Novolis-Platform/novolis-cad) (Avalonia-free DTOs). UI: `Novolis.Avalonia.Cad`.
+
 - **`hooks[]`** (on any `entityBase`) — semantic anchors for runtime identification / camera targeting.
   - `id` (uuid), `tag` (string), `position` (vec3), optional `normal`, and optional `properties` bag.
-- **`instance` / `arrayInstance`** — reusable placement of a prototype via a `transform` (center, rotation, scale).
+- **`instance` / `arrayInstance`** — reusable placement of a prototype.
+  - `instance`: `prototypeId` + `transform`.
+  - `arrayInstance`: linear (`counts`×`spacing`) or radial (`axis` + `stepRadians` + `counts[0]`).
+  - `realization`: `instances` (shared mesh), `separateCopies` (distinct meshes), or `fusedSolid` (one compound mesh).
 - **`opening`** — door/hatch/window/ramp placed as a 2D footprint (`footprint[]` polygon in XZ) on a `deck`.
   - Required: `openingType`, `deck`, `height`, `footprint`.
   - Optional: `hostWallId`, `connectsSides` (`["A","B"]`), and `swing` (door-specific).
 - **`weld`** — producer hint to merge operands that touch within tolerance.
   - Stack form: `inputId` / `sourceId` + `touchEpsilonMeters` (modifier on Mesh From Solid).
   - Legacy: `memberIds` (uuid[]), `touchEpsilonMeters`.
-- **`boolean`** — producer-defined set operation between two operands.
+- **`boolean`** — evaluated solid set op between two operands (v1: AABB triangle filter, not full CSG).
   - Required: `operation` (`union|subtract|intersect`), `mode` (`region|solid`).
   - Operands: `leftId`/`rightId` and/or named `targetId`/`cutterId`.
 - **`symmetry`** — mirror source about a plane; optional `mergeAtPlane`.
-- **`connect`** — `memberIds` + `mode` (`group|joinMesh|compoundSolid|fuseSolid`).
+- **`connect`** — `memberIds` + `mode` (`group|joinMesh|compoundSolid|fuseSolid`); members resolve from evaluated CAD meshes when present.
 - **`split`** — partition by `cuttingPlane` (v1) via `planePoint`/`normal`.
 - **`meshFromSolid`** — adapter: `sourceId`, `linkMode` (`linked|detached|baked`).
 - **`optimize`** / **`bridge`** — mesh modifier stack nodes (`inputId`).
