@@ -38,9 +38,25 @@ Same version rules for both; only the feed differs.
 
 | File | Trigger | Purpose |
 |------|---------|---------|
-| `pull-request.yml` | PR to `main` | Build + test |
-| `merge.yml` | Push to `main` | Build, pack, push to GitHub Packages |
+| `pull-request.yml` | PR to `main` | Build + test (cancels superseded PR runs) |
+| `merge.yml` | Push to `main` | Build + test; pack/publish to GitHub Packages only when package surface changes |
 | `release.yml` | Release published | Pack, push to nuget.org |
+
+### Merge short-circuit (libraries)
+
+Reusable `dotnet-merge-publish.yml` classifies the push:
+
+| Change set | CI | GPR publish |
+|------------|----|-------------|
+| `src/**`, `*.csproj`, `Directory.Packages.props`, … | yes | yes |
+| `tests/**`, `Directory.Build.props` (policy/warnings), `scripts/**` | yes | **no** |
+| docs / `**.md` / version bump props (paths-ignore) | skipped | skipped |
+
+Direct pushes to `main` remain supported. Cross-repo “herds” still run in parallel; same-repo re-pushes cancel in-progress merge runs.
+
+### Apps Windows usage
+
+`novolis-apps` runs Linux CI first; the Windows release job starts only when CI succeeds **and** release-impacting paths changed. Older GitHub Releases are pruned to the newest 5 after a successful release.
 
 Release tag: `v2026.1.1` (platform line) or `v2026.1.1.{run}` (full version). Pack always uses `YEAR.MAJOR.MINOR` from JSON plus current `github.run_number`.
 

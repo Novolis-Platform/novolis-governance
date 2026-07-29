@@ -9,6 +9,9 @@ name: Pull request
 on:
   pull_request:
     branches: [main]
+concurrency:
+  group: pr-`${{ github.workflow }}-`${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   ci:
     uses: $Uses/dotnet-pull-request.yml@main
@@ -28,6 +31,8 @@ on:
       - 'build/version.props'
       - 'docs/**'
       - '**.md'
+      - 'LICENSE'
+      - '.editorconfig'
   workflow_dispatch:
     inputs:
       skip_publish:
@@ -83,12 +88,12 @@ function Remove-DuplicateGithubPackagesImport([string]$TargetsPath) {
 }
 
 $packageRepos = @(
-    'novolis-analyzers', 'novolis-aspire', 'novolis-avalonia', 'novolis-codegen',
-    'novolis-commands', 'novolis-gaming', 'novolis-install', 'novolis-machinelearning', 'novolis-markup',
+    'novolis-analyzers', 'novolis-aspire', 'novolis-astro', 'novolis-audio', 'novolis-avalonia', 'novolis-codegen',
+    'novolis-commands', 'novolis-economy', 'novolis-gaming', 'novolis-install', 'novolis-io', 'novolis-machinelearning', 'novolis-markup',
     'novolis-math', 'novolis-messaging', 'novolis-physics', 'novolis-raylib', 'novolis-rendering',
     'novolis-security', 'novolis-simulation', 'novolis-smoketest', 'novolis-storage',
     'novolis-template-dotnet', 'novolis-templates', 'novolis-testing',
-    'novolis-transports', 'novolis-wirefish'
+    'novolis-transports', 'novolis-wirefish', 'novolis-workspaces'
 )
 
 foreach ($name in $packageRepos) {
