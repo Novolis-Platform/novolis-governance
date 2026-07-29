@@ -3,6 +3,10 @@
   <!--
     Intersect-only substitution: only PackageReferences that exist on this project
     and appear in NovolisPackageProject become ProjectReferences. Never invent refs.
+
+    Consumers that use types from a dependency of a substituted package must
+    PackageReference that dependency explicitly (ProjectReference is non-transitive
+    for NuGet dependency graphs replaced by project refs).
   -->
 
   <Import Project="$(MSBuildThisFileDirectory)Novolis.ProjectReferenceMode.props"

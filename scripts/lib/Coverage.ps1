@@ -83,7 +83,11 @@ function Get-NovolisRepoDirectories {
 function Test-NovolisTestHostProject {
     param([Parameter(Mandatory)][string]$ProjectPath)
     if ($ProjectPath -notmatch '[\\/]tests[\\/]') { return $false }
-    return [bool](Select-String -LiteralPath $ProjectPath -Pattern 'TUnit|Microsoft\.NET\.Test\.Sdk|xunit|NUnit' -Quiet)
+    $text = Get-Content -LiteralPath $ProjectPath -Raw
+    # Support / helper libraries under tests/ (TestSupport) are not MTP hosts.
+    if ($text -match '(?i)<IsTestProject>\s*false\s*</IsTestProject>') { return $false }
+    if ($text -match '(?i)<IsTestingPlatformApplication>\s*false\s*</IsTestingPlatformApplication>') { return $false }
+    return [bool](Select-String -LiteralPath $ProjectPath -Pattern 'TUnit|Microsoft\.NET\.Test\.Sdk|xunit|NUnit' -Quiet -SimpleMatch:$false)
 }
 
 function Get-NovolisTestHostProjects {

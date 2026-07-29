@@ -155,25 +155,24 @@ $results = $repoWork | ForEach-Object -ThrottleLimit $ThrottleLimit -Parallel {
     try {
         Push-Location $repo.Path
         try {
-            $cfgArgs = @()
-            if (Test-Path -LiteralPath (Join-Path $repo.Path 'nuget.config')) {
-                $cfgArgs = @('--configfile', (Join-Path $repo.Path 'nuget.config'))
-            }
-            elseif (Test-Path -LiteralPath (Join-Path $repo.Path 'NuGet.config')) {
-                $cfgArgs = @('--configfile', (Join-Path $repo.Path 'NuGet.config'))
-            }
+            # NuGet mode: coverage measures published packages. Do not build the full
+            # solution (apps may reference unpublished Novolis.* ids); build each test host.
+            # Do not pass --configfile: exclusive repo nuget.config drops user GPR credentials.
+            $projectRef = 'false'
 
             if (-not $skipBuild) {
-                $log.Add(("[{0:HH:mm:ss}] build {1}" -f (Get-Date), $cfg))
-                if ($repo.Solution) {
-                    $buildOut = & dotnet build $repo.Solution -c $cfg --nologo @cfgArgs 2>&1 | Out-String
+                $log.Add(("[{0:HH:mm:ss}] build test hosts {1} (ProjectRef={2})" -f (Get-Date), $cfg, $projectRef))
+                $buildOk = $true
+                foreach ($proj in $repo.TestProjects) {
+                    $buildOut = & dotnet build $proj -c $cfg --nologo "-p:NovolisUseProjectReferences=$projectRef" 2>&1 | Out-String
+                    $log.Add($buildOut)
+                    if ($LASTEXITCODE -ne 0) {
+                        $buildOk = $false
+                        throw "build failed for $([IO.Path]::GetFileNameWithoutExtension($proj)) (exit $LASTEXITCODE)"
+                    }
                 }
-                else {
-                    $buildOut = & dotnet build -c $cfg --nologo @cfgArgs 2>&1 | Out-String
-                }
-                $log.Add($buildOut)
-                if ($LASTEXITCODE -ne 0) {
-                    throw "build failed (exit $LASTEXITCODE)"
+                if (-not $buildOk) {
+                    throw "build failed (exit 1)"
                 }
             }
 
@@ -189,6 +188,7 @@ $results = $repoWork | ForEach-Object -ThrottleLimit $ThrottleLimit -Parallel {
                     'test'
                     '--project', $proj
                     '-c', $cfg
+                    "-p:NovolisUseProjectReferences=$projectRef"
                     '--coverage'
                     '--coverage-output-format', 'cobertura'
                     '--coverage-output', $outFile
