@@ -4,7 +4,7 @@
   "name": "Hull blockout",
   "generator": { "name": "DraftStudio", "version": "2026.1.0" },
   "createdAt": "2026-07-28T20:00:00Z",
-  "modifiedAt": "2026-07-28T20:00:00Z",
+  "modifiedAt": "2026-07-29T08:00:00Z",
   "unitScaleMeters": 1,
   "linearUnit": "meter",
   "angleUnit": "radian",
@@ -13,6 +13,7 @@
     "upAxis": "y",
     "forwardAxis": "z"
   },
+  "shapesDocument": "hull.cadshapejson",
   "layers": [
     {
       "id": "a0000000-0000-4000-8000-000000000001",
@@ -54,10 +55,9 @@
       "kind": "box",
       "layerId": "a0000000-0000-4000-8000-000000000001",
       "name": "hull",
+      "shapeId": "c0000000-0000-4000-8000-000000000001",
       "center": [0, 1, 6],
-      "halfExtents": [2, 1, 6],
-      "material": "hull",
-      "color": [0.72, 0.35, 0.28]
+      "halfExtents": [2, 1, 6]
     }
   ],
   "camera": {

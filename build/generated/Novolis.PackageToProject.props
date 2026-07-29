@@ -146,6 +146,9 @@
     <NovolisPackageProject Include="Novolis.Avalonia.Briefing">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-avalonia\src\Novolis.Avalonia.Briefing\Novolis.Avalonia.Briefing.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Avalonia.Cad">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-avalonia\src\Novolis.Avalonia.Cad\Novolis.Avalonia.Cad.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Avalonia.Controls">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-avalonia\src\Novolis.Avalonia.Controls\Novolis.Avalonia.Controls.csproj</ProjectPath>
     </NovolisPackageProject>
@@ -262,6 +265,9 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Game.Packaging.Inno">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-gaming\src\Novolis.Game.Packaging.Inno\Novolis.Game.Packaging.Inno.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Game.Session">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-gaming\src\Novolis.Game.Session\Novolis.Game.Session.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.IO.Git">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-io\src\Novolis.IO.Git\Novolis.IO.Git.csproj</ProjectPath>

@@ -4,7 +4,7 @@ Operational summary for `novolis-gaming`. **Stack boundaries:** [library-boundar
 
 ## Purpose
 
-`novolis-gaming` ships **game authoring and shipping** libraries: pseudonymous identity, menu navigation, multiplayer lobby glue, Inno Setup helpers. It is **not** the Math / Physics / Simulation / Rendering / Raylib stack.
+`novolis-gaming` ships **game authoring and shipping** libraries: pseudonymous identity, menu navigation, multiplayer lobby glue, player session protocol (`Novolis.Game.Session`), Inno Setup helpers. It is **not** the Math / Physics / Simulation / Rendering / Raylib stack.
 
 ## Repo map
 
@@ -19,9 +19,10 @@ Operational summary for `novolis-gaming`. **Stack boundaries:** [library-boundar
 ## Allowed in `novolis-gaming`
 
 - ASP.NET Core + SignalR in `Novolis.Game.Multiplayer.AspNetCore` only
+- Player session protocol (`Novolis.Game.Session`) — session contracts, MessagePack wire, LocalIpc/stdio hosts; no game domain models
 - Opaque refs (`PlayerRef`, `SessionRef`, `LobbyId`) — no email, legal name, or provider subject strings in public API
 - Same-repo `ProjectReference` between `Novolis.Game.*` facets
-- `PackageReference` to `Novolis.Testing.*` and third-party NuGet
+- `PackageReference` to `Novolis.Transports.LocalIpc`, `Novolis.Testing.*`, and third-party NuGet
 
 ## Forbidden in `novolis-gaming`
 

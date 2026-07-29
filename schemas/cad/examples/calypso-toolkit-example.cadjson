@@ -1,0 +1,235 @@
+{
+  "format": "novolis.cad",
+  "schemaVersion": 1,
+  "name": "Calypso toolkit example (opening + hollow void)",
+  "generator": { "name": "CalypsoCad", "version": "2026.1.0" },
+  "unitScaleMeters": 1,
+  "linearUnit": "meter",
+  "angleUnit": "radian",
+  "coordinateSystem": {
+    "handedness": "right",
+    "upAxis": "y",
+    "forwardAxis": "z"
+  },
+  "layers": [
+    {
+      "id": "b0000000-0000-4000-8000-000000000001",
+      "name": "A-WALL",
+      "visible": true,
+      "locked": false
+    },
+    {
+      "id": "b0000000-0000-4000-8000-000000000002",
+      "name": "A-DOOR",
+      "visible": true,
+      "locked": false
+    },
+    {
+      "id": "b0000000-0000-4000-8000-000000000003",
+      "name": "A-ZONE",
+      "visible": true,
+      "locked": false
+    },
+    {
+      "id": "b0000000-0000-4000-8000-000000000004",
+      "name": "A-ZONE-CARGO",
+      "visible": true,
+      "locked": false
+    }
+  ],
+  "entities": [
+    {
+      "id": "c0000000-0000-4000-8000-000000000010",
+      "kind": "wall",
+      "layerId": "b0000000-0000-4000-8000-000000000001",
+      "name": "outer-south",
+      "thickness": 0.1,
+      "height": 2.8,
+      "deck": 0,
+      "a": [0, 0, 0],
+      "b": [10, 0, 0]
+    },
+    {
+      "id": "c0000000-0000-4000-8000-000000000011",
+      "kind": "wall",
+      "layerId": "b0000000-0000-4000-8000-000000000001",
+      "name": "outer-east",
+      "thickness": 0.1,
+      "height": 2.8,
+      "deck": 0,
+      "a": [10, 0, 0],
+      "b": [10, 0, 6]
+    },
+    {
+      "id": "c0000000-0000-4000-8000-000000000012",
+      "kind": "wall",
+      "layerId": "b0000000-0000-4000-8000-000000000001",
+      "name": "outer-north",
+      "thickness": 0.1,
+      "height": 2.8,
+      "deck": 0,
+      "a": [10, 0, 6],
+      "b": [0, 0, 6]
+    },
+    {
+      "id": "c0000000-0000-4000-8000-000000000013",
+      "kind": "wall",
+      "layerId": "b0000000-0000-4000-8000-000000000001",
+      "name": "outer-west",
+      "thickness": 0.1,
+      "height": 2.8,
+      "deck": 0,
+      "a": [0, 0, 6],
+      "b": [0, 0, 0]
+    },
+    {
+      "id": "c0000000-0000-4000-8000-000000000014",
+      "kind": "wall",
+      "layerId": "b0000000-0000-4000-8000-000000000001",
+      "name": "divider-wall",
+      "thickness": 0.1,
+      "height": 2.8,
+      "deck": 0,
+      "a": [5, 0, 0],
+      "b": [5, 0, 6]
+    },
+    {
+      "id": "c0000000-0000-4000-8000-000000000020",
+      "kind": "opening",
+      "layerId": "b0000000-0000-4000-8000-000000000002",
+      "name": "divider-door",
+      "openingType": "door",
+      "deck": 0,
+      "height": 2.1,
+      "footprint": [
+        [4.8, 0, 2.3],
+        [5.2, 0, 2.3],
+        [5.2, 0, 3.7],
+        [4.8, 0, 3.7]
+      ],
+      "connectsSides": ["A", "B"],
+      "hooks": [
+        {
+          "id": "d0000000-0000-4000-8000-000000000001",
+          "tag": "DividerDoor",
+          "position": [5, 0, 3]
+        }
+      ]
+    },
+    {
+      "id": "c0000000-0000-4000-8000-000000000030",
+      "kind": "space",
+      "layerId": "b0000000-0000-4000-8000-000000000003",
+      "name": "Left room",
+      "deck": 0,
+      "height": 2.6,
+      "points": [
+        [0, 0, 0],
+        [5, 0, 0],
+        [5, 0, 6],
+        [0, 0, 6]
+      ],
+      "flags": { "enclosed": true, "hollow": false },
+      "hooks": [
+        {
+          "id": "d0000000-0000-4000-8000-000000000002",
+          "tag": "LeftRoomEye",
+          "position": [2.5, 0, 3]
+        }
+      ]
+    },
+    {
+      "id": "c0000000-0000-4000-8000-000000000031",
+      "kind": "space",
+      "layerId": "b0000000-0000-4000-8000-000000000003",
+      "name": "Right room",
+      "deck": 0,
+      "height": 2.6,
+      "points": [
+        [5, 0, 0],
+        [10, 0, 0],
+        [10, 0, 6],
+        [5, 0, 6]
+      ],
+      "flags": { "enclosed": true, "hollow": false },
+      "hooks": [
+        {
+          "id": "d0000000-0000-4000-8000-000000000003",
+          "tag": "RightRoomEye",
+          "position": [7.5, 0, 3]
+        }
+      ]
+    },
+    {
+      "id": "c0000000-0000-4000-8000-000000000040",
+      "kind": "space",
+      "layerId": "b0000000-0000-4000-8000-000000000004",
+      "name": "Cargo Void",
+      "deck": -1,
+      "height": 9,
+      "points": [
+        [0, 0, 0],
+        [10, 0, 0],
+        [10, 0, 6],
+        [0, 0, 6]
+      ],
+      "flags": { "enclosed": true, "hollow": true },
+      "hooks": [
+        {
+          "id": "d0000000-0000-4000-8000-000000000004",
+          "tag": "CargoVoidEye",
+          "position": [5, 0, 3]
+        }
+      ]
+    },
+    {
+      "id": "c0000000-0000-4000-8000-000000000041",
+      "kind": "space",
+      "layerId": "b0000000-0000-4000-8000-000000000004",
+      "name": "Cargo Void",
+      "deck": 0,
+      "height": 9,
+      "points": [
+        [0, 0, 0],
+        [10, 0, 0],
+        [10, 0, 6],
+        [0, 0, 6]
+      ],
+      "flags": { "enclosed": true, "hollow": true }
+    },
+    {
+      "id": "c0000000-0000-4000-8000-000000000050",
+      "kind": "weld",
+      "name": "demo-weld",
+      "touchEpsilonMeters": 0.01,
+      "memberIds": [
+        "c0000000-0000-4000-8000-000000000010",
+        "c0000000-0000-4000-8000-000000000011",
+        "c0000000-0000-4000-8000-000000000012",
+        "c0000000-0000-4000-8000-000000000013"
+      ]
+    },
+    {
+      "id": "c0000000-0000-4000-8000-000000000060",
+      "kind": "boolean",
+      "name": "cargo-void-subtract",
+      "operation": "subtract",
+      "leftId": "c0000000-0000-4000-8000-000000000040",
+      "rightId": "c0000000-0000-4000-8000-000000000010",
+      "mode": "solid",
+      "touchEpsilonMeters": 0.01
+    },
+    {
+      "id": "c0000000-0000-4000-8000-000000000070",
+      "kind": "instance",
+      "name": "utility-instance",
+      "prototypeId": "c0000000-0000-4000-8000-000000000090",
+      "transform": {
+        "center": [3, 0, 1],
+        "rotationY": 0,
+        "scale": [1, 1, 1]
+      }
+    }
+  ]
+}
+

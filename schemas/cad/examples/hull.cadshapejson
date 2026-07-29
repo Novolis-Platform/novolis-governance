@@ -1,0 +1,36 @@
+{
+  "format": "novolis.cad.shape",
+  "schemaVersion": 1,
+  "name": "Hull blockout shapes",
+  "generator": { "name": "DraftStudio", "version": "2026.1.0" },
+  "createdAt": "2026-07-29T08:00:00Z",
+  "modifiedAt": "2026-07-29T08:00:00Z",
+  "baseDocument": "hull.cadjson",
+  "shapes": [
+    {
+      "id": "c0000000-0000-4000-8000-000000000001",
+      "name": "hull-fill",
+      "extensions": {
+        "appearance": {
+          "fill": {
+            "enabled": true,
+            "color": [0.72, 0.35, 0.28]
+          },
+          "stroke": {
+            "color": [0.45, 0.2, 0.15],
+            "lineWeightMm": 0.35,
+            "linetype": "Continuous"
+          },
+          "colorIndex": 32
+        },
+        "material": {
+          "preset": "hull",
+          "albedo": [0.72, 0.35, 0.28],
+          "roughness": 0.55,
+          "metalness": 0.05
+        }
+      }
+    }
+  ],
+  "properties": {}
+}
