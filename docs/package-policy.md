@@ -16,6 +16,7 @@ Required package metadata:
 <RepositoryType>git</RepositoryType>
 <PackageLicenseExpression>MIT</PackageLicenseExpression>
 <PackageReadmeFile>README.md</PackageReadmeFile>
+<PackageIcon>icon.png</PackageIcon>
 <PublishRepositoryUrl>true</PublishRepositoryUrl>
 <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
 <EmbedUntrackedSources>true</EmbedUntrackedSources>

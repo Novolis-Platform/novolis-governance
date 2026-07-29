@@ -88,8 +88,9 @@
           "type": "object",
           "properties": {
             "kind": { "const": "mesh" },
-            "primitive": { "enum": ["box", "sphere", "plane", "cylinder"] },
+            "primitive": { "enum": ["box", "sphere", "plane", "cylinder", "cone", "capsule", "torus", "pyramid", "disc", "tube", "platonictetra", "platonicocta", "platonicicosa", "platonicdodeca", "landscape"] },
             "size": { "$ref": "#/$defs/vec3" },
+            "segments": { "type": "integer", "minimum": 4 },
             "materialId": { "$ref": "#/$defs/uuid" },
             "vertices": { "type": "array", "items": { "type": "number" } },
             "indices": { "type": "array", "items": { "type": "integer" } }
@@ -104,8 +105,11 @@
           "type": "object",
           "properties": {
             "kind": { "const": "generator" },
-            "generator": { "enum": ["cloner", "symmetry", "extrude"] },
+            "generator": { "enum": ["cloner", "symmetry", "boole"] },
             "sourceId": { "$ref": "#/$defs/uuid" },
+            "targetId": { "$ref": "#/$defs/uuid" },
+            "cutterId": { "$ref": "#/$defs/uuid" },
+            "booleanKind": { "enum": ["union", "difference", "intersection"] },
             "count": { "type": "integer", "minimum": 1 },
             "offset": { "$ref": "#/$defs/vec3" },
             "axis": { "type": "string" }
@@ -120,10 +124,11 @@
           "type": "object",
           "properties": {
             "kind": { "const": "modifier" },
-            "modifier": { "enum": ["weld", "subdivision", "optimize"] },
+            "modifier": { "enum": ["weld", "subdivision", "optimize", "bridge", "extrude", "bevel", "inset", "dissolve", "knife"] },
             "inputId": { "$ref": "#/$defs/uuid" },
             "tolerance": { "type": "number" },
-            "levels": { "type": "integer", "minimum": 0 }
+            "levels": { "type": "integer", "minimum": 0 },
+            "distance": { "type": "number" }
           }
         }
       ]

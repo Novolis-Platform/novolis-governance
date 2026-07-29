@@ -5,4 +5,8 @@
     <RepositoryUrl>https://github.com/Novolis-Platform/$(NovolisGitHubRepository)</RepositoryUrl>
     <PackageProjectUrl>https://github.com/Novolis-Platform/$(NovolisGitHubRepository)</PackageProjectUrl>
   </PropertyGroup>
+
+  <Import Project="$(MSBuildThisFileDirectory)Novolis.PackageIcon.props"
+          Condition="Exists('$(MSBuildThisFileDirectory)Novolis.PackageIcon.props')" />
 </Project>
+

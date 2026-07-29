@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <!--
+    NuGet PackageIcon + Windows ApplicationIcon from the nearest repo-root brand assets.
+    Canonical source: Novolis-Platform/.github brand/generated/logo-icon.{png,ico}
+    Sync with: .github/scripts/Sync-BrandIcons.ps1
+
+    ApplicationIcon is set whenever icon.ico is found (not gated on OutputType): Directory.Build.props
+    runs before the project body sets WinExe/Exe, so OutputType is still the default here.
+  -->
+  <PropertyGroup>
+    <_NovolisPackageIconPath Condition="'$(_NovolisPackageIconPath)' == ''">$([MSBuild]::GetPathOfFileAbove('icon.png', '$(MSBuildProjectDirectory)'))</_NovolisPackageIconPath>
+    <_NovolisApplicationIconPath Condition="'$(_NovolisApplicationIconPath)' == ''">$([MSBuild]::GetPathOfFileAbove('icon.ico', '$(MSBuildProjectDirectory)'))</_NovolisApplicationIconPath>
+
+    <PackageIcon Condition="'$(PackageIcon)' == '' And '$(_NovolisPackageIconPath)' != ''">icon.png</PackageIcon>
+    <ApplicationIcon Condition="'$(ApplicationIcon)' == '' And '$(_NovolisApplicationIconPath)' != ''">$(_NovolisApplicationIconPath)</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(_NovolisPackageIconPath)' != '' And '$(PackageIcon)' == 'icon.png'">
+    <None Include="$(_NovolisPackageIconPath)" Pack="true" PackagePath="\" Link="icon.png" Visible="false"
+          Condition="!Exists('$(MSBuildProjectDirectory)\icon.png')" />
+    <None Include="icon.png" Pack="true" PackagePath="\" Visible="false"
+          Condition="Exists('$(MSBuildProjectDirectory)\icon.png')" />
+  </ItemGroup>
+</Project>
