@@ -103,7 +103,10 @@ foreach ($name in $packageRepos) {
     $wf = Join-Path $repo '.github/workflows'
     Write-Utf8 (Join-Path $wf 'pull-request.yml') $pullRequestYml
     Write-Utf8 (Join-Path $wf 'merge.yml') $mergeYml
-    Write-Utf8 (Join-Path $wf 'release.yml') $releaseYml
+    # Avalonia keeps a custom Windows installer release workflow.
+    if ($name -ne 'novolis-avalonia') {
+        Write-Utf8 (Join-Path $wf 'release.yml') $releaseYml
+    }
     Remove-WorkflowExtras $repo
     Remove-DuplicateGithubPackagesImport (Join-Path $repo 'Directory.Build.targets')
 }
