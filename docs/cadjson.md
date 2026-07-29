@@ -48,12 +48,23 @@ These additions keep `.cadjson` forward-compatible: apps may *store* the operati
   - Required: `openingType`, `deck`, `height`, `footprint`.
   - Optional: `hostWallId`, `connectsSides` (`["A","B"]`), and `swing` (door-specific).
 - **`weld`** — producer hint to merge operands that touch within tolerance.
-  - Required: `memberIds` (uuid[]), `touchEpsilonMeters`.
+  - Stack form: `inputId` / `sourceId` + `touchEpsilonMeters` (modifier on Mesh From Solid).
+  - Legacy: `memberIds` (uuid[]), `touchEpsilonMeters`.
 - **`boolean`** — producer-defined set operation between two operands.
-  - Required: `operation` (`union|subtract|intersect`), `leftId`, `rightId`, and `mode` (`region|solid`).
+  - Required: `operation` (`union|subtract|intersect`), `mode` (`region|solid`).
+  - Operands: `leftId`/`rightId` and/or named `targetId`/`cutterId`.
+- **`symmetry`** — mirror source about a plane; optional `mergeAtPlane`.
+- **`connect`** — `memberIds` + `mode` (`group|joinMesh|compoundSolid|fuseSolid`).
+- **`split`** — partition by `cuttingPlane` (v1) via `planePoint`/`normal`.
+- **`meshFromSolid`** — adapter: `sourceId`, `linkMode` (`linked|detached|baked`).
+- **`optimize`** / **`bridge`** — mesh modifier stack nodes (`inputId`).
+- **`material`** / **`light`** / **`camera`** — Preview appearance nodes on the shared tree.
+- **`mesh`** — stored triangle mesh (`meshVertices`, `meshIndices`).
 - **`space.flags`** (optional cache) — derivation results for enclosure/hollowness:
   - `enclosed` (boolean), `hollow` (boolean).
   - Intended for persistence so apps can render “enclosed yet hollow” compartments without re-running full topology analysis.
+
+Workspaces over one document: **CAD** (exact solids), **Modeling** (mesh modifiers), **Preview** (look). Same hierarchy; different tools and selection modes.
 
 ### Shape resolution
 

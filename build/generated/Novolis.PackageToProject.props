@@ -8,6 +8,9 @@
     <NovolisPackageProject Include="Frank.WireFish">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-wirefish\src\Frank.WireFish\Frank.WireFish.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Agent.Surface">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-avalonia\src\Novolis.Agent.Surface\Novolis.Agent.Surface.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Analyzers.AutoMapper">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-analyzers\src\Novolis.Analyzers.AutoMapper\Novolis.Analyzers.AutoMapper.csproj</ProjectPath>
     </NovolisPackageProject>
@@ -136,6 +139,9 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Audio.Voice.SherpaOnnx">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-audio\src\Novolis.Audio.Voice.SherpaOnnx\Novolis.Audio.Voice.SherpaOnnx.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Avalonia.3D">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-avalonia\src\Novolis.Avalonia.3D\Novolis.Avalonia.3D.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Avalonia.Agent">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-avalonia\src\Novolis.Avalonia.Agent\Novolis.Avalonia.Agent.csproj</ProjectPath>
@@ -346,6 +352,9 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Messaging.Coordination.Redis">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-messaging\src\Novolis.Messaging.Coordination.Redis\Novolis.Messaging.Coordination.Redis.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Modeling.Scene">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-avalonia\src\Novolis.Modeling.Scene\Novolis.Modeling.Scene.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Physics">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-physics\src\Novolis.Physics\Novolis.Physics.csproj</ProjectPath>

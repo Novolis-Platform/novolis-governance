@@ -224,7 +224,17 @@
         { "$ref": "#/$defs/entityArrayInstance" },
         { "$ref": "#/$defs/entityOpening" },
         { "$ref": "#/$defs/entityBoolean" },
-        { "$ref": "#/$defs/entityWeld" }
+        { "$ref": "#/$defs/entityWeld" },
+        { "$ref": "#/$defs/entitySymmetry" },
+        { "$ref": "#/$defs/entityConnect" },
+        { "$ref": "#/$defs/entitySplit" },
+        { "$ref": "#/$defs/entityMeshFromSolid" },
+        { "$ref": "#/$defs/entityOptimize" },
+        { "$ref": "#/$defs/entityBridge" },
+        { "$ref": "#/$defs/entityMaterial" },
+        { "$ref": "#/$defs/entityLight" },
+        { "$ref": "#/$defs/entityCamera" },
+        { "$ref": "#/$defs/entityMesh" }
       ]
     },
     "entityGroup": {
@@ -639,12 +649,14 @@
         { "$ref": "#/$defs/entityBase" },
         {
           "type": "object",
-          "required": ["kind", "operation", "leftId", "rightId", "mode"],
+          "required": ["kind", "operation", "mode"],
           "properties": {
             "kind": { "const": "boolean" },
             "operation": { "type": "string", "enum": ["union", "subtract", "intersect"] },
             "leftId": { "$ref": "#/$defs/uuid", "description": "Left operand entity id." },
             "rightId": { "$ref": "#/$defs/uuid", "description": "Right operand entity id." },
+            "targetId": { "$ref": "#/$defs/uuid", "description": "Named Target role (alias for leftId)." },
+            "cutterId": { "$ref": "#/$defs/uuid", "description": "Named Cutter role (alias for rightId)." },
             "mode": { "type": "string", "enum": ["region", "solid"], "description": "Region/2D vs Solid/3D behavior." },
             "touchEpsilonMeters": { "type": "number", "minimum": 0, "description": "Optional tolerance for coincident boundaries." }
           }
@@ -656,16 +668,169 @@
         { "$ref": "#/$defs/entityBase" },
         {
           "type": "object",
-          "required": ["kind", "memberIds", "touchEpsilonMeters"],
+          "required": ["kind"],
           "properties": {
             "kind": { "const": "weld" },
             "memberIds": {
               "type": "array",
-              "minItems": 2,
+              "minItems": 1,
               "items": { "$ref": "#/$defs/uuid" },
-              "description": "Operand entity ids to weld/union when they touch/intersect within tolerance."
+              "description": "Legacy multi-member weld operands."
             },
+            "inputId": { "$ref": "#/$defs/uuid", "description": "Modifier-stack input mesh." },
+            "sourceId": { "$ref": "#/$defs/uuid" },
             "touchEpsilonMeters": { "type": "number", "minimum": 0 }
+          }
+        }
+      ]
+    },
+    "entitySymmetry": {
+      "allOf": [
+        { "$ref": "#/$defs/entityBase" },
+        {
+          "type": "object",
+          "required": ["kind", "sourceId"],
+          "properties": {
+            "kind": { "const": "symmetry" },
+            "sourceId": { "$ref": "#/$defs/uuid" },
+            "planePoint": { "$ref": "#/$defs/vec3" },
+            "normal": { "$ref": "#/$defs/vec3" },
+            "mergeAtPlane": { "type": "boolean" },
+            "mergeTolerance": { "type": "number", "minimum": 0 }
+          }
+        }
+      ]
+    },
+    "entityConnect": {
+      "allOf": [
+        { "$ref": "#/$defs/entityBase" },
+        {
+          "type": "object",
+          "required": ["kind", "memberIds", "mode"],
+          "properties": {
+            "kind": { "const": "connect" },
+            "memberIds": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/uuid" } },
+            "mode": { "type": "string", "enum": ["group", "joinMesh", "compoundSolid", "fuseSolid"] },
+            "touchEpsilonMeters": { "type": "number", "minimum": 0 }
+          }
+        }
+      ]
+    },
+    "entitySplit": {
+      "allOf": [
+        { "$ref": "#/$defs/entityBase" },
+        {
+          "type": "object",
+          "required": ["kind", "sourceId"],
+          "properties": {
+            "kind": { "const": "split" },
+            "sourceId": { "$ref": "#/$defs/uuid" },
+            "mode": { "type": "string", "enum": ["cuttingPlane", "connectedComponents", "selectedFaces", "cuttingSolid"] },
+            "planePoint": { "$ref": "#/$defs/vec3" },
+            "normal": { "$ref": "#/$defs/vec3" },
+            "cutterId": { "$ref": "#/$defs/uuid" }
+          }
+        }
+      ]
+    },
+    "entityMeshFromSolid": {
+      "allOf": [
+        { "$ref": "#/$defs/entityBase" },
+        {
+          "type": "object",
+          "required": ["kind", "sourceId", "linkMode"],
+          "properties": {
+            "kind": { "const": "meshFromSolid" },
+            "sourceId": { "$ref": "#/$defs/uuid" },
+            "linkMode": { "type": "string", "enum": ["linked", "detached", "baked"] },
+            "meshVertices": { "type": "array", "items": { "$ref": "#/$defs/vec3" } },
+            "meshIndices": { "type": "array", "items": { "type": "integer", "minimum": 0 } }
+          }
+        }
+      ]
+    },
+    "entityOptimize": {
+      "allOf": [
+        { "$ref": "#/$defs/entityBase" },
+        {
+          "type": "object",
+          "required": ["kind"],
+          "properties": {
+            "kind": { "const": "optimize" },
+            "inputId": { "$ref": "#/$defs/uuid" },
+            "sourceId": { "$ref": "#/$defs/uuid" }
+          }
+        }
+      ]
+    },
+    "entityBridge": {
+      "allOf": [
+        { "$ref": "#/$defs/entityBase" },
+        {
+          "type": "object",
+          "required": ["kind"],
+          "properties": {
+            "kind": { "const": "bridge" },
+            "inputId": { "$ref": "#/$defs/uuid" },
+            "sourceId": { "$ref": "#/$defs/uuid" }
+          }
+        }
+      ]
+    },
+    "entityMaterial": {
+      "allOf": [
+        { "$ref": "#/$defs/entityBase" },
+        {
+          "type": "object",
+          "required": ["kind"],
+          "properties": {
+            "kind": { "const": "material" },
+            "color": { "$ref": "#/$defs/rgb" },
+            "material": { "type": "string" }
+          }
+        }
+      ]
+    },
+    "entityLight": {
+      "allOf": [
+        { "$ref": "#/$defs/entityBase" },
+        {
+          "type": "object",
+          "required": ["kind"],
+          "properties": {
+            "kind": { "const": "light" },
+            "center": { "$ref": "#/$defs/vec3" },
+            "intensity": { "type": "number" },
+            "lightType": { "type": "string" },
+            "color": { "$ref": "#/$defs/rgb" }
+          }
+        }
+      ]
+    },
+    "entityCamera": {
+      "allOf": [
+        { "$ref": "#/$defs/entityBase" },
+        {
+          "type": "object",
+          "required": ["kind"],
+          "properties": {
+            "kind": { "const": "camera" },
+            "center": { "$ref": "#/$defs/vec3" },
+            "normal": { "$ref": "#/$defs/vec3" }
+          }
+        }
+      ]
+    },
+    "entityMesh": {
+      "allOf": [
+        { "$ref": "#/$defs/entityBase" },
+        {
+          "type": "object",
+          "required": ["kind", "meshVertices", "meshIndices"],
+          "properties": {
+            "kind": { "const": "mesh" },
+            "meshVertices": { "type": "array", "items": { "$ref": "#/$defs/vec3" } },
+            "meshIndices": { "type": "array", "items": { "type": "integer", "minimum": 0 } }
           }
         }
       ]

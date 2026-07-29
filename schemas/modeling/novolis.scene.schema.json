@@ -1,0 +1,196 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://novolis.dev/schemas/modeling/novolis.scene.schema.json",
+  "title": "novolis.scene",
+  "description": "C4D-inspired mesh-first scene graph (Object Manager hierarchy). File extension: .nov3djson.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["format", "schemaVersion", "name", "unitScaleMeters", "nodes"],
+  "properties": {
+    "format": { "const": "novolis.scene" },
+    "schemaVersion": { "type": "integer", "const": 1 },
+    "name": { "type": "string", "minLength": 1 },
+    "generator": { "type": "string" },
+    "createdAt": { "type": "string", "format": "date-time" },
+    "modifiedAt": { "type": "string", "format": "date-time" },
+    "unitScaleMeters": { "type": "number", "exclusiveMinimum": 0 },
+    "nodes": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/node" }
+    },
+    "activeCameraId": { "$ref": "#/$defs/uuid" },
+    "selectionId": { "$ref": "#/$defs/uuid" },
+    "properties": {
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    }
+  },
+  "$defs": {
+    "uuid": { "type": "string", "format": "uuid" },
+    "vec3": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": { "type": "number" }
+    },
+    "rgb": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": { "type": "number", "minimum": 0, "maximum": 1 }
+    },
+    "transform": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "position": { "$ref": "#/$defs/vec3" },
+        "rotationDeg": { "$ref": "#/$defs/vec3" },
+        "scale": { "$ref": "#/$defs/vec3" }
+      }
+    },
+    "nodeBase": {
+      "type": "object",
+      "required": ["kind", "id", "name"],
+      "properties": {
+        "kind": { "type": "string" },
+        "id": { "$ref": "#/$defs/uuid" },
+        "name": { "type": "string" },
+        "parentId": { "$ref": "#/$defs/uuid" },
+        "transform": { "$ref": "#/$defs/transform" },
+        "visible": { "type": "boolean" }
+      }
+    },
+    "node": {
+      "oneOf": [
+        { "$ref": "#/$defs/groupNode" },
+        { "$ref": "#/$defs/meshNode" },
+        { "$ref": "#/$defs/generatorNode" },
+        { "$ref": "#/$defs/modifierNode" },
+        { "$ref": "#/$defs/materialNode" },
+        { "$ref": "#/$defs/lightNode" },
+        { "$ref": "#/$defs/cameraNode" },
+        { "$ref": "#/$defs/nullNode" }
+      ]
+    },
+    "groupNode": {
+      "allOf": [
+        { "$ref": "#/$defs/nodeBase" },
+        {
+          "type": "object",
+          "properties": { "kind": { "const": "group" } }
+        }
+      ]
+    },
+    "meshNode": {
+      "allOf": [
+        { "$ref": "#/$defs/nodeBase" },
+        {
+          "type": "object",
+          "properties": {
+            "kind": { "const": "mesh" },
+            "primitive": { "enum": ["box", "sphere", "plane", "cylinder"] },
+            "size": { "$ref": "#/$defs/vec3" },
+            "materialId": { "$ref": "#/$defs/uuid" },
+            "vertices": { "type": "array", "items": { "type": "number" } },
+            "indices": { "type": "array", "items": { "type": "integer" } }
+          }
+        }
+      ]
+    },
+    "generatorNode": {
+      "allOf": [
+        { "$ref": "#/$defs/nodeBase" },
+        {
+          "type": "object",
+          "properties": {
+            "kind": { "const": "generator" },
+            "generator": { "enum": ["cloner", "symmetry", "extrude"] },
+            "sourceId": { "$ref": "#/$defs/uuid" },
+            "count": { "type": "integer", "minimum": 1 },
+            "offset": { "$ref": "#/$defs/vec3" },
+            "axis": { "type": "string" }
+          }
+        }
+      ]
+    },
+    "modifierNode": {
+      "allOf": [
+        { "$ref": "#/$defs/nodeBase" },
+        {
+          "type": "object",
+          "properties": {
+            "kind": { "const": "modifier" },
+            "modifier": { "enum": ["weld", "subdivision", "optimize"] },
+            "inputId": { "$ref": "#/$defs/uuid" },
+            "tolerance": { "type": "number" },
+            "levels": { "type": "integer", "minimum": 0 }
+          }
+        }
+      ]
+    },
+    "materialNode": {
+      "allOf": [
+        { "$ref": "#/$defs/nodeBase" },
+        {
+          "type": "object",
+          "properties": {
+            "kind": { "const": "material" },
+            "color": { "$ref": "#/$defs/rgb" },
+            "roughness": { "type": "number", "minimum": 0, "maximum": 1 },
+            "metallic": { "type": "number", "minimum": 0, "maximum": 1 }
+          }
+        }
+      ]
+    },
+    "lightNode": {
+      "allOf": [
+        { "$ref": "#/$defs/nodeBase" },
+        {
+          "type": "object",
+          "required": ["lightKind"],
+          "properties": {
+            "kind": { "const": "light" },
+            "lightKind": { "enum": ["omni", "spot", "infinite", "area"] },
+            "color": { "$ref": "#/$defs/rgb" },
+            "intensity": { "type": "number", "minimum": 0 },
+            "temperatureKelvin": { "type": "number" },
+            "coneAngleDeg": { "type": "number" },
+            "penumbraDeg": { "type": "number" },
+            "areaSize": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 2,
+              "items": { "type": "number" }
+            },
+            "castShadows": { "type": "boolean" },
+            "enabled": { "type": "boolean" }
+          }
+        }
+      ]
+    },
+    "cameraNode": {
+      "allOf": [
+        { "$ref": "#/$defs/nodeBase" },
+        {
+          "type": "object",
+          "properties": {
+            "kind": { "const": "camera" },
+            "fovDeg": { "type": "number" },
+            "near": { "type": "number" },
+            "far": { "type": "number" },
+            "target": { "$ref": "#/$defs/vec3" }
+          }
+        }
+      ]
+    },
+    "nullNode": {
+      "allOf": [
+        { "$ref": "#/$defs/nodeBase" },
+        {
+          "type": "object",
+          "properties": { "kind": { "const": "null" } }
+        }
+      ]
+    }
+  }
+}
