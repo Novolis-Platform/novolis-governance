@@ -4,7 +4,7 @@ Tracked in [platform-import-plan.md](platform-import-plan.md). **Do not start** 
 
 | Wave | Repo | Frank source | Blockers |
 |------|------|--------------|----------|
-| 4.1 | `novolis-workflows` | `Frank.WorkflowEngine` | `novolis-mapping`, `novolis-scheduling`, messaging facade |
+| 4.1 | `novolis-workflow-engine` | `Frank.WorkflowEngine` | `novolis-mapping`, `novolis-scheduling`, messaging facade (`novolis-workflows` = GitHub Actions only) |
 | 4.2 | `novolis-data` EF facet | `Frank.EntityFrameworkCore` | Testing GPR |
 | 4.3 | Codegen devtools | `Frank.SolutionManager`, `GitKit`, `Blazor.JsInteropGenerator` | [frank-codegen-devtools.md](imports-todo/frank-codegen-devtools.md) |
 | 4.4 | ML remainder | `Frank.ML` apps/domain | **Audit:** presentation stays in apps; domain in `novolis-machinelearning` + `novolis-simulation` only |

@@ -9,7 +9,7 @@
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-wirefish\src\Frank.WireFish\Frank.WireFish.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Agent.Surface">
-      <ProjectPath>$(NovolisWorkspaceRoot)novolis-avalonia\src\Novolis.Agent.Surface\Novolis.Agent.Surface.csproj</ProjectPath>
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-commands\src\Novolis.Agent.Surface\Novolis.Agent.Surface.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Analyzers.AutoMapper">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-analyzers\src\Novolis.Analyzers.AutoMapper\Novolis.Analyzers.AutoMapper.csproj</ProjectPath>
@@ -357,7 +357,7 @@
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-messaging\src\Novolis.Messaging.Coordination.Redis\Novolis.Messaging.Coordination.Redis.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Modeling.Scene">
-      <ProjectPath>$(NovolisWorkspaceRoot)novolis-avalonia\src\Novolis.Modeling.Scene\Novolis.Modeling.Scene.csproj</ProjectPath>
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-cad\src\Novolis.Modeling.Scene\Novolis.Modeling.Scene.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Physics">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-physics\src\Novolis.Physics\Novolis.Physics.csproj</ProjectPath>
@@ -508,6 +508,9 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Simulation.Kinematics">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-simulation\src\Novolis.Simulation.Kinematics\Novolis.Simulation.Kinematics.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Simulation.Mesh">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-simulation\src\Novolis.Simulation.Mesh\Novolis.Simulation.Mesh.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Simulation.Racing">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-simulation\src\Novolis.Simulation.Racing\Novolis.Simulation.Racing.csproj</ProjectPath>

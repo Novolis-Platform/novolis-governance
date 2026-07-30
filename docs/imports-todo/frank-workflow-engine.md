@@ -28,7 +28,9 @@ Orchestration layer for multi-step workflows on top of channels, cron, and mappi
 
 ### Target
 
-**New repo:** `novolis-workflows` → `Novolis.Workflows`
+**New repo:** `novolis-workflow-engine` → `Novolis.WorkflowEngine`
+
+> **Note:** Org repo `novolis-workflows` is **GitHub Actions shared workflows** only. Do not put WorkflowEngine libraries there.
 
 ### Prerequisites (PackageReference only)
 
@@ -41,7 +43,7 @@ Orchestration layer for multi-step workflows on top of channels, cron, and mappi
 ### Port steps
 
 1. Wait for all three on GPR `2026.1.*`.
-2. Bootstrap `novolis-workflows`; port core library; retarget deps to Novolis packages.
+2. Bootstrap `novolis-workflow-engine`; port core library; retarget deps to Novolis packages.
 3. Port sample as `novolis-dogfooding` or docs sample (not shipped NuGet).
 4. Rebuild tests with TUnit; no Frank.Testing package refs in production.
 5. Modernize `Microsoft.Extensions.*` to .NET 10 aligned versions.

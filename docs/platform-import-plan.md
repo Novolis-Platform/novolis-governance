@@ -148,7 +148,7 @@ Appendices: [fleetcommander-patterns](imports-todo/fleetcommander-patterns-for-p
 
 | # | Target | Status | Depends |
 |---|--------|--------|---------|
-| 4.1 | `novolis-workflows` | spec | Mapping + Cron + Messaging |
+| 4.1 | `novolis-workflow-engine` | spec | Mapping + Cron + Messaging (`novolis-workflows` remains GitHub Actions shared workflows) |
 | 4.2 | `novolis-data` EF facet | spec | Testing GPR |
 | 4.3 | Codegen devtools facets | spec | [frank-codegen-devtools](imports-todo/frank-codegen-devtools.md) |
 | 4.4 | ML remainder audit | **audit done** | [frank-ml-remainder](imports-todo/frank-ml-remainder.md) |
