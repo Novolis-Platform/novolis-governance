@@ -22,7 +22,7 @@ Live **control sessions** (agent desks, HTTP/SSE takeover) live in **`Novolis.Ag
 ## Allowed in `novolis-gaming`
 
 - ASP.NET Core + SignalR in `Novolis.Game.Multiplayer.AspNetCore` only
-- Procedural authoring (`Novolis.Game.Procedural`) — noise, infinite chunks/tracks, spawn tables; BCL only
+- Procedural authoring (`Novolis.Game.Procedural`) — noise, infinite chunks/tracks, spawn tables; BCL only (feeds Simulation.Voxels height samplers at the **app** layer)
 - Opaque refs (`PlayerRef`, `SessionRef`, `LobbyId`) — no email, legal name, or provider subject strings in public API
 - Same-repo `ProjectReference` between `Novolis.Game.*` facets
 - `PackageReference` to `Novolis.Testing.*`, and third-party NuGet (Identity/Multiplayer as needed)
@@ -31,6 +31,7 @@ Live **control sessions** (agent desks, HTTP/SSE takeover) live in **`Novolis.Ag
 
 - Live control session hosts / `session.*` wire (`Novolis.Agent.Session` belongs in `novolis-commands`)
 - `Novolis.Simulation.*`, `Novolis.Raylib.*`, `Novolis.Rendering.*` package references
+- Character cameras, PA-style tile grids, voxel worlds/meshing — use `Novolis.Simulation.View` / `.Tiles` / `.Voxels` (+ `.Meshing`) instead
 - Simulation ↔ Raylib wiring inside a single package
 - Game domain models (factions, ships, SCR/GalacticSim rules)
 - SignalR or game lobby code in `novolis-transports`

@@ -38,7 +38,7 @@ Math is one library family with **facets** (separate packages, same repo). Geome
 
 | Facet (current / planned) | Role |
 |---------------------------|------|
-| `Novolis.Math.Arrays` | Dense grids, indices |
+| `Novolis.Math.Arrays` | Dense grids, indices, packed voxel chunks (`ChunkCoord3`, `VoxelChunk` 16³) |
 | `Novolis.Math.Geometry` | BCL-backed primitives (`Ray`, `Sphere`, meshes), intersections, BVH |
 | `Novolis.Math.Topology` | Connectivity: polygon, face, edge, shape |
 
@@ -53,7 +53,7 @@ When the BCL provides a type, **use it**. Do **not** add Novolis duplicates.
 | `System.Numerics.Matrix4x4` | `Matrix4x4d`, custom 4×4 |
 | `System.Numerics.Plane` | custom plane types mirroring BCL |
 
-**Allowed Novolis types** only where the BCL has **no** equivalent: `Ray`, `Sphere`, `AxisAlignedBox`, `TriangleMesh`, `DenseGrid<T>`, topology records — composed from BCL primitives.
+**Allowed Novolis types** only where the BCL has **no** equivalent: `Ray`, `Sphere`, `AxisAlignedBox`, `TriangleMesh`, `DenseGrid<T>`, `VoxelChunk` / `ChunkCoord3`, topology records — composed from BCL primitives.
 
 ### No dimension suffixes or 2D types in Math public APIs
 
@@ -114,12 +114,17 @@ If a concept needs **time**, `deltaTime`, clocks, ticks, integration steps, or �
 - **All cameras** — rigs, poses, controllers, and composition:
 
 ```text
-StaticCameraRig, OrbitCameraRig, TrackingCameraRig, ThirdPersonCamera
-FirstPersonCamera (yaw/pitch), MapProjectionCamera, SensorView, ObserverFrame
-ViewPose, projection/view records used by observers
+StaticCameraRig, OrbitCameraRig, TrackingCameraRig, FreeLookCameraRig
+FirstPersonCameraRig, ThirdPersonCameraRig, CharacterCameraDirector, CharacterMotor
+LookIntent / MoveIntent, YawPitchController, ViewPose, ObserverFrame
 ```
 
+- **Tiles** (`Novolis.Simulation.Tiles`) — Prison Architect–style layered maps, edge walls/doors, room flood-fill, grid A*
+- **Voxels** (`Novolis.Simulation.Voxels` + `.Meshing`) — chunked block worlds, streaming, terrain fill, face-culled / greedy mesh → `Math.Geometry` (no GPU)
+
 Primitive third-person, orbit, first-person yaw/pitch, and CAD-style viewport cameras belong here. **Product-only** embellishments (e.g. run bobbing, weapon recoil shake, cinematic beats tied to a specific game) stay in **apps**, not platform Simulation.
+
+**Humanoid skeleton / mocap target:** `Novolis.Simulation.Humanoid` — Mixamo/Unity-compatible bone ids, T-pose bind, FK/IK, animation clips. Physics ragdoll bridge: `Novolis.Simulation.Humanoid.Physics`. Import: `Novolis.Simulation.Humanoid.Import` (BVH / glTF joints). CPU skin: `Novolis.Simulation.Humanoid.Skinning`. Game clip banks: `Novolis.Game.Humanoid` (gaming repo).
 
 **Answers:** *How do multiple systems participate in one evolving world?*
 
@@ -179,6 +184,10 @@ Product rules, HUD, networking, highly specific camera feel (run bobbing, recoil
 | Scene compile → BVH + flat buffers | `Novolis.Rendering.Compile` (+ BVH structure in `Novolis.Math.Geometry`) |
 | `Camera3D`, draw loop | Raylib only |
 | Planar occupancy, LOS on a world | Simulation |
+| Edge-wall tile maps, room flood-fill, grid A* | `Novolis.Simulation.Tiles` |
+| Chunked voxel world, dig/place, streamer | `Novolis.Simulation.Voxels` |
+| Voxel → triangle mesh (face cull / greedy) | `Novolis.Simulation.Voxels.Meshing` |
+| Packed 16³ block storage | `Novolis.Math.Arrays` (`VoxelChunk`) |
 | Headless racing sim (tracks, sensors, tick loop) | `Novolis.Simulation.Racing` |
 | NN evolution on racing (trainer, neural car controller) | Apps (e.g. `novolis-dogfooding` `NeuralRacing`) — not `Novolis.MachineLearning.*` |
 
@@ -192,7 +201,7 @@ Product rules, HUD, networking, highly specific camera feel (run bobbing, recoil
 novolis-math       (Arrays, Geometry, Topology, core numerics)
 novolis-physics    →  math
 novolis-simulation →  math, physics
-  (facets: Abstractions, World, View, Kinematics, World.Builders, Racing, …)
+  (facets: Abstractions, World, View, Tiles, Voxels, Voxels.Meshing, Kinematics, World.Builders, Racing, …)
 ```
 
 **Orthogonal (not in stack, no link to Simulation):**

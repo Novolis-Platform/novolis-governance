@@ -8,6 +8,9 @@
     <NovolisPackageProject Include="Frank.WireFish">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-wirefish\src\Frank.WireFish\Frank.WireFish.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Agent.Session">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-commands\src\Novolis.Agent.Session\Novolis.Agent.Session.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Agent.Surface">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-commands\src\Novolis.Agent.Surface\Novolis.Agent.Surface.csproj</ProjectPath>
     </NovolisPackageProject>
@@ -167,6 +170,9 @@
     <NovolisPackageProject Include="Novolis.Avalonia.Markdown">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-avalonia\src\Novolis.Avalonia.Markdown\Novolis.Avalonia.Markdown.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Avalonia.Mermaid">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-avalonia\src\Novolis.Avalonia.Mermaid\Novolis.Avalonia.Mermaid.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Avalonia.Packaging.Inno">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-avalonia\src\Novolis.Avalonia.Packaging.Inno\Novolis.Avalonia.Packaging.Inno.csproj</ProjectPath>
     </NovolisPackageProject>
@@ -254,6 +260,9 @@
     <NovolisPackageProject Include="Novolis.Economy.Simulation">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-economy\src\Novolis.Economy.Simulation\Novolis.Economy.Simulation.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Game.Humanoid">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-gaming\src\Novolis.Game.Humanoid\Novolis.Game.Humanoid.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Game.Identity">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-gaming\src\Novolis.Game.Identity\Novolis.Game.Identity.csproj</ProjectPath>
     </NovolisPackageProject>
@@ -275,8 +284,8 @@
     <NovolisPackageProject Include="Novolis.Game.Packaging.Inno">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-gaming\src\Novolis.Game.Packaging.Inno\Novolis.Game.Packaging.Inno.csproj</ProjectPath>
     </NovolisPackageProject>
-    <NovolisPackageProject Include="Novolis.Game.Session">
-      <ProjectPath>$(NovolisWorkspaceRoot)novolis-gaming\src\Novolis.Game.Session\Novolis.Game.Session.csproj</ProjectPath>
+    <NovolisPackageProject Include="Novolis.Game.Procedural">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-gaming\src\Novolis.Game.Procedural\Novolis.Game.Procedural.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.IO.Git">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-io\src\Novolis.IO.Git\Novolis.IO.Git.csproj</ProjectPath>
@@ -506,6 +515,18 @@
     <NovolisPackageProject Include="Novolis.Simulation.Abstractions">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-simulation\src\Novolis.Simulation.Abstractions\Novolis.Simulation.Abstractions.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Simulation.Humanoid">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-simulation\src\Novolis.Simulation.Humanoid\Novolis.Simulation.Humanoid.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Simulation.Humanoid.Import">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-simulation\src\Novolis.Simulation.Humanoid.Import\Novolis.Simulation.Humanoid.Import.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Simulation.Humanoid.Physics">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-simulation\src\Novolis.Simulation.Humanoid.Physics\Novolis.Simulation.Humanoid.Physics.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Simulation.Humanoid.Skinning">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-simulation\src\Novolis.Simulation.Humanoid.Skinning\Novolis.Simulation.Humanoid.Skinning.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Simulation.Kinematics">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-simulation\src\Novolis.Simulation.Kinematics\Novolis.Simulation.Kinematics.csproj</ProjectPath>
     </NovolisPackageProject>
@@ -518,8 +539,17 @@
     <NovolisPackageProject Include="Novolis.Simulation.Replay">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-simulation\src\Novolis.Simulation.Replay\Novolis.Simulation.Replay.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Simulation.Tiles">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-simulation\src\Novolis.Simulation.Tiles\Novolis.Simulation.Tiles.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Simulation.View">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-simulation\src\Novolis.Simulation.View\Novolis.Simulation.View.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Simulation.Voxels">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-simulation\src\Novolis.Simulation.Voxels\Novolis.Simulation.Voxels.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Simulation.Voxels.Meshing">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-simulation\src\Novolis.Simulation.Voxels.Meshing\Novolis.Simulation.Voxels.Meshing.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Simulation.World">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-simulation\src\Novolis.Simulation.World\Novolis.Simulation.World.csproj</ProjectPath>
