@@ -644,6 +644,9 @@
     <NovolisPackageProject Include="Novolis.Transports.Tcp.Server">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-transports\src\Novolis.Transports.Tcp.Server\Novolis.Transports.Tcp.Server.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Transports.Torrent">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-transports\src\Novolis.Transports.Torrent\Novolis.Transports.Torrent.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Transports.WireFish">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-transports\src\Novolis.Transports.WireFish\Novolis.Transports.WireFish.csproj</ProjectPath>
     </NovolisPackageProject>
