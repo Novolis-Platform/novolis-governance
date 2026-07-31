@@ -135,7 +135,7 @@ The master solution organizes projects from these repositories:
 - **Data/Processing**: novolis-math (6 projects), novolis-physics (8 projects), novolis-machinelearning (2 projects)
 - **Runtime/Platform**: novolis-io (8 projects), novolis-registry (6 projects), novolis-workspaces (15 projects)
 - **Graphics/Rendering**: novolis-rendering (6 projects), novolis-gaming (5 projects)
-- **Utilities**: novolis-testing (5 projects), novolis-templates (5 projects), novolis-logging (3 projects), novolis-markup (4 projects), novolis-mapping (6 projects), novolis-install (4 projects), novolis-installer-inno (3 projects), novolis-governance (0 projects), novolis-install (2 projects), novolis-io (2 projects), novolis-wirefish (8 projects), novolis-workflows (3 projects), novolis-workspaces (0 projects)
+- **Utilities**: novolis-testing, novolis-templates, novolis-logging, novolis-markup, novolis-mapping, novolis-install, novolis-governance, novolis-io, novolis-workflows, novolis-workspaces (Inno packaging lives in `Novolis.Avalonia.Packaging.Inno` / `Novolis.Game.Packaging.Inno`, not a separate installer repo)
 
 ---
 

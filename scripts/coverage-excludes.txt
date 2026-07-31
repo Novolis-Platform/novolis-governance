@@ -7,7 +7,6 @@ novolis-workflows
 novolis-templates
 novolis-template-dotnet
 novolis-install
-novolis-installer-inno
 novolis-registry
 novolis-workspaces
 novolis-experimental

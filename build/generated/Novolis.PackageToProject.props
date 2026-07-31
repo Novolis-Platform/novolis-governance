@@ -176,6 +176,15 @@
     <NovolisPackageProject Include="Novolis.Avalonia.Mermaid">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-avalonia\src\Novolis.Avalonia.Mermaid\Novolis.Avalonia.Mermaid.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Avalonia.Mobile">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-avalonia\src\Novolis.Avalonia.Mobile\Novolis.Avalonia.Mobile.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Avalonia.Mobile.Android">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-avalonia\src\Novolis.Avalonia.Mobile.Android\Novolis.Avalonia.Mobile.Android.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Avalonia.Mobile.Desktop">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-avalonia\src\Novolis.Avalonia.Mobile.Desktop\Novolis.Avalonia.Mobile.Desktop.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Avalonia.Packaging.Inno">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-avalonia\src\Novolis.Avalonia.Packaging.Inno\Novolis.Avalonia.Packaging.Inno.csproj</ProjectPath>
     </NovolisPackageProject>
@@ -292,6 +301,9 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.IO.Git">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-io\src\Novolis.IO.Git\Novolis.IO.Git.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.IO.GitHub">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-io\src\Novolis.IO.GitHub\Novolis.IO.GitHub.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.IO.Paths">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-io\src\Novolis.IO.Paths\Novolis.IO.Paths.csproj</ProjectPath>
