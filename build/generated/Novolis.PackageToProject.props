@@ -209,6 +209,9 @@
     <NovolisPackageProject Include="Novolis.Cad.Primitives">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-cad\src\Novolis.Cad.Primitives\Novolis.Cad.Primitives.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Cad.SceneBridge">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-cad\src\Novolis.Cad.SceneBridge\Novolis.Cad.SceneBridge.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.CodeGen.Bindings">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-codegen\src\Novolis.CodeGen.Bindings\Novolis.CodeGen.Bindings.csproj</ProjectPath>
     </NovolisPackageProject>
@@ -304,6 +307,9 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.IO.GitHub">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-io\src\Novolis.IO.GitHub\Novolis.IO.GitHub.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.IO.Mobile.Android">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-io\src\Novolis.IO.Mobile.Android\Novolis.IO.Mobile.Android.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.IO.Paths">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-io\src\Novolis.IO.Paths\Novolis.IO.Paths.csproj</ProjectPath>
