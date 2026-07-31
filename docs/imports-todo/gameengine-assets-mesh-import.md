@@ -24,10 +24,14 @@
 
 ### Target home (recommended)
 
-**`novolis-raylib`** — new packable facet, e.g. `Novolis.Raylib.Assets` or `Novolis.Raylib.Loaders`:
+**`novolis-cad`** — packable `Novolis.Modeling.Import` (AssimpNet → `TriangleMesh` / `EditableMesh`).
 
-- `PackageReference` → `Novolis.Math.Geometry` only (not Simulation/Rendering).
-- Optional `PackageReference` → AssimpNet (heavy); split **OBJ-only** package if size matters.
+Also: **`novolis-raylib`** `Novolis.Raylib.Loaders` remains OBJ-only (no Assimp).
+
+### Status
+
+- **Done:** `Novolis.Modeling.Import` (`AssimpMeshImporter`, `MeshImportOptions`), SceneLab `importmesh` + **Import…**, CorellianFreighterBuilder `--import` uses the package.
+- Publish `2026.1.*` to GPR before single-repo consumers without ProjectReference mode.
 
 ### Port steps
 

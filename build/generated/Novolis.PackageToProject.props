@@ -365,6 +365,9 @@
     <NovolisPackageProject Include="Novolis.Messaging.Coordination.Redis">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-messaging\src\Novolis.Messaging.Coordination.Redis\Novolis.Messaging.Coordination.Redis.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Modeling.Import">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-cad\src\Novolis.Modeling.Import\Novolis.Modeling.Import.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Modeling.Scene">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-cad\src\Novolis.Modeling.Scene\Novolis.Modeling.Scene.csproj</ProjectPath>
     </NovolisPackageProject>
