@@ -62,6 +62,10 @@ Cross-check [frank-inventory.md](../frank-inventory.md). In-repo completion item
 
 ---
 
+## Related research
+
+- [Awesome-LLM-3D → Novolis](../research-radar/awesome-llm-3d.md) — research radar (Adopt / Adapter / Skip) for 3D-LLM papers; scene agent actions for spatial tools.
+
 ## Conventions
 
 - **PackageReference only** across Novolis repos; no `ProjectReference` into `D:\frankrepos`, `D:\github`, `D:\repos`, or `D:\dotnetrepos`.

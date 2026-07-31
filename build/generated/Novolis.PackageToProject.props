@@ -8,11 +8,14 @@
     <NovolisPackageProject Include="Frank.WireFish">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-wirefish\src\Frank.WireFish\Frank.WireFish.csproj</ProjectPath>
     </NovolisPackageProject>
-    <NovolisPackageProject Include="Novolis.Agent.Session">
-      <ProjectPath>$(NovolisWorkspaceRoot)novolis-commands\src\Novolis.Agent.Session\Novolis.Agent.Session.csproj</ProjectPath>
+    <NovolisPackageProject Include="Novolis.Agent.Core">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-agent\src\Novolis.Agent.Core\Novolis.Agent.Core.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Agent.Surface">
-      <ProjectPath>$(NovolisWorkspaceRoot)novolis-commands\src\Novolis.Agent.Surface\Novolis.Agent.Surface.csproj</ProjectPath>
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-agent\src\Novolis.Agent.Surface\Novolis.Agent.Surface.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Agent.Testing">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-agent\src\Novolis.Agent.Testing\Novolis.Agent.Testing.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Analyzers.AutoMapper">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-analyzers\src\Novolis.Analyzers.AutoMapper\Novolis.Analyzers.AutoMapper.csproj</ProjectPath>

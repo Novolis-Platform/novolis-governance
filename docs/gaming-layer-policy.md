@@ -6,14 +6,15 @@ Operational summary for `novolis-gaming`. **Stack boundaries:** [library-boundar
 
 `novolis-gaming` ships **game authoring and shipping** libraries: pseudonymous identity, menu navigation, multiplayer lobby glue, procedural content tools, Inno Setup helpers. It is **not** the Math / Physics / Simulation / Rendering / Raylib stack.
 
-Live **control sessions** (agent desks, HTTP/SSE takeover) live in **`Novolis.Agent.Session`** under `novolis-commands` — not here.
+Live **agent surfaces** (HTTP/SSE/WebSocket/LocalIpc control) live in **`novolis-agent`** (`Novolis.Agent.Core` / `Novolis.Agent.Surface`) — not here.
 
 ## Repo map
 
 | Repo | Role |
 |------|------|
 | **novolis-gaming** | `Novolis.Game.*` authoring packages |
-| **novolis-commands** | Intent/command tooling + `Novolis.Agent.Session` / `Novolis.Agent.Surface` |
+| **novolis-commands** | Intent/command tooling (parse → envelope → queue) |
+| **novolis-agent** | Agent Surface (Novolis.Agent.Core / .Surface / .Testing) |
 | **novolis-install** | Platform `novolis` global tool (GPR package install) |
 | **novolis-templates** | `dotnet new` scaffolds (general + MonoGame) |
 | **novolis-workflows** | Shared GitHub Actions workflows for org CI/CD (not product libraries) |
@@ -29,7 +30,7 @@ Live **control sessions** (agent desks, HTTP/SSE takeover) live in **`Novolis.Ag
 
 ## Forbidden in `novolis-gaming`
 
-- Live control session hosts / `session.*` wire (`Novolis.Agent.Session` belongs in `novolis-commands`)
+- Live agent surface hosts / `agent.*` wire (`novolis-agent`)
 - `Novolis.Simulation.*`, `Novolis.Raylib.*`, `Novolis.Rendering.*` package references
 - Character cameras, PA-style tile grids, voxel worlds/meshing — use `Novolis.Simulation.View` / `.Tiles` / `.Voxels` (+ `.Meshing`) instead
 - Simulation ↔ Raylib wiring inside a single package
@@ -52,3 +53,4 @@ Apps implement `IExternalIdentityLinker` and real auth; platform sees hashed ext
 - [nuget-only-policy.md](nuget-only-policy.md)
 
 `novolis-workflows` is the org's **reusable GitHub Actions** repo. Backend WorkflowEngine (Cron / Mapping / Messaging) imports target a future **`novolis-workflow-engine`** package repo — do not conflate the two.
+
