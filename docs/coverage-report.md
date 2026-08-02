@@ -35,6 +35,20 @@ Reports:
 
 Same `-Exclude` / `coverage-excludes.txt` / `-Include` as the coverage collector. Output: `artifacts/test-gaps/SUMMARY.md`.
 
+### Platform / native packages (allowed gaps)
+
+These packables are intentionally without headless unit `ProjectReference` linkage (GPU, OS UI, P/Invoke, or Docker):
+
+| Package | Why skipped |
+|---------|-------------|
+| `Novolis.Audio.Bindings` / `.Native` | Native audio P/Invoke |
+| `Novolis.Audio.Output.NAudio` | Windows audio device |
+| `Novolis.Audio.Voice.Platform.Maui` / `.Windows` | Platform voice hosts |
+| `Novolis.Avalonia.Mobile.Android` / `.Desktop` | Mobile/desktop UI hosts |
+| `Novolis.Raylib` / `.Native` / `.Raygui.Native` | Native window / meta-package |
+| `Novolis.Rendering.Presentation.Raylib` | GPU presentation |
+| `Novolis.Testing.Testcontainers` | Requires Docker |
+
 ## Outputs
 
 Under `<Root>/artifacts/coverage/` (gitignored via repo `artifacts/`):
