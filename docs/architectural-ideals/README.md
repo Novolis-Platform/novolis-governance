@@ -1,3 +1,13 @@
+# Architectural ideals
+
+| Ideal | Topic |
+| --- | --- |
+| [hexgame-authoritative-core.md](hexgame-authoritative-core.md) | HexGame-shaped game loops on Novolis (Tick in Simulation/apps; Physics as callee) |
+| [workspace-snapshot-timeline.md](workspace-snapshot-timeline.md) | Editor workspaces, snapshots, and branchable timelines |
+| [distributed-services-architectural-guideline.md](distributed-services-architectural-guideline.md) | Distributed services structure and conformance |
+
+---
+
 # Distributed Services Architectural Guideline
 
 This guideline defines how Novolis **distributed services** are structured, bounded, and evolved. It applies to multi-project service repositories that expose APIs or workers, persist operational state, and communicate through typed clients and transport contracts.

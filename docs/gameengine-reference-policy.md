@@ -60,7 +60,12 @@ Renderer-agnostic modules may inform **`novolis-physics`**, **`novolis-raylib`**
 > Graphics: use [Novolis.Raylib](https://github.com/Novolis-Platform/novolis-raylib). This repo remains the home for samples, engine core, and unmigrated code.
 ```
 
+## Distinct from HexGame
+
+[HexGame](https://github.com/frankhaugen/HexGame) is a personal **architecture specification** (authoritative core + adapters). It is **not** Frank.GameEngine and is **not** a Novolis package family. Do not migrate HexGame NuGet into the platform or invent a GameKit umbrella. Composition guidance: [hexgame-authoritative-core.md](architectural-ideals/hexgame-authoritative-core.md). Frank.GameEngine remains **selective mining** into Math / Physics / Raylib / Simulation per this policy.
+
 ## Related
 
 - [frank-inventory.md](frank-inventory.md)
+- [hexgame-authoritative-core.md](architectural-ideals/hexgame-authoritative-core.md)
 - [Novolis Raylib package ecosystem](https://github.com/Novolis-Platform/.github/blob/main/plans/raylib/raylib-ecosystem-specs.md)

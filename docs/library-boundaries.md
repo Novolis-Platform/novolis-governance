@@ -18,7 +18,7 @@ Simulation
 
 **Apps** (dogfooding, SCR, …) compose the stack. **`novolis-raylib`** is a separate graphics/input host — orthogonal to Math / Physics / Simulation.
 
-**Simulation is not a game engine.** It is neutral orchestration: worlds, objects, systems, time, observation, recording, and replay.
+**Simulation is not a game engine.** It is neutral orchestration: worlds, objects, systems, time, observation, recording, and replay. HexGame-style game ticks belong in Simulation and apps — not in Physics (see [hexgame-authoritative-core.md](architectural-ideals/hexgame-authoritative-core.md)).
 
 ## One-line rules
 
@@ -124,7 +124,17 @@ LookIntent / MoveIntent, YawPitchController, ViewPose, ObserverFrame
 
 Primitive third-person, orbit, first-person yaw/pitch, and CAD-style viewport cameras belong here. **Product-only** embellishments (e.g. run bobbing, weapon recoil shake, cinematic beats tied to a specific game) stay in **apps**, not platform Simulation.
 
-**Humanoid skeleton / mocap target:** `Novolis.Simulation.Humanoid` — Mixamo/Unity-compatible bone ids, T-pose bind, FK/IK, animation clips. Physics ragdoll bridge: `Novolis.Simulation.Humanoid.Physics`. Import: `Novolis.Simulation.Humanoid.Import` (BVH / glTF joints). CPU skin: `Novolis.Simulation.Humanoid.Skinning`. Game clip banks: `Novolis.Game.Humanoid` (gaming repo).
+**Humanoid skeleton / mocap target:** `Novolis.Simulation.Humanoid` — Mixamo/Unity-compatible bone ids, T-pose bind, FK/IK (including two-bone and FABRIK chain), animation clips. Physics ragdoll bridge: `Novolis.Simulation.Humanoid.Physics`. Import: `Novolis.Simulation.Humanoid.Import` (BVH / glTF joints). CPU skin: `Novolis.Simulation.Humanoid.Skinning`. Game clip banks: `Novolis.Game.Humanoid` (gaming repo).
+
+### Kinematics vs skeletal IK (do not confuse)
+
+| Package | Owns | Does **not** own |
+|---------|------|------------------|
+| `Novolis.Simulation.Humanoid` | FK (`HumanoidPoseSolver`), two-bone IK, FABRIK chains, full-body multi-effector helpers, clip schema | Planar agent locomotion |
+| `Novolis.Simulation.Kinematics` | Planar XZ agent move (`PlanarAgent`) via occupancy / sphere sweep | Skeletal FK/IK, bone targets |
+| `Novolis.Physics.Joints` | Distance / swing / hinge **dynamics** (ragdolls) | Target-reaching IK |
+
+**Forbidden:** IK solvers in `Novolis.Math.*`; putting `TwoBoneIk` / FABRIK into `Simulation.Kinematics`; treating joint constraint projection as IK.
 
 **Answers:** *How do multiple systems participate in one evolving world?*
 
@@ -231,11 +241,13 @@ Wave 7–11 migrations may still place types in legacy packages. Prefer the boun
 | `Novolis.Physics.Collision.Simple.GridPhysicsMovement` | `Novolis.Simulation.Kinematics` |
 | Custom `Vector3d` / `Novolis.Physics.Numerics` (removed) | `System.Numerics` + `Novolis.Math.Geometry` primitives |
 | BVH structure in Physics | `Novolis.Math.Geometry`; response stays Physics |
+| `StaticTriangleMesh` in Physics | deleted — use `Novolis.Math.Geometry.TriangleMesh` |
 
 ---
 
 ## Related
 
+- [hexgame-authoritative-core.md](architectural-ideals/hexgame-authoritative-core.md) — HexGame-shaped game loops: Tick in Simulation/apps; Physics is a callee only (no HexGame NuGet / no GameKit)
 - [workspace-snapshot-timeline.md](architectural-ideals/workspace-snapshot-timeline.md) — editor workspaces, save points, and branchable timelines (`novolis-workspaces`)
 - [gaming-layer-policy.md](gaming-layer-policy.md) — `novolis-gaming` authoring lane (identity, menus, multiplayer glue, session protocol)
 - [simulation-layer-policy.md](simulation-layer-policy.md) — operational summary

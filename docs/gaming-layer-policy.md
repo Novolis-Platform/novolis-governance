@@ -47,9 +47,14 @@ Live **agent surfaces** (HTTP/SSE/WebSocket/LocalIpc control) live in **`novolis
 
 Apps implement `IExternalIdentityLinker` and real auth; platform sees hashed external subjects only.
 
+## Application core and player intent
+
+`IGameApplication`-shaped Start/Tick/Save/Load and game domain rules stay in **apps**, not in `Novolis.Game.*`. A future BCL-only `Novolis.Game.Intent` (player command envelopes) is deferred until multiple apps share a shape — see [hexgame-authoritative-core.md](architectural-ideals/hexgame-authoritative-core.md).
+
 ## Related
 
 - [novolis-gaming design](https://github.com/Novolis-Platform/novolis-gaming/blob/main/docs/design.md)
+- [hexgame-authoritative-core.md](architectural-ideals/hexgame-authoritative-core.md) — HexGame-aligned composition; no GameKit / no HexGame NuGet
 - [nuget-only-policy.md](nuget-only-policy.md)
 
 `novolis-workflows` is the org's **reusable GitHub Actions** repo. Backend WorkflowEngine (Cron / Mapping / Messaging) imports target a future **`novolis-workflow-engine`** package repo — do not conflate the two.

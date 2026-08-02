@@ -52,8 +52,13 @@ simulation → math, physics
 
 `StarConflictsRevolt.Server.Simulation` = product. `Novolis.Simulation.*` = platform.
 
+## HexGame-aligned loops
+
+Orchestration for HexGame-shaped ticks (commands in → advance authoritative state → snapshots/effects out) lives here and in **app** application cores — not in Physics. See [hexgame-authoritative-core.md](architectural-ideals/hexgame-authoritative-core.md).
+
 ## Related
 
 - [library-boundaries.md](library-boundaries.md)
+- [hexgame-authoritative-core.md](architectural-ideals/hexgame-authoritative-core.md)
 - [wave-11-simulation-repo.md](extraction-briefs/wave-11-simulation-repo.md)
 - [local-nuget-development.md](local-nuget-development.md)

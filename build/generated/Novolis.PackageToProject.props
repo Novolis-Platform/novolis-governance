@@ -407,6 +407,9 @@
     <NovolisPackageProject Include="Novolis.Physics.Ballistics">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-physics\src\Novolis.Physics.Ballistics\Novolis.Physics.Ballistics.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Physics.Cloth">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-physics\src\Novolis.Physics.Cloth\Novolis.Physics.Cloth.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Physics.Collision.Simple">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-physics\src\Novolis.Physics.Collision.Simple\Novolis.Physics.Collision.Simple.csproj</ProjectPath>
     </NovolisPackageProject>
@@ -562,6 +565,9 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Simulation.Replay">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-simulation\src\Novolis.Simulation.Replay\Novolis.Simulation.Replay.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Simulation.SpaceCombat">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-simulation\src\Novolis.Simulation.SpaceCombat\Novolis.Simulation.SpaceCombat.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Simulation.Tiles">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-simulation\src\Novolis.Simulation.Tiles\Novolis.Simulation.Tiles.csproj</ProjectPath>
