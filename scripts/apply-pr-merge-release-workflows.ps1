@@ -113,12 +113,50 @@ foreach ($name in $packageRepos) {
 
 $dog = Join-Path $Root 'novolis-dogfooding'
 if (Test-Path $dog) {
-    Write-Host 'Workflows: novolis-dogfooding'
+    # Dogfooding is consume-only: build/test the smoke solution, never publish NuGets.
+    Write-Host 'Workflows: novolis-dogfooding (smoke, no publish)'
     $wf = Join-Path $dog '.github/workflows'
-    if (Test-Path $wf) {
-        Get-ChildItem $wf -Filter '*.yml' -ErrorAction SilentlyContinue | Remove-Item -Force
-        if (-not (Get-ChildItem $wf -ErrorAction SilentlyContinue)) { Remove-Item $wf -Force -ErrorAction SilentlyContinue }
-    }
+    $dogPr = @"
+name: Pull request
+on:
+  pull_request:
+    branches: [main]
+concurrency:
+  group: pr-`${{ github.workflow }}-`${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  ci:
+    uses: $Uses/dotnet-pull-request.yml@main
+    secrets: inherit
+    with:
+      solution: Novolis.Dogfooding.slnx
+    permissions:
+      contents: read
+      packages: read
+"@
+    $dogMerge = @"
+name: Merge
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'docs/**'
+      - '**.md'
+      - 'LICENSE'
+      - '.editorconfig'
+  workflow_dispatch:
+jobs:
+  ci:
+    uses: $Uses/dotnet-pull-request.yml@main
+    secrets: inherit
+    with:
+      solution: Novolis.Dogfooding.slnx
+    permissions:
+      contents: read
+      packages: read
+"@
+    Write-Utf8 (Join-Path $wf 'pull-request.yml') $dogPr
+    Write-Utf8 (Join-Path $wf 'merge.yml') $dogMerge
     Remove-WorkflowExtras $dog
 }
 
