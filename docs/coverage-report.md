@@ -41,13 +41,17 @@ These packables are intentionally without headless unit `ProjectReference` linka
 
 | Package | Why skipped |
 |---------|-------------|
+| `Novolis.IO.Mobile.Android` | Host-side ADB protocol / device tooling (headless tests cover parsers only; live ADB is dogfood) |
 | `Novolis.Audio.Bindings` / `.Native` | Native audio P/Invoke |
 | `Novolis.Audio.Output.NAudio` | Windows audio device |
 | `Novolis.Audio.Voice.Platform.Maui` / `.Windows` | Platform voice hosts |
 | `Novolis.Avalonia.Mobile.Android` / `.Desktop` | Mobile/desktop UI hosts |
 | `Novolis.Raylib` / `.Native` / `.Raygui.Native` | Native window / meta-package |
 | `Novolis.Rendering.Presentation.Raylib` | GPU presentation |
+| `Novolis.Simulation.View` | Camera / view rig (GPU presentation bridge; headless sim tests skip) |
 | `Novolis.Testing.Testcontainers` | Requires Docker |
+
+Packables in this table carry `[assembly: ExcludeFromCodeCoverage]` in their project (see each package README or `AssemblyInfo.cs`). Org coverage collectors honor that attribute; do not filter these assemblies manually in scripts unless debugging.
 
 ## Outputs
 

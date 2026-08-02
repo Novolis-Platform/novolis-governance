@@ -12,3 +12,6 @@ novolis-workspaces
 novolis-experimental
 novolis-apps
 novolis-smoketest
+# Dogfood apps — not published libraries
+novolis-dogfooding
+novolis-dot-github

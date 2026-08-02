@@ -278,7 +278,8 @@ foreach ($r in ($results | Sort-Object Repo)) {
             "-reports:$reportsArg" `
             "-targetdir:$repoReport" `
             '-reporttypes:Cobertura;TextSummary' `
-            "-title:$($r.Repo)" | Out-Null
+            "-title:$($r.Repo)" `
+            "-filefilters:-*MessagePack.SourceGenerator*;-*.g.cs" | Out-Null
 
         if (Test-Path -LiteralPath $merged) {
             $sum = Get-CoberturaSummary -CoberturaPath $merged
