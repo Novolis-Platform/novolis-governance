@@ -173,6 +173,9 @@
     <NovolisPackageProject Include="Novolis.Avalonia.Markdown">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-avalonia\src\Novolis.Avalonia.Markdown\Novolis.Avalonia.Markdown.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Avalonia.Media">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-avalonia\src\Novolis.Avalonia.Media\Novolis.Avalonia.Media.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Avalonia.Mermaid">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-avalonia\src\Novolis.Avalonia.Mermaid\Novolis.Avalonia.Mermaid.csproj</ProjectPath>
     </NovolisPackageProject>
@@ -367,6 +370,15 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Math.Topology">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-math\src\Novolis.Math.Topology\Novolis.Math.Topology.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Media.Capture.Windows">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-audio\src\Novolis.Media.Capture.Windows\Novolis.Media.Capture.Windows.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Media.Rtc">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-audio\src\Novolis.Media.Rtc\Novolis.Media.Rtc.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Media.Rtc.Abstractions">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-audio\src\Novolis.Media.Rtc.Abstractions\Novolis.Media.Rtc.Abstractions.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Messaging">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-messaging\src\Novolis.Messaging\Novolis.Messaging.csproj</ProjectPath>
