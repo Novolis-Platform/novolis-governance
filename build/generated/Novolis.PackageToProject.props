@@ -173,9 +173,6 @@
     <NovolisPackageProject Include="Novolis.Avalonia.Markdown">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-avalonia\src\Novolis.Avalonia.Markdown\Novolis.Avalonia.Markdown.csproj</ProjectPath>
     </NovolisPackageProject>
-    <NovolisPackageProject Include="Novolis.Avalonia.Media">
-      <ProjectPath>$(NovolisWorkspaceRoot)novolis-avalonia\src\Novolis.Avalonia.Media\Novolis.Avalonia.Media.csproj</ProjectPath>
-    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Avalonia.Mermaid">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-avalonia\src\Novolis.Avalonia.Mermaid\Novolis.Avalonia.Mermaid.csproj</ProjectPath>
     </NovolisPackageProject>
@@ -205,6 +202,9 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Avalonia.Timeline">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-avalonia\src\Novolis.Avalonia.Timeline\Novolis.Avalonia.Timeline.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Avalonia.Video">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-avalonia\src\Novolis.Avalonia.Video\Novolis.Avalonia.Video.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Avalonia.Voice">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-avalonia\src\Novolis.Avalonia.Voice\Novolis.Avalonia.Voice.csproj</ProjectPath>
@@ -305,6 +305,12 @@
     <NovolisPackageProject Include="Novolis.Game.Procedural">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-gaming\src\Novolis.Game.Procedural\Novolis.Game.Procedural.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Geopolitics.Core">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-geopolitics\src\Novolis.Geopolitics.Core\Novolis.Geopolitics.Core.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Geopolitics.Simulation">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-geopolitics\src\Novolis.Geopolitics.Simulation\Novolis.Geopolitics.Simulation.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.IO.Git">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-io\src\Novolis.IO.Git\Novolis.IO.Git.csproj</ProjectPath>
     </NovolisPackageProject>
@@ -370,15 +376,6 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Math.Topology">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-math\src\Novolis.Math.Topology\Novolis.Math.Topology.csproj</ProjectPath>
-    </NovolisPackageProject>
-    <NovolisPackageProject Include="Novolis.Media.Capture.Windows">
-      <ProjectPath>$(NovolisWorkspaceRoot)novolis-audio\src\Novolis.Media.Capture.Windows\Novolis.Media.Capture.Windows.csproj</ProjectPath>
-    </NovolisPackageProject>
-    <NovolisPackageProject Include="Novolis.Media.Rtc">
-      <ProjectPath>$(NovolisWorkspaceRoot)novolis-audio\src\Novolis.Media.Rtc\Novolis.Media.Rtc.csproj</ProjectPath>
-    </NovolisPackageProject>
-    <NovolisPackageProject Include="Novolis.Media.Rtc.Abstractions">
-      <ProjectPath>$(NovolisWorkspaceRoot)novolis-audio\src\Novolis.Media.Rtc.Abstractions\Novolis.Media.Rtc.Abstractions.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Messaging">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-messaging\src\Novolis.Messaging\Novolis.Messaging.csproj</ProjectPath>
@@ -688,6 +685,15 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Transports.WireFish">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-transports\src\Novolis.Transports.WireFish\Novolis.Transports.WireFish.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Video.Capture.Windows">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-video\src\Novolis.Video.Capture.Windows\Novolis.Video.Capture.Windows.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Video.Rtc">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-video\src\Novolis.Video.Rtc\Novolis.Video.Rtc.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Video.Rtc.Abstractions">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-video\src\Novolis.Video.Rtc.Abstractions\Novolis.Video.Rtc.Abstractions.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Workspaces.Abstractions">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-workspaces\src\Novolis.Workspaces.Abstractions\Novolis.Workspaces.Abstractions.csproj</ProjectPath>

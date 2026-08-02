@@ -93,7 +93,7 @@ $packageRepos = @(
     'novolis-math', 'novolis-messaging', 'novolis-physics', 'novolis-raylib', 'novolis-rendering',
     'novolis-security', 'novolis-simulation', 'novolis-smoketest', 'novolis-storage',
     'novolis-template-dotnet', 'novolis-templates', 'novolis-testing',
-    'novolis-transports', 'novolis-wirefish', 'novolis-workspaces'
+    'novolis-transports', 'novolis-video', 'novolis-wirefish', 'novolis-workspaces'
 )
 
 foreach ($name in $packageRepos) {
