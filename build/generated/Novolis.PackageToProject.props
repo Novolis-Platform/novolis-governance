@@ -227,6 +227,18 @@
     <NovolisPackageProject Include="Novolis.Cad.SceneBridge">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-cad\src\Novolis.Cad.SceneBridge\Novolis.Cad.SceneBridge.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Civics.Agents">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-civics\src\Novolis.Civics.Agents\Novolis.Civics.Agents.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Civics.Core">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-civics\src\Novolis.Civics.Core\Novolis.Civics.Core.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Civics.EconomyBridge">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-civics\src\Novolis.Civics.EconomyBridge\Novolis.Civics.EconomyBridge.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Civics.Simulation">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-civics\src\Novolis.Civics.Simulation\Novolis.Civics.Simulation.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.CodeGen.Bindings">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-codegen\src\Novolis.CodeGen.Bindings\Novolis.CodeGen.Bindings.csproj</ProjectPath>
     </NovolisPackageProject>
@@ -365,8 +377,17 @@
     <NovolisPackageProject Include="Novolis.IO.Workspace.Testing">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-storage\src\Novolis.IO.Workspace.Testing\Novolis.IO.Workspace.Testing.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Logging.Agent">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-logging\src\Novolis.Logging.Agent\Novolis.Logging.Agent.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Logging.Contracts">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-logging\src\Novolis.Logging.Contracts\Novolis.Logging.Contracts.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Logging.Core">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-logging\src\Novolis.Logging.Core\Novolis.Logging.Core.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Logging.Transports">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-logging\src\Novolis.Logging.Transports\Novolis.Logging.Transports.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.MachineLearning.AutoMl">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-machinelearning\src\Novolis.MachineLearning.AutoMl\Novolis.MachineLearning.AutoMl.csproj</ProjectPath>
