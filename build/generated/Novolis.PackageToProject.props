@@ -98,6 +98,9 @@
     <NovolisPackageProject Include="Novolis.Audio.MusicTheory">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-audio\src\Novolis.Audio.MusicTheory\Novolis.Audio.MusicTheory.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Audio.MusicXml">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-audio\src\Novolis.Audio.MusicXml\Novolis.Audio.MusicXml.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Audio.Native">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-audio\src\Novolis.Audio.Native\Novolis.Audio.Native.csproj</ProjectPath>
     </NovolisPackageProject>
