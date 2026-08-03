@@ -65,6 +65,9 @@
     <NovolisPackageProject Include="Novolis.Audio.Core">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-audio\src\Novolis.Audio.Core\Novolis.Audio.Core.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Audio.Edit">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-audio\src\Novolis.Audio.Edit\Novolis.Audio.Edit.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Audio.Effects">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-audio\src\Novolis.Audio.Effects\Novolis.Audio.Effects.csproj</ProjectPath>
     </NovolisPackageProject>
@@ -88,6 +91,9 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Audio.Manifests">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-audio\codegen\Novolis.Audio.Manifests\Novolis.Audio.Manifests.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Audio.Midi">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-audio\src\Novolis.Audio.Midi\Novolis.Audio.Midi.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Audio.MusicTheory">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-audio\src\Novolis.Audio.MusicTheory\Novolis.Audio.MusicTheory.csproj</ProjectPath>
@@ -154,6 +160,9 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Avalonia.Agent.Protocol">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-avalonia\src\Novolis.Avalonia.Agent.Protocol\Novolis.Avalonia.Agent.Protocol.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Avalonia.Audio">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-avalonia\src\Novolis.Avalonia.Audio\Novolis.Avalonia.Audio.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Avalonia.Briefing">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-avalonia\src\Novolis.Avalonia.Briefing\Novolis.Avalonia.Briefing.csproj</ProjectPath>
@@ -308,11 +317,26 @@
     <NovolisPackageProject Include="Novolis.Game.Procedural">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-gaming\src\Novolis.Game.Procedural\Novolis.Game.Procedural.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Geopolitics.Conflict">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-geopolitics\src\Novolis.Geopolitics.Conflict\Novolis.Geopolitics.Conflict.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Geopolitics.Core">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-geopolitics\src\Novolis.Geopolitics.Core\Novolis.Geopolitics.Core.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Geopolitics.Diplomacy">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-geopolitics\src\Novolis.Geopolitics.Diplomacy\Novolis.Geopolitics.Diplomacy.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Geopolitics.PolicyAgents">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-geopolitics\src\Novolis.Geopolitics.PolicyAgents\Novolis.Geopolitics.PolicyAgents.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Geopolitics.Scenarios">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-geopolitics\src\Novolis.Geopolitics.Scenarios\Novolis.Geopolitics.Scenarios.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Geopolitics.Simulation">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-geopolitics\src\Novolis.Geopolitics.Simulation\Novolis.Geopolitics.Simulation.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Geopolitics.Trade">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-geopolitics\src\Novolis.Geopolitics.Trade\Novolis.Geopolitics.Trade.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.IO.Git">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-io\src\Novolis.IO.Git\Novolis.IO.Git.csproj</ProjectPath>

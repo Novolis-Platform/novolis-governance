@@ -1,3 +1,35 @@
+<!-- novolis-marketing:start -->
+<p align="center">
+  <a href="https://github.com/Novolis-Platform">
+    <img src="https://raw.githubusercontent.com/Novolis-Platform/.github/main/brand/logo-brand-transparent.svg" width="360" alt="Novolis"/>
+  </a>
+</p>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Novolis-Platform/.github/main/brand/banners/novolis-governance.svg" width="100%" alt="novolis-governance"/>
+</p>
+
+<p align="center">
+  <strong>Policies that keep the org coherent</strong><br/>
+  Contribution model, package rules, layer boundaries, and maintainer docs.
+</p>
+
+<p align="center">
+  <a href="https://github.com/Novolis-Platform/novolis-governance/actions"><img src="https://img.shields.io/github/actions/workflow/status/Novolis-Platform/novolis-governance/merge.yml?branch=main&label=merge&logo=github" alt="merge"/></a>
+  <a href="https://github.com/orgs/Novolis-Platform/packages?repo_name=novolis-governance"><img src="https://img.shields.io/badge/packages-GitHub%20Packages-0a7ea3?logo=nuget" alt="packages"/></a>
+  <a href="https://github.com/Novolis-Platform"><img src="https://img.shields.io/badge/org-Novolis--Platform-111827" alt="org"/></a>
+</p>
+
+<p align="center">
+  <a href="https://nuget.pkg.github.com/Novolis-Platform/index.json"><code>https://nuget.pkg.github.com/Novolis-Platform/index.json</code></a>
+  ·
+  <a href="https://github.com/Novolis-Platform/.github/blob/main/profile/README.md">Org landing</a>
+  ·
+  <a href="https://github.com/Novolis-Platform/novolis-governance">Governance</a>
+</p>
+
+---
+<!-- novolis-marketing:end -->
 # novolis-governance
 
 Organization-wide policies, contribution model, naming rules, package rules, security policy, release policy, and maintainer expectations for [Novolis-Platform](https://github.com/Novolis-Platform).
@@ -28,3 +60,4 @@ Organization-wide policies, contribution model, naming rules, package rules, sec
 | Extraction briefs | [docs/extraction-briefs/](docs/extraction-briefs/) |
 | Roadmap | [docs/roadmap.md](docs/roadmap.md) |
 | NuGet setup | [docs/nuget-setup.md](docs/nuget-setup.md) |
+
