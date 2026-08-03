@@ -15,6 +15,7 @@
       6. find-stale-package-ids.ps1
       7. verify-nuget-only.ps1
       8. verify-project-ref-mode.ps1 (-SkipBuild for speed in health check)
+      9. verify-layer-boundaries.ps1 (Avalonia isolation + spine PackageReferences)
   Exit non-zero if any hard check fails. Use after publish waves or when restore looks wrong.
 
 .PARAMETER Org
@@ -93,6 +94,7 @@ if (-not $SkipLocal) {
     Invoke-Check -Name 'find-stale-package-ids' -ScriptPath (Join-Path $scripts 'find-stale-package-ids.ps1')
     Invoke-Check -Name 'verify-nuget-only' -ScriptPath (Join-Path $scripts 'verify-nuget-only.ps1')
     Invoke-Check -Name 'verify-project-ref-mode' -ScriptPath (Join-Path $scripts 'verify-project-ref-mode.ps1') -ArgumentTable @{ SkipBuild = $true }
+    Invoke-Check -Name 'verify-layer-boundaries' -ScriptPath (Join-Path $scripts 'verify-layer-boundaries.ps1')
 }
 
 Write-Host ''

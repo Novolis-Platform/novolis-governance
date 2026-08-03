@@ -1,6 +1,6 @@
-# Library boundaries — Math, Physics, Simulation
+# Library boundaries — platform layer stack
 
-Authoritative split for the numerical / physical / runtime stack. Applies to `novolis-math`, `novolis-physics`, and `novolis-simulation`.
+Authoritative dependency law for Novolis libraries. Numeric spine: `novolis-math`, `novolis-physics`, `novolis-simulation`. Product spine continues through `novolis-gaming` and `novolis-avalonia` into apps.
 
 **`novolis-raylib` is not part of this stack** — no package reference between Raylib and Simulation (either direction). Apps that need both wire them at the product layer.
 
@@ -14,9 +14,21 @@ Math
 Physics
   ↓
 Simulation
+  ↓
+Gaming (Novolis.Game.*)
+  ↓
+Avalonia (Novolis.Avalonia.*)
+  ↓
+Apps
 ```
 
-**Apps** (dogfooding, SCR, …) compose the stack. **`novolis-raylib`** is a separate graphics/input host — orthogonal to Math / Physics / Simulation.
+Lower layers **must not** reference higher layers. Same-layer / peer facet refs are fine. **Apps** compose any combination.
+
+**Avalonia isolation:** only `Novolis.Avalonia.*` libraries may take `Avalonia` / `Avalonia.*` package references. Math, Physics, Simulation, Gaming, Economy, Astro, Rendering, Raylib, Agent, Cad, Audio, etc. stay Avalonia-free. Product apps may reference Avalonia directly.
+
+Enforced by `Novolis.Analyzers.StackBoundaries` (`NOV2006`, `NOV2007`) and `scripts/verify-layer-boundaries.ps1`.
+
+**`novolis-raylib`** remains a separate graphics/input host — orthogonal to the spine (never ↔ Simulation).
 
 **Simulation is not a game engine.** It is neutral orchestration: worlds, objects, systems, time, observation, recording, and replay. HexGame-style game ticks belong in Simulation and apps — not in Physics (see [hexgame-authoritative-core.md](architectural-ideals/hexgame-authoritative-core.md)).
 
@@ -27,6 +39,9 @@ Simulation
 | **Math** | Numbers, transforms, geometry, topology — **no time** |
 | **Physics** | Physical evolution over time (forces, motion, collision response) |
 | **Simulation** | Orchestration over time (world, systems, clocks, **all cameras**) |
+| **Gaming** | Authoring / shipping glue (`Novolis.Game.*`) — no Avalonia |
+| **Avalonia** | UI controls and hosts (`Novolis.Avalonia.*`) — only layer that may depend on Avalonia UI packages |
+| **Apps** | Product composition in `novolis-apps`; package demos in `novolis-dogfooding` (not under library `apps/`) |
 
 ---
 
@@ -205,24 +220,27 @@ Product rules, HUD, networking, highly specific camera feel (run bobbing, recoil
 
 ## Package dependency graph
 
-**Stack (closed):**
+**Spine (closed, low → high):**
 
 ```text
-novolis-math       (Arrays, Geometry, Topology, core numerics)
-novolis-physics    →  math
-novolis-simulation →  math, physics
+novolis-math          (Arrays, Geometry, Topology, core numerics)
+novolis-physics       →  math
+novolis-simulation    →  math, physics
   (facets: Abstractions, World, View, Tiles, Voxels, Voxels.Meshing, Kinematics, World.Builders, Racing, …)
+novolis-gaming        →  math / physics / simulation as needed; never → Avalonia UI packages
+novolis-avalonia      →  math…gaming + Avalonia.* ; never pull Avalonia into lower layers
+apps / dogfood        →  compose freely (including Avalonia + Raylib + Simulation)
 ```
 
-**Orthogonal (not in stack, no link to Simulation):**
+**Orthogonal (not on the spine ranks; still Avalonia-free libraries):**
 
 ```text
 novolis-machinelearning  (Core, Neural.*, AutoMl — building blocks only; no domain packages)
 ```
 
 ```text
-novolis-raylib       →  math only (if needed); never → simulation
-novolis-rendering    →  math only; never → simulation or raylib
+novolis-raylib       →  math only (if needed); never → simulation; never → Avalonia
+novolis-rendering    →  math only; never → simulation or raylib; never → Avalonia
 ```
 
 **Apps** may reference any combination; they own cross-repo glue.

@@ -4,7 +4,11 @@ Operational summary for `novolis-gaming`. **Stack boundaries:** [library-boundar
 
 ## Purpose
 
-`novolis-gaming` ships **game authoring and shipping** libraries: pseudonymous identity, menu navigation, multiplayer lobby glue, procedural content tools, Inno Setup helpers. It is **not** the Math / Physics / Simulation / Rendering / Raylib stack.
+`novolis-gaming` ships **game authoring and shipping** libraries: pseudonymous identity, menu navigation, multiplayer lobby glue, procedural content tools, Inno Setup helpers. On the closed spine it sits **above Simulation and below Avalonia**:
+
+`Math → Physics → Simulation → Gaming → Avalonia → Apps`.
+
+It must stay **Avalonia-free**. UI hosts live in `Novolis.Avalonia.*` or apps.
 
 Live **agent surfaces** (HTTP/SSE/WebSocket/LocalIpc control) live in **`novolis-agent`** (`Novolis.Agent.Core` / `Novolis.Agent.Surface`) — not here.
 
@@ -26,13 +30,15 @@ Live **agent surfaces** (HTTP/SSE/WebSocket/LocalIpc control) live in **`novolis
 - Procedural authoring (`Novolis.Game.Procedural`) — noise, infinite chunks/tracks, spawn tables; BCL only (feeds Simulation.Voxels height samplers at the **app** layer)
 - Opaque refs (`PlayerRef`, `SessionRef`, `LobbyId`) — no email, legal name, or provider subject strings in public API
 - Same-repo `ProjectReference` between `Novolis.Game.*` facets
+- `PackageReference` to lower spine layers as needed (`Novolis.Math.*`, `Novolis.Physics.*`, `Novolis.Simulation.*`) — e.g. `Novolis.Game.Humanoid` → `Novolis.Simulation.Humanoid`
 - `PackageReference` to `Novolis.Testing.*`, and third-party NuGet (Identity/Multiplayer as needed)
 
 ## Forbidden in `novolis-gaming`
 
+- **Any** `Avalonia` / `Avalonia.*` or `Novolis.Avalonia.*` package references (UI belongs in Avalonia layer / apps)
 - Live agent surface hosts / `agent.*` wire (`novolis-agent`)
-- `Novolis.Simulation.*`, `Novolis.Raylib.*`, `Novolis.Rendering.*` package references
-- Character cameras, PA-style tile grids, voxel worlds/meshing — use `Novolis.Simulation.View` / `.Tiles` / `.Voxels` (+ `.Meshing`) instead
+- `Novolis.Raylib.*`, `Novolis.Rendering.*` package references
+- Character cameras, PA-style tile grids, voxel worlds/meshing — keep those APIs in `Novolis.Simulation.View` / `.Tiles` / `.Voxels` (+ `.Meshing`); Gaming may *consume* Simulation packages but must not re-own world/camera stacks
 - Simulation ↔ Raylib wiring inside a single package
 - Game domain models (factions, ships, SCR/GalacticSim rules)
 - SignalR or game lobby code in `novolis-transports`

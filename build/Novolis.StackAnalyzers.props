@@ -4,11 +4,21 @@
     Independent of ProjectReference mode: there is no PackageReference to StackBoundaries
     in csproj files, so Novolis.ProjectReferenceMode.targets does not substitute it.
     Keep OutputItemType=Analyzer here; do not dual-wire via substitution.
+
+    Applies to Novolis.* libraries (not *.Unit / *.Tests) so NOV2006/NOV2007 fire on
+    Math → Physics → Simulation → Gaming → Avalonia spine + Avalonia isolation.
   -->
-  <ItemGroup Condition="'$(NovolisStackAnalyzers)' != 'false'">
+  <PropertyGroup>
+    <_NovolisStackAnalyzerProject>$(MSBuildThisFileDirectory)..\..\novolis-analyzers\src\Novolis.Analyzers.StackBoundaries\Novolis.Analyzers.StackBoundaries.csproj</_NovolisStackAnalyzerProject>
+    <_NovolisIsStackAnalyzedLibrary Condition="
+      $(MSBuildProjectName.StartsWith('Novolis.'))
+      AND !$(MSBuildProjectName.EndsWith('.Unit'))
+      AND !$(MSBuildProjectName.EndsWith('.Tests'))
+      AND !$(MSBuildProjectName.Contains('.Unit.'))">true</_NovolisIsStackAnalyzedLibrary>
+  </PropertyGroup>
+  <ItemGroup Condition="'$(NovolisStackAnalyzers)' != 'false' AND '$(_NovolisIsStackAnalyzedLibrary)' == 'true' AND Exists('$(_NovolisStackAnalyzerProject)')">
     <ProjectReference
-      Condition="($(MSBuildProjectName.StartsWith('Novolis.Math.')) OR $(MSBuildProjectName.StartsWith('Novolis.Physics.')) OR $(MSBuildProjectName.StartsWith('Novolis.Simulation.'))) AND Exists('$(MSBuildThisFileDirectory)..\..\novolis-analyzers\src\Novolis.Analyzers.StackBoundaries\Novolis.Analyzers.StackBoundaries.csproj')"
-      Include="$(MSBuildThisFileDirectory)..\..\novolis-analyzers\src\Novolis.Analyzers.StackBoundaries\Novolis.Analyzers.StackBoundaries.csproj"
+      Include="$(_NovolisStackAnalyzerProject)"
       OutputItemType="Analyzer"
       ReferenceOutputAssembly="false" />
   </ItemGroup>

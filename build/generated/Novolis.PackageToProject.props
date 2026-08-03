@@ -692,6 +692,9 @@
     <NovolisPackageProject Include="Novolis.Video.Capture.Windows">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-video\src\Novolis.Video.Capture.Windows\Novolis.Video.Capture.Windows.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Video.Edit">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-video\src\Novolis.Video.Edit\Novolis.Video.Edit.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Video.Rtc">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-video\src\Novolis.Video.Rtc\Novolis.Video.Rtc.csproj</ProjectPath>
     </NovolisPackageProject>

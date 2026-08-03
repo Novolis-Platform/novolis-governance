@@ -35,6 +35,7 @@ Requires `gh` authenticated with `read:packages` (delete needs `delete:packages`
 | [`find-stale-package-ids.ps1`](../scripts/find-stale-package-ids.ps1) | Scan for renamed ids (`Host.NAudio`, `Live.Repl`, …) | 1 if found |
 | [`fix-novolis-platform-floats.ps1`](../scripts/fix-novolis-platform-floats.ps1) | Rewrite build-line floats (and optional pins) to `2026.1.*` | 0 |
 | [`verify-nuget-only.ps1`](../scripts/verify-nuget-only.ps1) | Cross-repo `ProjectReference` / sibling-src hacks in committed `.csproj` | 1 if found |
+| [`verify-layer-boundaries.ps1`](../scripts/verify-layer-boundaries.ps1) | Avalonia isolation + Math→…→Avalonia upward `PackageReference` scan | 1 if found |
 | [`verify-project-ref-mode.ps1`](../scripts/verify-project-ref-mode.ps1) | Package→project map + intersect-only MSBuild smoke | 1 if map/substitution wrong |
 | [`set-org-nuget-packages-public.ps1`](../scripts/set-org-nuget-packages-public.ps1) | List package visibility (public via UI only) | 1 if any private |
 | [`configure-gpr-user-nuget.ps1`](../scripts/configure-gpr-user-nuget.ps1) | Local restore credentials | 0 |
