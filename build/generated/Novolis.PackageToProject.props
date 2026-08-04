@@ -59,6 +59,9 @@
     <NovolisPackageProject Include="Novolis.Audio.Bindings">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-audio\src\Novolis.Audio.Bindings\Novolis.Audio.Bindings.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Audio.Catalog">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-audio\src\Novolis.Audio.Catalog\Novolis.Audio.Catalog.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Audio.Codecs">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-audio\src\Novolis.Audio.Codecs\Novolis.Audio.Codecs.csproj</ProjectPath>
     </NovolisPackageProject>
