@@ -25,4 +25,8 @@
 
   <Import Project="$(MSBuildThisFileDirectory)generated\Novolis.PackageToProject.props"
           Condition="Exists('$(MSBuildThisFileDirectory)generated\Novolis.PackageToProject.props')" />
+
+  <!-- Optional LibraryReference map (Novolis.MSBuild.LibraryReference). -->
+  <Import Project="$(MSBuildThisFileDirectory)Novolis.LibraryReferenceBridge.props"
+          Condition="Exists('$(MSBuildThisFileDirectory)Novolis.LibraryReferenceBridge.props')" />
 </Project>

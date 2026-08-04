@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <!--
+    Feed LibraryReference map from the generated PackageId → ProjectPath table.
+    Harmless when LibraryReference targets are not imported; enables
+    <LibraryReference Include="Novolis.*" /> without repeating ProjectPath when
+    Novolis.MSBuild.LibraryReference is referenced.
+  -->
+  <ItemGroup Condition="'@(NovolisPackageProject)' != ''">
+    <LibraryProjectMap Include="@(NovolisPackageProject)" />
+  </ItemGroup>
+</Project>

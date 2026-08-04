@@ -455,6 +455,9 @@
     <NovolisPackageProject Include="Novolis.Modeling.Scene">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-cad\src\Novolis.Modeling.Scene\Novolis.Modeling.Scene.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.MSBuild.LibraryReference">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-msbuild\src\Novolis.MSBuild.LibraryReference\Novolis.MSBuild.LibraryReference.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Physics">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-physics\src\Novolis.Physics\Novolis.Physics.csproj</ProjectPath>
     </NovolisPackageProject>

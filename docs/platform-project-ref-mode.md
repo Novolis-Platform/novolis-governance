@@ -66,10 +66,17 @@ pwsh -File novolis-governance/scripts/gpr-health-check.ps1 -SkipRemote
 |------|------|
 | [`Novolis.ProjectReferenceMode.props`](../build/Novolis.ProjectReferenceMode.props) | Trigger + workspace root |
 | [`Novolis.ProjectReferenceMode.targets`](../build/Novolis.ProjectReferenceMode.targets) | Intersect substitution |
+| [`Novolis.LibraryReferenceBridge.props`](../build/Novolis.LibraryReferenceBridge.props) | Copy map → `LibraryProjectMap` for optional LibraryReference |
 | [`Novolis.Packaging.targets`](../build/Novolis.Packaging.targets) | Imports mode targets (all repos) |
 | [`Generate-PackageToProjectMap.ps1`](../build/Generate-PackageToProjectMap.ps1) | Map generator |
 
 Stack analyzers (`Novolis.StackAnalyzers.props`) stay a separate analyzer `ProjectReference` (no PackageReference in csproj to substitute).
+
+## LibraryReference (optional)
+
+Package [`Novolis.MSBuild.LibraryReference`](../../novolis-msbuild/README.md) provides a committed `LibraryReference` item that expands to project-or-package without enabling ProjectReference mode. Governance copies `@(NovolisPackageProject)` into `@(LibraryProjectMap)` via [`Novolis.LibraryReferenceBridge.props`](../build/Novolis.LibraryReferenceBridge.props) so Novolis PackageIds resolve paths when that package’s targets are imported.
+
+ProjectReference mode remains the supported org-wide workflow until repos adopt `LibraryReference`.
 
 ## Related
 

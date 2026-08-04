@@ -4,6 +4,8 @@
 
 **Exception (build-time only):** When building the meta solution `Novolis.Platform` (or with `-p:NovolisUseProjectReferences=true`), MSBuild may substitute existing `Novolis.*` PackageReferences for sibling ProjectReferences. See [platform-project-ref-mode.md](platform-project-ref-mode.md). That does **not** change committed `.csproj` files.
 
+**Allowed committed alternative:** `LibraryReference` from package `Novolis.MSBuild.LibraryReference` (`novolis-msbuild`). It expands at build time to `ProjectReference` when a mapped/explicit `.csproj` exists, otherwise `PackageReference`. Do not commit cross-repo `ProjectReference` or dual Package/Project conditionals — use `LibraryReference` or `PackageReference` only.
+
 > **Cursor agents:** Use GPR for publish/CI consumers — never `artifacts/nuget-local`, `pack-local.ps1`, or `novolis-local` sources. For local multi-repo iteration before publish, use `Novolis.Platform.slnx` (ProjectReference mode). See `.cursor/rules/nuget-only-dependencies.mdc`.
 
 ## Allowed
@@ -11,7 +13,7 @@
 | Scope | Reference style |
 |-------|-----------------|
 | Same repository | `ProjectReference` to projects under that repo's `src/`, `codegen/`, or `tests/` |
-| Another Novolis repo (committed) | `PackageReference` + version in `Directory.Packages.props` (`2026.1.*` for GPR) |
+| Another Novolis repo (committed) | `PackageReference` + version in `Directory.Packages.props` (`2026.1.*` for GPR), **or** `LibraryReference` (expands at build time; see `novolis-msbuild`) |
 | Another Novolis repo (local meta build) | Same PackageReference in source; MSBuild substitutes via [platform-project-ref-mode.md](platform-project-ref-mode.md) |
 | Third-party | `PackageReference` with a **pinned** version on nuget.org |
 

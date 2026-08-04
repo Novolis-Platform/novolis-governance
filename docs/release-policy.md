@@ -58,6 +58,8 @@ Direct pushes to `main` remain supported. Cross-repo “herds” still run in pa
 
 `novolis-apps` runs Linux CI first; the Windows release job starts only when CI succeeds **and** release-impacting paths changed. Older GitHub Releases are pruned to the newest 5 after a successful release.
 
+Shared Windows glue lives in `novolis-workflows` composites: `install-inno-setup`, `write-sha256sums`, and `ensure-github-release` (create-if-missing + asset upload). App catalog publish stays in `novolis-apps` scripts.
+
 Release tag: `v2026.1.1` (platform line) or `v2026.1.1.{run}` (full version). Pack always uses `YEAR.MAJOR.MINOR` from JSON plus current `github.run_number`.
 
 ## Permissions
