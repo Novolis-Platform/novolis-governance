@@ -23,6 +23,12 @@
     <NovolisPackageProject Include="Novolis.Analyzers.CodeLength">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-analyzers\src\Novolis.Analyzers.CodeLength\Novolis.Analyzers.CodeLength.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Analyzers.Conventions">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-analyzers\src\Novolis.Analyzers.Conventions\Novolis.Analyzers.Conventions.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Analyzers.Licensing">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-analyzers\src\Novolis.Analyzers.Licensing\Novolis.Analyzers.Licensing.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Analyzers.StackBoundaries">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-analyzers\src\Novolis.Analyzers.StackBoundaries\Novolis.Analyzers.StackBoundaries.csproj</ProjectPath>
     </NovolisPackageProject>
@@ -395,11 +401,17 @@
     <NovolisPackageProject Include="Novolis.Logging.Transports">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-logging\src\Novolis.Logging.Transports\Novolis.Logging.Transports.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.MachineLearning.Algorithms">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-machinelearning\src\Novolis.MachineLearning.Algorithms\Novolis.MachineLearning.Algorithms.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.MachineLearning.AutoMl">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-machinelearning\src\Novolis.MachineLearning.AutoMl\Novolis.MachineLearning.AutoMl.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.MachineLearning.Core">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-machinelearning\src\Novolis.MachineLearning.Core\Novolis.MachineLearning.Core.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.MachineLearning.Dump">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-machinelearning\src\Novolis.MachineLearning.Dump\Novolis.MachineLearning.Dump.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.MachineLearning.Neural">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-machinelearning\src\Novolis.MachineLearning.Neural\Novolis.MachineLearning.Neural.csproj</ProjectPath>
@@ -712,6 +724,24 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Timeline.Presentation">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-workspaces\src\Novolis.Timeline.Presentation\Novolis.Timeline.Presentation.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Tools.Docs">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-tools\src\Novolis.Tools.Docs\Novolis.Tools.Docs.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Tools.Docs.Cli">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-tools\src\Novolis.Tools.Docs.Cli\Novolis.Tools.Docs.Cli.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Tools.LiteDb">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-tools\src\Novolis.Tools.LiteDb\Novolis.Tools.LiteDb.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Tools.LiteDb.Cli">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-tools\src\Novolis.Tools.LiteDb.Cli\Novolis.Tools.LiteDb.Cli.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Tools.Sqlite">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-tools\src\Novolis.Tools.Sqlite\Novolis.Tools.Sqlite.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Tools.Sqlite.Cli">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-tools\src\Novolis.Tools.Sqlite.Cli\Novolis.Tools.Sqlite.Cli.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Transports.Http">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-transports\src\Novolis.Transports.Http\Novolis.Transports.Http.csproj</ProjectPath>

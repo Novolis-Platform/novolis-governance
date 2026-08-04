@@ -25,4 +25,6 @@ Required package metadata:
 <SymbolPackageFormat>snupkg</SymbolPackageFormat>
 ```
 
+Own packages use **MIT** (preferred). `Apache-2.0` (or `MIT OR Apache-2.0`) is also allowed. Dependency SPDX expressions must be MIT/Apache-2.0 only when `Novolis.Analyzers.Licensing` is referenced (`NOV3001`–`NOV3003`). See [novolis-analyzers design](https://github.com/Novolis-Platform/novolis-analyzers/blob/main/docs/design.md).
+
 SourceLink (via `Microsoft.SourceLink.GitHub` in `Directory.Build.props` / `Directory.Packages.props`) maps published assemblies to GitHub source for debugger stepping.

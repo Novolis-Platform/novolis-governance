@@ -5,11 +5,14 @@
     in csproj files, so Novolis.ProjectReferenceMode.targets does not substitute it.
     Keep OutputItemType=Analyzer here; do not dual-wire via substitution.
 
-    Applies to Novolis.* libraries (not *.Unit / *.Tests) so NOV2006/NOV2007 fire on
-    Math → Physics → Simulation → Gaming → Avalonia spine + Avalonia isolation.
+    Applies to Novolis.* libraries (not *.Unit / *.Tests) so NOV2006/NOV2007/NOV2008/NOV2009
+    and Conventions (NOV2101/NOV2102) fire on Math → Physics → Simulation → Gaming → Avalonia
+    spine + Avalonia isolation + naming conventions.
   -->
   <PropertyGroup>
-    <_NovolisStackAnalyzerProject>$(MSBuildThisFileDirectory)..\..\novolis-analyzers\src\Novolis.Analyzers.StackBoundaries\Novolis.Analyzers.StackBoundaries.csproj</_NovolisStackAnalyzerProject>
+    <_NovolisAnalyzersRoot>$(MSBuildThisFileDirectory)..\..\novolis-analyzers\src</_NovolisAnalyzersRoot>
+    <_NovolisStackAnalyzerProject>$(_NovolisAnalyzersRoot)\Novolis.Analyzers.StackBoundaries\Novolis.Analyzers.StackBoundaries.csproj</_NovolisStackAnalyzerProject>
+    <_NovolisConventionsAnalyzerProject>$(_NovolisAnalyzersRoot)\Novolis.Analyzers.Conventions\Novolis.Analyzers.Conventions.csproj</_NovolisConventionsAnalyzerProject>
     <_NovolisIsStackAnalyzedLibrary Condition="
       $(MSBuildProjectName.StartsWith('Novolis.'))
       AND !$(MSBuildProjectName.EndsWith('.Unit'))
@@ -19,6 +22,12 @@
   <ItemGroup Condition="'$(NovolisStackAnalyzers)' != 'false' AND '$(_NovolisIsStackAnalyzedLibrary)' == 'true' AND Exists('$(_NovolisStackAnalyzerProject)')">
     <ProjectReference
       Include="$(_NovolisStackAnalyzerProject)"
+      OutputItemType="Analyzer"
+      ReferenceOutputAssembly="false" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(NovolisStackAnalyzers)' != 'false' AND '$(_NovolisIsStackAnalyzedLibrary)' == 'true' AND Exists('$(_NovolisConventionsAnalyzerProject)')">
+    <ProjectReference
+      Include="$(_NovolisConventionsAnalyzerProject)"
       OutputItemType="Analyzer"
       ReferenceOutputAssembly="false" />
   </ItemGroup>

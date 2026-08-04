@@ -1,0 +1,13 @@
+<Project>
+  <!--
+    Optional local/sibling import for Novolis.Analyzers.Licensing MSBuild tasks.
+    Prefer PackageReference Include="Novolis.Analyzers.Licensing" PrivateAssets="all" after GPR publish.
+    Opt out: NovolisSafeLicenseCheck=false
+  -->
+  <PropertyGroup>
+    <_NovolisLicensingProps>$(MSBuildThisFileDirectory)..\..\novolis-analyzers\src\Novolis.Analyzers.Licensing\build\Novolis.Analyzers.Licensing.props</_NovolisLicensingProps>
+    <_NovolisLicensingTargets>$(MSBuildThisFileDirectory)..\..\novolis-analyzers\src\Novolis.Analyzers.Licensing\build\Novolis.Analyzers.Licensing.targets</_NovolisLicensingTargets>
+  </PropertyGroup>
+  <Import Project="$(_NovolisLicensingProps)" Condition="'$(NovolisSafeLicenseCheck)' != 'false' AND Exists('$(_NovolisLicensingProps)')" />
+  <Import Project="$(_NovolisLicensingTargets)" Condition="'$(NovolisSafeLicenseCheck)' != 'false' AND Exists('$(_NovolisLicensingTargets)')" />
+</Project>
