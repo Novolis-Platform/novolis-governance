@@ -14,8 +14,6 @@ function Test-ExcludedAssembly {
 
 $linesHit = 0
 $linesValid = 0
-$branchesHit = 0
-$branchesValid = 0
 
 foreach ($path in $CoberturaPaths) {
     if (-not (Test-Path -LiteralPath $path)) {
@@ -33,7 +31,7 @@ foreach ($path in $CoberturaPaths) {
             if ($clsName -like '*MessagePack*' -or $clsName -like '*.g.cs*') { continue }
 
             foreach ($line in $cls.lines.line) {
-                $valid++
+                $linesValid++
                 if ([int]$line.hits -gt 0) { $linesHit++ }
             }
         }
@@ -46,4 +44,3 @@ $pct = if ($linesValid -gt 0) { [math]::Round(100.0 * $linesHit / $linesValid, 1
     LinesHit    = $linesHit
     LinesValid  = $linesValid
 }
-

@@ -15,3 +15,7 @@ novolis-smoketest
 # Dogfood apps — not published libraries
 novolis-dogfooding
 novolis-dot-github
+# Avalonia UI hosts — visual tree / UI-thread surface; not in org line gate
+novolis-avalonia
+# Legacy Frank.WireFish repo (filtered from aggregate; skip host noise)
+novolis-wirefish

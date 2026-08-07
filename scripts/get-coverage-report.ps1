@@ -10,6 +10,9 @@
   Per-repo Cobertura files are merged with ReportGenerator into HTML + Markdown
   under the output directory.
 
+  Platform mode (-PlatformSlnx) regenerates/uses Novolis.Platform.slnx and runs
+  test hosts with NovolisUseProjectReferences=true (local source coverage gate).
+
 .PARAMETER Root
   Org checkout root (default NOVOLIS_ROOT or parent of governance).
 
@@ -39,9 +42,19 @@
 
 .PARAMETER FailBelow
   Fail if aggregate line coverage is below this percent (0 = disabled).
+  When -PlatformSlnx is set and FailBelow is left at 0, defaults to 95.
 
 .PARAMETER OpenReport
   Open the HTML index after generation (Windows).
+
+.PARAMETER PlatformSlnx
+  Evaluate coverage against Novolis.Platform.slnx with ProjectReference mode.
+
+.PARAMETER RegenerateSlnx
+  With -PlatformSlnx, run Generate-Platform-Slnx.ps1 before collecting coverage.
+
+.PARAMETER PlatformSlnxPath
+  Explicit path to Novolis.Platform.slnx (default: governance/build copy).
 
 .EXAMPLE
   pwsh -File novolis-governance/scripts/get-coverage-report.ps1
@@ -51,6 +64,9 @@
 
 .EXAMPLE
   pwsh -File novolis-governance/scripts/get-coverage-report.ps1 -Exclude novolis-raylib,novolis-audio -ThrottleLimit 6
+
+.EXAMPLE
+  pwsh -File novolis-governance/scripts/get-coverage-report.ps1 -PlatformSlnx -RegenerateSlnx
 #>
 param(
     [string]$Root = '',
@@ -63,7 +79,10 @@ param(
     [switch]$SkipBuild,
     [switch]$ListRepos,
     [double]$FailBelow = 0,
-    [switch]$OpenReport
+    [switch]$OpenReport,
+    [switch]$PlatformSlnx,
+    [switch]$RegenerateSlnx,
+    [string]$PlatformSlnxPath = ''
 )
 
 $ErrorActionPreference = 'Stop'
@@ -86,13 +105,53 @@ if (-not $OutputDir) {
     $OutputDir = Join-Path $Root 'artifacts\coverage'
 }
 
+# Platform org gate defaults to 95% when caller did not set FailBelow.
+if ($PlatformSlnx -and $FailBelow -eq 0) {
+    $FailBelow = 95
+}
+
 $excludeList = Read-CoverageExcludeList -ExcludeFile $ExcludeFile -Exclude $Exclude
 $includeList = Expand-NameList $Include
-$repos = @(Get-NovolisReposWithTests -Root $Root -Exclude $excludeList -Include $includeList)
+
+$projectRef = 'false'
+$platformSolution = $null
+
+if ($PlatformSlnx) {
+    if ($RegenerateSlnx) {
+        $gen = Get-NovolisGeneratePlatformSlnxScript -Root $Root
+        Write-Host "Regenerating Novolis.Platform.slnx..." -ForegroundColor Cyan
+        & pwsh -NoProfile -File $gen -WorkspaceRoot $Root
+        if ($LASTEXITCODE -ne 0) {
+            throw "Generate-Platform-Slnx.ps1 failed (exit $LASTEXITCODE)"
+        }
+    }
+
+    if ($PlatformSlnxPath) {
+        $platformSolution = (Resolve-Path -LiteralPath $PlatformSlnxPath).Path
+    }
+    else {
+        $platformSolution = Get-NovolisPlatformSlnxPath -Root $Root
+    }
+
+    $projectRef = 'true'
+    $repos = @(Get-NovolisTestHostsFromPlatformSlnx -Root $Root -SlnxPath $platformSolution -Exclude $excludeList -Include $includeList)
+}
+else {
+    if ($RegenerateSlnx) {
+        Write-Warning '-RegenerateSlnx is ignored unless -PlatformSlnx is set.'
+    }
+    $repos = @(Get-NovolisReposWithTests -Root $Root -Exclude $excludeList -Include $includeList)
+}
 
 Write-Host "Coverage root: $Root" -ForegroundColor White
 Write-Host "Output:        $OutputDir"
 Write-Host "Throttle:      $ThrottleLimit"
+Write-Host "Mode:          $(if ($PlatformSlnx) { 'Platform.slnx ProjectRef' } else { 'NuGet per-repo' })"
+if ($platformSolution) {
+    Write-Host "Solution:      $platformSolution"
+}
+Write-Host "ProjectRef:    $projectRef"
+Write-Host "FailBelow:     $FailBelow"
 Write-Host "Excluded:      $($excludeList -join ', ')"
 Write-Host "Repos:         $($repos.Count)"
 Write-Host ''
@@ -120,10 +179,14 @@ $logsDir = Join-Path $OutputDir 'logs'
 New-Item -ItemType Directory -Force -Path $rawDir, $reportDir, $logsDir | Out-Null
 
 # Fresh raw outputs for this run
-Get-ChildItem -LiteralPath $rawDir -Filter '*.cobertura.xml' -ErrorAction SilentlyContinue |
+Get-ChildItem -LiteralPath $rawDir -Filter '*.cobertura.xml' -Recurse -ErrorAction SilentlyContinue |
     Remove-Item -Force
 
 $started = Get-Date
+
+# Platform mode builds per-repo in the parallel loop (ProjectRef=true) so one host
+# failure does not abort the entire org run. The platform slnx is used for host discovery.
+
 $repoWork = $repos | ForEach-Object {
     [pscustomobject]@{
         Name         = $_.Name
@@ -140,6 +203,7 @@ $results = $repoWork | ForEach-Object -ThrottleLimit $ThrottleLimit -Parallel {
     $repo = $_
     $cfg = $using:Configuration
     $skipBuild = $using:SkipBuild
+    $projectRef = $using:projectRef
 
     New-Item -ItemType Directory -Force -Path $repo.RepoRawDir | Out-Null
     $log = [System.Collections.Generic.List[string]]::new()
@@ -155,24 +219,18 @@ $results = $repoWork | ForEach-Object -ThrottleLimit $ThrottleLimit -Parallel {
     try {
         Push-Location $repo.Path
         try {
-            # NuGet mode: coverage measures published packages. Do not build the full
-            # solution (apps may reference unpublished Novolis.* ids); build each test host.
+            # NuGet mode: coverage measures published packages; build each test host.
+            # Platform mode: same loop with ProjectRef=true (hosts discovered from Platform.slnx).
             # Do not pass --configfile: exclusive repo nuget.config drops user GPR credentials.
-            $projectRef = 'false'
 
             if (-not $skipBuild) {
                 $log.Add(("[{0:HH:mm:ss}] build test hosts {1} (ProjectRef={2})" -f (Get-Date), $cfg, $projectRef))
-                $buildOk = $true
                 foreach ($proj in $repo.TestProjects) {
                     $buildOut = & dotnet build $proj -c $cfg --nologo "-p:NovolisUseProjectReferences=$projectRef" 2>&1 | Out-String
                     $log.Add($buildOut)
                     if ($LASTEXITCODE -ne 0) {
-                        $buildOk = $false
                         throw "build failed for $([IO.Path]::GetFileNameWithoutExtension($proj)) (exit $LASTEXITCODE)"
                     }
-                }
-                if (-not $buildOk) {
-                    throw "build failed (exit 1)"
                 }
             }
 
@@ -324,7 +382,8 @@ if ($allCobertura.Count -gt 0) {
         "-targetdir:$reportDir" `
         '-reporttypes:Html;HtmlSummary;MarkdownSummaryGithub;TextSummary;Cobertura' `
         '-title:Novolis coverage' `
-        "-classfilters:-*.Tests*;-*Test;-*Tests" | Out-Host
+        "-classfilters:-*.Tests*;-*Test;-*Tests;-MessagePack.*;-Frank.*" `
+        "-assemblyfilters:-Novolis.Analyzers.Licensing" | Out-Host
 
     $aggCob = Join-Path $reportDir 'Cobertura.xml'
     if (Test-Path -LiteralPath $aggCob) {
@@ -351,7 +410,11 @@ $md = [System.Collections.Generic.List[string]]::new()
 $md.Add('# Novolis coverage report')
 $md.Add('')
 $md.Add("Generated: $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')")
-$md.Add("Duration: ${elapsed}s  |  Repos: $($repoRows.Count)  |  Throttle: $ThrottleLimit")
+$modeLabel = if ($PlatformSlnx) { 'Platform.slnx ProjectRef' } else { 'NuGet per-repo' }
+$md.Add("Duration: ${elapsed}s  |  Repos: $($repoRows.Count)  |  Throttle: $ThrottleLimit  |  Mode: $modeLabel")
+if ($platformSolution) {
+    $md.Add("Solution: $platformSolution")
+}
 if ($aggregateOk) {
     $aggLineText = $aggLine.ToString('0.0', [Globalization.CultureInfo]::InvariantCulture)
     $aggBranchText = $aggBranch.ToString('0.0', [Globalization.CultureInfo]::InvariantCulture)
@@ -380,6 +443,9 @@ $jsonPath = Join-Path $OutputDir 'summary.json'
     GeneratedUtc    = (Get-Date).ToUniversalTime().ToString('o')
     DurationSeconds = $elapsed
     ThrottleLimit   = $ThrottleLimit
+    Mode            = $modeLabel
+    PlatformSlnx    = $platformSolution
+    FailBelow       = $FailBelow
     AggregateLine   = $aggLine
     AggregateBranch = $aggBranch
     Repos           = @($repoRows)

@@ -422,8 +422,17 @@
     <NovolisPackageProject Include="Novolis.Mapping">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-mapping\src\Novolis.Mapping\Novolis.Mapping.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Markup.Html">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-markup\src\Novolis.Markup.Html\Novolis.Markup.Html.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Markup.Manuscript">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-markup\src\Novolis.Markup.Manuscript\Novolis.Markup.Manuscript.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Markup.Manuscript.LegacyBooks">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-markup\src\Novolis.Markup.Manuscript.LegacyBooks\Novolis.Markup.Manuscript.LegacyBooks.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Markup.Manuscript.Protocol">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-markup\src\Novolis.Markup.Manuscript.Protocol\Novolis.Markup.Manuscript.Protocol.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Markup.Markdown">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-markup\src\Novolis.Markup.Markdown\Novolis.Markup.Markdown.csproj</ProjectPath>
@@ -724,6 +733,9 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Timeline.Presentation">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-workspaces\src\Novolis.Timeline.Presentation\Novolis.Timeline.Presentation.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Tools.Cli">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-tools\src\Novolis.Tools.Cli\Novolis.Tools.Cli.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Tools.Docs">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-tools\src\Novolis.Tools.Docs\Novolis.Tools.Docs.csproj</ProjectPath>

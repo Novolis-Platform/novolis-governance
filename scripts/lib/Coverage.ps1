@@ -190,6 +190,108 @@ function Get-NovolisReposWithTests {
     return $repos
 }
 
+function Get-NovolisPlatformSlnxPath {
+    param(
+        [Parameter(Mandatory)]
+        [string]$Root
+    )
+
+    $buildCopy = Join-Path $Root 'novolis-governance\build\Novolis.Platform.slnx'
+    if (Test-Path -LiteralPath $buildCopy) {
+        return (Resolve-Path -LiteralPath $buildCopy).Path
+    }
+
+    $rootCopy = Join-Path $Root 'Novolis.Platform.slnx'
+    if (Test-Path -LiteralPath $rootCopy) {
+        return (Resolve-Path -LiteralPath $rootCopy).Path
+    }
+
+    throw "Novolis.Platform.slnx not found under $Root (expected novolis-governance\build\Novolis.Platform.slnx)."
+}
+
+function Get-NovolisGeneratePlatformSlnxScript {
+    param(
+        [Parameter(Mandatory)]
+        [string]$Root
+    )
+
+    $script = Join-Path $Root 'novolis-governance\build\Generate-Platform-Slnx.ps1'
+    if (-not (Test-Path -LiteralPath $script)) {
+        throw "Generate-Platform-Slnx.ps1 not found: $script"
+    }
+    return (Resolve-Path -LiteralPath $script).Path
+}
+
+function Get-NovolisTestHostsFromPlatformSlnx {
+    param(
+        [Parameter(Mandatory)]
+        [string]$Root,
+        [Parameter(Mandatory)]
+        [string]$SlnxPath,
+        [string[]]$Exclude = @(),
+        [string[]]$Include = @()
+    )
+
+    $excludeSet = [System.Collections.Generic.HashSet[string]]::new(
+        [string[]]($Exclude | Where-Object { $_ }),
+        [StringComparer]::OrdinalIgnoreCase)
+    $includeSet = $null
+    if ($Include -and $Include.Count -gt 0) {
+        $includeSet = [System.Collections.Generic.HashSet[string]]::new(
+            [string[]]($Include | Where-Object { $_ }),
+            [StringComparer]::OrdinalIgnoreCase)
+    }
+
+    $slnxDir = Split-Path $SlnxPath -Parent
+    # Paths in Novolis.Platform.slnx are relative to the workspace root, not the build folder.
+    $workspaceRoot = $Root
+    if ((Split-Path $slnxDir -Leaf) -eq 'build' -and
+        (Split-Path (Split-Path $slnxDir -Parent) -Leaf) -eq 'novolis-governance') {
+        $workspaceRoot = Split-Path (Split-Path $slnxDir -Parent) -Parent
+    }
+
+    $byRepo = [System.Collections.Generic.Dictionary[string, object]]::new([StringComparer]::OrdinalIgnoreCase)
+    $text = Get-Content -LiteralPath $SlnxPath -Raw
+    foreach ($m in [regex]::Matches($text, 'Project\s+Path="([^"]+\.csproj)"')) {
+        $rel = ($m.Groups[1].Value -replace '/', '\')
+        if ($rel -notmatch '(?i)(^|[\\/])tests([\\/])') { continue }
+
+        $repoName = ($rel -split '[\\/]')[0]
+        if (-not $repoName.StartsWith('novolis-', [StringComparison]::OrdinalIgnoreCase)) { continue }
+        if ($excludeSet.Contains($repoName)) { continue }
+        if ($includeSet -and -not $includeSet.Contains($repoName)) { continue }
+
+        $full = [IO.Path]::GetFullPath((Join-Path $workspaceRoot $rel))
+        if (-not (Test-Path -LiteralPath $full)) { continue }
+        if (-not (Test-NovolisTestHostProject -ProjectPath $full)) { continue }
+
+        if (-not $byRepo.ContainsKey($repoName)) {
+            $byRepo[$repoName] = [pscustomobject]@{
+                Name         = $repoName
+                Path         = (Join-Path $workspaceRoot $repoName)
+                Solution     = $SlnxPath
+                TestProjects = [System.Collections.Generic.List[string]]::new()
+            }
+        }
+        $list = $byRepo[$repoName].TestProjects
+        if (-not ($list -contains $full)) {
+            $list.Add($full)
+        }
+    }
+
+    $repos = [System.Collections.Generic.List[object]]::new()
+    foreach ($key in ($byRepo.Keys | Sort-Object)) {
+        $entry = $byRepo[$key]
+        $repos.Add([pscustomobject]@{
+            Name         = $entry.Name
+            Path         = $entry.Path
+            Solution     = $entry.Solution
+            TestProjects = @($entry.TestProjects)
+        })
+    }
+    return $repos
+}
+
 function Get-CoberturaSummary {
     param(
         [Parameter(Mandatory)]
