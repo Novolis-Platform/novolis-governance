@@ -380,14 +380,18 @@ if ($allCobertura.Count -gt 0) {
     $reportsArg = ($allCobertura -join ';')
     Write-Host ''
     Write-Host "Merging $($allCobertura.Count) cobertura file(s) with ReportGenerator..." -ForegroundColor Cyan
+    $historyDir = Join-Path $OutputDir 'history'
+    New-Item -ItemType Directory -Force -Path $historyDir | Out-Null
     & reportgenerator `
         "-reports:$reportsArg" `
         "-targetdir:$reportDir" `
-        '-reporttypes:Html;HtmlSummary;MarkdownSummaryGithub;TextSummary;Cobertura' `
+        '-reporttypes:Html;HtmlSummary;HtmlChart;Badges;MarkdownSummaryGithub;TextSummary;Cobertura' `
         '-title:Novolis coverage' `
+        "-historydir:$historyDir" `
         "-filefilters:-*MessagePack.SourceGenerator*;-*.g.cs" `
         "-classfilters:-*.Tests*;-*Test;-*Tests;-MessagePack.*;-Frank.*" `
         "-assemblyfilters:-Novolis.Analyzers.Licensing" | Out-Host
+    Write-Host "HTML risk hotspots + history chart/badges → $historyDir" -ForegroundColor DarkGray
 
     $aggCob = Join-Path $reportDir 'Cobertura.xml'
     if (Test-Path -LiteralPath $aggCob) {
@@ -395,6 +399,13 @@ if ($allCobertura.Count -gt 0) {
         $aggLine = $agg.LinePercent
         $aggBranch = $agg.BranchPercent
         $aggregateOk = $true
+    }
+
+    $summaryHtml = Join-Path $reportDir 'summary.html'
+    if (Test-Path -LiteralPath $summaryHtml) {
+        $rootCoverageHtml = Join-Path $Root 'COVERAGE.html'
+        Copy-Item -LiteralPath $summaryHtml -Destination $rootCoverageHtml -Force
+        Write-Host "Wrote $rootCoverageHtml" -ForegroundColor Green
     }
 }
 

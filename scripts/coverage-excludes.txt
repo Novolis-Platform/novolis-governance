@@ -8,7 +8,6 @@ novolis-templates
 novolis-template-dotnet
 novolis-install
 novolis-registry
-novolis-workspaces
 novolis-experimental
 novolis-apps
 novolis-smoketest

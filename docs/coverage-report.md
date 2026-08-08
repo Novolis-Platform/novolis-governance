@@ -16,9 +16,9 @@ novolis-coverage list --platform
 # Analyze an existing Cobertura (library API; no test run)
 novolis-coverage gaps --cobertura d:\novolis\coverage\report\Cobertura.xml --target 95 --write d:\novolis\coverage\GAPS.md
 
-# CRAP risk report → one file (default: ./CRAP.md in the caller's cwd)
-novolis-coverage crap --flagged-only --fail-above -1
-novolis-coverage crap --out d:\novolis\CRAP.md --cobertura d:\novolis\coverage\Cobertura.xml
+# One markdown file: Platform.slnx Cobertura fan-in (parallel), caller's cwd or --out
+novolis-coverage crap --fail-above -1
+novolis-coverage crap --out d:\novolis\CRAP.md --coverage-dir d:\novolis\coverage
 ```
 
 Library (preferred over growing PowerShell): `Novolis.Tools.Coverage` — parse/analyze/gate/CRAP.
@@ -30,10 +30,10 @@ Local without install:
 ```powershell
 dotnet run --project d:\novolis\novolis-tools\src\Novolis.Tools.Coverage.Cli -p:NovolisUseProjectReferences=true -- collect --platform --skip-build --fail-below -1 --out d:\novolis\coverage
 dotnet run --project d:\novolis\novolis-tools\src\Novolis.Tools.Coverage.Cli -p:NovolisUseProjectReferences=true -- gaps --cobertura d:\novolis\coverage\Cobertura.xml --target 95
-dotnet run --project d:\novolis\novolis-tools\src\Novolis.Tools.Coverage.Cli -p:NovolisUseProjectReferences=true -- crap --cobertura d:\novolis\coverage\Cobertura.xml --out d:\novolis\CRAP.md --fail-above -1
+dotnet run --project d:\novolis\novolis-tools\src\Novolis.Tools.Coverage.Cli -p:NovolisUseProjectReferences=true -- crap --out d:\novolis\CRAP.md --fail-above -1
 ```
 
-HTML: `d:\novolis\coverage\index.html` (with `--flatten`, default).
+HTML: `d:\novolis\COVERAGE.html` (single-file summary + risk hotspots, next to `Novolis.Platform.slnx`). Full drill-down still under `d:\novolis\coverage\`.
 
 ## PowerShell (CI / legacy)
 
@@ -142,6 +142,8 @@ Under Platform.slnx ProjectRef mode, consumer Cobertura files often include sibl
 ReportGenerator also excludes `MessagePack.*` generated formatters and legacy `Frank.*` assemblies from the merged aggregate so the gate reflects Novolis production source.
 
 `novolis-avalonia` is listed in [`coverage-excludes.txt`](../scripts/coverage-excludes.txt) for the org gate: Avalonia visual-tree / UI-thread hosts are not scored in the aggregate line metric (Mobile Android/Desktop packables also carry `ExcludeFromCodeCoverage`).
+
+`novolis-workspaces` **is included** in Platform coverage (Snapshots / Timeline / Workspaces). Agent tests are discovered on disk even when omitted from the meta slnx, and collected **serially** to avoid LocalIpc hangs.
 
 ## Outputs
 
