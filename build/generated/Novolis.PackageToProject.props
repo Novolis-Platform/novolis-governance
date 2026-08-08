@@ -293,6 +293,15 @@
     <NovolisPackageProject Include="Novolis.Commands.Testing">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-commands\src\Novolis.Commands.Testing\Novolis.Commands.Testing.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Documents">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-documents\src\Novolis.Documents\Novolis.Documents.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Documents.Layout">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-documents\src\Novolis.Documents.Layout\Novolis.Documents.Layout.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Documents.Skia">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-documents\src\Novolis.Documents.Skia\Novolis.Documents.Skia.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Economy.Accounting">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-economy\src\Novolis.Economy.Accounting\Novolis.Economy.Accounting.csproj</ProjectPath>
     </NovolisPackageProject>
@@ -479,11 +488,17 @@
     <NovolisPackageProject Include="Novolis.Markup.Mermaid">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-markup\src\Novolis.Markup.Mermaid\Novolis.Markup.Mermaid.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Markup.Mermaid.Rendering">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-markup\src\Novolis.Markup.Mermaid.Rendering\Novolis.Markup.Mermaid.Rendering.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Math.Arrays">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-math\src\Novolis.Math.Arrays\Novolis.Math.Arrays.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Math.Geometry">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-math\src\Novolis.Math.Geometry\Novolis.Math.Geometry.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Math.Measure">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-math\src\Novolis.Math.Measure\Novolis.Math.Measure.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Math.Topology">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-math\src\Novolis.Math.Topology\Novolis.Math.Topology.csproj</ProjectPath>
