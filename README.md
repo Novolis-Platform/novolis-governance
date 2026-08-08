@@ -58,6 +58,7 @@ Organization-wide policies, contribution model, naming rules, package rules, sec
 | Library boundaries (Math / Physics / Simulation) | [docs/library-boundaries.md](docs/library-boundaries.md) |
 | Simulation layer policy (summary) | [docs/simulation-layer-policy.md](docs/simulation-layer-policy.md) |
 | Extraction briefs | [docs/extraction-briefs/](docs/extraction-briefs/) |
+| Completed plans | [docs/completed-plans/](docs/completed-plans/) |
 | Roadmap | [docs/roadmap.md](docs/roadmap.md) |
 | NuGet setup | [docs/nuget-setup.md](docs/nuget-setup.md) |
 
