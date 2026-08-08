@@ -482,6 +482,9 @@
     <NovolisPackageProject Include="Novolis.Markup.Markdown">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-markup\src\Novolis.Markup.Markdown\Novolis.Markup.Markdown.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Markup.Markdown.Documents">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-markup\src\Novolis.Markup.Markdown.Documents\Novolis.Markup.Markdown.Documents.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Markup.Markdown.Rendering">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-markup\src\Novolis.Markup.Markdown.Rendering\Novolis.Markup.Markdown.Rendering.csproj</ProjectPath>
     </NovolisPackageProject>
