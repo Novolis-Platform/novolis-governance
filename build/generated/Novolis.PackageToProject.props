@@ -434,6 +434,9 @@
     <NovolisPackageProject Include="Novolis.Manuscript.Cli">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-manuscript\src\Novolis.Manuscript.Cli\Novolis.Manuscript.Cli.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Manuscript.Editorial">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-manuscript\src\Novolis.Manuscript.Editorial\Novolis.Manuscript.Editorial.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Manuscript.Export.Audio">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-manuscript\src\Novolis.Manuscript.Export.Audio\Novolis.Manuscript.Export.Audio.csproj</ProjectPath>
     </NovolisPackageProject>
