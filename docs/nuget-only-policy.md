@@ -47,9 +47,10 @@ Full runbook: [gpr-maintenance.md](gpr-maintenance.md).
 ```powershell
 pwsh -File D:\novolis\novolis-governance\scripts\verify-nuget-only.ps1
 pwsh -File D:\novolis\novolis-governance\scripts\verify-project-ref-mode.ps1 -SkipBuild
+pwsh -File D:\novolis\novolis-governance\scripts\verify-banned-packages.ps1
 ```
 
-CI should run `verify-nuget-only.ps1` on every library repo and on `novolis-dogfooding`.
+CI should run `verify-nuget-only.ps1` on every library repo and on `novolis-dogfooding`. Banned third-party stacks (Markdig, QuestPDF): [markdown-and-pdf-policy.md](markdown-and-pdf-policy.md).
 
 ## Proving a change is done
 
@@ -67,5 +68,6 @@ See [nuget-setup.md](nuget-setup.md) and [platform-project-ref-mode.md](platform
 
 - [platform-project-ref-mode.md](platform-project-ref-mode.md) — meta-solution ProjectReference substitution
 - [gpr-maintenance.md](gpr-maintenance.md) — GitHub Packages inventory and junk-version cleanup
+- [markdown-and-pdf-policy.md](markdown-and-pdf-policy.md) — Markdig / QuestPDF banned; Documents + Novolis Markdown
 - [repository-policy.md](repository-policy.md)
 - [novolis-dogfooding design](../../novolis-dogfooding/docs/design.md)
