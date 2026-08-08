@@ -374,6 +374,9 @@
     <NovolisPackageProject Include="Novolis.IO.GitHub">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-io\src\Novolis.IO.GitHub\Novolis.IO.GitHub.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.IO.Indexing">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-io\src\Novolis.IO.Indexing\Novolis.IO.Indexing.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.IO.Mobile.Android">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-io\src\Novolis.IO.Mobile.Android\Novolis.IO.Mobile.Android.csproj</ProjectPath>
     </NovolisPackageProject>
@@ -454,6 +457,9 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Manuscript.Protocol">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-manuscript\src\Novolis.Manuscript.Protocol\Novolis.Manuscript.Protocol.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Manuscript.References">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-manuscript\src\Novolis.Manuscript.References\Novolis.Manuscript.References.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Mapping">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-mapping\src\Novolis.Mapping\Novolis.Mapping.csproj</ProjectPath>
