@@ -56,6 +56,7 @@ Math is one library family with **facets** (separate packages, same repo). Geome
 | `Novolis.Math.Arrays` | Dense grids, indices, packed voxel chunks (`ChunkCoord3`, `VoxelChunk` 16³) |
 | `Novolis.Math.Geometry` | BCL-backed primitives (`Ray`, `Sphere`, meshes), intersections, BVH |
 | `Novolis.Math.Topology` | Connectivity: polygon, face, edge, shape |
+| `Novolis.Math.Measure` | Scalar `Length`/`Size`/`Thickness`/`Rect` in points (page/print extents; no `Vector2`) |
 
 ### BCL type first — always, no exception
 
