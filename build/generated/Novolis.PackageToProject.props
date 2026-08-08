@@ -185,6 +185,9 @@
     <NovolisPackageProject Include="Novolis.Avalonia.Gaming">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-avalonia\src\Novolis.Avalonia.Gaming\Novolis.Avalonia.Gaming.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Avalonia.Git">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-avalonia\src\Novolis.Avalonia.Git\Novolis.Avalonia.Git.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Avalonia.Layout">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-avalonia\src\Novolis.Avalonia.Layout\Novolis.Avalonia.Layout.csproj</ProjectPath>
     </NovolisPackageProject>
