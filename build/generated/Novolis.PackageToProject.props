@@ -179,8 +179,14 @@
     <NovolisPackageProject Include="Novolis.Avalonia.Cad">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-avalonia\src\Novolis.Avalonia.Cad\Novolis.Avalonia.Cad.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Avalonia.Cad.Ship">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-avalonia\src\Novolis.Avalonia.Cad.Ship\Novolis.Avalonia.Cad.Ship.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Avalonia.Controls">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-avalonia\src\Novolis.Avalonia.Controls\Novolis.Avalonia.Controls.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Avalonia.Controls.Sketch">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-avalonia\src\Novolis.Avalonia.Controls.Sketch\Novolis.Avalonia.Controls.Sketch.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Avalonia.Gaming">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-avalonia\src\Novolis.Avalonia.Gaming\Novolis.Avalonia.Gaming.csproj</ProjectPath>
@@ -227,8 +233,8 @@
     <NovolisPackageProject Include="Novolis.Avalonia.Studio">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-avalonia\src\Novolis.Avalonia.Studio\Novolis.Avalonia.Studio.csproj</ProjectPath>
     </NovolisPackageProject>
-    <NovolisPackageProject Include="Novolis.Avalonia.Timeline">
-      <ProjectPath>$(NovolisWorkspaceRoot)novolis-avalonia\src\Novolis.Avalonia.Timeline\Novolis.Avalonia.Timeline.csproj</ProjectPath>
+    <NovolisPackageProject Include="Novolis.Avalonia.Torrent">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-avalonia\src\Novolis.Avalonia.Torrent\Novolis.Avalonia.Torrent.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Avalonia.Video">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-avalonia\src\Novolis.Avalonia.Video\Novolis.Avalonia.Video.csproj</ProjectPath>
@@ -829,6 +835,12 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Tools.LiteDb.Cli">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-tools\src\Novolis.Tools.LiteDb.Cli\Novolis.Tools.LiteDb.Cli.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Tools.MarkdownPdf">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-tools\src\Novolis.Tools.MarkdownPdf\Novolis.Tools.MarkdownPdf.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Tools.MarkdownPdf.Cli">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-tools\src\Novolis.Tools.MarkdownPdf.Cli\Novolis.Tools.MarkdownPdf.Cli.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Tools.Sqlite">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-tools\src\Novolis.Tools.Sqlite\Novolis.Tools.Sqlite.csproj</ProjectPath>
