@@ -48,7 +48,9 @@ $catalog = @{
     'novolis-audio'           = @{ Tag = 'SFX, voice, and live music'; Blurb = 'Cross-platform audio: miniaudio SFX, TTS voice stacks, and live music runtime.'; Desc = 'Cross-platform .NET audio — miniaudio SFX, TTS/voice, and live music.'; Topics = @('dotnet','audio','tts','miniaudio','novolis') }
     'novolis-avalonia'        = @{ Tag = 'UI chrome for the platform'; Blurb = 'Avalonia controls and shells for CAD, gaming, agents, video, and mobile.'; Desc = 'Avalonia UI libraries for Novolis apps (CAD, gaming, agents, video, mobile).'; Topics = @('dotnet','avalonia','ui','novolis') }
     'novolis-cad'             = @{ Tag = 'CAD interchange without UI'; Blurb = 'Avalonia-free CAD primitives and interchange (.cadjson / .cadphys).'; Desc = 'CAD interchange primitives (.cadjson / .cadphys) — Avalonia-free DTOs for Novolis.'; Topics = @('dotnet','cad','novolis') }
+    'novolis-civics'          = @{ Tag = 'Civic agents and firm bridges'; Blurb = 'Civics agents, core ledgers, and economy bridges for polity sims.'; Desc = 'Civics simulation libraries for Novolis — agents, core, and economy bridges.'; Topics = @('dotnet','simulation','civics','novolis') }
     'novolis-codegen'         = @{ Tag = 'Bindings pipelines that scale'; Blurb = 'Codegen pipeline, reflection, and binding generators used across the platform.'; Desc = 'Code generation pipelines and binding generators for Novolis native stacks.'; Topics = @('dotnet','codegen','novolis') }
+    'novolis-documents'       = @{ Tag = 'One-column pages to Skia PDF'; Blurb = 'Immutable document blocks, layout, and Skia PDF — not HTML-to-PDF.'; Desc = 'Paged document model and Skia PDF layout for Novolis (one-column flow).'; Topics = @('dotnet','pdf','documents','novolis') }
     'novolis-commands'        = @{ Tag = 'Interrupt-aware command queues'; Blurb = 'Parse prompts into command envelopes, queue them, run with cancellation.'; Desc = 'Command envelopes, queues, and interrupt-aware execution for Novolis.'; Topics = @('dotnet','commands','novolis') }
     'novolis-dogfooding'      = @{ Tag = 'Integration labs that prove the stack'; Blurb = 'Dogfood apps and labs that exercise Novolis packages end-to-end.'; Desc = 'Integration labs and dogfood apps for the Novolis platform.'; Topics = @('dotnet','samples','novolis') }
     'novolis-economy'         = @{ Tag = 'Deterministic markets and firms'; Blurb = 'Headless economic simulation — supply chains, markets, accounting, logistics.'; Desc = 'Headless deterministic economic simulation libraries for Novolis.'; Topics = @('dotnet','economy','simulation','novolis') }
@@ -57,11 +59,15 @@ $catalog = @{
     'novolis-geopolitics'     = @{ Tag = 'Full-world geopolitics engines'; Blurb = 'Homage geopolitics simulation libraries; GeoPolity hosts live in novolis-apps.'; Desc = 'Full-world geopolitics simulation libraries for Novolis (homage only).'; Topics = @('dotnet','geopolitics','simulation','novolis') }
     'novolis-governance'      = @{ Tag = 'Policies that keep the org coherent'; Blurb = 'Contribution model, package rules, layer boundaries, and maintainer docs.'; Desc = 'Org-wide policies, layer boundaries, NuGet rules, and maintainer docs for Novolis.'; Topics = @('dotnet','governance','novolis') }
     'novolis-install'         = @{ Tag = 'One CLI to install the ecosystem'; Blurb = 'Cross-platform `novolis` installer CLI.'; Desc = 'Cross-platform novolis CLI installer for the Novolis ecosystem.'; Topics = @('dotnet','cli','installer','novolis') }
+    'novolis-installer-inno'  = @{ Tag = 'Windows Inno Setup packaging'; Blurb = 'Inno Setup packaging helpers for Novolis Windows installers.'; Desc = 'Inno Setup installer packaging for Novolis Windows desktop apps.'; Topics = @('dotnet','installer','windows','novolis') }
     'novolis-io'              = @{ Tag = 'Git, paths, processes, recovery'; Blurb = 'IO helpers: Git, watching, recovery, processes, and path utilities.'; Desc = 'IO helpers for Novolis — Git, watching, recovery, processes, paths.'; Topics = @('dotnet','io','novolis') }
     'novolis-logging'         = @{ Tag = 'Logging building blocks'; Blurb = 'Logging helpers shared across Novolis libraries and apps.'; Desc = 'Logging helpers for the Novolis ecosystem.'; Topics = @('dotnet','logging','novolis') }
     'novolis-machinelearning' = @{ Tag = 'AutoML and neural helpers'; Blurb = 'Machine learning core, AutoML, and neural utilities for Novolis.'; Desc = '.NET machine learning helpers (AutoML, neural) for Novolis.'; Topics = @('dotnet','machine-learning','novolis') }
+    'novolis-manuscript'      = @{ Tag = 'Long-form manuscript tooling'; Blurb = 'Manuscript authoring helpers that sit beside Markup and Documents.'; Desc = 'Manuscript authoring libraries for Novolis long-form content.'; Topics = @('dotnet','manuscript','markup','novolis') }
     'novolis-mapping'         = @{ Tag = 'Mapping utilities'; Blurb = 'Mapping helpers for Novolis applications.'; Desc = 'Mapping utilities for the Novolis ecosystem.'; Topics = @('dotnet','mapping','novolis') }
     'novolis-markup'          = @{ Tag = 'Manuscripts, markdown, mermaid'; Blurb = 'Manuscript, markdown, and Mermaid markup pipelines.'; Desc = 'Manuscript, markdown, and Mermaid markup libraries for Novolis.'; Topics = @('dotnet','markdown','markup','novolis') }
+    'novolis-msbuild'         = @{ Tag = 'MSBuild props and targets'; Blurb = 'Shared MSBuild props/targets used across Novolis package repos.'; Desc = 'Shared MSBuild props and targets for Novolis .NET repositories.'; Topics = @('dotnet','msbuild','novolis') }
+    'novolis-os'              = @{ Tag = 'Minimal Debian runtime images'; Blurb = 'Allowlisted Debian rootfs and QEMU appliances for running Novolis apps.'; Desc = 'Minimal Debian glibc runtime images for Novolis apps (rootfs + QEMU appliance).'; Topics = @('dotnet','linux','debian','runtime','novolis') }
     'novolis-math'            = @{ Tag = 'Geometry on BCL numerics'; Blurb = 'Renderer-agnostic math: arrays, geometry, topology — System.Numerics first.'; Desc = 'Math libraries for Novolis — arrays, geometry, topology on System.Numerics.'; Topics = @('dotnet','math','geometry','novolis') }
     'novolis-messaging'       = @{ Tag = 'Channels and messaging cores'; Blurb = 'Messaging abstractions and channel-based transports for realtime systems.'; Desc = 'Messaging and channel libraries for Novolis realtime systems.'; Topics = @('dotnet','messaging','novolis') }
     'novolis-physics'         = @{ Tag = 'Force-first textbook physics'; Blurb = 'Motion, gravity, ballistics, cloth, collision, orbits — Math only, no cameras.'; Desc = 'Force-first textbook physics for .NET — motion, gravity, cloth, orbits.'; Topics = @('dotnet','physics','simulation','novolis') }
@@ -76,12 +82,32 @@ $catalog = @{
     'novolis-template-dotnet' = @{ Tag = 'Canonical package repo template'; Blurb = 'Template for new Novolis .NET package repositories.'; Desc = 'Canonical .NET package and tool repository template for Novolis.'; Topics = @('dotnet','template','novolis') }
     'novolis-templates'       = @{ Tag = 'dotnet new templates'; Blurb = 'dotnet new templates for Novolis apps and libraries.'; Desc = 'dotnet new templates for the Novolis ecosystem.'; Topics = @('dotnet','templates','novolis') }
     'novolis-testing'         = @{ Tag = 'Test bases and containers'; Blurb = 'Logging test helpers, test bases, and Testcontainers integrations.'; Desc = 'Testing helpers for Novolis — bases, logging, Testcontainers.'; Topics = @('dotnet','testing','novolis') }
+    'novolis-tools'           = @{ Tag = 'Maintainer CLIs and docs site'; Blurb = 'Maintainer tools: novolis-docs site builder, SQLite/LiteDB CLIs, and helpers.'; Desc = 'Maintainer CLIs and docs tooling for the Novolis platform.'; Topics = @('dotnet','cli','docs','novolis') }
     'novolis-transports'      = @{ Tag = 'HTTP, IPC, torrents, and more'; Blurb = 'Transport libraries: HTTP, local IPC, torrent, and related adapters.'; Desc = 'Transport libraries for Novolis — HTTP, local IPC, torrent, and more.'; Topics = @('dotnet','networking','novolis') }
     'novolis-video'           = @{ Tag = 'RTC mesh and movie edit core'; Blurb = 'Realtime video RTC contracts/mesh, Windows capture, and storyboard edit core.'; Desc = 'Realtime video for Novolis — RTC mesh, Windows capture, storyboard edit.'; Topics = @('dotnet','webrtc','video','novolis') }
     'novolis-wirefish'        = @{ Tag = 'Wire inspection tooling'; Blurb = 'Wire/protocol inspection helpers for Novolis debugging.'; Desc = 'Wire inspection tooling for the Novolis ecosystem.'; Topics = @('dotnet','networking','novolis') }
     'novolis-workflows'       = @{ Tag = 'Reusable GitHub Actions'; Blurb = 'Reusable CI workflows for build, pack, and release across Novolis repos.'; Desc = 'Reusable GitHub Actions workflows for Novolis build, pack, and release.'; Topics = @('github-actions','ci','novolis') }
     'novolis-workspaces'      = @{ Tag = 'Snapshots and timelines'; Blurb = 'Workspace, snapshot, and timeline libraries for editor and studio apps.'; Desc = 'Workspace, snapshot, and timeline libraries for Novolis studio apps.'; Topics = @('dotnet','workspaces','novolis') }
-    '.github'                 = @{ Tag = 'Org home and brand'; Blurb = 'Organization profile README, brand assets, and landing status generators.'; Desc = 'Novolis-Platform organization profile, brand assets, and landing status.'; Topics = @('novolis','brand') }
+    'novolis-xsd'             = @{ Tag = 'XSD and schema tooling'; Blurb = 'XML schema helpers used by Novolis codegen and interchange formats.'; Desc = 'XSD / XML schema tooling for Novolis libraries and codegen.'; Topics = @('dotnet','xml','xsd','novolis') }
+    '.github'                 = @{ Tag = 'Org home and brand'; Blurb = 'Organization profile README, brand assets, and landing status generators.'; Desc = 'Novolis-Platform organization profile, brand assets, and landing status.'; Topics = @('novolis','brand','documentation') }
+}
+
+function Export-RepoCatalogJson {
+    param([hashtable]$Catalog, [string]$OutPath)
+    $ordered = [ordered]@{}
+    foreach ($key in ($Catalog.Keys | Sort-Object)) {
+        $m = $Catalog[$key]
+        $ordered[$key] = [ordered]@{
+            tag    = [string]$m.Tag
+            blurb  = [string]$m.Blurb
+            desc   = [string]$m.Desc
+            topics = @($m.Topics)
+        }
+    }
+    $json = $ordered | ConvertTo-Json -Depth 6
+    $dir = Split-Path $OutPath -Parent
+    if ($dir) { New-Item -ItemType Directory -Force -Path $dir | Out-Null }
+    Set-Content -Path $OutPath -Value ($json.TrimEnd() + "`n") -Encoding utf8NoBOM
 }
 
 function Get-XmlText([xml]$xml, [string]$name) {
@@ -359,7 +385,7 @@ function Sync-PackageIndex {
     }
 }
 
-# --- Banners ---
+# --- Banners + docs-site catalog ---
 if (-not $SkipBanners) {
     foreach ($key in $catalog.Keys) {
         $name = if ($key -eq '.github') { 'github-org' } else { $key }
@@ -367,6 +393,10 @@ if (-not $SkipBanners) {
     }
     Write-Host "Wrote banners to $bannerDir"
 }
+
+$catalogJson = Join-Path $GitHubBrandRoot 'site\repo-catalog.json'
+Export-RepoCatalogJson -Catalog $catalog -OutPath $catalogJson
+Write-Host "Wrote docs catalog $catalogJson"
 
 # --- Repos ---
 $repoDirs = @(Get-ChildItem $WorkspaceRoot -Directory | Where-Object {
