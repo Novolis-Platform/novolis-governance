@@ -5,3 +5,5 @@
 - Maintainers trigger publish and release flows (merge/release workflows).
 - Large changes should start as a Discussion or issue.
 - Generated files must be clearly marked.
+- **Libraries vs tools:** domain algorithms live in packages; CLIs and file tools are shallow wrappers — see [library-vs-cli.md](library-vs-cli.md).
+- **Avalonia composition:** Layout shell → Controls atoms → domain panels → apps — see [avalonia-composition-grain.md](avalonia-composition-grain.md).
