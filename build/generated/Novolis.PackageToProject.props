@@ -143,9 +143,6 @@
     <NovolisPackageProject Include="Novolis.Audio.Voice.Kokoro">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-audio\src\Novolis.Audio.Voice.Kokoro\Novolis.Audio.Voice.Kokoro.csproj</ProjectPath>
     </NovolisPackageProject>
-    <NovolisPackageProject Include="Novolis.Audio.Voice.Manuscript">
-      <ProjectPath>$(NovolisWorkspaceRoot)novolis-audio\src\Novolis.Audio.Voice.Manuscript\Novolis.Audio.Voice.Manuscript.csproj</ProjectPath>
-    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Audio.Voice.Phraseology">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-audio\src\Novolis.Audio.Voice.Phraseology\Novolis.Audio.Voice.Phraseology.csproj</ProjectPath>
     </NovolisPackageProject>
@@ -193,6 +190,9 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Avalonia.Live">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-avalonia\src\Novolis.Avalonia.Live\Novolis.Avalonia.Live.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Avalonia.Manuscript">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-manuscript\src\Novolis.Avalonia.Manuscript\Novolis.Avalonia.Manuscript.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Avalonia.Markdown">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-avalonia\src\Novolis.Avalonia.Markdown\Novolis.Avalonia.Markdown.csproj</ProjectPath>
@@ -268,6 +268,12 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.CodeGen.Reflection.Dump">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-codegen\src\Novolis.CodeGen.Reflection.Dump\Novolis.CodeGen.Reflection.Dump.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.CodeGen.Xml">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-codegen\src\Novolis.CodeGen.Xml\Novolis.CodeGen.Xml.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.CodeGen.Xsd">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-codegen\src\Novolis.CodeGen.Xsd\Novolis.CodeGen.Xsd.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Commands.Abstractions">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-commands\src\Novolis.Commands.Abstractions\Novolis.Commands.Abstractions.csproj</ProjectPath>
@@ -398,6 +404,9 @@
     <NovolisPackageProject Include="Novolis.Logging.Core">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-logging\src\Novolis.Logging.Core\Novolis.Logging.Core.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Logging.Faster">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-logging\src\Novolis.Logging.Faster\Novolis.Logging.Faster.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Logging.Transports">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-logging\src\Novolis.Logging.Transports\Novolis.Logging.Transports.csproj</ProjectPath>
     </NovolisPackageProject>
@@ -419,20 +428,35 @@
     <NovolisPackageProject Include="Novolis.MachineLearning.Neural.Abstractions">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-machinelearning\src\Novolis.MachineLearning.Neural.Abstractions\Novolis.MachineLearning.Neural.Abstractions.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Manuscript">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-manuscript\src\Novolis.Manuscript\Novolis.Manuscript.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Manuscript.Cli">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-manuscript\src\Novolis.Manuscript.Cli\Novolis.Manuscript.Cli.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Manuscript.Export.Audio">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-manuscript\src\Novolis.Manuscript.Export.Audio\Novolis.Manuscript.Export.Audio.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Manuscript.Export.Pdf">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-manuscript\src\Novolis.Manuscript.Export.Pdf\Novolis.Manuscript.Export.Pdf.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Manuscript.IO">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-manuscript\src\Novolis.Manuscript.IO\Novolis.Manuscript.IO.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Manuscript.LegacyBooks">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-manuscript\src\Novolis.Manuscript.LegacyBooks\Novolis.Manuscript.LegacyBooks.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Manuscript.Metrics">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-manuscript\src\Novolis.Manuscript.Metrics\Novolis.Manuscript.Metrics.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Manuscript.Protocol">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-manuscript\src\Novolis.Manuscript.Protocol\Novolis.Manuscript.Protocol.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Mapping">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-mapping\src\Novolis.Mapping\Novolis.Mapping.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Markup.Html">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-markup\src\Novolis.Markup.Html\Novolis.Markup.Html.csproj</ProjectPath>
-    </NovolisPackageProject>
-    <NovolisPackageProject Include="Novolis.Markup.Manuscript">
-      <ProjectPath>$(NovolisWorkspaceRoot)novolis-markup\src\Novolis.Markup.Manuscript\Novolis.Markup.Manuscript.csproj</ProjectPath>
-    </NovolisPackageProject>
-    <NovolisPackageProject Include="Novolis.Markup.Manuscript.LegacyBooks">
-      <ProjectPath>$(NovolisWorkspaceRoot)novolis-markup\src\Novolis.Markup.Manuscript.LegacyBooks\Novolis.Markup.Manuscript.LegacyBooks.csproj</ProjectPath>
-    </NovolisPackageProject>
-    <NovolisPackageProject Include="Novolis.Markup.Manuscript.Protocol">
-      <ProjectPath>$(NovolisWorkspaceRoot)novolis-markup\src\Novolis.Markup.Manuscript.Protocol\Novolis.Markup.Manuscript.Protocol.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Markup.Markdown">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-markup\src\Novolis.Markup.Markdown\Novolis.Markup.Markdown.csproj</ProjectPath>
@@ -469,6 +493,18 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Messaging.Coordination.Redis">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-messaging\src\Novolis.Messaging.Coordination.Redis\Novolis.Messaging.Coordination.Redis.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Messaging.ServiceBus.Abstractions">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-messaging\src\Novolis.Messaging.ServiceBus.Abstractions\Novolis.Messaging.ServiceBus.Abstractions.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Messaging.ServiceBus.Broker.Almost">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-messaging\src\Novolis.Messaging.ServiceBus.Broker.Almost\Novolis.Messaging.ServiceBus.Broker.Almost.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Messaging.ServiceBus.Client">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-messaging\src\Novolis.Messaging.ServiceBus.Client\Novolis.Messaging.ServiceBus.Client.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Messaging.ServiceBus.Primitives">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-messaging\src\Novolis.Messaging.ServiceBus.Primitives\Novolis.Messaging.ServiceBus.Primitives.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Modeling.Import">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-cad\src\Novolis.Modeling.Import\Novolis.Modeling.Import.csproj</ProjectPath>
@@ -710,6 +746,9 @@
     <NovolisPackageProject Include="Novolis.Testing.Logging">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-testing\src\Novolis.Testing.Logging\Novolis.Testing.Logging.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Testing.ServiceBus">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-testing\src\Novolis.Testing.ServiceBus\Novolis.Testing.ServiceBus.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Testing.TestBases">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-testing\src\Novolis.Testing.TestBases\Novolis.Testing.TestBases.csproj</ProjectPath>
     </NovolisPackageProject>
@@ -736,6 +775,12 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Tools.Cli">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-tools\src\Novolis.Tools.Cli\Novolis.Tools.Cli.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Tools.Coverage">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-tools\src\Novolis.Tools.Coverage\Novolis.Tools.Coverage.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Tools.Coverage.Cli">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-tools\src\Novolis.Tools.Coverage.Cli\Novolis.Tools.Coverage.Cli.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Tools.Docs">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-tools\src\Novolis.Tools.Docs\Novolis.Tools.Docs.csproj</ProjectPath>
@@ -811,6 +856,27 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Workspaces.Timeline">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-workspaces\src\Novolis.Workspaces.Timeline\Novolis.Workspaces.Timeline.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Xsd">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-xsd\src\Novolis.Xsd\Novolis.Xsd.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Xsd.Generator">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-xsd\src\Novolis.Xsd.Generator\Novolis.Xsd.Generator.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Xsd.Peppol">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-xsd\src\Novolis.Xsd.Peppol\Novolis.Xsd.Peppol.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Xsd.Tool">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-xsd\tools\XsdGen\Novolis.Xsd.Tool.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Xsd.Ubl">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-xsd\src\Novolis.Xsd.Ubl\Novolis.Xsd.Ubl.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Xsd.Ubl.Lean">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-xsd\src\Novolis.Xsd.Ubl.Lean\Novolis.Xsd.Ubl.Lean.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Xsd.Ubl.Validation">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-xsd\src\Novolis.Xsd.Ubl.Validation\Novolis.Xsd.Ubl.Validation.csproj</ProjectPath>
     </NovolisPackageProject>
   </ItemGroup>
 </Project>
