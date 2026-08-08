@@ -2,7 +2,40 @@
 
 Org-wide line/branch coverage for `novolis-*` test hosts, collected in parallel and merged into one HTML report.
 
-## Quick start
+## Preferred: `novolis-coverage` (dotnet tool)
+
+```powershell
+dotnet tool install --global Novolis.Tools.Coverage.Cli --version 2026.1.*
+
+# Platform.slnx + ProjectRef (skip rebuild when already warm)
+novolis-coverage collect --platform --skip-build --fail-below -1 --out d:\novolis\coverage
+
+# List hosts
+novolis-coverage list --platform
+
+# Analyze an existing Cobertura (library API; no test run)
+novolis-coverage gaps --cobertura d:\novolis\coverage\report\Cobertura.xml --target 95 --write d:\novolis\coverage\GAPS.md
+
+# CRAP risk report → one file (default: ./CRAP.md in the caller's cwd)
+novolis-coverage crap --flagged-only --fail-above -1
+novolis-coverage crap --out d:\novolis\CRAP.md --cobertura d:\novolis\coverage\Cobertura.xml
+```
+
+Library (preferred over growing PowerShell): `Novolis.Tools.Coverage` — parse/analyze/gate/CRAP.
+Test authoring helpers: `Novolis.Testing.Coverage` (`PublicApiSurface`).
+Governance scripts remain thin policy wrappers around the tool.
+
+Local without install:
+
+```powershell
+dotnet run --project d:\novolis\novolis-tools\src\Novolis.Tools.Coverage.Cli -p:NovolisUseProjectReferences=true -- collect --platform --skip-build --fail-below -1 --out d:\novolis\coverage
+dotnet run --project d:\novolis\novolis-tools\src\Novolis.Tools.Coverage.Cli -p:NovolisUseProjectReferences=true -- gaps --cobertura d:\novolis\coverage\Cobertura.xml --target 95
+dotnet run --project d:\novolis\novolis-tools\src\Novolis.Tools.Coverage.Cli -p:NovolisUseProjectReferences=true -- crap --cobertura d:\novolis\coverage\Cobertura.xml --out d:\novolis\CRAP.md --fail-above -1
+```
+
+HTML: `d:\novolis\coverage\index.html` (with `--flatten`, default).
+
+## PowerShell (CI / legacy)
 
 ```powershell
 # List which repos would run (after excludes)
@@ -59,24 +92,52 @@ These packables are intentionally without headless unit `ProjectReference` linka
 | `Novolis.IO.Mobile.Android` | Host-side ADB protocol / device tooling (headless tests cover parsers only; live ADB is dogfood) |
 | `Novolis.Audio.Bindings` / `.Native` | Native audio P/Invoke |
 | `Novolis.Audio.Output.NAudio` | Windows audio device |
+| `Novolis.Audio.Playback` / `.Runtime` / `.Live.Visuals` | Device playback / runtime / live-visual hosts |
 | `Novolis.Audio.Voice.Platform.Maui` / `.Windows` | Platform voice hosts |
 | `Novolis.Audio.Voice.SherpaOnnx` / `.EdgeTts` | Native ONNX / network TTS hosts |
 | `Novolis.Avalonia.Mobile.Android` / `.Desktop` | Mobile/desktop UI hosts |
+| `Novolis.MachineLearning.TestSupport` | Shared ML test-support helpers (not product logic) |
 | `Novolis.Raylib` / `.Native` / `.Raygui.Native` / `.Runtime` / `.Raygui` / `.Bindings` | Native window / P/Invoke / runtime hosts |
-| `Novolis.Raylib.Pipeline` / `.CodeGen` / `.Testing` | Native binding codegen / test-helper packages |
-| `Novolis.Tools.Cli` / `.Docs` | Interactive CLI / docs tooling hosts |
+| `Novolis.Raylib.Game` / `.Capture` / `.Hosting` / `.Loaders` / `.Input` / `.Manifests` | Native window / game / capture / input hosts |
+| `Novolis.Raylib.Pipeline` / `.CodeGen` / `.CodeGen.Hooks` / `.CodeGen.Abstractions` / `.Testing` | Native binding codegen / test-helper packages |
+| `Novolis.Tools.Cli` / `.Docs` / `.Docs.Cli` | Interactive CLI / docs tooling hosts |
+| `Novolis.Tools.Coverage.Cli` | Interactive org coverage CLI host |
+| `Novolis.Tools.Coverage` `CoverageCollector` / `ReportGeneratorInvoker` | Process orchestration (`dotnet test` / ReportGenerator); workspace/discovery/Cobertura helpers remain scored |
+| `Novolis.Tools.Sqlite.Cli` / `.LiteDb.Cli` | Interactive SQLite / LiteDB CLI hosts |
+| `Novolis.Logging.Transports` | HTTP / LocalIpc log transport hosts |
+| `Novolis.Messaging.Coordination.Redis` | Redis / Garnet network coordination host (requires live Redis; Testcontainers gated) |
+| `Novolis.Modeling.Import.AssimpSkinnedMeshImporter` | Native Assimp skinned FBX/glTF import (bone weights); guard clauses remain unit-tested |
 | `Novolis.Markup.Html` | HTML layout/render host surface |
 | `Novolis.Analyzers.Licensing` | Roslyn licensing analyzer (excluded via ReportGenerator assembly filter; netstandard2.0 cannot use assembly-level `ExcludeFromCodeCoverage`) |
 | `Novolis.Geopolitics.Scenarios` | Scenario pack host helpers |
-| `Novolis.Rendering.Presentation.Raylib` / `.Silk` | GPU presentation hosts |
+| `Novolis.Rendering.Presentation.Abstractions` / `.Raylib` / `.Silk` | GPU presentation bridge / hosts |
 | `Novolis.Rendering.Backends.Vulkan` / `.Igpu` | GPU device backends |
+| `Novolis.Rendering.Backends.TwoD.Silk` | Silk.NET OpenGL 2D window / game-loop host |
 | `Novolis.Rendering.PathTrace.Demos` | GPU path-trace demos |
 | `Novolis.Simulation.View` | Camera / view rig (GPU presentation bridge; headless sim tests skip) |
 | `Novolis.Transports.Torrent` | BitTorrent / P2P network host |
 | `Novolis.Transports.WireFish` | OS packet-capture host |
 | `Novolis.Testing.Testcontainers` | Requires Docker |
+| `Novolis.Video.Rtc.Abstractions` | RTC / capture device abstractions (device host surface) |
 
 Packables in this table carry `[assembly: ExcludeFromCodeCoverage]` in their project (see each package README or `AssemblyInfo.cs`). Org coverage collectors honor that attribute; do not filter these assemblies manually in scripts unless debugging.
+
+`LoggingSurface` (in `Novolis.Logging.Agent`) is also `[ExcludeFromCodeCoverage]` — it only attaches AgentSurface / LogTransports network hosts.
+
+### Generated / wire-only surfaces
+
+| Surface | Treatment |
+|---------|-----------|
+| `Novolis.Xsd.Ubl` / `.Ubl.Lean` `Generated/**/*.g.cs` | ReportGenerator `-filefilters:-*.g.cs` (do **not** assembly-exclude — hand-written `UblDocument` / `*BaseMapper` stay scored) |
+| `Novolis.Xsd.Peppol` XSCG SBDH DTOs (`*.g.cs`) | Same `.g.cs` filter; envelope helpers remain covered |
+| `Novolis.Xsd.Ubl.Lean.StripEmbeddedMapper` | `[ExcludeFromCodeCoverage]` — reflective Wire↔Base projection (same role as generated mappers) |
+| `Novolis.Xsd.Ubl.Validation.SchemaSetFromDirectory` | `[ExcludeFromCodeCoverage]` — schema disk I/O / XmlSchema.Read error edges; public validators remain scored |
+| `Novolis.Analyzers.Licensing` | Assembly filter (netstandard2.0) |
+| `Novolis.Logging.Agent.LoggingAgentSurfaceContract` | Attribute reflection glue for AgentSurface attach |
+
+### ProjectRef transitive bleed (per-repo reports)
+
+Under Platform.slnx ProjectRef mode, consumer Cobertura files often include sibling assemblies (e.g. `Novolis.Simulation.Humanoid` under gaming, `Novolis.Economy.Core` under civics, `Novolis.Storage.*` under tools, `Novolis.CodeGen.*` under xsd). Per-repo ReportGenerator merges use **home-assembly include filters** (`Get-RepoAssemblyFilter` / `CoverageWorkspace.RepoAssemblyFilter`) so SUMMARY line % reflects that repo's packages. Aggregate org merges still combine all Cobertura files so each assembly is scored from its home repo when present.
 
 ReportGenerator also excludes `MessagePack.*` generated formatters and legacy `Frank.*` assemblies from the merged aggregate so the gate reflects Novolis production source.
 
@@ -129,4 +190,4 @@ pwsh -File d:\novolis\novolis-governance\scripts\get-coverage-report.ps1 -FailBe
 pwsh -File d:\novolis\novolis-governance\scripts\get-coverage-report.ps1 -PlatformSlnx -RegenerateSlnx
 ```
 
-Exits 1 if aggregate line coverage is below the threshold, or if any selected repo fails.
+Exits 1 if aggregate **line or branch** coverage is below the threshold, or if any selected repo fails.

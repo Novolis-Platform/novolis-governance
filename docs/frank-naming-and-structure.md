@@ -22,7 +22,7 @@ Related: [naming.md](naming.md), [frank-inventory.md](frank-inventory.md), [fran
 | `novolis-transports` | Transports | BedrockSlim, Http, WireFish | Multi-package |
 | `novolis-storage` | Storage | DataStorage subset | Multi-package |
 | `novolis-security` | Security | Cryptography, HIBP | Multi-package |
-| `novolis-codegen` | CodeGen | Reflection subset | Multi-package |
+| `novolis-codegen` | CodeGen | Reflection subset + Xml/Xsd emit | Multi-package |
 | `novolis-analyzers` | Analyzers | AutoMapper, CodeLength | Multi-package |
 | `novolis-templates` | Templates | Frank.Templates (7 packs) | Single template NuGet pack |
 | `novolis-math` | Math | GameEngine Primitives subset | Multi-package |
@@ -30,6 +30,7 @@ Related: [naming.md](naming.md), [frank-inventory.md](frank-inventory.md), [fran
 | `novolis-markup` | Markup | Frank.Markdown, Frank.Mermaid | Multi-package |
 | `novolis-commands` | Commands | Greenfield (parse → envelope → queue) | Multi-package |
 | `novolis-gaming` | Game authoring | Greenfield (`Novolis.Game.*`) | Multi-package |
+| `novolis-xsd` | Xsd | Frank.UblSharp, Finance.Documents.Ubl, Libraries.Ubl/SBDH | Multi-package |
 
 ## Structural rule (Frank → Novolis)
 
@@ -82,6 +83,8 @@ On extract: **move** projects into `src/` / `tests/`; do not preserve Frank flat
 | `Frank.Reflection` | `Novolis.CodeGen.Reflection` | `src/Novolis.CodeGen.Reflection/` |
 | `Frank.Reflection.Dump` | `Novolis.CodeGen.Reflection.Dump` | `src/Novolis.CodeGen.Reflection.Dump/` |
 | `Frank.Reflection.Mermaid` | `Novolis.CodeGen.Reflection.ClassDiagram` | `src/Novolis.CodeGen.Reflection.ClassDiagram/` |
+| *(greenfield)* | `Novolis.CodeGen.Xml` | `novolis-codegen/src/Novolis.CodeGen.Xml/` |
+| *(greenfield)* | `Novolis.CodeGen.Xsd` | `novolis-codegen/src/Novolis.CodeGen.Xsd/` |
 | `Frank.Analyzers.AutoMapper` | `Novolis.Analyzers.AutoMapper` | `src/Novolis.Analyzers.AutoMapper/` |
 | `Frank.Analyzers.CodeLength` | `Novolis.Analyzers.CodeLength` | `src/Novolis.Analyzers.CodeLength/` |
 | `Frank.Templates` | `Novolis.Templates` | `src/Novolis.Templates/` (`PackageType=Template`) |
@@ -96,6 +99,12 @@ On extract: **move** projects into `src/` / `tests/`; do not preserve Frank flat
 | `Frank.WireFish` | `Novolis.Transports.WireFish` | `src/Novolis.Transports.WireFish/` |
 | `Frank.Markdown` | `Novolis.Markup.Markdown` | `src/Novolis.Markup.Markdown/` |
 | `Frank.Mermaid` | `Novolis.Markup.Mermaid` | `src/Novolis.Markup.Mermaid/` |
+| `Frank.UblSharp` (+ Generation) | `Novolis.Xsd.Generator` | `novolis-xsd/src/Novolis.Xsd.Generator/` |
+| `Frank.UblSharp` (runtime) | `Novolis.Xsd.Ubl` | `novolis-xsd/src/Novolis.Xsd.Ubl/` |
+| `Frank.UblSharp.Validation` | `Novolis.Xsd.Ubl.Validation` | `novolis-xsd/src/Novolis.Xsd.Ubl.Validation/` |
+| `Frank.Libraries.SBDH` | `Novolis.Xsd.Peppol` | `novolis-xsd/src/Novolis.Xsd.Peppol/` |
+| `Frank.Finance.Documents.Ubl` | *(regen under Ubl; do not vendor tree)* | `novolis-xsd` |
+| `Frank.XsdCodeGeneration` | *(reference only; do not ship)* | — |
 
 **Facet decisions:**
 
@@ -193,7 +202,7 @@ Entries: `Novolis.Security.Secrets`, `.PasswordHashing`, `.Encryption`, `.HaveIB
 
 ### `novolis-codegen` (wave 5)
 
-Entries: `Novolis.CodeGen.Reflection`, `.Reflection.Dump`, `.Reflection.ClassDiagram`.
+Entries: `Novolis.CodeGen.Reflection`, `.Reflection.Dump`, `.Reflection.ClassDiagram`, `.Xml`, `.Xsd`.
 
 ### `novolis-analyzers` (wave 5)
 

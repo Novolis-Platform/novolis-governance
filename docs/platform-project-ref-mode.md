@@ -35,7 +35,7 @@ pwsh -File novolis-governance/build/Generate-PackageToProjectMap.ps1
 
 Outputs:
 
-- `Novolis.Platform.slnx` (workspace root + copy under `novolis-governance/build/`)
+- `Novolis.Platform.slnx` at the **workspace root** (canonical open/build path); a path-adjusted checked-in copy also lands under `novolis-governance/build/`
 - [`novolis-governance/build/generated/Novolis.PackageToProject.props`](../build/generated/Novolis.PackageToProject.props)
 
 Regenerate after adding/removing packable projects.
@@ -44,7 +44,7 @@ Regenerate after adding/removing packable projects.
 
 ```powershell
 # Open meta solution in VS / Rider, or:
-dotnet build novolis-governance/build/Novolis.Platform.slnx
+dotnet build Novolis.Platform.slnx
 
 # Single consumer against sibling source:
 dotnet build path/to/Consumer.csproj -p:NovolisUseProjectReferences=true

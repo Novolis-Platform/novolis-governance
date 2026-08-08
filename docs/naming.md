@@ -14,7 +14,7 @@ Use `Novolis.<Domain>` (PascalCase segments).
 
 Examples: `Novolis.Math`, `Novolis.Raylib`.
 
-Adapters use suffixes: `Novolis.Storage.SqlServer`, `Novolis.Messaging.AzureServiceBus`, `Novolis.Testing.TUnit`.
+Adapters use suffixes: `Novolis.Storage.SqlServer`, `Novolis.Messaging.ServiceBus.Client` / `Novolis.Messaging.ServiceBus.Broker.Almost`, `Novolis.Testing.TUnit`.
 
 ## Testing
 

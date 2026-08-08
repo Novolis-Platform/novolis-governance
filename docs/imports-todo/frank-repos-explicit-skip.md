@@ -11,11 +11,18 @@ Repos present locally that should **not** be imported into Novolis platform libr
 | **Frank.Logbook** | Web app host, not libraries |
 | **Frank.IRC** | Educational; overlaps Networking.Irc |
 | **Frank.Apps** | Application collection + Maui |
-| **Frank.Finance.Documents.Ubl** | Vertical finance domain |
 | **Frank.TorrentClient** | Niche BitTorrent |
 | **Frank.ServiceBusExplorer** | EtherRipple experiment |
-| **Frank.XsdCodeGeneration** | Author dead-end; spike only |
 | **Frank.Libraries** | Monolith; author disclaims production — decompose **on demand** only |
+
+## Moved to `novolis-xsd` (no longer skip)
+
+| Repo | Destination |
+|------|-------------|
+| **Frank.Finance.Documents.Ubl** | Ideas + tests / XSD tree → `Novolis.Xsd.*` (regenerate; do not vendor generated tree) |
+| **Frank.XsdCodeGeneration** | Reference-only spike; generation spine is Frank.UblSharp → `Novolis.Xsd.Generator` |
+| **Frank.UblSharp** | Primary absorb → `Novolis.Xsd.Generator`, `Novolis.Xsd.Ubl`, `Novolis.Xsd.Ubl.Validation` |
+| **Frank.Libraries.Ubl** / **SBDH** | Cherry-pick / Peppol envelope → `Novolis.Xsd.Ubl`, `Novolis.Xsd.Peppol` |
 | **Frank.GameEngine.Rendering.*** (bulk) | `novolis-raylib` + `novolis-rendering` replace Raylib/RT/MonoGame adapters |
 | **Frank.GameEngine.Physics** | `novolis-physics` supersedes |
 | **Frank.GameEngine.Primitives** (3D math) | `novolis-math` migrated |
@@ -30,7 +37,6 @@ Repos present locally that should **not** be imported into Novolis platform libr
 
 | Repo | Revisit when |
 |------|----------------|
-| Frank.Libraries | A dogfood app needs one specific package with Novolis naming |
-| Frank.XsdCodeGeneration | Finance/codegen lane needs XSD |
+| Frank.Libraries | A dogfood app needs one specific package with Novolis naming (UBL/SBDH already → `novolis-xsd`) |
 | Frank.Networking.Irc | Chat product on platform |
 | Frank.TorrentClient | Distribution tooling required |

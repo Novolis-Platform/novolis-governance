@@ -41,7 +41,7 @@
   Print selected repos and exit.
 
 .PARAMETER FailBelow
-  Fail if aggregate line coverage is below this percent (0 = disabled).
+  Fail if aggregate line OR branch coverage is below this percent (0 = disabled).
   When -PlatformSlnx is set and FailBelow is left at 0, defaults to 95.
 
 .PARAMETER OpenReport
@@ -54,7 +54,7 @@
   With -PlatformSlnx, run Generate-Platform-Slnx.ps1 before collecting coverage.
 
 .PARAMETER PlatformSlnxPath
-  Explicit path to Novolis.Platform.slnx (default: governance/build copy).
+  Explicit path to Novolis.Platform.slnx (default: workspace-root copy).
 
 .EXAMPLE
   pwsh -File novolis-governance/scripts/get-coverage-report.ps1
@@ -251,7 +251,7 @@ $results = $repoWork | ForEach-Object -ThrottleLimit $ThrottleLimit -Parallel {
                     '--coverage-output-format', 'cobertura'
                     '--coverage-output', $outFile
                 )
-                if (-not $skipBuild) {
+                if ($skipBuild) {
                     $testArgs += '--no-build'
                 }
 
@@ -332,12 +332,15 @@ foreach ($r in ($results | Sort-Object Repo)) {
         New-Item -ItemType Directory -Force -Path $repoReport | Out-Null
         $merged = Join-Path $repoReport 'Cobertura.xml'
         $reportsArg = ($r.CoberturaFiles -join ';')
+        $assemblyFilter = Get-RepoAssemblyFilter -RepoName $r.Repo
         & reportgenerator `
             "-reports:$reportsArg" `
             "-targetdir:$repoReport" `
             '-reporttypes:Cobertura;TextSummary' `
             "-title:$($r.Repo)" `
-            "-filefilters:-*MessagePack.SourceGenerator*;-*.g.cs" | Out-Null
+            "-filefilters:-*MessagePack.SourceGenerator*;-*.g.cs" `
+            "-classfilters:-*.Tests*;-*Test;-*Tests;-MessagePack.*;-Frank.*" `
+            "-assemblyfilters:$assemblyFilter" | Out-Null
 
         if (Test-Path -LiteralPath $merged) {
             $sum = Get-CoberturaSummary -CoberturaPath $merged
@@ -382,6 +385,7 @@ if ($allCobertura.Count -gt 0) {
         "-targetdir:$reportDir" `
         '-reporttypes:Html;HtmlSummary;MarkdownSummaryGithub;TextSummary;Cobertura' `
         '-title:Novolis coverage' `
+        "-filefilters:-*MessagePack.SourceGenerator*;-*.g.cs" `
         "-classfilters:-*.Tests*;-*Test;-*Tests;-MessagePack.*;-Frank.*" `
         "-assemblyfilters:-Novolis.Analyzers.Licensing" | Out-Host
 
@@ -474,9 +478,33 @@ if ($failedRepos.Count -gt 0) {
     exit 1
 }
 
-if ($FailBelow -gt 0 -and $aggregateOk -and $aggLine -lt $FailBelow) {
-    Write-Host "Aggregate line coverage ${aggLine}% is below FailBelow=${FailBelow}%." -ForegroundColor Red
-    exit 1
+if ($FailBelow -gt 0) {
+    # Prefer per-repo filtered metrics (home assemblies only). The merged HTML aggregate
+    # also contains ProjectRef transitive packages (e.g. Novolis.IO.*) and must not gate.
+    $reposWithMetrics = @($repoRows | Where-Object { $null -ne $_.LinePct -or $null -ne $_.BranchPct })
+    if ($reposWithMetrics.Count -gt 0) {
+        $below = @($reposWithMetrics | Where-Object {
+            ($null -ne $_.LinePct -and $_.LinePct -lt $FailBelow) -or
+            ($null -ne $_.BranchPct -and $_.BranchPct -lt $FailBelow)
+        })
+        if ($below.Count -gt 0) {
+            foreach ($b in $below) {
+                Write-Host ("Repo {0} coverage line={1}% branch={2}% is below FailBelow={3}%." -f `
+                    $b.Repo, $b.LinePctText, $b.BranchPctText, $FailBelow) -ForegroundColor Red
+            }
+            exit 1
+        }
+    }
+    elseif ($aggregateOk) {
+        if ($null -ne $aggLine -and $aggLine -lt $FailBelow) {
+            Write-Host "Aggregate line coverage ${aggLine}% is below FailBelow=${FailBelow}%." -ForegroundColor Red
+            exit 1
+        }
+        if ($null -ne $aggBranch -and $aggBranch -lt $FailBelow) {
+            Write-Host "Aggregate branch coverage ${aggBranch}% is below FailBelow=${FailBelow}%." -ForegroundColor Red
+            exit 1
+        }
+    }
 }
 
 exit 0

@@ -21,6 +21,9 @@
   <!-- Cross-repo graph evaluates multiple nuget.configs; CPM + nuget.org+github raises NU1507. -->
   <PropertyGroup Condition="'$(NovolisUseProjectReferences)' == 'true'">
     <WarningsNotAsErrors>$(WarningsNotAsErrors);NU1507</WarningsNotAsErrors>
+    <NoWarn>$(NoWarn);NU1507</NoWarn>
+    <!-- Multi-repo unify can leave Roslyn version conflicts as MSB3277 noise. -->
+    <MSBuildWarningsAsMessages>$(MSBuildWarningsAsMessages);MSB3277</MSBuildWarningsAsMessages>
   </PropertyGroup>
 
   <Import Project="$(MSBuildThisFileDirectory)generated\Novolis.PackageToProject.props"

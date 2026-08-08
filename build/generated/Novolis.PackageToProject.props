@@ -192,7 +192,7 @@
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-avalonia\src\Novolis.Avalonia.Live\Novolis.Avalonia.Live.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Avalonia.Manuscript">
-      <ProjectPath>$(NovolisWorkspaceRoot)novolis-manuscript\src\Novolis.Avalonia.Manuscript\Novolis.Avalonia.Manuscript.csproj</ProjectPath>
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-avalonia\src\Novolis.Avalonia.Manuscript\Novolis.Avalonia.Manuscript.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Avalonia.Markdown">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-avalonia\src\Novolis.Avalonia.Markdown\Novolis.Avalonia.Markdown.csproj</ProjectPath>
@@ -442,6 +442,9 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Manuscript.Export.Audio">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-manuscript\src\Novolis.Manuscript.Export.Audio\Novolis.Manuscript.Export.Audio.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Manuscript.Export.Markdown">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-manuscript\src\Novolis.Manuscript.Export.Markdown\Novolis.Manuscript.Export.Markdown.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Manuscript.Export.Pdf">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-manuscript\src\Novolis.Manuscript.Export.Pdf\Novolis.Manuscript.Export.Pdf.csproj</ProjectPath>
@@ -751,6 +754,9 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Templates">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-templates\src\Novolis.Templates\Novolis.Templates.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Testing.Coverage">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-testing\src\Novolis.Testing.Coverage\Novolis.Testing.Coverage.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Testing.Logging">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-testing\src\Novolis.Testing.Logging\Novolis.Testing.Logging.csproj</ProjectPath>

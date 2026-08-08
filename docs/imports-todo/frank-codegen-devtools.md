@@ -7,7 +7,7 @@
 | `Frank.Blazor.JsInteropGenerator` | `Frank.Blazor.JsInteropGenerator` | Roslyn + Esprima JS interop codegen |
 | `Frank.SolutionManager` | `Frank.SolutionManager` (+ tool exe) | `.sln` / project manipulation |
 | `Frank.GitKit` | `Frank.GitKit` | Git + GitHub + Azure DevOps helpers |
-| `Frank.XsdCodeGeneration` | `Frank.XsdCodeGeneration` | XSD → C# (author marked dead-end) |
+| `Frank.XsdCodeGeneration` | `Frank.XsdCodeGeneration` | Legacy Roslyn Syntax spike — historical reference only |
 
 ## What (per repo)
 
@@ -25,35 +25,45 @@ Repository operations for CI and devtools; depends on **Reflection** subset.
 
 ### XsdCodeGeneration
 
-Legacy XSD tooling — spike only if finance/UBL lane revives.
+Author-marked dead-end spike. **Do not** port as-is. The **schema-agnostic** XSD → Roslyn emitter lives in **`novolis-codegen`** (`Novolis.CodeGen.Xml` + `Novolis.CodeGen.Xsd`). UBL/Peppol **product** packages remain in **`novolis-xsd`**.
 
 ## Why
 
 - Wave 5 ported Reflection **subset** but not these specialized generators.
-- Binding codegen ([internal-novolis-audit/codegen-bindings-backlog.md](internal-novolis-audit/codegen-bindings-backlog.md)) proves pipeline; second consumer validates generality.
-- SolutionManager reduces manual slnx maintenance across 22+ repos.
+- Binding codegen proves pipeline; SchemaGraph → SyntaxFactory is the second consumer of Roslyn emit culture.
+- UBL is the acceptance suite for the generic emitter, not the home of the IR.
 
 ## How
 
 ### Target
 
-**`novolis-codegen`** (preferred) — new facets:
+**`novolis-codegen`** — facets:
 
-| Novolis package | Source |
+| Novolis package | Source / role |
 |-----------------|--------|
 | `Novolis.CodeGen.JsInterop` | Blazor generator (rename; Blazor optional in name) |
 | `Novolis.CodeGen.SolutionManager` | SolutionManager |
 | `Novolis.CodeGen.Git` or `novolis-devtools` | GitKit |
+| `Novolis.CodeGen.Xml` | XmlSchemaSet load + SchemaGraph IR |
+| `Novolis.CodeGen.Xsd` | IR → SyntaxFactory profiles (Wire / Lean) |
 
-Keep **XSD** as spike doc only unless requirement appears.
+**`novolis-xsd`** — product:
+
+| Novolis package | Role |
+|-----------------|------|
+| `Novolis.Xsd.Generator` / `.Tool` | Host + UBL normalize; consumes CodeGen.Xml/Xsd |
+| `Novolis.Xsd.Ubl` / `.Ubl.Validation` / `.Ubl.Lean` | Pre-generated Wire + Lean |
+| `Novolis.Xsd.Peppol` | SBDH envelope + Peppol helpers |
 
 ### Port steps
 
 1. **SolutionManager** first — dogfood in `novolis-governance/scripts` or template generator.
 2. **JsInterop** — port with T1-style comparer if golden files exist.
 3. **GitKit** — after Reflection on GPR; narrow public API.
-4. Skip XSD unless linked from [frank-repos-explicit-skip.md](frank-repos-explicit-skip.md) finance decision.
+4. **Xml/Xsd** — implement in `novolis-codegen`; dogfood via `novolis-xsd` UBL gates.
 
 ## Acceptance
 
-- At least one tool published and used by a Novolis repo workflow (not only ported).
+- `Novolis.CodeGen.Xml` + `.Xsd` published to GitHub Packages and used by `novolis-xsd`.
+- `novolis-xsd` packages restore from nuget.org + GitHub Packages only.
+- Coverage ≥ 85% line on Xml/Xsd assemblies; nuget-only green.

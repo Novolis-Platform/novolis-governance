@@ -42,8 +42,8 @@ Scanned 2026-05-25. See [third-party-inspiration-policy.md](third-party-inspirat
 | **MonoGame** | MonoGame | Not Novolis render lane | Packaging/content pipeline |
 | **roslyn-sdk** | dotnet | Use NuGet analyzers SDK | Analyzer test harness layout |
 | **wpf** | dotnet/wpf | Off-brand desktop | — |
-| **UblSharp** | UblSharp | Use NuGet if needed | XSD model patterns |
-| **XmlSchemaClassGenerator** | mganss / fork | Use NuGet or codegen spike | Schema→C# options |
+| **UblSharp** | UblSharp / frankhaugen fork | Absorb patterns via `novolis-xsd` (Frank.UblSharp) | XSD model + generation |
+| **XmlSchemaClassGenerator** | mganss | PackageReference inside `Novolis.Xsd.Generator` | Schema→C# options |
 | **markdig.wpf** | archived | Dead | — |
 | **labelImg** | tzutalin | Deprecated | — |
 | **NeoLoader** | — | Unrelated C++ | — |
@@ -60,7 +60,7 @@ Scanned 2026-05-25. See [third-party-inspiration-policy.md](third-party-inspirat
 | Directory | Use when |
 |-----------|----------|
 | **roslyn-sdk** | Authoring analyzers/source generators — reference samples on disk |
-| **UblSharp** / **XmlSchemaClassGenerator** | Finance/XML lane — add PackageReference in product repo |
+| **UblSharp** / **XmlSchemaClassGenerator** | Prefer `novolis-xsd` packages; generator may PackageReference XmlSchemaClassGenerator |
 
 ---
 

@@ -171,7 +171,7 @@ See [`platform-import-phase4-backlog.md`](platform-import-phase4-backlog.md).
 
 | Category | Examples |
 |----------|----------|
-| Frank skip list | WPF, HttpDude, Finance UBL, TorrentClient, bulk `Frank.GameEngine` 3D | [frank-repos-explicit-skip](imports-todo/frank-repos-explicit-skip.md) |
+| Frank skip list | WPF, HttpDude, TorrentClient, bulk `Frank.GameEngine` 3D (UBL/XSD → `novolis-xsd`) | [frank-repos-explicit-skip](imports-todo/frank-repos-explicit-skip.md) |
 | Third-party vendoring | bullet3, ravendb, MonoGame, Unity `rebellion2` | [repos-third-party-catalog](imports-todo/repos-third-party-catalog.md) |
 | dotnetrepos bulk | aspnetcore/efcore forks | [dotnetrepos-platform-reference](imports-todo/dotnetrepos-platform-reference.md) |
 | Bedrock fork | Tcp slice done; logging middleware optional only | [bedrockframework-transports](imports-todo/bedrockframework-transports-inspiration.md) |

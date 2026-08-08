@@ -5,19 +5,22 @@
 .DESCRIPTION
     Scans the Novolis workspace root for all .slnx files, parses their project references,
     and combines them into a single hierarchical master solution file organized by repository.
-    All project paths are adjusted to be relative from the workspace root.
+    All project paths are adjusted to be relative from the workspace root (canonical
+    open/build path). A checked-in copy under novolis-governance/build uses the same
+    projects with paths rewritten relative to that folder (..\..\...).
 
 .PARAMETER WorkspaceRoot
     The root directory of the Novolis workspace. Defaults to the parent of novolis-governance.
 
 .PARAMETER ExcludeRepos
     Array of repository names to exclude from the master solution.
-    Defaults to: '.github', 'novolis-experimental', 'novolis-dogfooding', 'novolis-smoketest', 'novolis-template-dotnet'
+    Defaults to: '.github', 'novolis-experimental' (local-only), 'novolis-dogfooding', 'novolis-smoketest', 'novolis-template-dotnet'
 
 .PARAMETER OutputPath
     Path where the master .slnx file will be written.
     Defaults to: <WorkspaceRoot>/Novolis.Platform.slnx
-    (Also copies to novolis-governance/build/Novolis.Platform.slnx and regenerates the PackageToProject map.)
+    (Also writes a path-adjusted copy to novolis-governance/build/Novolis.Platform.slnx
+    and regenerates the PackageToProject map.)
 
 .PARAMETER ValidateProjectReferences
     If $true, validates that all referenced .csproj files exist. Warnings issued for missing files.
@@ -210,6 +213,19 @@ foreach ($repo in $reposToProcess | Sort-Object Name) {
                     Write-Verbose "      Skipping duplicate project: $adjustedPath"
                     continue
                 }
+
+                # Skip Android hosts in the meta solution (need JDK 17+; Rider often uses an older bundled JRE).
+                if ($adjustedPath -match '(?i)(^|[\\/])Android([\\/]|$)|\.Android\.csproj$') {
+                    Write-Verbose "      Skipping Android project: $adjustedPath"
+                    continue
+                }
+
+                # LocalIpc/HTTP agent hosts deadlock under massively parallel Platform.slnx test runs.
+                # Exercise via novolis-agent solution / Novolis.Agent.Unit.csproj instead.
+                if ($adjustedPath -match '(?i)Novolis\.Agent\.Unit\.csproj$') {
+                    Write-Verbose "      Skipping Agent.Unit (Platform parallel hang): $adjustedPath"
+                    continue
+                }
                 
                 Write-Verbose "      Adding project: $adjustedPath"
                 
@@ -276,11 +292,23 @@ catch {
     throw "Generated XML is invalid: $_"
 }
 
-# Also write the checked-in copy under novolis-governance/build when output is elsewhere
+# Checked-in copy under novolis-governance/build: rewrite paths relative to that folder
+# (prefix ..\..\) so Dotnet/VS resolve projects when opening the build/ copy.
+# Canonical daily path remains <WorkspaceRoot>/Novolis.Platform.slnx (workspace-relative).
 $governanceSlnx = Join-Path $scriptDir "Novolis.Platform.slnx"
+# Negative lookahead skips paths already prefixed (idempotent re-run / custom output).
+$governanceContent = [regex]::Replace(
+    $xmlContent,
+    'Project Path="(?!\.\.[\\/]\.\.[\\/])([^"]+)"',
+    'Project Path="..\..\$1"')
 if ($OutputPath -ne $governanceSlnx) {
-    Copy-Item -Path $OutputPath -Destination $governanceSlnx -Force
-    Write-Verbose "Also wrote: $governanceSlnx"
+    Set-Content -Path $governanceSlnx -Value $governanceContent -Encoding Unicode
+    Write-Verbose "Also wrote (build-relative paths): $governanceSlnx"
+}
+else {
+    # Primary output was the governance path: replace workspace-relative with build-relative.
+    Set-Content -Path $governanceSlnx -Value $governanceContent -Encoding Unicode
+    Write-Verbose "Rewrote governance output to build-relative paths: $governanceSlnx"
 }
 
 # ============================================================================

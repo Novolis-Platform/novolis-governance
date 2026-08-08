@@ -4,7 +4,8 @@
 
 This tool generates a unified master `.slnx` (Visual Studio solution) file that combines all 27 domain repositories in the Novolis Platform into a single hierarchical solution. This allows developers to work with the entire platform as one cohesive solution while preserving individual repository structure and organization.
 
-**Generated file**: `d:\novolis\novolis-governance\build\Novolis.Platform.slnx`  
+**Canonical (open/build)**: `d:\novolis\Novolis.Platform.slnx`  
+**Checked-in copy** (build-relative paths): `d:\novolis\novolis-governance\build\Novolis.Platform.slnx`  
 **Script location**: `d:\novolis\novolis-governance\build\Generate-Platform-Slnx.ps1`
 
 ---
@@ -14,23 +15,26 @@ This tool generates a unified master `.slnx` (Visual Studio solution) file that 
 ### Generate the Master Solution
 
 ```powershell
-cd d:\novolis\novolis-governance\build
-pwsh -ExecutionPolicy Bypass -File .\Generate-Platform-Slnx.ps1
+pwsh -ExecutionPolicy Bypass -File d:\novolis\novolis-governance\build\Generate-Platform-Slnx.ps1
 ```
 
 ### With Verbose Output (Recommended for Troubleshooting)
 
 ```powershell
-pwsh -ExecutionPolicy Bypass -File .\Generate-Platform-Slnx.ps1 -Verbose
+pwsh -ExecutionPolicy Bypass -File d:\novolis\novolis-governance\build\Generate-Platform-Slnx.ps1 -Verbose
 ```
 
 ### Open in Visual Studio
 
 1. In Visual Studio: **File → Open → Solution**
-2. Navigate to: `d:\novolis\novolis-governance\build\Novolis.Platform.slnx`
+2. Navigate to: `d:\novolis\Novolis.Platform.slnx`
 3. Click **Open**
 
 All projects load organized by repository and folder type (src/, tests/, codegen/, samples/).
+
+The checked-in file under `novolis-governance/build/` uses `..\..\`-prefixed paths so it also opens from that folder; prefer the workspace-root file for daily work.
+
+**Android projects** (`*.Android.csproj` / `.../Android/...`) are omitted from the meta solution — they need JDK 17+ and often fail under Rider’s bundled JRE.
 
 **ProjectReference mode:** building this solution sets `SolutionName` to `Novolis.Platform`, which substitutes each project's existing `Novolis.*` PackageReferences for sibling ProjectReferences (intersect only). See [platform-project-ref-mode.md](../docs/platform-project-ref-mode.md). The generator also writes `build/generated/Novolis.PackageToProject.props`.
 
@@ -46,7 +50,7 @@ All projects load organized by repository and folder type (src/, tests/, codegen
 ### Intelligent Organization
 - **Per-repository top-level folders** preserve repository identity
 - **Nested folder structure** maintains src/tests/codegen/samples organization
-- **Path adjustment** makes all projects relative from workspace root
+- **Path adjustment** makes all projects relative from workspace root (governance copy rewrites to `..\..\`)
 
 ### Validation & Safety
 - Validates generated XML syntax
@@ -85,7 +89,7 @@ If project file validation is slow and you've already verified files:
 
 By default, these repos are excluded:
 - `.github`
-- `novolis-experimental`
+- `novolis-experimental` (local-only; not a GitHub repo — copyrighted IP)
 - `novolis-dogfooding`
 - `novolis-smoketest`
 - `novolis-template-dotnet`
@@ -226,10 +230,11 @@ Register-ScheduledTask -TaskName "Novolis-Regenerate-Platform-Solution" -Trigger
 - Check for unusual characters in project paths
 
 ### Solution won't open in Visual Studio
-1. Verify XML is valid: Open file in text editor, check syntax
-2. Ensure all project paths resolve from `d:\novolis`
-3. Try deleting Visual Studio's cache: `%APPDATA%\Microsoft\VisualStudio\*\ComponentModelCache`
-4. Re-open the solution file
+1. Prefer the workspace-root file: `d:\novolis\Novolis.Platform.slnx`
+2. Verify XML is valid: Open file in text editor, check syntax
+3. Ensure all project paths resolve from the solution directory (root file: from `d:\novolis`; build copy: via `..\..\`)
+4. Try deleting Visual Studio's cache: `%APPDATA%\Microsoft\VisualStudio\*\ComponentModelCache`
+5. Re-open the solution file
 
 ### Performance Issues
 - For very large solutions (231 projects), Visual Studio may take 2-3 minutes to fully load
@@ -256,8 +261,10 @@ Register-ScheduledTask -TaskName "Novolis-Regenerate-Platform-Solution" -Trigger
 
 ### `-OutputPath`
 **Type**: `[string]`  
-**Default**: `<WorkspaceRoot>/novolis-governance/build/Novolis.Platform.slnx`  
+**Default**: `<WorkspaceRoot>/Novolis.Platform.slnx`  
 **Example**: `"d:\artifacts\Novolis.Platform.slnx"`
+
+When the primary output is not the governance build path, the script also writes a path-adjusted copy to `novolis-governance/build/Novolis.Platform.slnx` (project paths prefixed with `..\..\`).
 
 ### `-ValidateProjectReferences`
 **Type**: `[bool]`  

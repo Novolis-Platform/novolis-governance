@@ -43,7 +43,11 @@ Full inventory of local Frank repos (2026-05-25) and recommended Novolis disposi
 
 ## Explicit skip (see [frank-repos-explicit-skip.md](frank-repos-explicit-skip.md))
 
-`Frank.Wpf`, `Frank.CrossPlatformWindow`, `Frank.HttpDude`, `Frank.Brewery`, `Frank.Logbook`, `Frank.IRC`, `Frank.Finance.Documents.Ubl`, `Frank.TorrentClient`, `Frank.ServiceBusExplorer` (EtherRipple), `Frank.Apps`, `Frank.XsdCodeGeneration` (author dead-end), `Frank.Libraries` (monolith — decompose only if needed).
+`Frank.Wpf`, `Frank.CrossPlatformWindow`, `Frank.HttpDude`, `Frank.Brewery`, `Frank.Logbook`, `Frank.IRC`, `Frank.TorrentClient`, `Frank.ServiceBusExplorer` (EtherRipple), `Frank.Apps`, `Frank.Libraries` (monolith — decompose only if needed; UBL/SBDH slices → `novolis-xsd`).
+
+## Absorbing into `novolis-xsd`
+
+`Frank.UblSharp`, `Frank.Finance.Documents.Ubl` (regen), `Frank.Libraries.Ubl` / `SBDH`, `Frank.XsdCodeGeneration` (reference only).
 
 ## Not present locally
 

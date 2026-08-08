@@ -196,17 +196,17 @@ function Get-NovolisPlatformSlnxPath {
         [string]$Root
     )
 
-    $buildCopy = Join-Path $Root 'novolis-governance\build\Novolis.Platform.slnx'
-    if (Test-Path -LiteralPath $buildCopy) {
-        return (Resolve-Path -LiteralPath $buildCopy).Path
-    }
-
     $rootCopy = Join-Path $Root 'Novolis.Platform.slnx'
     if (Test-Path -LiteralPath $rootCopy) {
         return (Resolve-Path -LiteralPath $rootCopy).Path
     }
 
-    throw "Novolis.Platform.slnx not found under $Root (expected novolis-governance\build\Novolis.Platform.slnx)."
+    $buildCopy = Join-Path $Root 'novolis-governance\build\Novolis.Platform.slnx'
+    if (Test-Path -LiteralPath $buildCopy) {
+        return (Resolve-Path -LiteralPath $buildCopy).Path
+    }
+
+    throw "Novolis.Platform.slnx not found under $Root (expected $Root\Novolis.Platform.slnx)."
 }
 
 function Get-NovolisGeneratePlatformSlnxScript {
@@ -232,23 +232,19 @@ function Get-NovolisTestHostsFromPlatformSlnx {
         [string[]]$Include = @()
     )
 
-    $excludeSet = [System.Collections.Generic.HashSet[string]]::new(
-        [string[]]($Exclude | Where-Object { $_ }),
-        [StringComparer]::OrdinalIgnoreCase)
+    $excludeSet = [System.Collections.Generic.HashSet[string]]::new([StringComparer]::OrdinalIgnoreCase)
+    foreach ($e in @($Exclude)) {
+        if ($e) { [void]$excludeSet.Add($e) }
+    }
     $includeSet = $null
     if ($Include -and $Include.Count -gt 0) {
-        $includeSet = [System.Collections.Generic.HashSet[string]]::new(
-            [string[]]($Include | Where-Object { $_ }),
-            [StringComparer]::OrdinalIgnoreCase)
+        $includeSet = [System.Collections.Generic.HashSet[string]]::new([StringComparer]::OrdinalIgnoreCase)
+        foreach ($i in @($Include)) {
+            if ($i) { [void]$includeSet.Add($i) }
+        }
     }
 
     $slnxDir = Split-Path $SlnxPath -Parent
-    # Paths in Novolis.Platform.slnx are relative to the workspace root, not the build folder.
-    $workspaceRoot = $Root
-    if ((Split-Path $slnxDir -Leaf) -eq 'build' -and
-        (Split-Path (Split-Path $slnxDir -Parent) -Leaf) -eq 'novolis-governance') {
-        $workspaceRoot = Split-Path (Split-Path $slnxDir -Parent) -Parent
-    }
 
     $byRepo = [System.Collections.Generic.Dictionary[string, object]]::new([StringComparer]::OrdinalIgnoreCase)
     $text = Get-Content -LiteralPath $SlnxPath -Raw
@@ -256,19 +252,24 @@ function Get-NovolisTestHostsFromPlatformSlnx {
         $rel = ($m.Groups[1].Value -replace '/', '\')
         if ($rel -notmatch '(?i)(^|[\\/])tests([\\/])') { continue }
 
-        $repoName = ($rel -split '[\\/]')[0]
+        $full = [IO.Path]::GetFullPath((Join-Path $slnxDir $rel))
+        if (-not (Test-Path -LiteralPath $full)) { continue }
+
+        # Repo is the first path segment under the workspace root (handles ..\..\novolis-* from build/).
+        $rootFull = [IO.Path]::GetFullPath($Root).TrimEnd('\', '/')
+        if (-not $full.StartsWith($rootFull, [StringComparison]::OrdinalIgnoreCase)) { continue }
+        $relFromRoot = $full.Substring($rootFull.Length).TrimStart('\', '/')
+        $repoName = ($relFromRoot -split '[\\/]')[0]
         if (-not $repoName.StartsWith('novolis-', [StringComparison]::OrdinalIgnoreCase)) { continue }
         if ($excludeSet.Contains($repoName)) { continue }
         if ($includeSet -and -not $includeSet.Contains($repoName)) { continue }
 
-        $full = [IO.Path]::GetFullPath((Join-Path $workspaceRoot $rel))
-        if (-not (Test-Path -LiteralPath $full)) { continue }
         if (-not (Test-NovolisTestHostProject -ProjectPath $full)) { continue }
 
         if (-not $byRepo.ContainsKey($repoName)) {
             $byRepo[$repoName] = [pscustomobject]@{
                 Name         = $repoName
-                Path         = (Join-Path $workspaceRoot $repoName)
+                Path         = (Join-Path $Root $repoName)
                 Solution     = $SlnxPath
                 TestProjects = [System.Collections.Generic.List[string]]::new()
             }
@@ -338,4 +339,57 @@ function Ensure-ReportGenerator {
     if (-not (Get-Command reportgenerator -ErrorAction SilentlyContinue)) {
         throw 'reportgenerator not found on PATH after install.'
     }
+}
+
+function Get-RepoAssemblyFilter {
+    param([Parameter(Mandatory)][string]$RepoName)
+
+    # Prefer include-only home assemblies so ProjectRef transitive siblings
+    # (Storage, Economy, Simulation, CodeGen, Agent.Core, …) do not drag per-repo %.
+    $special = @{
+        'novolis-gaming'     = '+Novolis.Game*'
+        'novolis-xsd'        = '+Novolis.Xsd*'
+        'novolis-analyzers'  = '+Novolis.Analyzers.*;-Novolis.Analyzers.Licensing'
+        'novolis-tools'      = '+Novolis.Tools*'
+        'novolis-logging'    = '+Novolis.Logging*'
+        'novolis-civics'     = '+Novolis.Civics*'
+        'novolis-simulation' = '+Novolis.Simulation*'
+        'novolis-economy'    = '+Novolis.Economy*'
+        'novolis-codegen'    = '+Novolis.CodeGen*'
+        'novolis-agent'      = '+Novolis.Agent*'
+        'novolis-storage'    = '+Novolis.Storage*'
+        'novolis-math'       = '+Novolis.Math*'
+        'novolis-physics'    = '+Novolis.Physics*'
+        'novolis-io'         = '+Novolis.IO*'
+        'novolis-cad'        = '+Novolis.Cad*'
+        'novolis-markup'     = '+Novolis.Markup*'
+        'novolis-video'      = '+Novolis.Video*'
+        'novolis-audio'      = '+Novolis.Audio*'
+        'novolis-rendering'  = '+Novolis.Rendering*'
+        'novolis-raylib'     = '+Novolis.Raylib*'
+        'novolis-avalonia'   = '+Novolis.Avalonia*'
+        'novolis-astro'      = '+Novolis.Astro*'
+        'novolis-geopolitics'= '+Novolis.Geopolitics*'
+        'novolis-transports' = '+Novolis.Transports*'
+        'novolis-testing'    = '+Novolis.Testing*'
+        'novolis-machinelearning' = '+Novolis.MachineLearning*'
+        'novolis-manuscript' = '+Novolis.Manuscript;+Novolis.Manuscript.Export.*;+Novolis.Manuscript.Editorial'
+        'novolis-workspaces' = '+Novolis.Workspaces*'
+    }
+
+    if ($special.ContainsKey($RepoName)) {
+        return $special[$RepoName]
+    }
+
+    # Convention: novolis-foo-bar → +Novolis.Foo.Bar*;+Novolis.FooBar* (best-effort)
+    if ($RepoName -match '^novolis-(.+)$') {
+        $parts = $Matches[1].Split('-') | ForEach-Object {
+            if ($_.Length -eq 0) { return $_ }
+            $_.Substring(0,1).ToUpperInvariant() + $_.Substring(1)
+        }
+        $dotted = 'Novolis.' + ($parts -join '.')
+        return "+$dotted*;+$($dotted.Replace('.',''))*"
+    }
+
+    return '-Novolis.Analyzers.Licensing'
 }
