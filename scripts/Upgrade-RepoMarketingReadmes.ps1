@@ -27,11 +27,7 @@ if (-not $WorkspaceRoot) {
     $WorkspaceRoot = (Resolve-Path (Join-Path $governanceRoot '..')).Path
 }
 if (-not $GitHubBrandRoot) {
-    $candidate = Join-Path $WorkspaceRoot '.github'
-    if (-not (Test-Path (Join-Path $candidate 'brand'))) {
-        $candidate = Join-Path $WorkspaceRoot 'novolis-dot-github'
-    }
-    $GitHubBrandRoot = $candidate
+    $GitHubBrandRoot = Join-Path $WorkspaceRoot '.github'
 }
 $GitHubBrandRoot = (Resolve-Path $GitHubBrandRoot).Path
 $bannerDir = Join-Path $GitHubBrandRoot 'brand\banners'
@@ -393,23 +389,8 @@ foreach ($dir in ($repoDirs | Sort-Object Name)) {
     $meta = $catalog[$name]
     Write-Host "==> $name"
 
-    $skipPkgReadmeRepos = @('novolis-apps', 'novolis-dogfooding', 'novolis-experimental', 'novolis-template-dotnet', 'novolis-dot-github', '.github', 'novolis-governance', 'novolis-workflows', 'novolis-registry')
-    $skipPackageIndexRepos = @('novolis-apps', 'novolis-dogfooding', 'novolis-experimental', 'novolis-template-dotnet', 'novolis-dot-github', '.github', 'novolis-governance', 'novolis-workflows', 'novolis-registry', 'novolis-logging', 'novolis-mapping', 'novolis-scheduling', 'novolis-wirefish')
-
-    if ($name -eq 'novolis-dot-github') {
-        # Local alias of .github — marketing only, no GitHub meta
-        Update-RepoReadme -RepoRoot $dir.FullName -Meta $catalog['.github']
-        # Strip any accidental package index
-        $rd = Join-Path $dir.FullName 'README.md'
-        if (Test-Path $rd) {
-            $b = Get-Content $rd -Raw
-            if ($b -match '(?s)<!-- novolis-package-index:start -->.*?<!-- novolis-package-index:end -->\s*') {
-                $b = $b -replace '(?s)<!-- novolis-package-index:start -->.*?<!-- novolis-package-index:end -->\s*', ''
-                Set-Content -Path $rd -Value ($b.TrimEnd() + "`n") -Encoding utf8NoBOM
-            }
-        }
-        continue
-    }
+    $skipPkgReadmeRepos = @('novolis-apps', 'novolis-dogfooding', 'novolis-experimental', 'novolis-template-dotnet', '.github', 'novolis-governance', 'novolis-workflows', 'novolis-registry')
+    $skipPackageIndexRepos = @('novolis-apps', 'novolis-dogfooding', 'novolis-experimental', 'novolis-template-dotnet', '.github', 'novolis-governance', 'novolis-workflows', 'novolis-registry', 'novolis-logging', 'novolis-mapping', 'novolis-scheduling', 'novolis-wirefish')
 
     if ($name -notin $skipPkgReadmeRepos) {
         foreach ($csproj in @(Get-ChildItem (Join-Path $dir.FullName 'src') -Recurse -Filter '*.csproj' -EA SilentlyContinue)) {
@@ -444,7 +425,7 @@ foreach ($dir in ($repoDirs | Sort-Object Name)) {
     Update-RepoReadme -RepoRoot $dir.FullName -Meta $meta
     $stats.Repos++
 
-    if ($ApplyGitHubMeta -and $name -ne 'novolis-dot-github') {
+    if ($ApplyGitHubMeta) {
         $ghName = if ($name -eq '.github') { '.github' } else { $name }
         # Skip local-only folders that are not org repos
         $localOnly = @('novolis-logging', 'novolis-mapping', 'novolis-scheduling', 'novolis-wirefish')
@@ -465,9 +446,6 @@ foreach ($dir in ($repoDirs | Sort-Object Name)) {
         }
     }
 }
-
-# Also refresh novolis-dot-github marketing if present (same remote as .github)
-# (handled in loop above)
 
 Write-Host ""
 Write-Host "Done. Repos=$($stats.Repos) packageReadmeTouches=$($stats.PackageReadmes) indexes=$($stats.Indexes) meta=$($stats.Meta)"
