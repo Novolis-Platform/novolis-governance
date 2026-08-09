@@ -704,6 +704,9 @@
     <NovolisPackageProject Include="Novolis.Ship.Primitives">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-ship\src\Novolis.Ship.Primitives\Novolis.Ship.Primitives.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Ship.Structure">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-ship\src\Novolis.Ship.Structure\Novolis.Ship.Structure.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Ship.Topology">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-ship\src\Novolis.Ship.Topology\Novolis.Ship.Topology.csproj</ProjectPath>
     </NovolisPackageProject>
