@@ -223,6 +223,8 @@
         { "$ref": "#/$defs/entityInstance" },
         { "$ref": "#/$defs/entityArrayInstance" },
         { "$ref": "#/$defs/entityOpening" },
+        { "$ref": "#/$defs/entityPressureVolume" },
+        { "$ref": "#/$defs/entityAirlock" },
         { "$ref": "#/$defs/entityBoolean" },
         { "$ref": "#/$defs/entityWeld" },
         { "$ref": "#/$defs/entitySymmetry" },
@@ -623,7 +625,7 @@
           "required": ["kind", "openingType", "deck", "height", "footprint"],
           "properties": {
             "kind": { "const": "opening" },
-            "openingType": { "type": "string", "enum": ["door", "hatch", "window", "ramp"] },
+            "openingType": { "type": "string", "enum": ["door", "hatch", "window", "ramp", "iris"] },
             "deck": { "type": "integer", "description": "Deck the host wall lives on." },
             "height": { "type": "number", "exclusiveMinimum": 0, "description": "Opening clear height (meters)." },
             "footprint": {
@@ -647,6 +649,38 @@
                 "direction": { "$ref": "#/$defs/vec3", "description": "Swing direction normal/axis (producer-defined)." }
               },
               "required": ["startAngle", "endAngle", "direction"]
+            }
+          }
+        }
+      ]
+    },
+    "entityPressureVolume": {
+      "allOf": [
+        { "$ref": "#/$defs/entityBase" },
+        {
+          "type": "object",
+          "required": ["kind"],
+          "properties": {
+            "kind": { "const": "pressureVolume" },
+            "properties": {
+              "type": "object",
+              "description": "Ship pressure bag: atmosphereClass, pressureKPa, memberSpaceIds[], hullEntityIds[]."
+            }
+          }
+        }
+      ]
+    },
+    "entityAirlock": {
+      "allOf": [
+        { "$ref": "#/$defs/entityBase" },
+        {
+          "type": "object",
+          "required": ["kind"],
+          "properties": {
+            "kind": { "const": "airlock" },
+            "properties": {
+              "type": "object",
+              "description": "Ship airlock bag: vestibuleSpaceId, outerOpeningId, innerOpeningId."
             }
           }
         }

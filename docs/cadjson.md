@@ -49,9 +49,13 @@ These additions keep `.cadjson` forward-compatible: apps may *store* the operati
   - `instance`: `prototypeId` + `transform`.
   - `arrayInstance`: linear (`counts`×`spacing`) or radial (`axis` + `stepRadians` + `counts[0]`).
   - `realization`: `instances` (shared mesh), `separateCopies` (distinct meshes), or `fusedSolid` (one compound mesh).
-- **`opening`** — door/hatch/window/ramp placed as a 2D footprint (`footprint[]` polygon in XZ) on a `deck`.
+- **`opening`** — door/hatch/window/ramp/iris placed as a 2D footprint (`footprint[]` polygon in XZ) on a `deck`.
   - Required: `openingType`, `deck`, `height`, `footprint`.
   - Optional: `hostWallId`, `connectsSides` (`["A","B"]`), and `swing` (door-specific).
+  - Ship pressure fields (in `properties`): `pressureClass`, `clearWidth`, `clearHeight`, `sillHeight`, `airtightWhenClosed`, `leafState` (`Closed`|`Open`). Libraries: `Novolis.Ship.Primitives`.
+- **`pressureVolume`** — sealed gas volume membership. Ship `properties`: `atmosphereClass`, `pressureKPa`, `memberSpaceIds[]`, `hullEntityIds[]`.
+- **`airlock`** — outer/inner hatch pair + vestibule. Ship `properties`: `vestibuleSpaceId`, `outerOpeningId`, `innerOpeningId`.
+- Document `properties` ship metrics: `shipLoaMeters`, `beamMeters`, `heightMeters`, `deckSpacingMeters`, `forwardPerpendicularZ`.
 - **`weld`** — producer hint to merge operands that touch within tolerance.
   - Stack form: `inputId` / `sourceId` + `touchEpsilonMeters` (modifier on Mesh From Solid).
   - Legacy: `memberIds` (uuid[]), `touchEpsilonMeters`.
