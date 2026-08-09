@@ -1,0 +1,64 @@
+{
+  "format": "novolis.cad.blueprint",
+  "schemaVersion": 1,
+  "name": "Demo house blueprint",
+  "context": "house",
+  "linearUnit": "meter",
+  "unitScaleMeters": 1,
+  "cadDocumentHref": "./demo.cadjson",
+  "generator": { "name": "Novolis.Cad.Blueprint", "version": "2026.1.0-draft" },
+  "levels": [
+    { "id": "c1000000-0000-4000-8000-000000000001", "index": 0, "name": "Ground", "elevation": 0, "clearHeight": 2.7 }
+  ],
+  "shells": [],
+  "walls": [
+    {
+      "id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+      "name": "W1",
+      "levelIndex": 0,
+      "a": [0, 0, 0],
+      "b": [4, 0, 0],
+      "thickness": 0.15,
+      "height": 2.7,
+      "layerName": "A-WALL"
+    }
+  ],
+  "spaces": [
+    {
+      "id": "cccccccc-cccc-4ccc-8ccc-cccccccccccc",
+      "name": "Living",
+      "levelIndex": 0,
+      "kind": "interior",
+      "height": 2.7,
+      "footprint": [[0, 0, 0], [4, 0, 0], [4, 0, 3], [0, 0, 3]]
+    }
+  ],
+  "openings": [
+    {
+      "id": "dddddddd-dddd-4ddd-8ddd-dddddddddddd",
+      "name": "Front door",
+      "levelIndex": 0,
+      "kind": "door",
+      "clearWidth": 1.0,
+      "clearHeight": 2.1,
+      "hostWallId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa"
+    }
+  ],
+  "sheets": [
+    {
+      "id": "GA-001",
+      "title": "Demo house blueprint",
+      "orientation": "plan-north-up",
+      "folders": [
+        { "path": "structure", "label": "Walls" },
+        { "path": "interior", "label": "Interiors" },
+        { "path": "openings", "label": "Doors / hatches / holes" }
+      ],
+      "layers": [
+        { "id": "structure.walls", "path": "structure/walls", "label": "Walls", "kind": "structure" },
+        { "id": "interior.spaces", "path": "interior/spaces", "label": "Spaces", "kind": "space" },
+        { "id": "openings.all", "path": "openings/all", "label": "Openings", "kind": "opening" }
+      ]
+    }
+  ]
+}

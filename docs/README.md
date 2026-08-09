@@ -15,6 +15,7 @@ Published docs: [https://novolis-platform.github.io/.github/novolis-governance/]
 | [avalonia-composition-grain.md](avalonia-composition-grain.md) | avalonia-composition-grain |
 | [bootstrap-gate-assessment.md](bootstrap-gate-assessment.md) | bootstrap-gate-assessment |
 | [cadjson.md](cadjson.md) | cadjson |
+| [smart-blueprint.md](smart-blueprint.md) | CadBlueprint companion (`novolis.cad.blueprint`) — walls/interiors/exteriors/openings + smart HTML sheets |
 | [contribution-policy.md](contribution-policy.md) | contribution-policy |
 | [coverage-report.md](coverage-report.md) | coverage-report |
 | [documentation-policy.md](documentation-policy.md) | documentation-policy |

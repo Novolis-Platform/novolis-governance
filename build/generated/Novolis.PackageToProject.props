@@ -245,6 +245,9 @@
     <NovolisPackageProject Include="Novolis.Avalonia.Voice">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-avalonia\src\Novolis.Avalonia.Voice\Novolis.Avalonia.Voice.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Cad.Blueprint">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-cad\src\Novolis.Cad.Blueprint\Novolis.Cad.Blueprint.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Cad.Primitives">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-cad\src\Novolis.Cad.Primitives\Novolis.Cad.Primitives.csproj</ProjectPath>
     </NovolisPackageProject>

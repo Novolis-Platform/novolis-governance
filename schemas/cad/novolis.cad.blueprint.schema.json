@@ -1,0 +1,170 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://novolis.dev/schemas/cad/novolis.cad.blueprint.schema.json",
+  "title": "novolis.cad.blueprint",
+  "description": "CadBlueprint — contextual companion to novolis.cad (CadDocument). Simplified walls, interiors (spaces), exteriors (shells), and openings (doors/hatches/holes) for spaceships, stations, seagoing ships, houses, and skyscrapers. Optional smart HTML sheets live under sheets[]. File: .cadblueprint.json.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["format", "schemaVersion", "name"],
+  "properties": {
+    "format": { "const": "novolis.cad.blueprint" },
+    "schemaVersion": { "type": "integer", "const": 1 },
+    "name": { "type": "string", "minLength": 1 },
+    "generator": { "$ref": "#/$defs/generator" },
+    "createdAt": { "type": "string", "format": "date-time" },
+    "modifiedAt": { "type": "string", "format": "date-time" },
+    "context": {
+      "type": "string",
+      "description": "Open set: generic | spaceship | space-station | seagoing-ship | house | skyscraper | …"
+    },
+    "linearUnit": { "type": "string", "default": "meter" },
+    "unitScaleMeters": { "type": "number", "default": 1 },
+    "cadDocumentHref": {
+      "type": "string",
+      "description": "Companion .cadjson path/URI"
+    },
+    "cadDocumentName": { "type": "string" },
+    "layerCatalogHref": { "type": "string" },
+    "levels": { "type": "array", "items": { "$ref": "#/$defs/level" } },
+    "shells": { "type": "array", "items": { "$ref": "#/$defs/shell" } },
+    "walls": { "type": "array", "items": { "$ref": "#/$defs/wall" } },
+    "spaces": { "type": "array", "items": { "$ref": "#/$defs/space" } },
+    "openings": { "type": "array", "items": { "$ref": "#/$defs/opening" } },
+    "sheets": {
+      "type": "array",
+      "description": "Smart HTML5 presentation sheets (toggleable layers) — not geometry SoT",
+      "items": { "$ref": "#/$defs/sheet" }
+    },
+    "properties": { "$ref": "#/$defs/propertiesBag" }
+  },
+  "$defs": {
+    "uuid": { "type": "string", "format": "uuid" },
+    "vec3": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": { "type": "number" }
+    },
+    "propertiesBag": {
+      "type": "object",
+      "additionalProperties": {
+        "oneOf": [
+          { "type": "string" },
+          { "type": "number" },
+          { "type": "boolean" }
+        ]
+      }
+    },
+    "generator": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "version"],
+      "properties": {
+        "name": { "type": "string" },
+        "version": { "type": "string" }
+      }
+    },
+    "level": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "index", "name"],
+      "properties": {
+        "id": { "$ref": "#/$defs/uuid" },
+        "index": { "type": "integer" },
+        "name": { "type": "string" },
+        "elevation": { "type": "number" },
+        "clearHeight": { "type": ["number", "null"] },
+        "description": { "type": "string" }
+      }
+    },
+    "shell": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "kind"],
+      "properties": {
+        "id": { "$ref": "#/$defs/uuid" },
+        "name": { "type": "string" },
+        "kind": { "type": "string" },
+        "planRing": { "type": "array", "items": { "$ref": "#/$defs/vec3" } },
+        "height": { "type": ["number", "null"] },
+        "sourceEntityId": { "$ref": "#/$defs/uuid" },
+        "properties": { "$ref": "#/$defs/propertiesBag" }
+      }
+    },
+    "wall": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "levelIndex"],
+      "properties": {
+        "id": { "$ref": "#/$defs/uuid" },
+        "name": { "type": "string" },
+        "levelIndex": { "type": "integer" },
+        "a": { "$ref": "#/$defs/vec3" },
+        "b": { "$ref": "#/$defs/vec3" },
+        "thickness": { "type": "number" },
+        "height": { "type": "number" },
+        "layerId": { "$ref": "#/$defs/uuid" },
+        "layerName": { "type": "string" },
+        "sourceEntityId": { "$ref": "#/$defs/uuid" },
+        "properties": { "$ref": "#/$defs/propertiesBag" }
+      }
+    },
+    "space": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "levelIndex", "kind"],
+      "properties": {
+        "id": { "$ref": "#/$defs/uuid" },
+        "name": { "type": "string" },
+        "levelIndex": { "type": "integer" },
+        "kind": { "type": "string" },
+        "footprint": { "type": "array", "items": { "$ref": "#/$defs/vec3" } },
+        "height": { "type": "number" },
+        "layerId": { "$ref": "#/$defs/uuid" },
+        "layerName": { "type": "string" },
+        "sourceEntityId": { "$ref": "#/$defs/uuid" },
+        "properties": { "$ref": "#/$defs/propertiesBag" }
+      }
+    },
+    "opening": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "levelIndex", "kind"],
+      "properties": {
+        "id": { "$ref": "#/$defs/uuid" },
+        "name": { "type": "string" },
+        "levelIndex": { "type": "integer" },
+        "kind": {
+          "type": "string",
+          "description": "door | hatch | hole | window | custom"
+        },
+        "clearWidth": { "type": "number" },
+        "clearHeight": { "type": "number" },
+        "footprint": { "type": "array", "items": { "$ref": "#/$defs/vec3" } },
+        "hostWallId": { "$ref": "#/$defs/uuid" },
+        "hostShellId": { "$ref": "#/$defs/uuid" },
+        "layerId": { "$ref": "#/$defs/uuid" },
+        "layerName": { "type": "string" },
+        "sourceEntityId": { "$ref": "#/$defs/uuid" },
+        "properties": { "$ref": "#/$defs/propertiesBag" }
+      }
+    },
+    "sheet": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["id", "title"],
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "subtitle": { "type": "string" },
+        "rev": { "type": "string" },
+        "units": { "type": "string" },
+        "orientation": { "type": "string" },
+        "folders": { "type": "array" },
+        "layers": { "type": "array" },
+        "views": { "type": "array" },
+        "presets": { "type": "array" }
+      }
+    }
+  }
+}

@@ -5,6 +5,7 @@ Cross-repo interchange contracts for Draft Studio (and later converters). **No C
 | Format | Extension | Schema | Role |
 |--------|-----------|--------|------|
 | `novolis.cad` | `.cadjson` | [`novolis.cad.schema.json`](../schemas/cad/novolis.cad.schema.json) | Authoring: analytic sketch + solids, walls/spaces, layer ids, optional `shapeId` |
+| `novolis.cad.blueprint` | `.cadblueprint.json` | [`novolis.cad.blueprint.schema.json`](../schemas/cad/novolis.cad.blueprint.schema.json) | Contextual companion: shells, walls, interiors, openings + smart sheets — see [smart-blueprint.md](./smart-blueprint.md) |
 | `novolis.cad.layers` | `.cadlayers.json` | [`novolis.cad.layers.schema.json`](../schemas/cad/novolis.cad.layers.schema.json) | Reusable layer catalog (NCS / ISO 13567 / custom) |
 | `novolis.cad.shape` | `.cadshapejson` | [`novolis.cad.shape.schema.json`](../schemas/cad/novolis.cad.shape.schema.json) | Shared appearance / material metadata (no geometry) |
 | `novolis.cad.phys` | `.cadphys.json` | [`novolis.cad.phys.schema.json`](../schemas/cad/novolis.cad.phys.schema.json) | Extension: triangle meshes + colliders (sidecar or inline) |
@@ -99,7 +100,10 @@ Optional `layersDocument` points at a `.cadlayers.json` catalog. Document `layer
 .cadjson  →  (tessellate / export)  →  .cadphys.json  →  TriangleMesh + Physics colliders
 .cadjson  →  Novolis.Cad.SceneBridge.ToSceneDocument / SaveNov3dJson  →  .nov3djson (SceneDocument)
 .cadjson  →  (parametric tessellate in app)  →  SceneBuilder / CompiledScene
+.cadjson  →  CadBlueprintProjector  →  .cadblueprint.json  →  smart HTML sheets (optional)
 ```
+
+CadBlueprint companion (walls / interiors / exteriors / openings + HTML sheets): [smart-blueprint.md](./smart-blueprint.md).
 
 **CAD Studio 3D:** authoring stays `.cadjson`; Model/Stage/render work on the bridged `.nov3djson`. Scene→Cad round-trip is out of scope for v1. Dual Agent Surfaces: Cad `:18775` / Scene `:18785` (same `Execute` catalogs as the UI).
 

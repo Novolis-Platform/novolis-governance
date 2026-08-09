@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" data-nbp-format="novolis.cad.blueprint" data-nbp-schema="1">
+<head>
+<meta charset="utf-8"/>
+<title>CadBlueprint sheet skeleton — novolis.cad.blueprint v1</title>
+<style>
+  :root {
+    --nbp-sheet: #f7f4ea;
+    --nbp-ink: #111;
+    --nbp-ui-bg: #1e1e1e;
+    --nbp-ui-fg: #e4e4e4;
+    --nbp-accent: #5a9fd4;
+  }
+  @page { size: 841mm 594mm; margin: 0; }
+  html, body { margin: 0; padding: 0; background: #2a2a2a; color: var(--nbp-ui-fg); font: 13px/1.35 system-ui, sans-serif; }
+  body { display: grid; grid-template-columns: 240px 1fr; min-height: 100vh; }
+  #nbp-ui { background: var(--nbp-ui-bg); padding: 12px 14px; border-right: 1px solid #333; overflow: auto; }
+  #nbp-ui h1 { font-size: 14px; margin: 0 0 4px; font-weight: 600; }
+  #nbp-ui .meta { color: #999; font-size: 11px; margin-bottom: 12px; }
+  #nbp-ui fieldset { border: 1px solid #444; margin: 0 0 10px; padding: 8px 10px; }
+  #nbp-ui legend { padding: 0 4px; color: var(--nbp-accent); font-size: 11px; }
+  #nbp-ui label { display: flex; gap: 8px; align-items: center; margin: 4px 0; cursor: pointer; }
+  #nbp-ui label.locked { opacity: 0.65; cursor: default; }
+  #nbp-stage { display: flex; justify-content: center; align-items: flex-start; padding: 16px; overflow: auto; }
+  #nbp-sheet { background: var(--nbp-sheet); max-width: 100%; height: auto; }
+  .ol { fill: none; stroke: var(--nbp-ink); stroke-width: 0.5; }
+  .space { fill: #fff; stroke: #111; stroke-width: 0.35; }
+  .dim { stroke: #222; stroke-width: 0.2; fill: none; }
+  .dimt { font: 3px "IBM Plex Mono", Consolas, monospace; fill: #111; }
+  .room { font: 3.2px "IBM Plex Mono", Consolas, monospace; fill: #111; }
+  .overlay { fill: none; stroke: #0a6b3c; stroke-width: 0.45; stroke-dasharray: 2 1.2; }
+
+  /* Layer toggles — CSS :has (no script required) */
+  body:has(#t-outline-hull:not(:checked)) g[data-nbp-layer="outline.hull"] { display: none; }
+  body:has(#t-spaces-crew:not(:checked)) g[data-nbp-layer="spaces.crew"] { display: none; }
+  body:has(#t-dims-cabin:not(:checked)) g[data-nbp-layer="dims.cabin"] { display: none; }
+  body:has(#t-overlay-c0n:not(:checked)) g[data-nbp-layer="overlay.c0n"] { display: none; }
+
+  @media print {
+    body { display: block; background: #fff; }
+    #nbp-ui { display: none !important; }
+    #nbp-stage { padding: 0; }
+    #nbp-sheet { width: 841mm; height: 594mm; }
+    /* Plot profile: hide non-plot overlays even if checked on screen */
+    g[data-nbp-plot="false"] { display: none !important; }
+  }
+</style>
+</head>
+<body>
+<aside id="nbp-ui" aria-label="Blueprint layers">
+  <h1>CadBlueprint sheet</h1>
+  <div class="meta">novolis.cad.blueprint · schema 1 · skeleton</div>
+  <form id="nbp-layer-form">
+    <fieldset>
+      <legend>chrome</legend>
+      <label class="locked"><input type="checkbox" checked disabled/> Frame (locked)</label>
+    </fieldset>
+    <fieldset>
+      <legend>outline</legend>
+      <label><input id="t-outline-hull" type="checkbox" checked/> Hull plan</label>
+    </fieldset>
+    <fieldset>
+      <legend>spaces · Compartments</legend>
+      <label><input id="t-spaces-crew" type="checkbox" checked/> Crew cells</label>
+    </fieldset>
+    <fieldset>
+      <legend>dims · Measurements</legend>
+      <label><input id="t-dims-cabin" type="checkbox" checked/> Cabin clear / O/A</label>
+    </fieldset>
+    <fieldset>
+      <legend>overlay</legend>
+      <label><input id="t-overlay-c0n" type="checkbox"/> Type C0n expected</label>
+    </fieldset>
+  </form>
+  <p class="meta">Toggles use CSS <code>:has()</code>. Print hides UI and <code>data-nbp-plot="false"</code> layers.</p>
+</aside>
+
+<main id="nbp-stage">
+<svg id="nbp-sheet" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 841 594" width="100%" role="img" aria-label="NBP skeleton sheet">
+  <g data-nbp-layer="chrome.frame" data-nbp-path="chrome/frame" data-nbp-kind="chrome" data-nbp-plot="true">
+    <rect x="0" y="0" width="841" height="594" fill="#f7f4ea"/>
+    <rect x="20" y="10" width="811" height="574" fill="none" stroke="#111" stroke-width="0.7"/>
+    <text x="28" y="28" class="room">NBP SKELETON · A1</text>
+  </g>
+
+  <g data-nbp-view="demo-plan" data-nbp-view-kind="plan">
+    <g data-nbp-layer="outline.hull" data-nbp-path="outline/hull" data-nbp-kind="outline" data-nbp-plot="true">
+      <rect x="120" y="180" width="520" height="200" class="ol" rx="8"/>
+    </g>
+    <g data-nbp-layer="spaces.crew" data-nbp-path="spaces/crew" data-nbp-kind="space" data-nbp-plot="true">
+      <rect x="260" y="220" width="28" height="100" class="space"/>
+      <rect x="292" y="220" width="28" height="100" class="space"/>
+      <rect x="324" y="220" width="28" height="100" class="space"/>
+      <rect x="356" y="220" width="28" height="100" class="space"/>
+      <rect x="388" y="220" width="28" height="100" class="space"/>
+      <text x="340" y="215" class="room" text-anchor="middle">CREW 1…5</text>
+    </g>
+    <g data-nbp-layer="dims.cabin" data-nbp-path="dims/cabin" data-nbp-kind="dimension" data-nbp-plot="true">
+      <line x1="260" y1="340" x2="416" y2="340" class="dim"/>
+      <text x="338" y="352" class="dimt" text-anchor="middle">5 × 2.0 O/A</text>
+      <line x1="420" y1="220" x2="420" y2="320" class="dim"/>
+      <text x="424" y="272" class="dimt">CLR 7.2</text>
+    </g>
+    <g data-nbp-layer="overlay.c0n" data-nbp-path="overlay/c0n" data-nbp-kind="overlay" data-nbp-plot="false">
+      <rect x="264" y="224" width="20" height="92" class="overlay"/>
+      <text x="340" y="360" class="dimt" text-anchor="middle" fill="#0a6b3c">C0n CLR 1.92×7.2</text>
+    </g>
+  </g>
+</svg>
+</main>
+
+<script type="application/json" id="nbp-manifest">
+{
+  "format": "novolis.cad.blueprint",
+  "schemaVersion": 1,
+  "name": "NBP skeleton sheet",
+  "context": "seagoing-ship",
+  "sheets": [{
+    "id": "NBP-SKELETON-001",
+    "title": "CadBlueprint sheet skeleton",
+    "rev": "A",
+    "units": "m",
+    "orientation": "iso128-15-stern-left",
+    "folders": [
+      { "path": "chrome", "label": "Sheet chrome" },
+      { "path": "exterior", "label": "Exteriors" },
+      { "path": "interior", "label": "Interiors" },
+      { "path": "dims", "label": "Measurements" },
+      { "path": "overlay", "label": "Overlays" }
+    ],
+    "layers": [
+      { "id": "chrome.frame", "path": "chrome/frame", "label": "Frame", "kind": "chrome", "locked": true, "plot": true, "defaultVisible": true },
+      { "id": "outline.hull", "path": "exterior/shell", "label": "Hull plan", "kind": "outline", "plot": true, "defaultVisible": true },
+      { "id": "spaces.crew", "path": "interior/spaces", "label": "Crew cells", "kind": "space", "plot": true, "defaultVisible": true },
+      { "id": "dims.cabin", "path": "dims/cabin", "label": "Cabin dims", "kind": "dimension", "plot": true, "defaultVisible": true },
+      { "id": "overlay.c0n", "path": "overlay/c0n", "label": "C0n overlay", "kind": "overlay", "plot": false, "defaultVisible": false }
+    ],
+    "views": [{ "id": "demo-plan", "label": "Demo plan", "kind": "plan" }]
+  }]
+}
+</script>
+</body>
+</html>
