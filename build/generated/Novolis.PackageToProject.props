@@ -8,6 +8,12 @@
     <NovolisPackageProject Include="Frank.WireFish">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-wirefish\src\Frank.WireFish\Frank.WireFish.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.3D.Import">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-avalonia\src\Novolis.3D.Import\Novolis.3D.Import.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.3D.Scene">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-avalonia\src\Novolis.3D.Scene\Novolis.3D.Scene.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Agent.Core">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-agent\src\Novolis.Agent.Core\Novolis.Agent.Core.csproj</ProjectPath>
     </NovolisPackageProject>
@@ -247,6 +253,9 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Cad.Blueprint">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-cad\src\Novolis.Cad.Blueprint\Novolis.Cad.Blueprint.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Cad.Evaluation">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-cad\src\Novolis.Cad.Evaluation\Novolis.Cad.Evaluation.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Cad.Primitives">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-cad\src\Novolis.Cad.Primitives\Novolis.Cad.Primitives.csproj</ProjectPath>
@@ -550,12 +559,6 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Messaging.ServiceBus.Primitives">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-messaging\src\Novolis.Messaging.ServiceBus.Primitives\Novolis.Messaging.ServiceBus.Primitives.csproj</ProjectPath>
-    </NovolisPackageProject>
-    <NovolisPackageProject Include="Novolis.Modeling.Import">
-      <ProjectPath>$(NovolisWorkspaceRoot)novolis-cad\src\Novolis.Modeling.Import\Novolis.Modeling.Import.csproj</ProjectPath>
-    </NovolisPackageProject>
-    <NovolisPackageProject Include="Novolis.Modeling.Scene">
-      <ProjectPath>$(NovolisWorkspaceRoot)novolis-cad\src\Novolis.Modeling.Scene\Novolis.Modeling.Scene.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.MSBuild.LibraryReference">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-msbuild\src\Novolis.MSBuild.LibraryReference\Novolis.MSBuild.LibraryReference.csproj</ProjectPath>

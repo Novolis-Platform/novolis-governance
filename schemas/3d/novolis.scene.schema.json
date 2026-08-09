@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://novolis.dev/schemas/modeling/novolis.scene.schema.json",
+  "$id": "https://novolis.dev/schemas/3d/novolis.scene.schema.json",
   "title": "novolis.scene",
   "description": "C4D-inspired mesh-first scene graph (Object Manager hierarchy). File extension: .nov3djson.",
   "type": "object",

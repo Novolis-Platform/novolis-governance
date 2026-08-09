@@ -24,13 +24,13 @@
 
 ### Target home (recommended)
 
-**`novolis-cad`** — packable `Novolis.Modeling.Import` (AssimpNet → `TriangleMesh` / `EditableMesh`).
+**`novolis-avalonia`** — packable `Novolis.3D.Import` (AssimpNet → `TriangleMesh` / `EditableMesh`).
 
 Also: **`novolis-raylib`** `Novolis.Raylib.Loaders` remains OBJ-only (no Assimp).
 
 ### Status
 
-- **Done:** `Novolis.Modeling.Import` (`AssimpMeshImporter`, `MeshImportOptions`), SceneLab `importmesh` + **Import…**, CorellianFreighterBuilder `--import` uses the package.
+- **Done:** `Novolis.3D.Import` (`AssimpMeshImporter`, `MeshImportOptions`), SceneLab `importmesh` + **Import…**, CorellianFreighterBuilder `--import` uses the package.
 - Publish `2026.1.*` to GPR before single-repo consumers without ProjectReference mode.
 
 ### Port steps

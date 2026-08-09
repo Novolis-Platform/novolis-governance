@@ -121,7 +121,7 @@ Staged eval (narrow invalidation, same idea as Cad):
 Generators → Modifier stack → World transforms → Look (materials/lights/cameras) → Viewport / optional path-trace export
 ```
 
-Persistence: `novolis-governance/schemas/modeling/` + `novolis.scene.schema.json` (hand schema for interchange; C# DTOs in Modeling.Scene). File extension `.nov3djson`.
+Persistence: `novolis-governance/schemas/3d/` + `novolis.scene.schema.json` (hand schema for interchange; C# DTOs in Modeling.Scene). File extension `.nov3djson`.
 
 ## Avalonia.3D component set
 

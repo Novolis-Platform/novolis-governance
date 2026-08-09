@@ -34,7 +34,7 @@ Surface id `scene` (HTTP `:18785`, TCP `:18786`, env `NOVOLIS_SCENE_SESSION`). D
 
 ## `SceneDocument.Properties` convention
 
-Schema already allows string map `properties` ([novolis.scene.schema.json](../../schemas/modeling/novolis.scene.schema.json)). Prefer these keys:
+Schema already allows string map `properties` ([novolis.scene.schema.json](../../schemas/3d/novolis.scene.schema.json)). Prefer these keys:
 
 | Key | Meaning |
 |-----|---------|

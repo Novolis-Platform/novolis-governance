@@ -104,7 +104,7 @@ function Get-LayerHint([string]$RepoName) {
         '^novolis-avalonia' { return '**Avalonia** layer only (`Novolis.Avalonia.*`). Sole libraries allowed to take Avalonia package refs.' }
         '^novolis-raylib' { return '**Raylib** island — never references Simulation; apps wire Raylib + Simulation.' }
         '^novolis-documents|^novolis-markup|^novolis-manuscript' { return 'Documents/Markup island — Avalonia hosts may call PDF/HTML helpers; do not pull Avalonia into these packages.' }
-        '^novolis-cad|^novolis-ship' { return 'CAD / ship domain DTOs and validation — Avalonia-free; UI chrome lives in `Novolis.Avalonia.*`.' }
+        '^novolis-cad|^novolis-ship' { return 'CAD / ship domain DTOs and validation — Avalonia-free; UI chrome lives in `Novolis.Avalonia.*`. Mesh scene graphs live in `Novolis.3D.*` (novolis-avalonia).' }
         '^novolis-os' { return 'Runtime images / appliances — not a NuGet library spine package.' }
         '^novolis-governance|^\.github|^novolis-workflows|^novolis-registry|^novolis-template' { return 'Org / template / CI infrastructure — not a closed-spine library.' }
         default { return 'Follow [library-boundaries](https://github.com/Novolis-Platform/novolis-governance/blob/main/docs/library-boundaries.md) for layer placement.' }
