@@ -248,8 +248,9 @@ novolis-rendering    →  math only; never → simulation or raylib; never → A
 novolis-cad          →  Math only (Cad.Primitives, Cad.Blueprint, Cad.Evaluation, Cad.SceneBridge)
                          Avalonia-free .cadjson interchange + Cad→3D bridge
                          Must not host mesh scene graphs (those are Novolis.3D.*)
-novolis-avalonia     →  also ships Avalonia-free Novolis.3D.Scene / Novolis.3D.Import
-                         (.nov3djson mesh graph + Assimp import); UI is Novolis.Avalonia.3D / Cad
+novolis-avalonia     →  also ships Avalonia-free Novolis.3D.Scene / Novolis.3D.Modeling / Novolis.3D.Import
+                         (.nov3djson mesh graph; Modeling = Math.Geometry mesh-ops façade; Assimp import);
+                         UI is Novolis.Avalonia.3D / Cad / Ship.Design
 ```
 
 **Cad vs 3D cameras:** document pose bags (`CadCamera`, `CameraNode`) may live in Cad/3D DTOs. Orbit / free-look **controllers** and `ViewPose` stay in `Novolis.Simulation.View`. Apps/Avalonia compose DTO poses → ViewPose. Do not put Rendering soft-bridges in Cad libraries — apps wire Cad/3D lights → Rendering.

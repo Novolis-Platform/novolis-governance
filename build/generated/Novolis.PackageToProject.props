@@ -11,6 +11,9 @@
     <NovolisPackageProject Include="Novolis.3D.Import">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-avalonia\src\Novolis.3D.Import\Novolis.3D.Import.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.3D.Modeling">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-avalonia\src\Novolis.3D.Modeling\Novolis.3D.Modeling.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.3D.Scene">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-avalonia\src\Novolis.3D.Scene\Novolis.3D.Scene.csproj</ProjectPath>
     </NovolisPackageProject>
