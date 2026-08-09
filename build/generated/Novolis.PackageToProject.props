@@ -713,6 +713,9 @@
     <NovolisPackageProject Include="Novolis.Security.Secrets">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-security\src\Novolis.Security.Secrets\Novolis.Security.Secrets.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Ship.Analysis">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-ship\src\Novolis.Ship.Analysis\Novolis.Ship.Analysis.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Ship.Design">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-ship\src\Novolis.Ship.Design\Novolis.Ship.Design.csproj</ProjectPath>
     </NovolisPackageProject>

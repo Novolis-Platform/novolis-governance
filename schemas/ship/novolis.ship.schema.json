@@ -2,13 +2,13 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://novolis.dev/schemas/ship/novolis.ship.schema.json",
   "title": "novolis.ship",
-  "description": "Object-first ship design graph. File extension: .shipjson. Each geometric ship object owns a nested novolis.cad CadDocument describing construction intent.",
+  "description": "Object-first spacecraft design graph. File extension: .shipjson. Schema v2 adds environment and load cases.",
   "type": "object",
   "additionalProperties": false,
-  "required": ["format", "schemaVersion", "ship", "hull", "decks", "frames", "longitudinals", "bulkheads", "compartments", "passages", "openings", "equipment"],
+  "required": ["format", "schemaVersion", "ship", "hull", "decks", "frames", "longitudinals", "bulkheads", "compartments", "passages", "openings", "equipment", "environment", "loadCases"],
   "properties": {
     "format": { "const": "novolis.ship" },
-    "schemaVersion": { "type": "integer", "const": 1 },
+    "schemaVersion": { "type": "integer", "minimum": 1 },
     "createdAt": { "type": "string" },
     "modifiedAt": { "type": "string" },
     "ship": { "$ref": "#/$defs/shipDefinition" },
@@ -21,6 +21,8 @@
     "passages": { "type": "array", "items": { "$ref": "#/$defs/passageDesign" } },
     "openings": { "type": "array", "items": { "$ref": "#/$defs/openingDesign" } },
     "equipment": { "type": "array", "items": { "$ref": "#/$defs/equipmentDesign" } },
+    "environment": { "$ref": "#/$defs/shipEnvironment" },
+    "loadCases": { "type": "array", "items": { "$ref": "#/$defs/shipLoadCase" }, "minItems": 1 },
     "cutouts": { "type": "array", "items": { "$ref": "#/$defs/structuralCutout" } }
   },
   "$defs": {
@@ -55,10 +57,40 @@
         "beam": { "$ref": "#/$defs/meters" },
         "height": { "$ref": "#/$defs/meters" },
         "deckCount": { "type": "integer", "minimum": 1 },
+        "deckSpacing": { "$ref": "#/$defs/meters" },
         "hullMaterial": { "$ref": "#/$defs/materialId" },
         "hullThickness": { "$ref": "#/$defs/meters" },
         "frameSpacing": { "$ref": "#/$defs/meters" },
-        "hullGenerator": { "type": "string" }
+        "primaryStructuralMaterial": { "$ref": "#/$defs/materialId" },
+        "hullGenerator": { "type": "string" },
+        "gravitySystem": { "type": "string" },
+        "nominalGravityG": { "type": "number" },
+        "nominalInternalPressureAtm": { "type": "number" },
+        "externalEnvironment": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "shipEnvironment": {
+      "type": "object",
+      "properties": {
+        "external": { "type": "string" },
+        "nominalInternalPressureAtm": { "type": "number" },
+        "gravitySystem": { "type": "string" },
+        "nominalGravityG": { "type": "number" },
+        "externalAccelerationG": { "type": "number" }
+      },
+      "additionalProperties": false
+    },
+    "shipLoadCase": {
+      "type": "object",
+      "required": ["id", "name", "kind"],
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "kind": { "type": "string" },
+        "artificialGravityFactor": { "type": "number" },
+        "thrustAccelerationG": { "type": "number" },
+        "externalGravityG": { "type": "number" }
       },
       "additionalProperties": false
     },
@@ -172,6 +204,8 @@
         "geometry": { "$ref": "#/$defs/cadDocument" },
         "massKg": { "type": "number" },
         "serviceClearance": { "$ref": "#/$defs/meters" },
+        "orientation": { "type": "array", "items": { "type": "number" } },
+        "connectionPoints": { "type": "array" },
         "yawRadians": { "type": "number" }
       },
       "additionalProperties": false
