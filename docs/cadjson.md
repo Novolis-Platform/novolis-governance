@@ -104,8 +104,9 @@ Optional `layersDocument` points at a `.cadlayers.json` catalog. Document `layer
 
 ## Consumers
 
+- **Ship Designer** (`novolis-apps/src/ShipDesigner`) — freighter authoring home: Open/Save `.cadjson`, hatches, airtight validate, Calypso seed import
 - **Novolis CAD Studio 3D** (`novolis-apps/src/CadStudio3D`) — product shell: Draft 2D/3D + Model + Stage/Render; Cad + Scene agent attach
 - **Draft Studio** — Cad-only author of `.cadjson`; optional Export Phys for `.cadphys.json`
-- **CalypsoCad** (dogfood) — generates Calypso Rev G walls/spaces and explores plan / orbit / interior views
+- **CalypsoCad** (dogfood) — generates Calypso Rev G walls/spaces; headless PNG / regenerate; exterior solids authored in Ship Designer survive regenerate
 - Future DXF / glTF / STEP converters — schemas keep layers, ACI-friendly `colorIndex`, NURBS, and mesh normals/UVs
 - Future **`.archijson`** (deferred) — building semantics will reference layer catalogs and project into `.cadjson`
