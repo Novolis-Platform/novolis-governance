@@ -236,6 +236,9 @@
     <NovolisPackageProject Include="Novolis.Avalonia.Ship">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-avalonia\src\Novolis.Avalonia.Ship\Novolis.Avalonia.Ship.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Avalonia.Ship.Design">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-avalonia\src\Novolis.Avalonia.Ship.Design\Novolis.Avalonia.Ship.Design.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Avalonia.StarMap">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-avalonia\src\Novolis.Avalonia.StarMap\Novolis.Avalonia.StarMap.csproj</ProjectPath>
     </NovolisPackageProject>
@@ -706,6 +709,9 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Security.Secrets">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-security\src\Novolis.Security.Secrets\Novolis.Security.Secrets.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Ship.Design">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-ship\src\Novolis.Ship.Design\Novolis.Ship.Design.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Ship.Primitives">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-ship\src\Novolis.Ship.Primitives\Novolis.Ship.Primitives.csproj</ProjectPath>

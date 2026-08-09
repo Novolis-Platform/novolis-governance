@@ -1,0 +1,191 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://novolis.dev/schemas/ship/novolis.ship.schema.json",
+  "title": "novolis.ship",
+  "description": "Object-first ship design graph. File extension: .shipjson. Each geometric ship object owns a nested novolis.cad CadDocument describing construction intent.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["format", "schemaVersion", "ship", "hull", "decks", "frames", "longitudinals", "bulkheads", "compartments", "passages", "openings", "equipment"],
+  "properties": {
+    "format": { "const": "novolis.ship" },
+    "schemaVersion": { "type": "integer", "const": 1 },
+    "createdAt": { "type": "string" },
+    "modifiedAt": { "type": "string" },
+    "ship": { "$ref": "#/$defs/shipDefinition" },
+    "hull": { "$ref": "#/$defs/hullDesign" },
+    "decks": { "type": "array", "items": { "$ref": "#/$defs/deckDesign" } },
+    "frames": { "type": "array", "items": { "$ref": "#/$defs/frameDesign" } },
+    "longitudinals": { "type": "array", "items": { "$ref": "#/$defs/longitudinalDesign" } },
+    "bulkheads": { "type": "array", "items": { "$ref": "#/$defs/bulkheadDesign" } },
+    "compartments": { "type": "array", "items": { "$ref": "#/$defs/compartmentDesign" } },
+    "passages": { "type": "array", "items": { "$ref": "#/$defs/passageDesign" } },
+    "openings": { "type": "array", "items": { "$ref": "#/$defs/openingDesign" } },
+    "equipment": { "type": "array", "items": { "$ref": "#/$defs/equipmentDesign" } },
+    "cutouts": { "type": "array", "items": { "$ref": "#/$defs/structuralCutout" } }
+  },
+  "$defs": {
+    "meters": { "type": "number", "description": "Length in meters" },
+    "guid": { "type": "string", "format": "uuid" },
+    "idObject": {
+      "type": "object",
+      "required": ["value"],
+      "properties": { "value": { "$ref": "#/$defs/guid" } }
+    },
+    "materialId": {
+      "type": "object",
+      "required": ["value"],
+      "properties": { "value": { "type": "string", "minLength": 1 } }
+    },
+    "cadDocument": {
+      "type": "object",
+      "description": "Nested novolis.cad document (construction intent)",
+      "required": ["format", "entities"],
+      "properties": {
+        "format": { "const": "novolis.cad" },
+        "entities": { "type": "array" }
+      },
+      "additionalProperties": true
+    },
+    "shipDefinition": {
+      "type": "object",
+      "required": ["name", "length", "beam", "height", "deckCount", "hullMaterial", "hullThickness", "frameSpacing"],
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "length": { "$ref": "#/$defs/meters" },
+        "beam": { "$ref": "#/$defs/meters" },
+        "height": { "$ref": "#/$defs/meters" },
+        "deckCount": { "type": "integer", "minimum": 1 },
+        "hullMaterial": { "$ref": "#/$defs/materialId" },
+        "hullThickness": { "$ref": "#/$defs/meters" },
+        "frameSpacing": { "$ref": "#/$defs/meters" },
+        "hullGenerator": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "hullDesign": {
+      "type": "object",
+      "required": ["id", "geometry", "material", "thickness"],
+      "properties": {
+        "id": { "$ref": "#/$defs/idObject" },
+        "geometry": { "$ref": "#/$defs/cadDocument" },
+        "material": { "$ref": "#/$defs/materialId" },
+        "thickness": { "$ref": "#/$defs/meters" },
+        "generator": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "deckDesign": {
+      "type": "object",
+      "required": ["id", "name", "elevation", "geometry"],
+      "properties": {
+        "id": { "$ref": "#/$defs/idObject" },
+        "name": { "type": "string" },
+        "elevation": { "$ref": "#/$defs/meters" },
+        "geometry": { "$ref": "#/$defs/cadDocument" },
+        "index": { "type": "integer" }
+      },
+      "additionalProperties": false
+    },
+    "frameDesign": {
+      "type": "object",
+      "required": ["id", "name", "station", "geometry", "material"],
+      "properties": {
+        "id": { "$ref": "#/$defs/idObject" },
+        "name": { "type": "string" },
+        "station": { "$ref": "#/$defs/meters" },
+        "geometry": { "$ref": "#/$defs/cadDocument" },
+        "material": { "$ref": "#/$defs/materialId" }
+      },
+      "additionalProperties": false
+    },
+    "longitudinalDesign": {
+      "type": "object",
+      "required": ["id", "name", "kind", "geometry", "material"],
+      "properties": {
+        "id": { "$ref": "#/$defs/idObject" },
+        "name": { "type": "string" },
+        "kind": { "type": "string" },
+        "geometry": { "$ref": "#/$defs/cadDocument" },
+        "material": { "$ref": "#/$defs/materialId" }
+      },
+      "additionalProperties": false
+    },
+    "bulkheadDesign": {
+      "type": "object",
+      "required": ["id", "name", "geometry", "material", "thickness", "height"],
+      "properties": {
+        "id": { "$ref": "#/$defs/idObject" },
+        "name": { "type": "string" },
+        "geometry": { "$ref": "#/$defs/cadDocument" },
+        "material": { "$ref": "#/$defs/materialId" },
+        "thickness": { "$ref": "#/$defs/meters" },
+        "height": { "$ref": "#/$defs/meters" },
+        "deckId": { "$ref": "#/$defs/idObject" },
+        "isPrimary": { "type": "boolean" }
+      },
+      "additionalProperties": false
+    },
+    "compartmentDesign": {
+      "type": "object",
+      "required": ["id", "name", "deckId", "geometry", "kind"],
+      "properties": {
+        "id": { "$ref": "#/$defs/idObject" },
+        "name": { "type": "string" },
+        "deckId": { "$ref": "#/$defs/idObject" },
+        "geometry": { "$ref": "#/$defs/cadDocument" },
+        "kind": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "passageDesign": {
+      "type": "object",
+      "required": ["id", "name", "deckId", "geometry", "width", "height"],
+      "properties": {
+        "id": { "$ref": "#/$defs/idObject" },
+        "name": { "type": "string" },
+        "deckId": { "$ref": "#/$defs/idObject" },
+        "geometry": { "$ref": "#/$defs/cadDocument" },
+        "width": { "$ref": "#/$defs/meters" },
+        "height": { "$ref": "#/$defs/meters" },
+        "clearanceClass": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "openingDesign": {
+      "type": "object",
+      "required": ["id", "name", "hostId", "geometry", "kind"],
+      "properties": {
+        "id": { "$ref": "#/$defs/idObject" },
+        "name": { "type": "string" },
+        "hostId": { "$ref": "#/$defs/guid" },
+        "geometry": { "$ref": "#/$defs/cadDocument" },
+        "kind": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "equipmentDesign": {
+      "type": "object",
+      "required": ["id", "name", "geometry"],
+      "properties": {
+        "id": { "$ref": "#/$defs/idObject" },
+        "name": { "type": "string" },
+        "geometry": { "$ref": "#/$defs/cadDocument" },
+        "massKg": { "type": "number" },
+        "serviceClearance": { "$ref": "#/$defs/meters" },
+        "yawRadians": { "type": "number" }
+      },
+      "additionalProperties": false
+    },
+    "structuralCutout": {
+      "type": "object",
+      "required": ["id", "sourceId", "hostId", "purpose"],
+      "properties": {
+        "id": { "$ref": "#/$defs/idObject" },
+        "sourceId": { "$ref": "#/$defs/guid" },
+        "hostId": { "$ref": "#/$defs/guid" },
+        "purpose": { "type": "string" }
+      },
+      "additionalProperties": false
+    }
+  }
+}
