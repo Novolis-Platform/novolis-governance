@@ -65,7 +65,7 @@ pwsh -File novolis-governance/scripts/gpr-health-check.ps1 -SkipRemote
 | File | Role |
 |------|------|
 | [`Novolis.ProjectReferenceMode.props`](../build/Novolis.ProjectReferenceMode.props) | Trigger + workspace root |
-| [`Novolis.ProjectReferenceMode.targets`](../build/Novolis.ProjectReferenceMode.targets) | Intersect substitution |
+| [`Novolis.ProjectReferenceMode.targets`](../build/Novolis.ProjectReferenceMode.targets) | Evaluation-time intersect substitution (required for NuGet static-graph restore) |
 | [`Novolis.LibraryReferenceBridge.props`](../build/Novolis.LibraryReferenceBridge.props) | Copy map → `LibraryProjectMap` for optional LibraryReference |
 | [`Novolis.Packaging.targets`](../build/Novolis.Packaging.targets) | Imports mode targets (all repos) |
 | [`Generate-PackageToProjectMap.ps1`](../build/Generate-PackageToProjectMap.ps1) | Map generator |

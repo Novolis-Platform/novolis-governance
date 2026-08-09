@@ -7,31 +7,33 @@
     Consumers that use types from a dependency of a substituted package must
     PackageReference that dependency explicitly (ProjectReference is non-transitive
     for NuGet dependency graphs replaced by project refs).
+
+    MUST be evaluation-time (ItemGroup), not a Target: NuGet static-graph restore only
+    sees ProjectReferences present after evaluation. Target-added ProjectReferences
+    are used at build but never restored → NETSDK1004 (missing project.assets.json).
   -->
 
   <Import Project="$(MSBuildThisFileDirectory)Novolis.ProjectReferenceMode.props"
           Condition="Exists('$(MSBuildThisFileDirectory)Novolis.ProjectReferenceMode.props')" />
 
-  <Target Name="NovolisSubstituteProjectReferences"
-          BeforeTargets="CollectPackageReferences;ResolvePackageAssets;Restore;ResolvePackageFileConflicts"
-          Condition="'$(NovolisUseProjectReferences)' == 'true' and '@(NovolisPackageProject)' != ''">
-    <ItemGroup>
-      <!--
-        Start from the map (has ProjectPath), drop entries not referenced by this project.
-        Remaining = PackageReference ∩ map, with correct paths.
-      -->
-      <_NovolisMapNotReferenced Include="@(NovolisPackageProject)" />
-      <_NovolisMapNotReferenced Remove="@(PackageReference)" />
+  <ItemGroup Condition="'$(NovolisUseProjectReferences)' == 'true' and '@(NovolisPackageProject)' != '' and '@(PackageReference)' != ''">
+    <!--
+      Start from the map (has ProjectPath), drop entries not referenced by this project.
+      Remaining = PackageReference ∩ map, with correct paths.
+    -->
+    <_NovolisMapNotReferenced Include="@(NovolisPackageProject)" />
+    <_NovolisMapNotReferenced Remove="@(PackageReference)" />
 
-      <_NovolisToReplace Include="@(NovolisPackageProject)" />
-      <_NovolisToReplace Remove="@(_NovolisMapNotReferenced)" />
+    <_NovolisToReplace Include="@(NovolisPackageProject)" />
+    <_NovolisToReplace Remove="@(_NovolisMapNotReferenced)" />
 
-      <ProjectReference Include="%(_NovolisToReplace.ProjectPath)"
-                        Condition="'%(_NovolisToReplace.ProjectPath)' != ''
-                                   and Exists('%(_NovolisToReplace.ProjectPath)')
-                                   and $([System.IO.Path]::GetFullPath('%(_NovolisToReplace.ProjectPath)')) != $([System.IO.Path]::GetFullPath('$(MSBuildProjectFullPath)'))" />
+    <!--
+      Path transform only — evaluation forbids %(CustomMeta) in Condition (MSB4191).
+      Missing sibling checkouts fail at restore/build with a clear path error.
+    -->
+    <ProjectReference Include="@(_NovolisToReplace->'%(ProjectPath)')" />
+    <ProjectReference Remove="$(MSBuildProjectFullPath)" />
 
-      <PackageReference Remove="@(_NovolisToReplace)" />
-    </ItemGroup>
-  </Target>
+    <PackageReference Remove="@(_NovolisToReplace)" />
+  </ItemGroup>
 </Project>

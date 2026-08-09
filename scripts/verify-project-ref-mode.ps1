@@ -266,9 +266,8 @@ if (-not $SkipMsBuild) {
     else {
         $expectedIds = Get-ExpectedSubstitutions $consumer
         $geometryPath = Join-Path $WorkspaceRoot ($mapEntries['Novolis.Math.Geometry'])
-        $subTarget = @('NovolisSubstituteProjectReferences')
 
-        # Mode OFF baseline (no substitute target needed)
+        # Mode OFF baseline
         $projOff = Get-ItemFullPaths (Get-MsBuildItems -Project $consumer -ItemName 'ProjectReference' -Properties @{
                 NovolisUseProjectReferences = 'false'
             })
@@ -276,13 +275,13 @@ if (-not $SkipMsBuild) {
                 NovolisUseProjectReferences = 'false'
             })
 
-        # Mode ON — must run substitute target so -getItem sees rewritten items
+        # Mode ON — evaluation-time substitution; -getItem sees rewritten items with no Target.
         $projOn = Get-ItemFullPaths (Get-MsBuildItems -Project $consumer -ItemName 'ProjectReference' -Properties @{
                 NovolisUseProjectReferences = 'true'
-            } -Targets $subTarget)
+            })
         $pkgOn = Get-ItemIdentities (Get-MsBuildItems -Project $consumer -ItemName 'PackageReference' -Properties @{
                 NovolisUseProjectReferences = 'true'
-            } -Targets $subTarget)
+            })
 
         foreach ($id in $expectedIds) {
             $mapped = Join-Path $WorkspaceRoot $mapEntries[$id]
