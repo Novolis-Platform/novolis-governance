@@ -17,13 +17,18 @@
 .PARAMETER CommitPush
   When set, commits and pushes each changed repo on main.
 
-.PARAMETER ApplyMarketing
-  When set (default), rewrites the novolis-marketing header block with a Docs link.
+.PARAMETER OverwriteThin
+  Replace existing docs that are empty stubs ("Reserved for future content",
+  tiny templates, wrong template-dotnet README copy, or Novolis.Example placeholders).
+
+.PARAMETER SkipMarketing
+  Skip rewriting the root README marketing header.
 #>
 param(
     [string] $WorkspaceRoot = '',
     [string] $GitHubBrandRoot = '',
     [switch] $CommitPush,
+    [switch] $OverwriteThin,
     [switch] $SkipMarketing,
     [string[]] $OnlyRepos = @()
 )
@@ -66,6 +71,44 @@ function Get-RepoMeta([string]$name) {
 function Get-DocsSiteUrl([string]$repoName) {
     if ($repoName -eq '.github') { return "$docsSiteRoot/" }
     return "$docsSiteRoot/$repoName/"
+}
+
+function Test-IsThinDoc {
+    param(
+        [string] $Path,
+        [ValidateSet('readme', 'getting-started', 'design', 'release')]
+        [string] $Kind,
+        [string] $RepoName
+    )
+    if (-not (Test-Path -LiteralPath $Path)) { return $true }
+    if (-not $OverwriteThin) { return $false }
+
+    $text = Get-Content -LiteralPath $Path -Raw
+    $len = (Get-Item -LiteralPath $Path).Length
+    if ($text -match '(?i)Reserved for future content') { return $true }
+    if ($len -lt 200) { return $true }
+    if ($Kind -eq 'getting-started' -and $text -match 'dotnet add package Novolis\.Example') { return $true }
+    if ($Kind -eq 'readme' -and $RepoName -ne 'novolis-template-dotnet' -and
+        $text -match 'Canonical starter pack for new Novolis') { return $true }
+    if ($Kind -eq 'readme' -and $RepoName -ne 'novolis-template-dotnet' -and
+        $text -match 'novolis-template-dotnet/') { return $true }
+    return $false
+}
+
+function Get-LayerHint([string]$RepoName) {
+    switch -Regex ($RepoName) {
+        '^novolis-math' { return 'Closed spine: **Math** (bottom). No Physics/Simulation/Raylib/Avalonia references.' }
+        '^novolis-physics' { return 'Closed spine: **Physics** over Math. No cameras, Raylib, or Avalonia.' }
+        '^novolis-simulation' { return 'Closed spine: **Simulation** over Physics/Math. Cameras and world clocks live here.' }
+        '^novolis-gaming' { return 'Closed spine: **Gaming** (`Novolis.Game.*`) over Simulation. No Avalonia in this layer.' }
+        '^novolis-avalonia' { return '**Avalonia** layer only (`Novolis.Avalonia.*`). Sole libraries allowed to take Avalonia package refs.' }
+        '^novolis-raylib' { return '**Raylib** island — never references Simulation; apps wire Raylib + Simulation.' }
+        '^novolis-documents|^novolis-markup|^novolis-manuscript' { return 'Documents/Markup island — Avalonia hosts may call PDF/HTML helpers; do not pull Avalonia into these packages.' }
+        '^novolis-cad|^novolis-ship' { return 'CAD / ship domain DTOs and validation — Avalonia-free; UI chrome lives in `Novolis.Avalonia.*`.' }
+        '^novolis-os' { return 'Runtime images / appliances — not a NuGet library spine package.' }
+        '^novolis-governance|^\.github|^novolis-workflows|^novolis-registry|^novolis-template' { return 'Org / template / CI infrastructure — not a closed-spine library.' }
+        default { return 'Follow [library-boundaries](https://github.com/Novolis-Platform/novolis-governance/blob/main/docs/library-boundaries.md) for layer placement.' }
+    }
 }
 
 function Get-PackablePackages([string]$repoRoot) {
@@ -183,21 +226,40 @@ Local multi-repo iteration uses ProjectReference mode via ``d:\novolis\Novolis.P
 }
 
 function New-DesignDoc {
-    param([string]$RepoName, [object]$Meta)
+    param([string]$RepoName, [object]$Meta, [string[]]$Packages)
+    $site = Get-DocsSiteUrl $RepoName
+    $layer = Get-LayerHint $RepoName
+    $pkgList = if ($Packages.Count -gt 0) {
+        (@($Packages | ForEach-Object { "- ``$_``" }) -join "`n")
+    } else {
+        '- (no packable ``Novolis.*`` projects detected in ``src/`` / ``codegen/``)'
+    }
     @"
 # Design
 
 $($Meta.blurb)
 
+Published docs: [$site]($site)
+
+## Layer placement
+
+$layer
+
 ## Goals
 
-- Keep public APIs documented and packable as ``Novolis.*`` on GitHub Packages.
-- Respect the closed platform spine and orthogonal islands ([library-boundaries](https://github.com/$org/novolis-governance/blob/main/docs/library-boundaries.md)).
+- Keep public APIs documented and packable as ``Novolis.*`` on GitHub Packages (when applicable).
+- Prefer BCL types and existing Novolis packages over parallel abstractions.
+- Document restore and ProjectReference-mode builds without local NuGet folder feeds.
 
 ## Non-goals
 
-- Local NuGet folder feeds or cross-repo ``ProjectReference`` in committed ``.csproj`` files.
-- Pulling Avalonia into non-``Novolis.Avalonia.*`` libraries.
+- Local NuGet folder feeds or committed cross-repo ``ProjectReference`` into sibling checkouts.
+- Avalonia package references outside ``Novolis.Avalonia.*``.
+- Upward spine dependencies (e.g. Math → Simulation).
+
+## Packages
+
+$pkgList
 
 ## Topics
 
@@ -207,6 +269,7 @@ $((@($Meta.topics) | ForEach-Object { "- ``$_``" }) -join "`n")
 
 function New-ReleaseDoc {
     param([string]$RepoName, [string[]]$Packages)
+    $site = Get-DocsSiteUrl $RepoName
     $pkgList = if ($Packages.Count -gt 0) {
         (@($Packages | ForEach-Object { "- ``$_``" }) -join "`n")
     } else {
@@ -215,9 +278,11 @@ function New-ReleaseDoc {
     @"
 # Release
 
-This repository publishes with the org CalVer scheme (``2026.1.*``) via ``merge.yml`` to GitHub Packages.
+This repository publishes with the org CalVer scheme (``2026.1.*``) via ``merge.yml`` to GitHub Packages when packages are packable.
 
 See [release-policy](https://github.com/$org/novolis-governance/blob/main/docs/release-policy.md).
+
+Published docs: [$site]($site)
 
 ## Packages
 
@@ -226,6 +291,8 @@ $pkgList
 ## Consumers
 
 Restore from nuget.org + ``https://nuget.pkg.github.com/$org/index.json`` only.
+
+Local multi-repo iteration: open ``d:\novolis\Novolis.Platform.slnx`` (ProjectReference mode) — do not add a local feed.
 "@
 }
 
@@ -365,28 +432,28 @@ foreach ($dir in ($repoDirs | Sort-Object Name)) {
     Write-Host "==> $name"
 
     $readmePath = Join-Path $docsDir 'README.md'
-    if (-not (Test-Path -LiteralPath $readmePath)) {
+    if (Test-IsThinDoc -Path $readmePath -Kind readme -RepoName $name) {
         Set-Content -LiteralPath $readmePath -Value (New-DocsReadme -RepoName $name -Meta $meta -ExistingDocs $existing -Packages $packages) -Encoding utf8NoBOM
         $stats.Readme++
         Write-Host '  + docs/README.md'
     }
 
     $gs = Join-Path $docsDir 'getting-started.md'
-    if (-not (Test-Path -LiteralPath $gs)) {
+    if (Test-IsThinDoc -Path $gs -Kind getting-started -RepoName $name) {
         Set-Content -LiteralPath $gs -Value (New-GettingStarted -RepoName $name -Meta $meta -Packages $packages) -Encoding utf8NoBOM
         $stats.GettingStarted++
         Write-Host '  + docs/getting-started.md'
     }
 
     $design = Join-Path $docsDir 'design.md'
-    if (-not (Test-Path -LiteralPath $design)) {
-        Set-Content -LiteralPath $design -Value (New-DesignDoc -RepoName $name -Meta $meta) -Encoding utf8NoBOM
+    if (Test-IsThinDoc -Path $design -Kind design -RepoName $name) {
+        Set-Content -LiteralPath $design -Value (New-DesignDoc -RepoName $name -Meta $meta -Packages $packages) -Encoding utf8NoBOM
         $stats.Design++
         Write-Host '  + docs/design.md'
     }
 
     $release = Join-Path $docsDir 'release.md'
-    if (-not (Test-Path -LiteralPath $release)) {
+    if (Test-IsThinDoc -Path $release -Kind release -RepoName $name) {
         Set-Content -LiteralPath $release -Value (New-ReleaseDoc -RepoName $name -Packages $packages) -Encoding utf8NoBOM
         $stats.Release++
         Write-Host '  + docs/release.md'
