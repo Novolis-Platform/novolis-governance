@@ -162,8 +162,15 @@ function Get-MarketingHeader {
     $bannerUrl = "https://raw.githubusercontent.com/$org/.github/main/brand/banners/$bannerName.svg"
     $tag = $Meta.Tag
     $blurb = $Meta.Blurb
+    $docsUrl = if ($RepoName -eq '.github') {
+        "https://$($org.ToLowerInvariant()).github.io/.github/"
+    }
+    else {
+        "https://$($org.ToLowerInvariant()).github.io/.github/$RepoName/"
+    }
     $mergeImg = "https://img.shields.io/github/actions/workflow/status/$org/$RepoName/merge.yml?branch=main&label=merge&logo=github"
     $pkgImg = "https://img.shields.io/badge/packages-GitHub%20Packages-0a7ea3?logo=nuget"
+    $docsImg = "https://img.shields.io/badge/docs-portfolio-0a7ea3"
     $orgImg = "https://img.shields.io/badge/org-Novolis--Platform-111827"
 
     return @"
@@ -184,12 +191,15 @@ function Get-MarketingHeader {
 </p>
 
 <p align="center">
+  <a href="$docsUrl"><img src="$docsImg" alt="docs"/></a>
   <a href="https://github.com/$org/$RepoName/actions"><img src="$mergeImg" alt="merge"/></a>
   <a href="https://github.com/orgs/$org/packages?repo_name=$RepoName"><img src="$pkgImg" alt="packages"/></a>
   <a href="https://github.com/$org"><img src="$orgImg" alt="org"/></a>
 </p>
 
 <p align="center">
+  <a href="$docsUrl">Docs</a>
+  ·
   <a href="https://nuget.pkg.github.com/$org/index.json"><code>https://nuget.pkg.github.com/$org/index.json</code></a>
   ·
   <a href="https://github.com/$org/.github/blob/main/profile/README.md">Org landing</a>
