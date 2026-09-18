@@ -22,7 +22,7 @@ $gprNugetConfig = @'
 '@
 
 $repos = Get-ChildItem $Root -Directory -Filter 'novolis-*' |
-    Where-Object { $_.Name -notmatch 'dogfooding|workflows|governance|registry|installer' }
+    Where-Object { $_.Name -notmatch 'lab|workflows|governance|registry|installer' }
 
 foreach ($repo in $repos) {
     foreach ($name in @('NuGet.config', 'nuget.config')) {

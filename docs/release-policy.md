@@ -42,6 +42,22 @@ Same version rules for both; only the feed differs.
 | `merge.yml` | Push to `main` | Build + test; pack/publish to GitHub Packages only when package surface changes |
 | `release.yml` | Release published | Pack, push to nuget.org |
 
+### Executable repositories
+
+Executable publishing is organized by host grain rather than by the library that
+implements the domain:
+
+| Repository | Release artifact | Trigger | Installer |
+|------------|------------------|---------|-----------|
+| `novolis-tools` | NuGet `PackAsTool` packages | Merge publishes to GitHub Packages; a published release can push to nuget.org | None |
+| `novolis-utilities` | Selected framework-dependent executable zips and SHA-256 manifest | Manual selected-utility release | None |
+| `novolis-apps` | Selected app channels such as Inno or APK | Manual selected-app release | Product channel only |
+| `novolis-lab` | None | Changed-lab validation only | None |
+
+Library repositories publish libraries only. They must not publish a domain CLI
+or a tool package. Existing command names and package IDs are preserved when
+their hosts move into `novolis-tools`.
+
 ### Merge short-circuit (libraries)
 
 Reusable `dotnet-merge-publish.yml` classifies the push:
@@ -76,6 +92,33 @@ Catalog source of truth: `novolis-apps/build/apps.json`. See [apps-repos.md](app
 Older GitHub Releases are pruned to the newest 5 after a successful release (`scripts/prune-github-releases.ps1`).
 
 Shared Windows glue lives in `novolis-workflows` composites: `install-inno-setup`, `write-sha256sums`, and `ensure-github-release`. App catalog publish stays in `novolis-apps` scripts.
+
+### Utility releases (`novolis-utilities`)
+
+Utilities are one-executable technical hosts. They do not use Inno, APK
+packaging, Start Menu registration, an AppId, or an uninstall lifecycle.
+
+- Pull requests and merges restore/build/test changed utilities only.
+- A manual release selects one utility or explicitly selects `All`.
+- Each selected utility is published as a framework-dependent executable
+  artifact using the supported .NET runtime/SDK and placed in a zip.
+- Each zip is accompanied by `SHA256SUMS.txt`.
+- Utility release assets are attached directly to a GitHub Release and older
+  releases are pruned using the same retention policy as apps.
+- `dotnet publish --self-contained true` is not a utility classification rule.
+  A utility may use a framework-dependent publish because SDK/runtime
+  requirements are allowed.
+
+### Tool releases (`novolis-tools`)
+
+`novolis-tools` is the sole publisher of `PackAsTool` commands. Tool hosts use
+`dotnet tool install`; they never receive an installer or utility zip.
+
+- Changed tool hosts and their package libraries are validated in PR/merge CI.
+- Merge publishes the affected tool packages to GitHub Packages.
+- A published release may push the same version to nuget.org, following the
+  four-segment version policy.
+- Command names and package IDs must remain stable across host moves.
 
 Release tag: `vYEAR.MAJOR.MINOR.BUILD` from `build/version.json` plus `github.run_number`.
 

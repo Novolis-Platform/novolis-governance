@@ -33,7 +33,7 @@ if (-not $OutputPath) {
     $OutputPath = Join-Path $scriptDir 'generated\Novolis.PackageToProject.props'
 }
 
-$excludeRepo = [regex]'workflows|governance|registry|dogfooding|installer|experimental|smoketest|template-dotnet'
+$excludeRepo = [regex]'workflows|governance|registry|lab|utilities|apps|installer|experimental|smoketest|template-dotnet'
 
 $entries = [System.Collections.Generic.List[object]]::new()
 $seen = [System.Collections.Generic.HashSet[string]]::new([StringComparer]::OrdinalIgnoreCase)
@@ -88,7 +88,7 @@ $sb = [System.Text.StringBuilder]::new()
 foreach ($e in $sorted) {
     $path = $e.RelPath -replace '\\', '\'
     [void]$sb.AppendLine("    <NovolisPackageProject Include=`"$($e.PackageId)`">")
-    [void]$sb.AppendLine("      <ProjectPath>`$(NovolisWorkspaceRoot)$path</ProjectPath>")
+    [void]$sb.AppendLine("      <ProjectPath>`$(NovolisLibraryRoot)\$path</ProjectPath>")
     [void]$sb.AppendLine('    </NovolisPackageProject>')
 }
 

@@ -6,6 +6,14 @@
 
 **Allowed committed alternative:** `LibraryReference` from package `Novolis.MSBuild.LibraryReference` (`novolis-msbuild`). It expands at build time to `ProjectReference` when a mapped/explicit `.csproj` exists, otherwise `PackageReference`. Do not commit cross-repo `ProjectReference` or dual Package/Project conditionals — use `LibraryReference` or `PackageReference` only.
 
+Git submodules are allowed as **source checkouts** for `novolis-lab`
+experiments. A lab may record selected library repositories in `.gitmodules`
+and use the workspace ProjectReference-mode mechanism during local iteration.
+The submodule path must never appear as a committed `ProjectReference`, source
+path property, or local feed. CI checks out labs without initializing
+submodules and restores the committed `PackageReference` graph from GitHub
+Packages.
+
 > **Cursor agents:** Use GPR for publish/CI consumers — never `artifacts/nuget-local`, `pack-local.ps1`, or `novolis-local` sources. For local multi-repo iteration before publish, use `Novolis.Platform.slnx` (ProjectReference mode). See `.cursor/rules/nuget-only-dependencies.mdc`.
 
 ## Allowed
@@ -50,7 +58,9 @@ pwsh -File D:\novolis\novolis-governance\scripts\verify-project-ref-mode.ps1 -Sk
 pwsh -File D:\novolis\novolis-governance\scripts\verify-banned-packages.ps1
 ```
 
-CI should run `verify-nuget-only.ps1` on every library repo and on `novolis-dogfooding`. Banned third-party stacks (Markdig, QuestPDF): [markdown-and-pdf-policy.md](markdown-and-pdf-policy.md).
+CI should run `verify-nuget-only.ps1` on every library repo and on
+`novolis-lab`, `novolis-utilities`, and `novolis-apps`. Banned third-party
+stacks (Markdig, QuestPDF): [markdown-and-pdf-policy.md](markdown-and-pdf-policy.md).
 
 ## Proving a change is done
 
@@ -70,4 +80,4 @@ See [nuget-setup.md](nuget-setup.md) and [platform-project-ref-mode.md](platform
 - [gpr-maintenance.md](gpr-maintenance.md) — GitHub Packages inventory and junk-version cleanup
 - [markdown-and-pdf-policy.md](markdown-and-pdf-policy.md) — Markdig / QuestPDF banned; Documents + Novolis Markdown
 - [repository-policy.md](repository-policy.md)
-- [novolis-dogfooding design](../../novolis-dogfooding/docs/design.md)
+- [novolis-lab design](../../novolis-lab/docs/design.md)

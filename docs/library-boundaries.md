@@ -44,7 +44,7 @@ Enforced by `Novolis.Analyzers.StackBoundaries` (`NOV2006`, `NOV2007`, `NOV2010`
 | **Gaming** | Authoring / shipping glue (`Novolis.Game.*`) — no Avalonia |
 | **Avalonia** | UI controls and hosts (`Novolis.Avalonia.*`) — only layer that may depend on Avalonia UI packages |
 | **MAUI** | UI controls and hosts (`Novolis.Maui.*`) — only library layer that may depend on Microsoft.Maui (orthogonal to Avalonia) |
-| **Apps** | Product composition in `novolis-apps`; package demos in `novolis-dogfooding`; MAUI hosts such as Merglyph (not under library `apps/`) |
+| **Executable hosts** | Product composition in `novolis-apps`; package experiments in `novolis-lab`; MAUI hosts such as Merglyph (not under library `apps/`) |
 
 ---
 
@@ -122,7 +122,7 @@ If a concept needs **time**, `deltaTime`, clocks, ticks, integration steps, or �
 
 **Repo:** `novolis-simulation`
 
-**Depends on:** Math, Physics only. Must not reference `Novolis.Raylib.*`, dogfooding, or SCR.
+**Depends on:** Math, Physics only. Must not reference `Novolis.Raylib.*`, executable hosts, or SCR.
 
 **Owns:**
 
@@ -189,7 +189,7 @@ Separate repo and dependency island. Owns host loop, draw, input bindings, GPU t
 
 Raylib does not own platform camera logic; apps bridge observers to the renderer.
 
-### Apps (dogfooding, SCR, …)
+### Executable hosts (lab, SCR, …)
 
 Product rules, HUD, networking, highly specific camera feel (run bobbing, recoil). May reference Math, Physics, Simulation, and Raylib independently.
 
@@ -218,7 +218,7 @@ Product rules, HUD, networking, highly specific camera feel (run bobbing, recoil
 | Voxel → triangle mesh (face cull / greedy) | `Novolis.Simulation.Voxels.Meshing` |
 | Packed 16³ block storage | `Novolis.Math.Arrays` (`VoxelChunk`) |
 | Headless racing sim (tracks, sensors, tick loop) | `Novolis.Simulation.Racing` |
-| NN evolution on racing (trainer, neural car controller) | Apps (e.g. `novolis-dogfooding` `NeuralRacing`) — not `Novolis.MachineLearning.*` |
+| NN evolution on racing (trainer, neural car controller) | Apps (e.g. `novolis-lab` `NeuralRacing`) — not `Novolis.MachineLearning.*` |
 
 ---
 
@@ -233,7 +233,7 @@ novolis-simulation    →  math, physics
   (facets: Abstractions, World, View, Tiles, Voxels, Voxels.Meshing, Kinematics, World.Builders, Racing, …)
 novolis-gaming        →  math / physics / simulation as needed; never → Avalonia UI packages
 novolis-avalonia      →  math…gaming + Avalonia.* ; never pull Avalonia into lower layers
-apps / dogfood        →  compose freely (including Avalonia + Raylib + Simulation)
+novolis-lab / apps    →  compose freely (including Avalonia + Raylib + Simulation)
 ```
 
 **Orthogonal (not on the spine ranks; still Avalonia-free libraries):**
@@ -246,15 +246,18 @@ novolis-machinelearning  (Core, Neural.*, AutoMl — building blocks only; no do
 novolis-raylib       →  math only (if needed); never → simulation; never → Avalonia
 novolis-rendering    →  math only; never → simulation or raylib; never → Avalonia
 novolis-maui         →  Markup + Microsoft.Maui.*; never → Avalonia; never pull MAUI into Markup/Audio (except Voice.Platform.Maui)
+novolis-3d           →  Math only; renderer-neutral scene documents and asset import
+                         no Avalonia, rendering, Raylib, simulation, CAD, or app-host references
 ```
 
 ```text
 novolis-cad          →  Math only (Cad.Primitives, Cad.Blueprint, Cad.Evaluation, Cad.SceneBridge)
                          Avalonia-free .cadjson interchange + Cad→3D bridge
                          Must not host mesh scene graphs (those are Novolis.3D.*)
-novolis-avalonia     →  also ships Avalonia-free Novolis.3D.Scene / Novolis.3D.Modeling / Novolis.3D.Import
-                         (.nov3djson mesh graph; Modeling = Math.Geometry mesh-ops façade; Assimp import);
-                         UI is Novolis.Avalonia.3D / Cad / Ship.Design
+novolis-avalonia     →  Novolis.Avalonia.* UI controls and shells only
+                         including Novolis.Avalonia.ThreeD / Cad / Ship.Design
+novolis-3d           →  Novolis.ThreeD.Scene / Novolis.ThreeD.Import.Assimp
+                         (.nov3djson scene graph and Assimp import); no UI or renderer bridge
 ```
 
 **Cad vs 3D cameras:** document pose bags (`CadCamera`, `CameraNode`) may live in Cad/3D DTOs. Orbit / free-look **controllers** and `ViewPose` stay in `Novolis.Simulation.View`. Apps/Avalonia compose DTO poses → ViewPose. Do not put Rendering soft-bridges in Cad libraries — apps wire Cad/3D lights → Rendering.

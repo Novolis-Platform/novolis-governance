@@ -20,7 +20,7 @@ function Write-Utf8([string]$Path, [string]$Content) {
 }
 
 $repos = Get-ChildItem $Root -Directory -Filter 'novolis-*' |
-    Where-Object { $_.Name -notmatch 'workflows|governance|registry|dogfooding|installer' }
+    Where-Object { $_.Name -notmatch 'workflows|governance|registry|lab|installer' }
 
 foreach ($repo in $repos) {
     $buildDir = Join-Path $repo.FullName 'build'
@@ -37,11 +37,11 @@ foreach ($repo in $repos) {
     }
 }
 
-$dog = Join-Path $Root 'novolis-dogfooding\Directory.Packages.props'
-if (Test-Path $dog) {
-    $t = Get-Content $dog -Raw
+$lab = Join-Path $Root 'novolis-lab\Directory.Packages.props'
+if (Test-Path $lab) {
+    $t = Get-Content $lab -Raw
     $n = $t -replace '(Include="Novolis\.[^"]+"\s+Version=")2026\.[0-9.]+[^"]*(")', '${1}2026.1.1.*${2}'
-    if ($n -ne $t) { Write-Utf8 $dog $n; Write-Host 'novolis-dogfooding' }
+    if ($n -ne $t) { Write-Utf8 $lab $n; Write-Host 'novolis-lab' }
 }
 
 Write-Host 'Done.'

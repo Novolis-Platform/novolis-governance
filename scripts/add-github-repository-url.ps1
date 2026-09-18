@@ -8,7 +8,7 @@ $githubImport = @'
 '@
 
 $repos = Get-ChildItem $Root -Directory -Filter 'novolis-*' |
-    Where-Object { $_.Name -notmatch 'dogfooding|workflows|governance|registry|installer' }
+    Where-Object { $_.Name -notmatch 'lab|workflows|governance|registry|installer' }
 
 foreach ($repo in $repos) {
     $name = $repo.Name

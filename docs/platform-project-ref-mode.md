@@ -24,6 +24,7 @@ Committed `.csproj` files stay PackageReference-only. Per-repo solutions and CI 
 | `-p:NovolisUseProjectReferences=true` | Force on (any solution / single project) |
 | `-p:NovolisUseProjectReferences=false` | Force off (wins over SolutionName) |
 | Env `NOVOLIS_USE_PROJECT_REFERENCES=true` | Force on when property unset |
+| `-p:NovolisLibraryRoot=PATH` | Resolve mapped library projects from a selected checkout root, such as `d:\novolis\novolis-lab\submodules`; defaults to the workspace forest |
 
 ## Regenerate map + meta solution
 
@@ -48,6 +49,9 @@ dotnet build Novolis.Platform.slnx
 
 # Single consumer against sibling source:
 dotnet build path/to/Consumer.csproj -p:NovolisUseProjectReferences=true
+
+# A lab with selected library submodules:
+dotnet build path/to/Consumer.csproj -p:NovolisUseProjectReferences=true -p:NovolisLibraryRoot=path/to/submodules
 ```
 
 ## Verify

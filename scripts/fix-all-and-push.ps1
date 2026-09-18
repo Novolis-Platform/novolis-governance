@@ -24,11 +24,11 @@ foreach ($repo in $repos) {
     }
 }
 
-$dogDp = Join-Path $Root 'novolis-dogfooding\Directory.Packages.props'
-if (Test-Path $dogDp) {
-    $t = Get-Content $dogDp -Raw
+$labDp = Join-Path $Root 'novolis-lab\Directory.Packages.props'
+if (Test-Path $labDp) {
+    $t = Get-Content $labDp -Raw
     $n = $t -replace '(Include="Novolis\.[^"]+"\s+Version=")2026\.[0-9.]+[^"]*(")', '${1}2026.1.*${2}'
-    if ($n -ne $t) { Set-Content $dogDp $n.TrimEnd() -Encoding utf8NoBOM }
+    if ($n -ne $t) { Set-Content $labDp $n.TrimEnd() -Encoding utf8NoBOM }
 }
 
 Write-Host 'Local fixes done. Run git push separately.'

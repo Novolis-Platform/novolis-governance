@@ -9,6 +9,10 @@
   <!-- Workspace root = parent of novolis-governance (this file lives in build/). -->
   <PropertyGroup>
     <NovolisWorkspaceRoot Condition="'$(NovolisWorkspaceRoot)' == ''">$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\..\'))</NovolisWorkspaceRoot>
+    <!-- Labs may point this at a selected-library checkout root such as
+         d:\novolis\novolis-lab\submodules. The default is the workspace forest. -->
+    <NovolisLibraryRoot Condition="'$(NovolisLibraryRoot)' == ''">$(NovolisWorkspaceRoot)</NovolisLibraryRoot>
+    <NovolisLibraryRoot Condition="'$(NovolisLibraryRoot)' != ''">$([System.IO.Path]::GetFullPath('$(NovolisLibraryRoot)', '$(MSBuildProjectDirectory)'))</NovolisLibraryRoot>
   </PropertyGroup>
 
   <!-- Explicit -p / env wins; otherwise auto-enable for meta solution. -->

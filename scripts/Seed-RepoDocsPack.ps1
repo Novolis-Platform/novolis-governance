@@ -105,7 +105,8 @@ function Get-LayerHint([string]$RepoName) {
         '^novolis-maui' { return '**MAUI** island (`Novolis.Maui.*`). Sole new libraries allowed to take Microsoft.Maui package refs (Voice.Platform.Maui grandfathered). Never Avalonia.' }
         '^novolis-raylib' { return '**Raylib** island — never references Simulation; apps wire Raylib + Simulation.' }
         '^novolis-documents|^novolis-markup|^novolis-manuscript' { return 'Documents/Markup island — Avalonia/MAUI hosts may call PDF/HTML helpers; do not pull Avalonia or MAUI into these packages.' }
-        '^novolis-cad|^novolis-ship' { return 'CAD / ship domain DTOs and validation — Avalonia-free; UI chrome lives in `Novolis.Avalonia.*`. Mesh scene graphs live in `Novolis.3D.*` (novolis-avalonia).' }
+        '^novolis-3d' { return 'Avalonia-free renderer-neutral ThreeD scene documents and asset import over `Novolis.Math.Geometry`.' }
+        '^novolis-cad|^novolis-ship' { return 'CAD / ship domain DTOs and validation — Avalonia-free; UI chrome lives in `Novolis.Avalonia.*`. Generic scene graphs live in `novolis-3d`.' }
         '^novolis-os' { return 'Runtime images / appliances — not a NuGet library spine package.' }
         '^novolis-governance|^\.github|^novolis-workflows|^novolis-registry|^novolis-template' { return 'Org / template / CI infrastructure — not a closed-spine library.' }
         default { return 'Follow [library-boundaries](https://github.com/Novolis-Platform/novolis-governance/blob/main/docs/library-boundaries.md) for layer placement.' }

@@ -98,12 +98,12 @@ Optional `layersDocument` points at a `.cadlayers.json` catalog. Document `layer
 .cadlayers.json ──(name / catalogId)──► .cadjson
 .cadshapejson   ──(shapeId / sides)──► .cadjson
 .cadjson  →  Novolis.Cad.Evaluation (CadModelEvaluator / CadPhysExporter)  →  .cadphys.json
-.cadjson  →  Novolis.Cad.SceneBridge.ToSceneDocument / SaveNov3dJson  →  .nov3djson (Novolis.3D.Scene)
+.cadjson  →  Novolis.Cad.SceneBridge.ToSceneDocument / SaveNov3dJson  →  .nov3djson (Novolis.ThreeD.Scene)
 .cadjson  →  (parametric tessellate in app)  →  SceneBuilder / CompiledScene
 .cadjson  →  CadBlueprintProjector  →  .cadblueprint.json  →  smart HTML sheets (optional)
 ```
 
-CadBlueprint companion (walls / interiors / exteriors / openings + HTML sheets): [smart-blueprint.md](./smart-blueprint.md). Mesh scene graph schema: [`schemas/3d/novolis.scene.schema.json`](../schemas/3d/novolis.scene.schema.json) (`Novolis.3D.Scene` in novolis-avalonia).
+CadBlueprint companion (walls / interiors / exteriors / openings + HTML sheets): [smart-blueprint.md](./smart-blueprint.md). Mesh scene graph schema: [`schemas/3d/novolis.scene.schema.json`](../schemas/3d/novolis.scene.schema.json) (`Novolis.ThreeD.Scene` in novolis-3d).
 
 **CAD Studio 3D:** authoring stays `.cadjson`; Model/Stage/render work on the bridged `.nov3djson`. Scene→Cad round-trip is out of scope for v1. Dual Agent Surfaces: Cad `:18775` / Scene `:18785` (same `Execute` catalogs as the UI).
 

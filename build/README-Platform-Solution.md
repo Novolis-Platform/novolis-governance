@@ -2,7 +2,7 @@
 
 ## Overview
 
-This tool generates a unified master `.slnx` (Visual Studio solution) file that combines all 27 domain repositories in the Novolis Platform into a single hierarchical solution. This allows developers to work with the entire platform as one cohesive solution while preserving individual repository structure and organization.
+This tool generates a unified master `.slnx` (Visual Studio solution) file that combines all included domain repositories in the Novolis Platform into a single hierarchical solution. This allows developers to work with the entire platform as one cohesive solution while preserving individual repository structure and organization.
 
 **Canonical (open/build)**: `d:\novolis\Novolis.Platform.slnx`  
 **Checked-in copy** (build-relative paths): `d:\novolis\novolis-governance\build\Novolis.Platform.slnx`  
@@ -90,7 +90,7 @@ If project file validation is slow and you've already verified files:
 By default, these repos are excluded:
 - `.github`
 - `novolis-experimental` (local-only; not a GitHub repo — copyrighted IP)
-- `novolis-dogfooding`
+- `novolis-lab`
 - `novolis-smoketest`
 - `novolis-template-dotnet`
 
@@ -119,12 +119,12 @@ $exclude = @('novolis-raylib', 'novolis-physics')
 
 | Metric | Count |
 |--------|-------|
-| Total Repositories | 29 |
-| Included Repositories | 27 |
-| Excluded Repositories | 2 (experimental, dogfooding) |
-| Total Projects | 231 |
+| Total Repositories | 34 |
+| Included Repositories | 29 |
+| Excluded Repositories | 5 (experimental, lab, utilities, apps, template) |
+| Total Projects | 286 |
 | Missing Project Files | 0 |
-| File Size | ~28 KB |
+| File Size | ~63 KB |
 | XML Validation | ✓ Passed |
 
 ### Repository Breakdown
@@ -132,7 +132,8 @@ $exclude = @('novolis-raylib', 'novolis-physics')
 The master solution organizes projects from these repositories:
 
 - **Audio Stack**: novolis-audio (30 projects)
-- **UI Frameworks**: novolis-avalonia (11 projects), novolis-raylib (4 projects)
+- **UI Frameworks**: novolis-avalonia (34 projects), novolis-raylib (4 projects)
+- **ThreeD Domain**: novolis-3d (3 projects)
 - **Infrastructure**: novolis-aspire (2 projects), novolis-messaging (2 projects), novolis-transports (3 projects)
 - **Core Services**: novolis-storage (7 projects), novolis-scheduling (3 projects), novolis-security (2 projects)
 - **Developer Tools**: novolis-analyzers (3 projects), novolis-codegen (8 projects), novolis-commands (6 projects)
@@ -253,7 +254,7 @@ Register-ScheduledTask -TaskName "Novolis-Regenerate-Platform-Solution" -Trigger
 
 ### `-ExcludeRepos`
 **Type**: `[string[]]`  
-**Default**: `.github`, `novolis-experimental`, `novolis-dogfooding`, `novolis-smoketest`, `novolis-template-dotnet`  
+**Default**: `.github`, `novolis-experimental`, `novolis-lab`, `novolis-utilities`, `novolis-apps`, `novolis-smoketest`, `novolis-template-dotnet`
 **Example**: 
 ```powershell
 -ExcludeRepos @('novolis-raylib', 'novolis-gaming')

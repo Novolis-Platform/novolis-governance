@@ -8,7 +8,9 @@
 
   NOV2006 (PackageReference form):
     Only projects under novolis-avalonia (Novolis.Avalonia.*) may PackageReference Avalonia / Avalonia.*.
-    Product apps (novolis-apps, dogfooding, templates, treffly, experimental app hosts, geopolitics apps) may.
+    Product/executable hosts (novolis-apps, novolis-utilities, novolis-lab,
+    templates, treffly, experimental app hosts,
+    geopolitics apps) may.
 
   NOV2010 (PackageReference form):
     Only Novolis.Maui.* may PackageReference Microsoft.Maui / Microsoft.Maui.*.
@@ -16,6 +18,10 @@
 
   NOV2007 (PackageReference form, spine only):
     Math must not reference Physics/Simulation/Game/Avalonia packages, etc.
+
+  NOV2012 (repository/prefix form):
+    Projects under novolis-avalonia/src must be Novolis.Avalonia.* projects.
+    Avalonia-free ThreeD libraries belong in novolis-3d.
 
   Exit 0 on success, 1 on violations.
 #>
@@ -73,7 +79,8 @@ function Get-SpineRank([string]$packageOrProjectName) {
 function Test-IsAppHostPath([string]$fullPath) {
   $p = $fullPath.Replace('/', '\')
   return $p -match '\\novolis-apps\\' `
-    -or $p -match '\\novolis-dogfooding\\' `
+    -or $p -match '\\novolis-utilities\\' `
+    -or $p -match '\\novolis-lab\\' `
     -or $p -match '\\novolis-templates\\' `
     -or $p -match '\\treffly-app\\' `
     -or $p -match '\\novolis-experimental\\' `
@@ -97,6 +104,11 @@ foreach ($proj in $csprojs) {
   $selfRank = Get-SpineRank $name
   $isAvaloniaLayer = $name -like 'Novolis.Avalonia*'
   $isMauiLayer = $name -like 'Novolis.Maui*'
+  $isAvaloniaRepoSource = $proj.FullName.Replace('/', '\') -match '\\novolis-avalonia\\src\\'
+
+  if ($isAvaloniaRepoSource -and $name -notlike 'Novolis.Avalonia.*') {
+    $violations.Add("NOV2012 $($proj.FullName): '$name' is under novolis-avalonia/src; only Novolis.Avalonia.* projects may live there")
+  }
 
   foreach ($ref in $refs) {
     if ((Test-IsAvaloniaPackage $ref) -and -not $isAvaloniaLayer) {

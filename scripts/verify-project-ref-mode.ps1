@@ -41,7 +41,7 @@ if (-not $WorkspaceRoot) {
 
 $mapScript = Join-Path $govRoot 'build\Generate-PackageToProjectMap.ps1'
 $mapPath = Join-Path $govRoot 'build\generated\Novolis.PackageToProject.props'
-$excludeRepo = [regex]'workflows|governance|registry|dogfooding|installer|experimental|smoketest|template-dotnet'
+$excludeRepo = [regex]'workflows|governance|registry|lab|utilities|apps|installer|experimental|smoketest|template-dotnet'
 
 Write-Host "=== regenerate map ===" -ForegroundColor Cyan
 & $mapScript -WorkspaceRoot $WorkspaceRoot -OutputPath $mapPath | Out-Null
@@ -55,9 +55,9 @@ if (-not (Test-Path $mapPath)) {
 # Parse map entries
 $mapText = Get-Content $mapPath -Raw
 $mapEntries = [System.Collections.Generic.Dictionary[string, string]]::new([StringComparer]::OrdinalIgnoreCase)
-foreach ($m in [regex]::Matches($mapText, '<NovolisPackageProject Include="([^"]+)">\s*<ProjectPath>\$\(NovolisWorkspaceRoot\)([^<]+)</ProjectPath>')) {
+foreach ($m in [regex]::Matches($mapText, '<NovolisPackageProject Include="([^"]+)">\s*<ProjectPath>\$\(NovolisLibraryRoot\)([^<]+)</ProjectPath>')) {
     $id = $m.Groups[1].Value
-    $rel = $m.Groups[2].Value.Trim() -replace '/', '\'
+    $rel = $m.Groups[2].Value.Trim().TrimStart('\', '/') -replace '/', '\'
     if ($mapEntries.ContainsKey($id)) {
         Fail "Duplicate map PackageId: $id"
     }
@@ -184,20 +184,20 @@ function Get-MsBuildItems {
         [string[]]$Targets = @()
     )
 
-    $args = [System.Collections.Generic.List[string]]::new()
-    $args.Add($Project) | Out-Null
+    $msbuildArgs = [System.Collections.Generic.List[string]]::new()
+    $msbuildArgs.Add($Project) | Out-Null
     if ($Targets.Count -gt 0) {
-        $args.Add("-t:$($Targets -join ';')") | Out-Null
+        $msbuildArgs.Add("-t:$($Targets -join ';')") | Out-Null
     }
-    $args.Add("-getItem:$ItemName") | Out-Null
-    $args.Add('-nologo') | Out-Null
+    $msbuildArgs.Add("-getItem:$ItemName") | Out-Null
+    $msbuildArgs.Add('-nologo') | Out-Null
     foreach ($k in $Properties.Keys) {
-        $args.Add("-p:$k=$($Properties[$k])") | Out-Null
+        $msbuildArgs.Add("-p:$k=$($Properties[$k])") | Out-Null
     }
 
-    $json = & dotnet msbuild @args 2>$null | Out-String
+    $json = & dotnet msbuild @msbuildArgs 2>$null | Out-String
     if ($LASTEXITCODE -ne 0) {
-        $err = & dotnet msbuild @args 2>&1 | Out-String
+        $err = & dotnet msbuild @msbuildArgs 2>&1 | Out-String
         Fail "dotnet msbuild -getItem:$ItemName failed for $Project : $err"
         return @()
     }
@@ -259,9 +259,11 @@ function Get-ItemIdentities($items) {
 
 if (-not $SkipMsBuild) {
     Write-Host "=== MSBuild intersect smoke ===" -ForegroundColor Cyan
-    $consumer = Join-Path $WorkspaceRoot 'novolis-physics\src\Novolis.Physics.Abstractions\Novolis.Physics.Abstractions.csproj'
-    if (-not (Test-Path $consumer)) {
-        Fail "Smoke consumer missing: $consumer"
+    $consumer = $samples |
+        Where-Object { Test-Path -LiteralPath $_ } |
+        Select-Object -First 1
+    if (-not $consumer) {
+        Write-Host 'SKIP MSBuild smoke (no sample consumer project is present)' -ForegroundColor Yellow
     }
     else {
         $expectedIds = Get-ExpectedSubstitutions $consumer
@@ -320,7 +322,7 @@ if (-not $SkipMsBuild) {
             }
         }
 
-        Write-Host "  Consumer: Novolis.Physics.Abstractions"
+        Write-Host "  Consumer: $([IO.Path]::GetFileNameWithoutExtension($consumer))"
         Write-Host "  Expected substitutes: $($expectedIds -join ', ')"
         Write-Host "  Mode ON ProjectReferences: $($projOn.Count)"
         Write-Host "  Mode OFF PackageReferences kept: $($expectedIds -join ', ')"

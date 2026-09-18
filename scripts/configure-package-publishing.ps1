@@ -65,7 +65,7 @@ function Ensure-VersionImport([string]$RepoPath) {
 }
 
 $packageRepos = @(
-    'novolis-analyzers', 'novolis-aspire', 'novolis-avalonia', 'novolis-codegen',
+    'novolis-analyzers', 'novolis-aspire', 'novolis-avalonia', 'novolis-3d', 'novolis-codegen',
     'novolis-commands', 'novolis-gaming', 'novolis-install', 'novolis-machinelearning', 'novolis-markup',
     'novolis-maui', 'novolis-math', 'novolis-messaging', 'novolis-physics', 'novolis-raylib',
     'novolis-rendering', 'novolis-security', 'novolis-simulation', 'novolis-smoketest',

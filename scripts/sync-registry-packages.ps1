@@ -22,7 +22,7 @@ New-Item -ItemType Directory -Force -Path $RegistryDir | Out-Null
 
 $entries = @()
 Get-ChildItem $Root -Directory -Filter 'novolis-*' |
-    Where-Object { $_.Name -notmatch 'workflows|governance|registry|dogfooding|installer' } |
+    Where-Object { $_.Name -notmatch 'workflows|governance|registry|lab|installer' } |
     ForEach-Object {
         $repoName = $_.Name
         Get-ChildItem $_.FullName -Recurse -Filter '*.csproj' |

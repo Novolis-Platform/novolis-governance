@@ -3,7 +3,7 @@ $ErrorActionPreference = 'Continue'
 $Root = Split-Path (Split-Path $PSScriptRoot -Parent) -Parent
 $repos = @(
     'novolis-workflows', 'novolis-governance',
-    'novolis-math', 'novolis-rendering', 'novolis-raylib',
+    'novolis-math', 'novolis-3d', 'novolis-rendering', 'novolis-raylib',
     'novolis-analyzers', 'novolis-aspire', 'novolis-avalonia', 'novolis-codegen',
     'novolis-commands', 'novolis-gaming', 'novolis-install', 'novolis-machinelearning', 'novolis-markup',
     'novolis-maui', 'novolis-messaging', 'novolis-physics', 'novolis-security', 'novolis-simulation',

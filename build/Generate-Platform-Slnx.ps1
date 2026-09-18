@@ -14,7 +14,9 @@
 
 .PARAMETER ExcludeRepos
     Array of repository names to exclude from the master solution.
-    Defaults to: '.github', 'novolis-experimental' (local-only), 'novolis-dogfooding', 'novolis-smoketest', 'novolis-template-dotnet'
+    Defaults to: '.github', 'novolis-experimental' (local-only), 'novolis-lab',
+    'novolis-utilities', 'novolis-apps',
+    'novolis-smoketest', 'novolis-template-dotnet'
 
 .PARAMETER OutputPath
     Path where the master .slnx file will be written.
@@ -49,7 +51,9 @@ param(
     [string[]]$ExcludeRepos = @(
         '.github',
         'novolis-experimental',
-        'novolis-dogfooding',
+        'novolis-lab',
+        'novolis-utilities',
+        'novolis-apps',
         'novolis-smoketest',
         'novolis-template-dotnet',
         'merglyph'

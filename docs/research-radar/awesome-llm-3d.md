@@ -15,7 +15,7 @@ Curated map of [ActiveVisionLab/Awesome-LLM-3D](https://github.com/ActiveVisionL
 | 3D Generation (MeshGPT, LLaMA-Mesh, …) | `importmesh` (Assimp) + `importtriangles` (soup → `MeshEditBake`) | **Adopt** | Generation output becomes an importer, not a new mesh stack |
 | 3D Reasoning / spatial VQA | Scene agent actions + `.nov3djson` | **Adopt** | Formal tool calls over the document; no CoT model in libraries |
 | 3D Embodied agents | Game.Session / Humanoid / apps | **Skip** (radar) | Policy/VLA hosts are apps |
-| 3D Benchmarks | dogfooding spatial-smoke | **Adapter** | Tiny named scenes only — not ScanNet |
+| 3D Benchmarks | lab spatial-smoke | **Adapter** | Tiny named scenes only — not ScanNet |
 | Unified understand+generate | — | **Skip** (radar) | Watch formats; keep NuGet Python-free |
 
 ## Scene agent actions (spatial tools)
@@ -52,6 +52,6 @@ Set via `setsceneprops` (`key`, optional `value` to clear).
 
 ## Related
 
-- SceneLab dogfood: `novolis-dogfooding/apps/avalonia/SceneLab` (`--spatial-smoke`)
-- MCP proxy: `novolis-dogfooding/apps/AvaloniaAgentMcp` (`scene_*` tools)
+- SceneLab lab: `novolis-lab/labs/avalonia/SceneLab` (`--spatial-smoke`)
+- MCP proxy: `novolis-lab/labs/AvaloniaAgentMcp` (`scene_*` tools)
 - Canvas placement: workspace `canvases/awesome-llm-3d-infrastructure.canvas.tsx`

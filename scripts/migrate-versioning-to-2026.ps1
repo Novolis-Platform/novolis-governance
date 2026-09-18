@@ -16,7 +16,7 @@ $versionJson = @'
 '@
 
 $packageRepos = @(
-    'novolis-analyzers', 'novolis-aspire', 'novolis-avalonia', 'novolis-codegen',
+    'novolis-analyzers', 'novolis-aspire', 'novolis-avalonia', 'novolis-3d', 'novolis-codegen',
     'novolis-commands', 'novolis-gaming', 'novolis-install', 'novolis-machinelearning', 'novolis-markup',
     'novolis-math', 'novolis-messaging', 'novolis-physics', 'novolis-raylib',
     'novolis-rendering', 'novolis-security', 'novolis-simulation', 'novolis-smoketest',
@@ -99,11 +99,11 @@ foreach ($name in $packageRepos) {
     Update-DirectoryPackages (Join-Path $repo 'Directory.Packages.props')
 }
 
-# Dogfooding
-$dog = Join-Path $Root 'novolis-dogfooding'
-if (Test-Path $dog) {
-    Write-Host 'Migrate novolis-dogfooding'
-    Update-DirectoryPackages (Join-Path $dog 'Directory.Packages.props')
+# Lab
+$lab = Join-Path $Root 'novolis-lab'
+if (Test-Path $lab) {
+    Write-Host 'Migrate novolis-lab'
+    Update-DirectoryPackages (Join-Path $lab 'Directory.Packages.props')
 }
 
 Write-Host 'Done.'

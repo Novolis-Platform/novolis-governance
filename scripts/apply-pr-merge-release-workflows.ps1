@@ -88,7 +88,7 @@ function Remove-DuplicateGithubPackagesImport([string]$TargetsPath) {
 }
 
 $packageRepos = @(
-    'novolis-analyzers', 'novolis-aspire', 'novolis-astro', 'novolis-audio', 'novolis-avalonia', 'novolis-cad', 'novolis-codegen',
+    'novolis-analyzers', 'novolis-aspire', 'novolis-astro', 'novolis-audio', 'novolis-avalonia', 'novolis-3d', 'novolis-cad', 'novolis-codegen',
     'novolis-commands', 'novolis-economy', 'novolis-gaming', 'novolis-install', 'novolis-io', 'novolis-machinelearning', 'novolis-markup',
     'novolis-maui', 'novolis-math', 'novolis-messaging', 'novolis-physics', 'novolis-raylib', 'novolis-rendering',
     'novolis-security', 'novolis-simulation', 'novolis-smoketest', 'novolis-storage',
@@ -109,55 +109,6 @@ foreach ($name in $packageRepos) {
     }
     Remove-WorkflowExtras $repo
     Remove-DuplicateGithubPackagesImport (Join-Path $repo 'Directory.Build.targets')
-}
-
-$dog = Join-Path $Root 'novolis-dogfooding'
-if (Test-Path $dog) {
-    # Dogfooding is consume-only: build/test the smoke solution, never publish NuGets.
-    Write-Host 'Workflows: novolis-dogfooding (smoke, no publish)'
-    $wf = Join-Path $dog '.github/workflows'
-    $dogPr = @"
-name: Pull request
-on:
-  pull_request:
-    branches: [main]
-concurrency:
-  group: pr-`${{ github.workflow }}-`${{ github.ref }}
-  cancel-in-progress: true
-jobs:
-  ci:
-    uses: $Uses/dotnet-pull-request.yml@main
-    secrets: inherit
-    with:
-      solution: Novolis.Dogfooding.slnx
-    permissions:
-      contents: read
-      packages: read
-"@
-    $dogMerge = @"
-name: Merge
-on:
-  push:
-    branches: [main]
-    paths-ignore:
-      - 'docs/**'
-      - '**.md'
-      - 'LICENSE'
-      - '.editorconfig'
-  workflow_dispatch:
-jobs:
-  ci:
-    uses: $Uses/dotnet-pull-request.yml@main
-    secrets: inherit
-    with:
-      solution: Novolis.Dogfooding.slnx
-    permissions:
-      contents: read
-      packages: read
-"@
-    Write-Utf8 (Join-Path $wf 'pull-request.yml') $dogPr
-    Write-Utf8 (Join-Path $wf 'merge.yml') $dogMerge
-    Remove-WorkflowExtras $dog
 }
 
 $templateWf = Join-Path $Root 'novolis-templates/src/Novolis.Templates/content/Novolis.Templates.GitHubSolution/.github/workflows'
