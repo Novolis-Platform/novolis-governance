@@ -5,9 +5,6 @@
 -->
 <Project>
   <ItemGroup>
-    <NovolisPackageProject Include="Frank.WireFish">
-      <ProjectPath>$(NovolisWorkspaceRoot)novolis-wirefish\src\Frank.WireFish\Frank.WireFish.csproj</ProjectPath>
-    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.3D.Import">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-avalonia\src\Novolis.3D.Import\Novolis.3D.Import.csproj</ProjectPath>
     </NovolisPackageProject>
