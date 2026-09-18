@@ -94,7 +94,7 @@ These packables are intentionally without headless unit `ProjectReference` linka
 | `Novolis.Audio.Output.NAudio` | Windows audio device |
 | `Novolis.Audio.Playback` / `.Runtime` / `.Live.Visuals` | Device playback / runtime / live-visual hosts |
 | `Novolis.Audio.Voice.Platform.Maui` / `.Windows` | Platform voice hosts |
-| `Novolis.Audio.Voice.SherpaOnnx` / `.EdgeTts` | Native ONNX / network TTS hosts |
+| `Novolis.Audio.Voice.SherpaOnnx` / `.AzureSpeech` | Native ONNX / Azure network TTS hosts |
 | `Novolis.Avalonia.Mobile.Android` / `.Desktop` | Mobile/desktop UI hosts |
 | `Novolis.MachineLearning.TestSupport` | Shared ML test-support helpers (not product logic) |
 | `Novolis.Raylib` / `.Native` / `.Raygui.Native` / `.Runtime` / `.Raygui` / `.Bindings` | Native window / P/Invoke / runtime hosts |
