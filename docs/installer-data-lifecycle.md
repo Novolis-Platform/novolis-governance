@@ -11,7 +11,7 @@ Required Inno citizenship (enforced by `Novolis.Avalonia.Packaging.Inno` + apps 
 | Elevation | `PrivilegesRequired=lowest` — no admin override path |
 | Install root | `{localappdata}\Programs\Novolis\<App>` — never Program Files |
 | Identity | Stable `AppId` per product across versions and repository moves |
-| Upgrades | `UsePreviousAppDir=yes`, `AllowDowngrades=no` (documented exceptions only) |
+| Upgrades | `UsePreviousAppDir=yes`, `AllowDowngrade=no` (documented exceptions only) |
 | Processes | `CloseApplications=yes` with a filter covering **every** payload executable |
 | Shortcuts | Per-user Start Menu; desktop shortcut opt-in and unchecked by default |
 | Machine scope | No HKLM, services, scheduled tasks, machine-wide env, or privileged shell extensions |
