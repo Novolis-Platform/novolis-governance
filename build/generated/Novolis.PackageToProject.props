@@ -389,6 +389,12 @@
     <NovolisPackageProject Include="Novolis.IO.Watching">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-io\src\Novolis.IO.Watching\Novolis.IO.Watching.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.IO.Workspace">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-storage\src\Novolis.IO.Workspace\Novolis.IO.Workspace.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.IO.Workspace.Testing">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-storage\src\Novolis.IO.Workspace.Testing\Novolis.IO.Workspace.Testing.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Logging.Agent">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-logging\src\Novolis.Logging.Agent\Novolis.Logging.Agent.csproj</ProjectPath>
     </NovolisPackageProject>
@@ -620,6 +626,21 @@
     <NovolisPackageProject Include="Novolis.Snapshots.Zip">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-workspaces\src\Novolis.Snapshots.Zip\Novolis.Snapshots.Zip.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Storage.Abstractions">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-storage\src\Novolis.Storage.Abstractions\Novolis.Storage.Abstractions.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Storage.InMemory">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-storage\src\Novolis.Storage.InMemory\Novolis.Storage.InMemory.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Storage.Json">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-storage\src\Novolis.Storage.Json\Novolis.Storage.Json.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Storage.LiteDb">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-storage\src\Novolis.Storage.LiteDb\Novolis.Storage.LiteDb.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Storage.Sqlite">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-storage\src\Novolis.Storage.Sqlite\Novolis.Storage.Sqlite.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Templates">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-templates\src\Novolis.Templates\Novolis.Templates.csproj</ProjectPath>
     </NovolisPackageProject>
@@ -673,6 +694,36 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Tools.Sqlite.Cli">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-tools\src\Novolis.Tools.Sqlite.Cli\Novolis.Tools.Sqlite.Cli.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Transports.Http">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-transports\src\Novolis.Transports.Http\Novolis.Transports.Http.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Transports.Http.Abstractions">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-transports\src\Novolis.Transports.Http.Abstractions\Novolis.Transports.Http.Abstractions.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Transports.Http.Authentication">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-transports\src\Novolis.Transports.Http.Authentication\Novolis.Transports.Http.Authentication.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Transports.Http.Extensions">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-transports\src\Novolis.Transports.Http.Extensions\Novolis.Transports.Http.Extensions.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Transports.LocalIpc">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-transports\src\Novolis.Transports.LocalIpc\Novolis.Transports.LocalIpc.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Transports.Tcp.Abstractions">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-transports\src\Novolis.Transports.Tcp.Abstractions\Novolis.Transports.Tcp.Abstractions.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Transports.Tcp.Client">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-transports\src\Novolis.Transports.Tcp.Client\Novolis.Transports.Tcp.Client.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Transports.Tcp.Server">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-transports\src\Novolis.Transports.Tcp.Server\Novolis.Transports.Tcp.Server.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Transports.Torrent">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-transports\src\Novolis.Transports.Torrent\Novolis.Transports.Torrent.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Transports.WireFish">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-transports\src\Novolis.Transports.WireFish\Novolis.Transports.WireFish.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Video.Capture.Windows">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-video\src\Novolis.Video.Capture.Windows\Novolis.Video.Capture.Windows.csproj</ProjectPath>
