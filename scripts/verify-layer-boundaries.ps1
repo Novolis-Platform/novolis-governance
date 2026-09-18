@@ -1,7 +1,7 @@
 #Requires -Version 7
 <#
 .SYNOPSIS
-  Fail if Novolis libraries violate Avalonia isolation or (lightweight) upward spine PackageReferences.
+  Fail if Novolis libraries violate Avalonia/MAUI isolation or (lightweight) upward spine PackageReferences.
 
 .DESCRIPTION
   Scans *.csproj under the Novolis workspace (sibling of novolis-governance).
@@ -9,6 +9,10 @@
   NOV2006 (PackageReference form):
     Only projects under novolis-avalonia (Novolis.Avalonia.*) may PackageReference Avalonia / Avalonia.*.
     Product apps (novolis-apps, dogfooding, templates, treffly, experimental app hosts, geopolitics apps) may.
+
+  NOV2010 (PackageReference form):
+    Only Novolis.Maui.* may PackageReference Microsoft.Maui / Microsoft.Maui.*.
+    Exception: Novolis.Audio.Voice.Platform.Maui. Product apps may.
 
   NOV2007 (PackageReference form, spine only):
     Math must not reference Physics/Simulation/Game/Avalonia packages, etc.
@@ -45,8 +49,12 @@ function Get-PackageRefs([string]$csprojPath) {
   }
 }
 
-function Test-IsAvaloniaPackage([string]$id) {
-  return $id -eq 'Avalonia' -or $id.StartsWith('Avalonia.')
+function Test-IsMauiPackage([string]$id) {
+  return $id -eq 'Microsoft.Maui' -or $id.StartsWith('Microsoft.Maui.')
+}
+
+function Test-IsGrandfatheredMauiAdapter([string]$name) {
+  return $name -eq 'Novolis.Audio.Voice.Platform.Maui'
 }
 
 function Get-SpineRank([string]$packageOrProjectName) {
@@ -65,7 +73,7 @@ function Test-IsAppHostPath([string]$fullPath) {
     -or $p -match '\\novolis-templates\\' `
     -or $p -match '\\treffly-app\\' `
     -or $p -match '\\novolis-experimental\\' `
-    -or $p -match '\\artifacts\\'
+    -or $p -match '\\merglyph\\'
 }
 
 $csprojs = Get-ChildItem -LiteralPath $WorkspaceRoot -Recurse -Filter '*.csproj' -File -ErrorAction SilentlyContinue |
@@ -83,10 +91,23 @@ foreach ($proj in $csprojs) {
   $refs = @(Get-PackageRefs $proj.FullName)
   $selfRank = Get-SpineRank $name
   $isAvaloniaLayer = $name -like 'Novolis.Avalonia*'
+  $isMauiLayer = $name -like 'Novolis.Maui*'
 
   foreach ($ref in $refs) {
     if ((Test-IsAvaloniaPackage $ref) -and -not $isAvaloniaLayer) {
       $violations.Add("NOV2006 $($proj.FullName): library '$name' PackageReference '$ref' (Avalonia reserved for Novolis.Avalonia.*)")
+    }
+
+    if ((Test-IsMauiPackage $ref) -and -not $isMauiLayer -and -not (Test-IsGrandfatheredMauiAdapter $name)) {
+      $violations.Add("NOV2010 $($proj.FullName): library '$name' PackageReference '$ref' (MAUI reserved for Novolis.Maui.*)")
+    }
+
+    if ($isMauiLayer -and (Test-IsAvaloniaPackage $ref)) {
+      $violations.Add("NOV2011 $($proj.FullName): '$name' PackageReference '$ref' (MAUI must not take Avalonia)")
+    }
+
+    if ($isAvaloniaLayer -and (Test-IsMauiPackage $ref)) {
+      $violations.Add("NOV2011 $($proj.FullName): '$name' PackageReference '$ref' (Avalonia must not take MAUI)")
     }
 
     $refRank = Get-SpineRank $ref

@@ -90,7 +90,7 @@ function Remove-DuplicateGithubPackagesImport([string]$TargetsPath) {
 $packageRepos = @(
     'novolis-analyzers', 'novolis-aspire', 'novolis-astro', 'novolis-audio', 'novolis-avalonia', 'novolis-cad', 'novolis-codegen',
     'novolis-commands', 'novolis-economy', 'novolis-gaming', 'novolis-install', 'novolis-io', 'novolis-machinelearning', 'novolis-markup',
-    'novolis-math', 'novolis-messaging', 'novolis-physics', 'novolis-raylib', 'novolis-rendering',
+    'novolis-maui', 'novolis-math', 'novolis-messaging', 'novolis-physics', 'novolis-raylib', 'novolis-rendering',
     'novolis-security', 'novolis-simulation', 'novolis-smoketest', 'novolis-storage',
     'novolis-template-dotnet', 'novolis-templates', 'novolis-testing',
     'novolis-transports', 'novolis-video', 'novolis-wirefish', 'novolis-workspaces'

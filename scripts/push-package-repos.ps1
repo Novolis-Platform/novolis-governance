@@ -6,7 +6,7 @@ $repos = @(
     'novolis-math', 'novolis-rendering', 'novolis-raylib',
     'novolis-analyzers', 'novolis-aspire', 'novolis-avalonia', 'novolis-codegen',
     'novolis-commands', 'novolis-gaming', 'novolis-install', 'novolis-machinelearning', 'novolis-markup',
-    'novolis-messaging', 'novolis-physics', 'novolis-security', 'novolis-simulation',
+    'novolis-maui', 'novolis-messaging', 'novolis-physics', 'novolis-security', 'novolis-simulation',
     'novolis-smoketest', 'novolis-storage', 'novolis-template-dotnet', 'novolis-templates',
     'novolis-testing', 'novolis-transports', 'novolis-wirefish'
 )
