@@ -54,13 +54,30 @@ Reusable `dotnet-merge-publish.yml` classifies the push:
 
 Direct pushes to `main` remain supported. Cross-repo “herds” still run in parallel; same-repo re-pushes cancel in-progress merge runs.
 
-### Apps Windows usage
+### Apps product releases (`novolis-apps`)
 
-`novolis-apps` runs Linux CI first; the Windows release job starts only when CI succeeds **and** release-impacting paths changed. Older GitHub Releases are pruned to the newest 5 after a successful release.
+`novolis-apps` does **not** publish installers or APKs on every push to `main`.
 
-Shared Windows glue lives in `novolis-workflows` composites: `install-inno-setup`, `write-sha256sums`, and `ensure-github-release` (create-if-missing + asset upload). App catalog publish stays in `novolis-apps` scripts.
+| Workflow | Behavior |
+|----------|----------|
+| `pull-request.yml` / `merge.yml` | Changed-app matrices from `build/apps.json` (scoped solutions + tests; Android compile only when declared). No packaging. |
+| `release.yml` | Manual `workflow_dispatch`: selected app (or explicit `All`) and optional channel override restricted to that app's `ship` list |
 
-Release tag: `v2026.1.1` (platform line) or `v2026.1.1.{run}` (full version). Pack always uses `YEAR.MAJOR.MINOR` from JSON plus current `github.run_number`.
+Channels (phase one):
+
+| Channel | Artifact | Notes |
+|---------|----------|-------|
+| `windows-inno` | Per-user Inno + portable zip + SHA-256 | Install under `%LocalAppData%\Programs\Novolis\…` |
+| `android-apk` | Signed APK + SHA-256 | Persistent keystore required; monotonic `versionCode` |
+| Linux | — | Local/PR capability only until a named product needs a Linux channel |
+
+Catalog source of truth: `novolis-apps/build/apps.json`. See [apps-repos.md](apps-repos.md) and [installer-data-lifecycle.md](installer-data-lifecycle.md).
+
+Older GitHub Releases are pruned to the newest 5 after a successful release (`scripts/prune-github-releases.ps1`).
+
+Shared Windows glue lives in `novolis-workflows` composites: `install-inno-setup`, `write-sha256sums`, and `ensure-github-release`. App catalog publish stays in `novolis-apps` scripts.
+
+Release tag: `vYEAR.MAJOR.MINOR.BUILD` from `build/version.json` plus `github.run_number`.
 
 ## Permissions
 
@@ -70,7 +87,7 @@ permissions:
   packages: write
 ```
 
-Requires org/repo secret **`NUGET_API_KEY`** for nuget.org release.
+Requires org/repo secret **`NUGET_API_KEY`** for nuget.org library releases. Android APK product releases require persistent `ANDROID_KEYSTORE_*` secrets (no adhoc keys for upgrade-safe channels).
 
 ## Local development
 
