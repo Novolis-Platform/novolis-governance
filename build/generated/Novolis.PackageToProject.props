@@ -545,6 +545,15 @@
     <NovolisPackageProject Include="Novolis.Math.Topology">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-math\src\Novolis.Math.Topology\Novolis.Math.Topology.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Maui.Markdown">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-maui\src\Novolis.Maui.Markdown\Novolis.Maui.Markdown.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Maui.Mermaid">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-maui\src\Novolis.Maui.Mermaid\Novolis.Maui.Mermaid.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Maui.WebView">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-maui\src\Novolis.Maui.WebView\Novolis.Maui.WebView.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Messaging">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-messaging\src\Novolis.Messaging\Novolis.Messaging.csproj</ProjectPath>
     </NovolisPackageProject>
