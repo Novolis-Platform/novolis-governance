@@ -61,7 +61,7 @@ $catalog = @{
     'novolis-install'         = @{ Tag = 'One CLI to install the ecosystem'; Blurb = 'Cross-platform `novolis` installer CLI.'; Desc = 'Cross-platform novolis CLI installer for the Novolis ecosystem.'; Topics = @('dotnet','cli','installer','novolis') }
     'novolis-installer-inno'  = @{ Tag = 'Windows Inno Setup packaging'; Blurb = 'Inno Setup packaging helpers for Novolis Windows installers.'; Desc = 'Inno Setup installer packaging for Novolis Windows desktop apps.'; Topics = @('dotnet','installer','windows','novolis') }
     'novolis-io'              = @{ Tag = 'Git, paths, processes, recovery'; Blurb = 'IO helpers: Git, watching, recovery, processes, and path utilities.'; Desc = 'IO helpers for Novolis — Git, watching, recovery, processes, paths.'; Topics = @('dotnet','io','novolis') }
-    'novolis-logging'         = @{ Tag = 'Logging building blocks'; Blurb = 'Logging helpers shared across Novolis libraries and apps.'; Desc = 'Logging helpers for the Novolis ecosystem.'; Topics = @('dotnet','logging','novolis') }
+    'novolis-logging'         = @{ Tag = 'Logging and diagnostics'; Blurb = 'Logging and durable diagnostics shared across Novolis libraries and apps.'; Desc = 'Logging and diagnostic helpers for the Novolis ecosystem.'; Topics = @('dotnet','logging','diagnostics','novolis') }
     'novolis-machinelearning' = @{ Tag = 'AutoML and neural helpers'; Blurb = 'Machine learning core, AutoML, and neural utilities for Novolis.'; Desc = '.NET machine learning helpers (AutoML, neural) for Novolis.'; Topics = @('dotnet','machine-learning','novolis') }
     'novolis-manuscript'      = @{ Tag = 'Long-form manuscript tooling'; Blurb = 'Manuscript authoring helpers that sit beside Markup and Documents.'; Desc = 'Manuscript authoring libraries for Novolis long-form content.'; Topics = @('dotnet','manuscript','markup','novolis') }
     'novolis-mapping'         = @{ Tag = 'Mapping utilities'; Blurb = 'Mapping helpers for Novolis applications.'; Desc = 'Mapping utilities for the Novolis ecosystem.'; Topics = @('dotnet','mapping','novolis') }
@@ -432,7 +432,7 @@ foreach ($dir in ($repoDirs | Sort-Object Name)) {
     Write-Host "==> $name"
 
     $skipPkgReadmeRepos = @('novolis-apps', 'novolis-dogfooding', 'novolis-experimental', 'novolis-template-dotnet', '.github', 'novolis-governance', 'novolis-workflows', 'novolis-registry')
-    $skipPackageIndexRepos = @('novolis-apps', 'novolis-dogfooding', 'novolis-experimental', 'novolis-template-dotnet', '.github', 'novolis-governance', 'novolis-workflows', 'novolis-registry', 'novolis-logging', 'novolis-mapping', 'novolis-scheduling', 'novolis-wirefish')
+    $skipPackageIndexRepos = @('novolis-apps', 'novolis-dogfooding', 'novolis-experimental', 'novolis-template-dotnet', '.github', 'novolis-governance', 'novolis-workflows', 'novolis-registry', 'novolis-mapping', 'novolis-scheduling', 'novolis-wirefish')
 
     if ($name -notin $skipPkgReadmeRepos) {
         foreach ($csproj in @(Get-ChildItem (Join-Path $dir.FullName 'src') -Recurse -Filter '*.csproj' -EA SilentlyContinue)) {
@@ -470,7 +470,7 @@ foreach ($dir in ($repoDirs | Sort-Object Name)) {
     if ($ApplyGitHubMeta) {
         $ghName = if ($name -eq '.github') { '.github' } else { $name }
         # Skip local-only folders that are not org repos
-        $localOnly = @('novolis-logging', 'novolis-mapping', 'novolis-scheduling', 'novolis-wirefish')
+        $localOnly = @('novolis-mapping', 'novolis-scheduling', 'novolis-wirefish')
         if ($name -in $localOnly) {
             # leave local README upgrades; no remote
         }

@@ -197,6 +197,9 @@
     <NovolisPackageProject Include="Novolis.Avalonia.Controls.Sketch">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-avalonia\src\Novolis.Avalonia.Controls.Sketch\Novolis.Avalonia.Controls.Sketch.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Avalonia.Diagnostics">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-avalonia\src\Novolis.Avalonia.Diagnostics\Novolis.Avalonia.Diagnostics.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Avalonia.Gaming">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-avalonia\src\Novolis.Avalonia.Gaming\Novolis.Avalonia.Gaming.csproj</ProjectPath>
     </NovolisPackageProject>
@@ -445,6 +448,9 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Logging.Core">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-logging\src\Novolis.Logging.Core\Novolis.Logging.Core.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Logging.Diagnostics">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-logging\src\Novolis.Logging.Diagnostics\Novolis.Logging.Diagnostics.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Logging.Faster">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-logging\src\Novolis.Logging.Faster\Novolis.Logging.Faster.csproj</ProjectPath>

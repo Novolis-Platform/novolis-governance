@@ -53,7 +53,7 @@ if (-not (Test-Path -LiteralPath $catalogPath)) {
 }
 $catalog = Get-Content -LiteralPath $catalogPath -Raw | ConvertFrom-Json
 
-$skipLocalOnly = @('novolis-experimental', 'novolis-logging', 'novolis-mapping', 'novolis-scheduling', 'novolis-wirefish')
+$skipLocalOnly = @('novolis-experimental', 'novolis-mapping', 'novolis-scheduling', 'novolis-wirefish')
 
 function Get-RepoMeta([string]$name) {
     $entry = $catalog.$name
