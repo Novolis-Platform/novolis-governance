@@ -11,6 +11,7 @@ Contribution model, package rules, layer boundaries, and maintainer docs.
 
 - Local NuGet folder feeds or cross-repo `ProjectReference` in committed `.csproj` files.
 - Pulling Avalonia into non-`Novolis.Avalonia.*` libraries.
+- Pulling Microsoft.Maui into non-`Novolis.Maui.*` libraries (except `Novolis.Audio.Voice.Platform.Maui`).
 
 ## Topics
 

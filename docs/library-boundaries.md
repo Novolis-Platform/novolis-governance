@@ -24,9 +24,11 @@ Apps
 
 Lower layers **must not** reference higher layers. Same-layer / peer facet refs are fine. **Apps** compose any combination.
 
-**Avalonia isolation:** only `Novolis.Avalonia.*` libraries may take `Avalonia` / `Avalonia.*` package references. Math, Physics, Simulation, Gaming, Economy, Astro, Rendering, Raylib, Agent, Cad, Audio, etc. stay Avalonia-free. Product apps may reference Avalonia directly.
+**Avalonia isolation:** only `Novolis.Avalonia.*` libraries may take `Avalonia` / `Avalonia.*` package references. Math, Physics, Simulation, Gaming, Economy, Astro, Rendering, Raylib, Agent, Cad, Audio, Markup, etc. stay Avalonia-free. Product apps may reference Avalonia directly.
 
-Enforced by `Novolis.Analyzers.StackBoundaries` (`NOV2006`, `NOV2007`) and `scripts/verify-layer-boundaries.ps1`.
+**MAUI isolation:** only `Novolis.Maui.*` libraries may take `Microsoft.Maui.*` package references (orthogonal island, not on the closed spine). Must not take Avalonia; Avalonia must not take MAUI. Product apps (Merglyph) may compose MAUI. Grandfathered adapter: `Novolis.Audio.Voice.Platform.Maui`.
+
+Enforced by `Novolis.Analyzers.StackBoundaries` (`NOV2006`, `NOV2007`, `NOV2010`, `NOV2011`) and `scripts/verify-layer-boundaries.ps1`.
 
 **`novolis-raylib`** remains a separate graphics/input host — orthogonal to the spine (never ↔ Simulation).
 
@@ -41,7 +43,8 @@ Enforced by `Novolis.Analyzers.StackBoundaries` (`NOV2006`, `NOV2007`) and `scri
 | **Simulation** | Orchestration over time (world, systems, clocks, **all cameras**) |
 | **Gaming** | Authoring / shipping glue (`Novolis.Game.*`) — no Avalonia |
 | **Avalonia** | UI controls and hosts (`Novolis.Avalonia.*`) — only layer that may depend on Avalonia UI packages |
-| **Apps** | Product composition in `novolis-apps`; package demos in `novolis-dogfooding` (not under library `apps/`) |
+| **MAUI** | UI controls and hosts (`Novolis.Maui.*`) — only library layer that may depend on Microsoft.Maui (orthogonal to Avalonia) |
+| **Apps** | Product composition in `novolis-apps`; package demos in `novolis-dogfooding`; MAUI hosts such as Merglyph (not under library `apps/`) |
 
 ---
 
@@ -242,6 +245,7 @@ novolis-machinelearning  (Core, Neural.*, AutoMl — building blocks only; no do
 ```text
 novolis-raylib       →  math only (if needed); never → simulation; never → Avalonia
 novolis-rendering    →  math only; never → simulation or raylib; never → Avalonia
+novolis-maui         →  Markup + Microsoft.Maui.*; never → Avalonia; never pull MAUI into Markup/Audio (except Voice.Platform.Maui)
 ```
 
 ```text

@@ -464,11 +464,17 @@
     <NovolisPackageProject Include="Novolis.MachineLearning.Dump">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-machinelearning\src\Novolis.MachineLearning.Dump\Novolis.MachineLearning.Dump.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.MachineLearning.Llm.Abstractions">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-machinelearning\src\Novolis.MachineLearning.Llm.Abstractions\Novolis.MachineLearning.Llm.Abstractions.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.MachineLearning.Neural">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-machinelearning\src\Novolis.MachineLearning.Neural\Novolis.MachineLearning.Neural.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.MachineLearning.Neural.Abstractions">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-machinelearning\src\Novolis.MachineLearning.Neural.Abstractions\Novolis.MachineLearning.Neural.Abstractions.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.MachineLearning.SharpMind">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-machinelearning\src\Novolis.MachineLearning.SharpMind\Novolis.MachineLearning.SharpMind.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Manuscript">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-manuscript\src\Novolis.Manuscript\Novolis.Manuscript.csproj</ProjectPath>
@@ -514,6 +520,9 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Markup.Markdown.Documents">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-markup\src\Novolis.Markup.Markdown.Documents\Novolis.Markup.Markdown.Documents.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Markup.Markdown.Mermaid.Rendering">
+      <ProjectPath>$(NovolisWorkspaceRoot)novolis-markup\src\Novolis.Markup.Markdown.Mermaid.Rendering\Novolis.Markup.Markdown.Mermaid.Rendering.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Markup.Markdown.Rendering">
       <ProjectPath>$(NovolisWorkspaceRoot)novolis-markup\src\Novolis.Markup.Markdown.Rendering\Novolis.Markup.Markdown.Rendering.csproj</ProjectPath>

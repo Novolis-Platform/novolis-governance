@@ -51,7 +51,8 @@ param(
         'novolis-experimental',
         'novolis-dogfooding',
         'novolis-smoketest',
-        'novolis-template-dotnet'
+        'novolis-template-dotnet',
+        'merglyph'
     ),
     
     [Parameter(Mandatory = $false)]
