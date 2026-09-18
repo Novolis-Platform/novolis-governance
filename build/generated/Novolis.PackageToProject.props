@@ -390,10 +390,13 @@
       <ProjectPath>$(NovolisLibraryRoot)\novolis-io\src\Novolis.IO.Watching\Novolis.IO.Watching.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.IO.Workspace">
-      <ProjectPath>$(NovolisLibraryRoot)\novolis-storage\src\Novolis.IO.Workspace\Novolis.IO.Workspace.csproj</ProjectPath>
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-io\src\Novolis.IO.Workspace\Novolis.IO.Workspace.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.IO.Workspace.Abstractions">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-io\src\Novolis.IO.Workspace.Abstractions\Novolis.IO.Workspace.Abstractions.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.IO.Workspace.Testing">
-      <ProjectPath>$(NovolisLibraryRoot)\novolis-storage\src\Novolis.IO.Workspace.Testing\Novolis.IO.Workspace.Testing.csproj</ProjectPath>
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-io\src\Novolis.IO.Workspace.Testing\Novolis.IO.Workspace.Testing.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Logging.Agent">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-logging\src\Novolis.Logging.Agent\Novolis.Logging.Agent.csproj</ProjectPath>
@@ -626,6 +629,9 @@
     <NovolisPackageProject Include="Novolis.Snapshots.Zip">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-workspaces\src\Novolis.Snapshots.Zip\Novolis.Snapshots.Zip.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Solution.Tool">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-tools\src\Novolis.Solution.Tool\Novolis.Solution.Tool.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Storage.Abstractions">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-storage\src\Novolis.Storage.Abstractions\Novolis.Storage.Abstractions.csproj</ProjectPath>
     </NovolisPackageProject>
@@ -739,6 +745,24 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Workspaces.Abstractions">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-workspaces\src\Novolis.Workspaces.Abstractions\Novolis.Workspaces.Abstractions.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Workspaces.DotNet.Abstractions">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-workspaces\src\Novolis.Workspaces.DotNet.Abstractions\Novolis.Workspaces.DotNet.Abstractions.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Workspaces.DotNet.Git">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-workspaces\src\Novolis.Workspaces.DotNet.Git\Novolis.Workspaces.DotNet.Git.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Workspaces.DotNet.Indexing">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-workspaces\src\Novolis.Workspaces.DotNet.Indexing\Novolis.Workspaces.DotNet.Indexing.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Workspaces.DotNet.MSBuild">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-workspaces\src\Novolis.Workspaces.DotNet.MSBuild\Novolis.Workspaces.DotNet.MSBuild.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Workspaces.DotNet.Roslyn">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-workspaces\src\Novolis.Workspaces.DotNet.Roslyn\Novolis.Workspaces.DotNet.Roslyn.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Workspaces.DotNet.Slnx">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-workspaces\src\Novolis.Workspaces.DotNet.Slnx\Novolis.Workspaces.DotNet.Slnx.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Workspaces.FileSystem">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-workspaces\src\Novolis.Workspaces.FileSystem\Novolis.Workspaces.FileSystem.csproj</ProjectPath>
