@@ -49,6 +49,10 @@ function Get-PackageRefs([string]$csprojPath) {
   }
 }
 
+function Test-IsAvaloniaPackage([string]$id) {
+  return $id -eq 'Avalonia' -or $id.StartsWith('Avalonia.')
+}
+
 function Test-IsMauiPackage([string]$id) {
   return $id -eq 'Microsoft.Maui' -or $id.StartsWith('Microsoft.Maui.')
 }
@@ -73,6 +77,7 @@ function Test-IsAppHostPath([string]$fullPath) {
     -or $p -match '\\novolis-templates\\' `
     -or $p -match '\\treffly-app\\' `
     -or $p -match '\\novolis-experimental\\' `
+    -or $p -match '\\artifacts\\' `
     -or $p -match '\\merglyph\\'
 }
 
