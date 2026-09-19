@@ -578,6 +578,9 @@
     <NovolisPackageProject Include="Novolis.Messaging.Coordination.Redis">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-messaging\src\Novolis.Messaging.Coordination.Redis\Novolis.Messaging.Coordination.Redis.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Messaging.SecureText">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-messaging\src\Novolis.Messaging.SecureText\Novolis.Messaging.SecureText.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Messaging.ServiceBus.Abstractions">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-messaging\src\Novolis.Messaging.ServiceBus.Abstractions\Novolis.Messaging.ServiceBus.Abstractions.csproj</ProjectPath>
     </NovolisPackageProject>
@@ -736,6 +739,9 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Security.Secrets">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-security\src\Novolis.Security.Secrets\Novolis.Security.Secrets.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Security.SecureText">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-security\src\Novolis.Security.SecureText\Novolis.Security.SecureText.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Ship.Analysis">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-ship\src\Novolis.Ship.Analysis\Novolis.Ship.Analysis.csproj</ProjectPath>
