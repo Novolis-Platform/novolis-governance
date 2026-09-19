@@ -40,7 +40,7 @@ Local debugging follows the same data rules even when a platform is not in `ship
 | App state | App-private `FilesDir` / cache for tokens, temp files, generated artifacts |
 | Network | Declare `INTERNET` only for implemented features; `usesCleartextTraffic=false` |
 | Backup | Default `allowBackup=false` for credential/token/offline-viewer apps |
-| Identity | Stable `applicationId` + persistent signing key (new key = new app) |
+| Identity | Stable `applicationId` + persistent signing key when available (adhoc keys are for sideload testing; new key = new app) |
 | Versioning | Monotonic `versionCode` derived from release metadata (`NovolisAndroidVersionCode`) |
 
 Permission allowlists, network policy, and signing secret keys are declared per app in `build/apps.json`. Validators fail on undeclared permissions and backup/cleartext violations.

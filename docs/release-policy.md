@@ -84,7 +84,7 @@ Channels (phase one):
 | Channel | Artifact | Notes |
 |---------|----------|-------|
 | `windows-inno` | Per-user Inno + portable zip + SHA-256 | Install under `%LocalAppData%\Programs\Novolis\…` |
-| `android-apk` | Signed APK + SHA-256 | Persistent keystore required; monotonic `versionCode` |
+| `android-apk` | Installable APK + SHA-256 | Persistent keystore preferred; adhoc signing allowed for sideload testing; monotonic `versionCode` |
 | Linux | — | Local/PR capability only until a named product needs a Linux channel |
 
 Catalog source of truth: `novolis-apps/build/apps.json`. See [apps-repos.md](apps-repos.md) and [installer-data-lifecycle.md](installer-data-lifecycle.md).
@@ -130,7 +130,7 @@ permissions:
   packages: write
 ```
 
-Requires org/repo secret **`NUGET_API_KEY`** for nuget.org library releases. Android APK product releases require persistent `ANDROID_KEYSTORE_*` secrets (no adhoc keys for upgrade-safe channels).
+Requires org/repo secret **`NUGET_API_KEY`** for nuget.org library releases. Android APK product releases prefer persistent `ANDROID_KEYSTORE_*` secrets; adhoc keys are allowed for sideload testing and are not upgrade-safe.
 
 ## Local development
 
