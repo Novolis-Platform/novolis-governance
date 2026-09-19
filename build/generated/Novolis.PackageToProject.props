@@ -14,6 +14,24 @@
     <NovolisPackageProject Include="Novolis.Agent.Testing">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-agent\src\Novolis.Agent.Testing\Novolis.Agent.Testing.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Analyzers.AutoMapper">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-analyzers\src\Novolis.Analyzers.AutoMapper\Novolis.Analyzers.AutoMapper.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Analyzers.CodeLength">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-analyzers\src\Novolis.Analyzers.CodeLength\Novolis.Analyzers.CodeLength.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Analyzers.Conventions">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-analyzers\src\Novolis.Analyzers.Conventions\Novolis.Analyzers.Conventions.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Analyzers.Licensing">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-analyzers\src\Novolis.Analyzers.Licensing\Novolis.Analyzers.Licensing.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Analyzers.StackBoundaries">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-analyzers\src\Novolis.Analyzers.StackBoundaries\Novolis.Analyzers.StackBoundaries.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Aspire.Hosting.Signoz">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-aspire\src\Novolis.Aspire.Hosting.Signoz\Novolis.Aspire.Hosting.Signoz.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Astro.Abstractions">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-astro\src\Novolis.Astro.Abstractions\Novolis.Astro.Abstractions.csproj</ProjectPath>
     </NovolisPackageProject>
@@ -260,6 +278,30 @@
     <NovolisPackageProject Include="Novolis.Civics.Simulation">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-civics\src\Novolis.Civics.Simulation\Novolis.Civics.Simulation.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.CodeGen.Bindings">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-codegen\src\Novolis.CodeGen.Bindings\Novolis.CodeGen.Bindings.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.CodeGen.Bindings.Roslyn">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-codegen\src\Novolis.CodeGen.Bindings.Roslyn\Novolis.CodeGen.Bindings.Roslyn.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.CodeGen.Pipeline">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-codegen\src\Novolis.CodeGen.Pipeline\Novolis.CodeGen.Pipeline.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.CodeGen.Reflection">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-codegen\src\Novolis.CodeGen.Reflection\Novolis.CodeGen.Reflection.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.CodeGen.Reflection.ClassDiagram">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-codegen\src\Novolis.CodeGen.Reflection.ClassDiagram\Novolis.CodeGen.Reflection.ClassDiagram.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.CodeGen.Reflection.Dump">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-codegen\src\Novolis.CodeGen.Reflection.Dump\Novolis.CodeGen.Reflection.Dump.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.CodeGen.Xml">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-codegen\src\Novolis.CodeGen.Xml\Novolis.CodeGen.Xml.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.CodeGen.Xsd">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-codegen\src\Novolis.CodeGen.Xsd\Novolis.CodeGen.Xsd.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Commands.Abstractions">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-commands\src\Novolis.Commands.Abstractions\Novolis.Commands.Abstractions.csproj</ProjectPath>
     </NovolisPackageProject>
@@ -416,6 +458,30 @@
     <NovolisPackageProject Include="Novolis.Logging.Transports">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-logging\src\Novolis.Logging.Transports\Novolis.Logging.Transports.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.MachineLearning.Algorithms">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-machinelearning\src\Novolis.MachineLearning.Algorithms\Novolis.MachineLearning.Algorithms.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.MachineLearning.AutoMl">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-machinelearning\src\Novolis.MachineLearning.AutoMl\Novolis.MachineLearning.AutoMl.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.MachineLearning.Core">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-machinelearning\src\Novolis.MachineLearning.Core\Novolis.MachineLearning.Core.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.MachineLearning.Dump">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-machinelearning\src\Novolis.MachineLearning.Dump\Novolis.MachineLearning.Dump.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.MachineLearning.Llm.Abstractions">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-machinelearning\src\Novolis.MachineLearning.Llm.Abstractions\Novolis.MachineLearning.Llm.Abstractions.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.MachineLearning.Neural">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-machinelearning\src\Novolis.MachineLearning.Neural\Novolis.MachineLearning.Neural.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.MachineLearning.Neural.Abstractions">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-machinelearning\src\Novolis.MachineLearning.Neural.Abstractions\Novolis.MachineLearning.Neural.Abstractions.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.MachineLearning.SharpMind">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-machinelearning\src\Novolis.MachineLearning.SharpMind\Novolis.MachineLearning.SharpMind.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Manuscript">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-manuscript\src\Novolis.Manuscript\Novolis.Manuscript.csproj</ProjectPath>
     </NovolisPackageProject>
@@ -473,6 +539,18 @@
     <NovolisPackageProject Include="Novolis.Markup.Mermaid.Rendering">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-markup\src\Novolis.Markup.Mermaid.Rendering\Novolis.Markup.Mermaid.Rendering.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Math.Arrays">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-math\src\Novolis.Math.Arrays\Novolis.Math.Arrays.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Math.Geometry">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-math\src\Novolis.Math.Geometry\Novolis.Math.Geometry.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Math.Measure">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-math\src\Novolis.Math.Measure\Novolis.Math.Measure.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Math.Topology">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-math\src\Novolis.Math.Topology\Novolis.Math.Topology.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Maui.Markdown">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-maui\src\Novolis.Maui.Markdown\Novolis.Maui.Markdown.csproj</ProjectPath>
     </NovolisPackageProject>
@@ -482,11 +560,113 @@
     <NovolisPackageProject Include="Novolis.Maui.WebView">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-maui\src\Novolis.Maui.WebView\Novolis.Maui.WebView.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Messaging">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-messaging\src\Novolis.Messaging\Novolis.Messaging.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Messaging.Abstractions">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-messaging\src\Novolis.Messaging.Abstractions\Novolis.Messaging.Abstractions.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Messaging.Channels">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-messaging\src\Novolis.Messaging.Channels\Novolis.Messaging.Channels.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Messaging.Coordination.Abstractions">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-messaging\src\Novolis.Messaging.Coordination.Abstractions\Novolis.Messaging.Coordination.Abstractions.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Messaging.Coordination.InMemory">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-messaging\src\Novolis.Messaging.Coordination.InMemory\Novolis.Messaging.Coordination.InMemory.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Messaging.Coordination.Redis">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-messaging\src\Novolis.Messaging.Coordination.Redis\Novolis.Messaging.Coordination.Redis.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Messaging.ServiceBus.Abstractions">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-messaging\src\Novolis.Messaging.ServiceBus.Abstractions\Novolis.Messaging.ServiceBus.Abstractions.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Messaging.ServiceBus.Broker.Almost">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-messaging\src\Novolis.Messaging.ServiceBus.Broker.Almost\Novolis.Messaging.ServiceBus.Broker.Almost.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Messaging.ServiceBus.Client">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-messaging\src\Novolis.Messaging.ServiceBus.Client\Novolis.Messaging.ServiceBus.Client.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Messaging.ServiceBus.Primitives">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-messaging\src\Novolis.Messaging.ServiceBus.Primitives\Novolis.Messaging.ServiceBus.Primitives.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.MSBuild.LibraryReference">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-msbuild\src\Novolis.MSBuild.LibraryReference\Novolis.MSBuild.LibraryReference.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Physics">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-physics\src\Novolis.Physics\Novolis.Physics.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Physics.Abstractions">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-physics\src\Novolis.Physics.Abstractions\Novolis.Physics.Abstractions.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Physics.Aerodynamics">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-physics\src\Novolis.Physics.Aerodynamics\Novolis.Physics.Aerodynamics.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Physics.Astro">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-physics\src\Novolis.Physics.Astro\Novolis.Physics.Astro.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Physics.Ballistics">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-physics\src\Novolis.Physics.Ballistics\Novolis.Physics.Ballistics.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Physics.Cloth">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-physics\src\Novolis.Physics.Cloth\Novolis.Physics.Cloth.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Physics.Collision.Simple">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-physics\src\Novolis.Physics.Collision.Simple\Novolis.Physics.Collision.Simple.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Physics.Gravity">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-physics\src\Novolis.Physics.Gravity\Novolis.Physics.Gravity.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Physics.Joints">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-physics\src\Novolis.Physics.Joints\Novolis.Physics.Joints.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Physics.Motion">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-physics\src\Novolis.Physics.Motion\Novolis.Physics.Motion.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Physics.Orbits">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-physics\src\Novolis.Physics.Orbits\Novolis.Physics.Orbits.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Raylib">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-raylib\src\Novolis.Raylib\Novolis.Raylib.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Raylib.Abstractions">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-raylib\src\Novolis.Raylib.Abstractions\Novolis.Raylib.Abstractions.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Raylib.Bindings">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-raylib\src\Novolis.Raylib.Bindings\Novolis.Raylib.Bindings.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Raylib.Capture">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-raylib\src\Novolis.Raylib.Capture\Novolis.Raylib.Capture.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Raylib.Game">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-raylib\src\Novolis.Raylib.Game\Novolis.Raylib.Game.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Raylib.Hosting">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-raylib\src\Novolis.Raylib.Hosting\Novolis.Raylib.Hosting.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Raylib.Input">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-raylib\src\Novolis.Raylib.Input\Novolis.Raylib.Input.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Raylib.Loaders">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-raylib\src\Novolis.Raylib.Loaders\Novolis.Raylib.Loaders.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Raylib.Manifests">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-raylib\codegen\Novolis.Raylib.Manifests\Novolis.Raylib.Manifests.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Raylib.Native">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-raylib\src\Novolis.Raylib.Native\Novolis.Raylib.Native.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Raylib.Raygui">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-raylib\src\Novolis.Raylib.Raygui\Novolis.Raylib.Raygui.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Raylib.Raygui.Native">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-raylib\src\Novolis.Raylib.Raygui.Native\Novolis.Raylib.Raygui.Native.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Raylib.Runtime">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-raylib\src\Novolis.Raylib.Runtime\Novolis.Raylib.Runtime.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Raylib.Testing">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-raylib\src\Novolis.Raylib.Testing\Novolis.Raylib.Testing.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Rendering">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-rendering\src\Novolis.Rendering\Novolis.Rendering.csproj</ProjectPath>
@@ -544,6 +724,18 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Scheduling.Cron">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-scheduling\src\Novolis.Scheduling.Cron\Novolis.Scheduling.Cron.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Security.Encryption">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-security\src\Novolis.Security.Encryption\Novolis.Security.Encryption.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Security.HaveIBeenPwned">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-security\src\Novolis.Security.HaveIBeenPwned\Novolis.Security.HaveIBeenPwned.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Security.PasswordHashing">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-security\src\Novolis.Security.PasswordHashing\Novolis.Security.PasswordHashing.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Security.Secrets">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-security\src\Novolis.Security.Secrets\Novolis.Security.Secrets.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Ship.Analysis">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-ship\src\Novolis.Ship.Analysis\Novolis.Ship.Analysis.csproj</ProjectPath>
@@ -649,6 +841,27 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Templates">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-templates\src\Novolis.Templates\Novolis.Templates.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Testing.Coverage">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-testing\src\Novolis.Testing.Coverage\Novolis.Testing.Coverage.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Testing.Logging">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-testing\src\Novolis.Testing.Logging\Novolis.Testing.Logging.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Testing.ServiceBus">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-testing\src\Novolis.Testing.ServiceBus\Novolis.Testing.ServiceBus.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Testing.TestBases">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-testing\src\Novolis.Testing.TestBases\Novolis.Testing.TestBases.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Testing.Testcontainers">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-testing\src\Novolis.Testing.Testcontainers\Novolis.Testing.Testcontainers.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Testing.TestServer">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-testing\src\Novolis.Testing.TestServer\Novolis.Testing.TestServer.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Testing.TUnit">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-testing\src\Novolis.Testing.TUnit\Novolis.Testing.TUnit.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.ThreeD.Import.Assimp">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-3d\src\Novolis.ThreeD.Import.Assimp\Novolis.ThreeD.Import.Assimp.csproj</ProjectPath>
