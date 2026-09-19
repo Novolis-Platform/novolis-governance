@@ -90,7 +90,6 @@ If project file validation is slow and you've already verified files:
 By default, these repos are excluded:
 - `.github`
 - `novolis-experimental` (local-only; not a GitHub repo — copyrighted IP)
-- `novolis-lab`
 - `novolis-smoketest`
 - `novolis-template-dotnet`
 
@@ -254,7 +253,7 @@ Register-ScheduledTask -TaskName "Novolis-Regenerate-Platform-Solution" -Trigger
 
 ### `-ExcludeRepos`
 **Type**: `[string[]]`  
-**Default**: `.github`, `novolis-experimental`, `novolis-lab`, `novolis-utilities`, `novolis-apps`, `novolis-smoketest`, `novolis-template-dotnet`
+**Default**: `.github`, `novolis-experimental`, `novolis-smoketest`, `novolis-template-dotnet`
 **Example**: 
 ```powershell
 -ExcludeRepos @('novolis-raylib', 'novolis-gaming')

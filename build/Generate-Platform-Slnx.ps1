@@ -3,8 +3,9 @@
     Generates a unified master .slnx file from all domain repositories under the Novolis workspace.
 
 .DESCRIPTION
-    Scans the Novolis workspace root for all .slnx files, parses their project references,
-    and combines them into a single hierarchical master solution file organized by repository.
+    Scans root-level .slnx files from novolis-* repositories in the Novolis workspace,
+    parses their project references, and combines them into a single hierarchical master
+    solution file organized by repository.
     All project paths are adjusted to be relative from the workspace root (canonical
     open/build path). A checked-in copy under novolis-governance/build uses the same
     projects with paths rewritten relative to that folder (..\..\...).
@@ -14,8 +15,7 @@
 
 .PARAMETER ExcludeRepos
     Array of repository names to exclude from the master solution.
-    Defaults to: '.github', 'novolis-experimental' (local-only), 'novolis-lab',
-    'novolis-utilities', 'novolis-apps',
+    Defaults to: '.github', 'novolis-experimental' (local-only),
     'novolis-smoketest', 'novolis-template-dotnet'
 
 .PARAMETER OutputPath
@@ -51,9 +51,6 @@ param(
     [string[]]$ExcludeRepos = @(
         '.github',
         'novolis-experimental',
-        'novolis-lab',
-        'novolis-utilities',
-        'novolis-apps',
         'novolis-smoketest',
         'novolis-template-dotnet',
         'merglyph'
@@ -112,10 +109,9 @@ $stats = @{
 
 Write-Verbose "Phase 1: Discovering repositories..."
 
-# Find all .slnx files
-$slnxFiles = Get-ChildItem -Path $WorkspaceRoot -Filter "*.slnx" -File -Depth 1 | 
-    Where-Object { $_.DirectoryName -ne $WorkspaceRoot } |
-    Sort-Object Name
+# Find root-level .slnx files from Novolis repositories only. This excludes
+# neighboring non-Novolis checkouts such as treffly-app.
+$slnxFiles = Get-ChildItem -Path $WorkspaceRoot -Filter "*.slnx" -File -Depth 1 | Where-Object { $_.DirectoryName -ne $WorkspaceRoot -and $_.Directory.Name -like 'novolis-*' } | Sort-Object Name
 
 if ($slnxFiles.Count -eq 0) {
     throw "No .slnx files found in workspace"
@@ -133,6 +129,13 @@ foreach ($repoGroup in $reposByDirectory) {
     $repoDir = $repoGroup.Name
     $repoName = Split-Path -Leaf $repoDir
     
+    # Defense in depth: the discovery filter above is intentionally repeated here so
+    # only novolis-* repositories can ever be emitted into the platform solution.
+    if ($repoName -notlike 'novolis-*') {
+        Write-Verbose "Excluding non-Novolis repository: $repoName"
+        continue
+    }
+
     # Check if repo is in exclude list
     if ($repoName -in $ExcludeRepos) {
         Write-Verbose "Excluding repository: $repoName"
