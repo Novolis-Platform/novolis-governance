@@ -266,6 +266,18 @@
     <NovolisPackageProject Include="Novolis.Cad.SceneBridge">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-cad\src\Novolis.Cad.SceneBridge\Novolis.Cad.SceneBridge.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Chat.Abstractions">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-chat\src\Novolis.Chat.Abstractions\Novolis.Chat.Abstractions.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Chat.Directory">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-chat\src\Novolis.Chat.Directory\Novolis.Chat.Directory.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Chat.Hosting.AspNetCore">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-chat\src\Novolis.Chat.Hosting.AspNetCore\Novolis.Chat.Hosting.AspNetCore.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Chat.Live">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-chat\src\Novolis.Chat.Live\Novolis.Chat.Live.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Civics.Agents">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-civics\src\Novolis.Civics.Agents\Novolis.Civics.Agents.csproj</ProjectPath>
     </NovolisPackageProject>
@@ -994,6 +1006,9 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Windows.Sessions">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-windows\src\Novolis.Windows.Sessions\Novolis.Windows.Sessions.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.WorkflowEngine">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-workflow-engine\src\Novolis.WorkflowEngine\Novolis.WorkflowEngine.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Workspaces.Abstractions">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-workspaces\src\Novolis.Workspaces.Abstractions\Novolis.Workspaces.Abstractions.csproj</ProjectPath>

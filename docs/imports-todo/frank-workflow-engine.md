@@ -2,6 +2,10 @@
 
 **Source:** `D:\frankrepos\Frank.WorkflowEngine`
 
+**Status:** Extracted into the local `novolis-workflow-engine` repository. The
+packable library and TUnit tests are under `src/` and `tests/`; the deterministic
+host sample is in `d:\novolis\novolis-lab\labs\workflows\WorkflowEngineLab`.
+
 ## What
 
 Single packable library `Frank.WorkflowEngine` + sample app + tests.

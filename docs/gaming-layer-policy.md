@@ -63,5 +63,5 @@ Apps implement `IExternalIdentityLinker` and real auth; platform sees hashed ext
 - [hexgame-authoritative-core.md](architectural-ideals/hexgame-authoritative-core.md) — HexGame-aligned composition; no GameKit / no HexGame NuGet
 - [nuget-only-policy.md](nuget-only-policy.md)
 
-`novolis-workflows` is the org's **reusable GitHub Actions** repo. Backend WorkflowEngine (Cron / Mapping / Messaging) imports target a future **`novolis-workflow-engine`** package repo — do not conflate the two.
+`novolis-workflows` is the org's **reusable GitHub Actions** repo. Backend WorkflowEngine (Cron / Mapping / Messaging) lives in the separate **`novolis-workflow-engine`** package repo — do not conflate the two.
 

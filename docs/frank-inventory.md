@@ -118,6 +118,7 @@ flowchart TB
 | `Frank.WireFish` | `Novolis.Transports.WireFish` | `novolis-transports` |
 | `Frank.Markdown` | `Novolis.Markup.Markdown` | `novolis-markup` |
 | `Frank.Mermaid` | `Novolis.Markup.Mermaid` | `novolis-markup` |
+| `Frank.WorkflowEngine` | `Novolis.WorkflowEngine` | `novolis-workflow-engine` |
 | `Frank.GameEngine.*` (remainder) | *none* | see game policy |
 
 ## Extraction waves
@@ -138,6 +139,7 @@ flowchart TB
 | 12 | `novolis-simulation` | Frank.ML.Domain.Racing (sim) | [wave-12-simulation-racing.md](extraction-briefs/wave-12-simulation-racing.md) |
 | 13 | `novolis-mapping` | Frank.Mapping | [platform-import-plan.md](platform-import-plan.md) — **done** |
 | 7b | `novolis-raylib` | OBJ + Input | `Novolis.Raylib.Loaders`, `.Input` — **done** |
+| 14 | `novolis-workflow-engine` | Frank.WorkflowEngine | `Novolis.WorkflowEngine` — **extracted locally; GPR release pending** |
 | — | `novolis-install` | SimpleInstaller ideas | Rebuild only |
 
 **Pilot:** [extraction-briefs/pilot-channels.md](extraction-briefs/pilot-channels.md)
