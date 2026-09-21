@@ -22,7 +22,7 @@ Full inventory of local Frank repos (2026-05-25) and recommended Novolis disposi
 | `Frank.WireFish` | `novolis-transports` | `Novolis.Transports.WireFish` |
 | `Frank.Markdown` / `Frank.Mermaid` | `novolis-markup` | Wave 10 |
 | `Frank.SimpleInstaller` | `novolis-install` | Rebuild ideas only |
-| `Frank.WorkflowEngine` | `novolis-workflow-engine` | `Novolis.WorkflowEngine` |
+| `Frank.WorkflowEngine` | `novolis-workflow-engine` | `Novolis.WorkflowEngine.*` |
 
 ## Import candidates (documented in this folder)
 

@@ -179,6 +179,9 @@
     <NovolisPackageProject Include="Novolis.Avalonia.Cad.Ship">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-avalonia\src\Novolis.Avalonia.Cad.Ship\Novolis.Avalonia.Cad.Ship.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Avalonia.Chat">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-avalonia\src\Novolis.Avalonia.Chat\Novolis.Avalonia.Chat.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Avalonia.Controls">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-avalonia\src\Novolis.Avalonia.Controls\Novolis.Avalonia.Controls.csproj</ProjectPath>
     </NovolisPackageProject>
@@ -1009,6 +1012,21 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.WorkflowEngine">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-workflow-engine\src\Novolis.WorkflowEngine\Novolis.WorkflowEngine.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.WorkflowEngine.Abstractions">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-workflow-engine\src\Novolis.WorkflowEngine.Abstractions\Novolis.WorkflowEngine.Abstractions.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.WorkflowEngine.Channels">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-workflow-engine\src\Novolis.WorkflowEngine.Channels\Novolis.WorkflowEngine.Channels.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.WorkflowEngine.Hosting">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-workflow-engine\src\Novolis.WorkflowEngine.Hosting\Novolis.WorkflowEngine.Hosting.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.WorkflowEngine.Mapping">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-workflow-engine\src\Novolis.WorkflowEngine.Mapping\Novolis.WorkflowEngine.Mapping.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.WorkflowEngine.Scheduling">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-workflow-engine\src\Novolis.WorkflowEngine.Scheduling\Novolis.WorkflowEngine.Scheduling.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Workspaces.Abstractions">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-workspaces\src\Novolis.Workspaces.Abstractions\Novolis.Workspaces.Abstractions.csproj</ProjectPath>

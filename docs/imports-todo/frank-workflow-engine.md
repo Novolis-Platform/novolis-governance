@@ -2,13 +2,16 @@
 
 **Source:** `D:\frankrepos\Frank.WorkflowEngine`
 
-**Status:** Extracted into the local `novolis-workflow-engine` repository. The
-packable library and TUnit tests are under `src/` and `tests/`; the deterministic
-host sample is in `d:\novolis\novolis-lab\labs\workflows\WorkflowEngineLab`.
+**Status:** Extracted and redesigned in the local `novolis-workflow-engine`
+repository. Six packable components and TUnit tests are under `src/` and
+`tests/`; the deterministic host sample is in
+`d:\novolis\novolis-lab\labs\workflows\WorkflowEngineLab`.
 
 ## What
 
-Single packable library `Frank.WorkflowEngine` + sample app + tests.
+Original shape: one packable library `Frank.WorkflowEngine` + sample app +
+tests. The Novolis shape separates contracts, core execution, hosting, channel
+input, mapping, and cron adapters.
 
 **Frank package dependencies:**
 
@@ -32,7 +35,16 @@ Orchestration layer for multi-step workflows on top of channels, cron, and mappi
 
 ### Target
 
-**New repo:** `novolis-workflow-engine` → `Novolis.WorkflowEngine`
+**New repo:** `novolis-workflow-engine` → `Novolis.WorkflowEngine.*`
+
+Package grain:
+
+- `Novolis.WorkflowEngine.Abstractions` — contracts, context, and results.
+- `Novolis.WorkflowEngine` — named definitions and manual execution.
+- `Novolis.WorkflowEngine.Hosting` — generic-host trigger pump.
+- `Novolis.WorkflowEngine.Channels` — `Novolis.Messaging.Channels` adapter.
+- `Novolis.WorkflowEngine.Mapping` — `Novolis.Mapping` adapter.
+- `Novolis.WorkflowEngine.Scheduling` — `Novolis.Scheduling` cron adapter.
 
 > **Note:** Org repo `novolis-workflows` is **GitHub Actions shared workflows** only. Do not put WorkflowEngine libraries there.
 
@@ -47,12 +59,13 @@ Orchestration layer for multi-step workflows on top of channels, cron, and mappi
 ### Port steps
 
 1. Wait for all three on GPR `2026.1.*`.
-2. Bootstrap `novolis-workflow-engine`; port core library; retarget deps to Novolis packages.
+2. Bootstrap `novolis-workflow-engine`; split contracts, execution, hosting, and
+   source adapters; retarget dependencies to Novolis packages.
 3. Port sample as `novolis-dogfooding` or docs sample (not shipped NuGet).
 4. Rebuild tests with TUnit; no Frank.Testing package refs in production.
 5. Modernize `Microsoft.Extensions.*` to .NET 10 aligned versions.
 
 ## Acceptance
 
-- `Frank.WorkflowEngine` sample runs against Novolis packages only.
+- The WorkflowEngineLab sample runs against Novolis packages only.
 - Documented in registry; frank-inventory updated.

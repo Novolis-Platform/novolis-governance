@@ -118,7 +118,7 @@ flowchart TB
 | `Frank.WireFish` | `Novolis.Transports.WireFish` | `novolis-transports` |
 | `Frank.Markdown` | `Novolis.Markup.Markdown` | `novolis-markup` |
 | `Frank.Mermaid` | `Novolis.Markup.Mermaid` | `novolis-markup` |
-| `Frank.WorkflowEngine` | `Novolis.WorkflowEngine` | `novolis-workflow-engine` |
+| `Frank.WorkflowEngine` | `Novolis.WorkflowEngine.*` (Abstractions, core, Hosting, Channels, Mapping, Scheduling) | `novolis-workflow-engine` |
 | `Frank.GameEngine.*` (remainder) | *none* | see game policy |
 
 ## Extraction waves
