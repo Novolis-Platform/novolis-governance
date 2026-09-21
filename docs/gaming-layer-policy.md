@@ -26,7 +26,9 @@ Live **agent surfaces** (HTTP/SSE/WebSocket/LocalIpc control) live in **`novolis
 
 ## Allowed in `novolis-gaming`
 
-- ASP.NET Core + SignalR in `Novolis.Game.Multiplayer.AspNetCore` only
+- ASP.NET Core + SignalR for game multiplayer and lobby flows in `Novolis.Game.Multiplayer.AspNetCore`
+- Chat conversation hosting is an orthogonal exception in `Novolis.Chat.Hosting.AspNetCore`;
+  it does not belong in `Novolis.Game.Multiplayer.AspNetCore`
 - Procedural authoring (`Novolis.Game.Procedural`) — noise, infinite chunks/tracks, spawn tables; BCL only (feeds Simulation.Voxels height samplers at the **app** layer)
 - Opaque refs (`PlayerRef`, `SessionRef`, `LobbyId`) — no email, legal name, or provider subject strings in public API
 - Same-repo `ProjectReference` between `Novolis.Game.*` facets

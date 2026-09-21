@@ -243,6 +243,8 @@ novolis-machinelearning  (Core, Neural.*, AutoMl — building blocks only; no do
 ```
 
 ```text
+novolis-chat       → SecureText + Game.Identity; Hosting.AspNetCore may use ASP.NET Core/SignalR
+                    no Avalonia, LiveKit, Duende, Raven, or product storage
 novolis-raylib       →  math only (if needed); never → simulation; never → Avalonia
 novolis-rendering    →  math only; never → simulation or raylib; never → Avalonia
 novolis-maui         →  Markup + Microsoft.Maui.*; never → Avalonia; never pull MAUI into Markup/Audio (except Voice.Platform.Maui)
@@ -256,6 +258,7 @@ novolis-cad          →  Math only (Cad.Primitives, Cad.Blueprint, Cad.Evaluati
                          Must not host mesh scene graphs (those are Novolis.3D.*)
 novolis-avalonia     →  Novolis.Avalonia.* UI controls and shells only
                          including Novolis.Avalonia.ThreeD / Cad / Ship.Design
+                         Novolis.Avalonia.Chat binds Chat DTOs; it does not host ChatHub
 novolis-3d           →  Novolis.ThreeD.Scene / Novolis.ThreeD.Import.Assimp
                          (.nov3djson scene graph and Assimp import); no UI or renderer bridge
 ```
