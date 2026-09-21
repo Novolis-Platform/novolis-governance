@@ -920,6 +920,15 @@
     <NovolisPackageProject Include="Novolis.Tools.Sqlite.Cli">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-tools\src\Novolis.Tools.Sqlite.Cli\Novolis.Tools.Sqlite.Cli.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Transports.Datagrams">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-transports\src\Novolis.Transports.Datagrams\Novolis.Transports.Datagrams.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Transports.Discovery">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-transports\src\Novolis.Transports.Discovery\Novolis.Transports.Discovery.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Transports.Framing">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-transports\src\Novolis.Transports.Framing\Novolis.Transports.Framing.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Transports.Http">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-transports\src\Novolis.Transports.Http\Novolis.Transports.Http.csproj</ProjectPath>
     </NovolisPackageProject>
@@ -934,6 +943,9 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Transports.LocalIpc">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-transports\src\Novolis.Transports.LocalIpc\Novolis.Transports.LocalIpc.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Transports.Tailscale">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-transports\src\Novolis.Transports.Tailscale\Novolis.Transports.Tailscale.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Transports.Tcp.Abstractions">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-transports\src\Novolis.Transports.Tcp.Abstractions\Novolis.Transports.Tcp.Abstractions.csproj</ProjectPath>
@@ -950,8 +962,14 @@
     <NovolisPackageProject Include="Novolis.Transports.WireFish">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-transports\src\Novolis.Transports.WireFish\Novolis.Transports.WireFish.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Video.Abstractions">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-video\src\Novolis.Video.Abstractions\Novolis.Video.Abstractions.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Video.Capture.Windows">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-video\src\Novolis.Video.Capture.Windows\Novolis.Video.Capture.Windows.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Video.Codecs.H264">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-video\src\Novolis.Video.Codecs.H264\Novolis.Video.Codecs.H264.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Video.Edit">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-video\src\Novolis.Video.Edit\Novolis.Video.Edit.csproj</ProjectPath>
@@ -961,6 +979,21 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Video.Rtc.Abstractions">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-video\src\Novolis.Video.Rtc.Abstractions\Novolis.Video.Rtc.Abstractions.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Windows.Audio">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-windows\src\Novolis.Windows.Audio\Novolis.Windows.Audio.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Windows.Clipboard">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-windows\src\Novolis.Windows.Clipboard\Novolis.Windows.Clipboard.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Windows.Display">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-windows\src\Novolis.Windows.Display\Novolis.Windows.Display.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Windows.Input">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-windows\src\Novolis.Windows.Input\Novolis.Windows.Input.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Windows.Sessions">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-windows\src\Novolis.Windows.Sessions\Novolis.Windows.Sessions.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Workspaces.Abstractions">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-workspaces\src\Novolis.Workspaces.Abstractions\Novolis.Workspaces.Abstractions.csproj</ProjectPath>
