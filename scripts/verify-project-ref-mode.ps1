@@ -43,6 +43,26 @@ $mapScript = Join-Path $govRoot 'build\Generate-PackageToProjectMap.ps1'
 $mapPath = Join-Path $govRoot 'build\generated\Novolis.PackageToProject.props'
 $excludeRepo = [regex]'workflows|governance|registry|lab|utilities|apps|installer|experimental|smoketest|template-dotnet'
 
+Write-Host "=== LibraryReference targets copy ===" -ForegroundColor Cyan
+$lrSource = Join-Path $WorkspaceRoot 'novolis-msbuild\src\Novolis.MSBuild.LibraryReference\build'
+$lrCopy = Join-Path $govRoot 'build\libraryreference'
+foreach ($name in @('Novolis.MSBuild.LibraryReference.props', 'Novolis.MSBuild.LibraryReference.targets')) {
+    $src = Join-Path $lrSource $name
+    $dst = Join-Path $lrCopy $name
+    if (-not (Test-Path -LiteralPath $src) -or -not (Test-Path -LiteralPath $dst)) {
+        Fail "LibraryReference file missing: $src or $dst"
+        continue
+    }
+    $srcHash = (Get-FileHash -LiteralPath $src -Algorithm SHA256).Hash
+    $dstHash = (Get-FileHash -LiteralPath $dst -Algorithm SHA256).Hash
+    if ($srcHash -ne $dstHash) {
+        Fail "LibraryReference drift: $name in novolis-msbuild does not match novolis-governance/build/libraryreference. Copy the package file over the governance copy."
+    }
+}
+if (-not (Test-Path -LiteralPath (Join-Path $govRoot 'build\Novolis.LibraryReference.targets'))) {
+    Fail 'Missing novolis-governance/build/Novolis.LibraryReference.targets'
+}
+
 Write-Host "=== regenerate map ===" -ForegroundColor Cyan
 & $mapScript -WorkspaceRoot $WorkspaceRoot -OutputPath $mapPath | Out-Null
 
@@ -326,6 +346,31 @@ if (-not $SkipMsBuild) {
         Write-Host "  Expected substitutes: $($expectedIds -join ', ')"
         Write-Host "  Mode ON ProjectReferences: $($projOn.Count)"
         Write-Host "  Mode OFF PackageReferences kept: $($expectedIds -join ', ')"
+    }
+
+    Write-Host "=== LibraryReference expansion smoke ===" -ForegroundColor Cyan
+    $libraryConsumer = Join-Path $WorkspaceRoot 'novolis-workspaces\src\Novolis.Workspaces.Abstractions\Novolis.Workspaces.Abstractions.csproj'
+    $libraryProject = Join-Path $WorkspaceRoot 'novolis-io\src\Novolis.IO.Workspace.Abstractions\Novolis.IO.Workspace.Abstractions.csproj'
+    if ((Test-Path -LiteralPath $libraryConsumer) -and (Test-Path -LiteralPath $libraryProject)) {
+        $lrProj = Get-ItemFullPaths (Get-MsBuildItems -Project $libraryConsumer -ItemName 'ProjectReference' -Properties @{
+                NovolisUseProjectReferences = 'false'
+            })
+        $lrPkg = Get-ItemIdentities (Get-MsBuildItems -Project $libraryConsumer -ItemName 'PackageReference' -Properties @{
+                NovolisUseProjectReferences = 'false'
+            })
+        $libraryFull = [IO.Path]::GetFullPath($libraryProject)
+        if ($lrProj -notcontains $libraryFull) {
+            Fail "LibraryReference: expected ProjectReference to $libraryFull. Got: $($lrProj -join '; ')"
+        }
+        if ($lrPkg -contains 'Novolis.IO.Workspace.Abstractions') {
+            Fail 'LibraryReference: Novolis.IO.Workspace.Abstractions should not remain a PackageReference when the sibling project exists'
+        }
+        else {
+            Write-Host "  Workspaces.Abstractions → IO.Workspace.Abstractions project (mode flag off)"
+        }
+    }
+    else {
+        Write-Host 'SKIP LibraryReference smoke (workspaces or io project missing)' -ForegroundColor Yellow
     }
 }
 

@@ -36,4 +36,8 @@
 
     <PackageReference Remove="@(_NovolisToReplace)" />
   </ItemGroup>
+
+  <!-- After substitution, so a missing LibraryReference sibling stays a package. -->
+  <Import Project="$(MSBuildThisFileDirectory)Novolis.LibraryReference.targets"
+          Condition="Exists('$(MSBuildThisFileDirectory)Novolis.LibraryReference.targets')" />
 </Project>

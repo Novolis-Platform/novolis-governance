@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <!--
+    Expand @(LibraryReference) at evaluation time so NuGet static-graph restore
+    sees the resulting ProjectReference / PackageReference items.
+
+    Must not be a Target: Target-added ProjectReferences are used at build but
+    never restored (NETSDK1004 missing project.assets.json). Evaluation also
+    forbids %(metadata) in Condition (MSB4190); use transforms, Remove, and
+    WithMetadataValue instead.
+
+    Resolution:
+      1. Empty Version → $(LibraryReferenceDefaultVersion).
+      2. Empty ProjectPath: LibraryProjectMap ∩ LibraryReference → stamp ProjectPath.
+      3. File.Exists(ProjectPath) (metadata + WithMetadataValue).
+      4. Exists and not self → ProjectReference (metadata copied).
+      5. Else → PackageReference; CPM: PackageVersion when no central row exists.
+  -->
+
+  <PropertyGroup>
+    <LibraryReferenceEnabled Condition="'$(LibraryReferenceEnabled)' == ''">true</LibraryReferenceEnabled>
+    <LibraryReferenceDefaultVersion Condition="'$(LibraryReferenceDefaultVersion)' == ''">*</LibraryReferenceDefaultVersion>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(LibraryReferenceEnabled)' == 'true' and '@(LibraryReference)' != ''">
+    <LibraryReference Update="@(LibraryReference->WithMetadataValue('Version', ''))">
+      <Version>$(LibraryReferenceDefaultVersion)</Version>
+    </LibraryReference>
+
+    <_NovolisLrNeedMap Include="@(LibraryReference->WithMetadataValue('ProjectPath', ''))" />
+    <_NovolisLrMapUnused Include="@(LibraryProjectMap)" />
+    <_NovolisLrMapUnused Remove="@(_NovolisLrNeedMap)" />
+    <_NovolisLrMapHit Include="@(LibraryProjectMap)" />
+    <_NovolisLrMapHit Remove="@(_NovolisLrMapUnused)" />
+    <LibraryReference Update="@(_NovolisLrMapHit)">
+      <ProjectPath>%(_NovolisLrMapHit.ProjectPath)</ProjectPath>
+    </LibraryReference>
+
+    <LibraryReference Update="@(LibraryReference)">
+      <_NovolisLrExists>$([System.IO.File]::Exists('%(ProjectPath)'))</_NovolisLrExists>
+    </LibraryReference>
+
+    <_NovolisLrAsProject Include="@(LibraryReference->WithMetadataValue('_NovolisLrExists', 'True'))" />
+    <_NovolisLrAsPackage Include="@(LibraryReference->WithMetadataValue('_NovolisLrExists', 'False'))" />
+
+    <ProjectReference Include="@(_NovolisLrAsProject->'%(ProjectPath)')" />
+    <ProjectReference Remove="$(MSBuildProjectFullPath)" />
+  </ItemGroup>
+
+  <!-- ItemGroup Condition so Include is not parsed when inactive (item-level Condition still evaluates Include). -->
+  <ItemGroup Condition="'$(LibraryReferenceEnabled)' == 'true' and '@(_NovolisLrAsPackage)' != '' and '$(ManagePackageVersionsCentrally)' != 'true'">
+    <PackageReference Include="@(_NovolisLrAsPackage)" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(LibraryReferenceEnabled)' == 'true' and '@(_NovolisLrAsPackage)' != '' and '$(ManagePackageVersionsCentrally)' == 'true'">
+    <_NovolisLrNeedPackageVersion Include="@(_NovolisLrAsPackage)" />
+    <_NovolisLrNeedPackageVersion Remove="@(PackageVersion)" />
+    <PackageVersion Include="@(_NovolisLrNeedPackageVersion)" />
+    <_NovolisLrAsPackage Update="@(_NovolisLrAsPackage)">
+      <Version></Version>
+    </_NovolisLrAsPackage>
+    <PackageReference Include="@(_NovolisLrAsPackage)" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(LibraryReferenceEnabled)' == 'true' and '@(LibraryReference)' != ''">
+    <LibraryReference Remove="@(LibraryReference)" />
+    <_NovolisLrNeedMap Remove="@(_NovolisLrNeedMap)" />
+    <_NovolisLrMapUnused Remove="@(_NovolisLrMapUnused)" />
+    <_NovolisLrMapHit Remove="@(_NovolisLrMapHit)" />
+    <_NovolisLrAsProject Remove="@(_NovolisLrAsProject)" />
+    <_NovolisLrAsPackage Remove="@(_NovolisLrAsPackage)" />
+    <_NovolisLrNeedPackageVersion Remove="@(_NovolisLrNeedPackageVersion)" />
+  </ItemGroup>
+</Project>

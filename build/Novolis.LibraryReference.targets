@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <!--
+    Expand LibraryReference after the package map is loaded and after
+    ProjectReference-mode substitution. A missing sibling becomes a
+    PackageReference even when NovolisUseProjectReferences=true.
+
+    Live sources win when novolis-msbuild is checked out. CI clones governance
+    only, and uses the copy under build/libraryreference/. Keep those files
+    identical to the package (verify-project-ref-mode.ps1).
+  -->
+  <PropertyGroup>
+    <LibraryReferenceDefaultVersion Condition="'$(LibraryReferenceDefaultVersion)' == ''">2026.1.*</LibraryReferenceDefaultVersion>
+    <_NovolisLibraryReferenceBuild>$(NovolisWorkspaceRoot)novolis-msbuild\src\Novolis.MSBuild.LibraryReference\build\</_NovolisLibraryReferenceBuild>
+    <_NovolisLibraryReferenceBuild Condition="!Exists('$(_NovolisLibraryReferenceBuild)Novolis.MSBuild.LibraryReference.targets')">$(NovolisWorkspaceRoot)\novolis-msbuild\src\Novolis.MSBuild.LibraryReference\build\</_NovolisLibraryReferenceBuild>
+    <_NovolisLibraryReferenceBuild Condition="!Exists('$(_NovolisLibraryReferenceBuild)Novolis.MSBuild.LibraryReference.targets')">$(MSBuildThisFileDirectory)libraryreference\</_NovolisLibraryReferenceBuild>
+  </PropertyGroup>
+
+  <Import Project="$(_NovolisLibraryReferenceBuild)Novolis.MSBuild.LibraryReference.props"
+          Condition="Exists('$(_NovolisLibraryReferenceBuild)Novolis.MSBuild.LibraryReference.props')" />
+  <Import Project="$(_NovolisLibraryReferenceBuild)Novolis.MSBuild.LibraryReference.targets"
+          Condition="Exists('$(_NovolisLibraryReferenceBuild)Novolis.MSBuild.LibraryReference.targets')" />
+</Project>

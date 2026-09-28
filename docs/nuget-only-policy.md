@@ -4,7 +4,7 @@
 
 **Exception (build-time only):** When building the meta solution `Novolis.Platform` (or with `-p:NovolisUseProjectReferences=true`), MSBuild may substitute existing `Novolis.*` PackageReferences for sibling ProjectReferences. See [platform-project-ref-mode.md](platform-project-ref-mode.md). That does **not** change committed `.csproj` files.
 
-**Allowed committed alternative:** `LibraryReference` from package `Novolis.MSBuild.LibraryReference` (`novolis-msbuild`). It expands at build time to `ProjectReference` when a mapped/explicit `.csproj` exists, otherwise `PackageReference`. Do not commit cross-repo `ProjectReference` or dual Package/Project conditionals — use `LibraryReference` or `PackageReference` only.
+**Allowed committed alternative:** `LibraryReference`. Governance expands it when [`Novolis.Packaging.targets`](../build/Novolis.Packaging.targets) is imported: sibling `.csproj` → `ProjectReference`, otherwise `PackageReference` at `2026.1.*`. Do not commit cross-repo `ProjectReference` or dual Package/Project conditionals. Do not `PackageReference` `Novolis.MSBuild.LibraryReference` inside the forest; that package is for consumers outside the workspace.
 
 Git submodules are allowed as **source checkouts** for `novolis-lab`
 experiments. A lab may record selected library repositories in `.gitmodules`
@@ -21,8 +21,8 @@ Packages.
 | Scope | Reference style |
 |-------|-----------------|
 | Same repository | `ProjectReference` to projects under that repo's `src/`, `codegen/`, or `tests/` |
-| Another Novolis repo (committed) | `PackageReference` + version in `Directory.Packages.props` (`2026.1.*` for GPR), **or** `LibraryReference` (expands at build time; see `novolis-msbuild`) |
-| Another Novolis repo (local meta build) | Same PackageReference in source; MSBuild substitutes via [platform-project-ref-mode.md](platform-project-ref-mode.md) |
+| Another Novolis repo (committed) | `LibraryReference` (governance expands it; version float `2026.1.*`), or `PackageReference` + version in `Directory.Packages.props` (`2026.1.*`) |
+| Another Novolis repo (local meta build) | `LibraryReference` resolves the sibling project with no mode flag. Remaining `PackageReference` items still substitute via [platform-project-ref-mode.md](platform-project-ref-mode.md) |
 | Third-party | `PackageReference` with a **pinned** version on nuget.org |
 
 Float Novolis packages only on the **platform line** (`2026.1.*`). Do **not** use build-line floats such as `2026.1.10.*` or `2026.1.1.*` — those resolve to the latest CI build number and fail restore when that build was never published (publish race / failed merge).

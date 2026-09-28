@@ -70,17 +70,28 @@ pwsh -File novolis-governance/scripts/gpr-health-check.ps1 -SkipRemote
 |------|------|
 | [`Novolis.ProjectReferenceMode.props`](../build/Novolis.ProjectReferenceMode.props) | Trigger + workspace root |
 | [`Novolis.ProjectReferenceMode.targets`](../build/Novolis.ProjectReferenceMode.targets) | Evaluation-time intersect substitution (required for NuGet static-graph restore) |
-| [`Novolis.LibraryReferenceBridge.props`](../build/Novolis.LibraryReferenceBridge.props) | Copy map → `LibraryProjectMap` for optional LibraryReference |
+| [`Novolis.LibraryReferenceBridge.props`](../build/Novolis.LibraryReferenceBridge.props) | Copy map → `LibraryProjectMap` |
+| [`Novolis.LibraryReference.targets`](../build/Novolis.LibraryReference.targets) | Expand `LibraryReference` after the map; default version `2026.1.*` |
 | [`Novolis.Packaging.targets`](../build/Novolis.Packaging.targets) | Imports mode targets (all repos) |
 | [`Generate-PackageToProjectMap.ps1`](../build/Generate-PackageToProjectMap.ps1) | Map generator |
 
 Stack analyzers (`Novolis.StackAnalyzers.props`) stay a separate analyzer `ProjectReference` (no PackageReference in csproj to substitute).
 
-## LibraryReference (optional)
+## LibraryReference
 
-Package [`Novolis.MSBuild.LibraryReference`](../../novolis-msbuild/README.md) provides a committed `LibraryReference` item that expands to project-or-package without enabling ProjectReference mode. Governance copies `@(NovolisPackageProject)` into `@(LibraryProjectMap)` via [`Novolis.LibraryReferenceBridge.props`](../build/Novolis.LibraryReferenceBridge.props) so Novolis PackageIds resolve paths when that package’s targets are imported.
+Every repo that imports [`Novolis.Packaging.targets`](../build/Novolis.Packaging.targets) already expands `LibraryReference`. No per-repo copy of the targets, and no `PackageReference` to `Novolis.MSBuild.LibraryReference` inside the forest (that package is for consumers outside the workspace; its targets are not on disk for the first static-graph restore).
 
-ProjectReference mode remains the supported org-wide workflow until repos adopt `LibraryReference`.
+```xml
+<ItemGroup>
+  <LibraryReference Include="Novolis.Math.Geometry" />
+</ItemGroup>
+```
+
+Governance copies `@(NovolisPackageProject)` into `@(LibraryProjectMap)`, then expands the item: sibling `.csproj` exists → `ProjectReference`; missing → `PackageReference` at `2026.1.*` (`LibraryReferenceDefaultVersion`). This does not depend on `NovolisUseProjectReferences`.
+
+Existing `PackageReference` items still use ProjectReference mode. Leave that mode in place until those items are switched.
+
+The targets under [`build/libraryreference/`](../build/libraryreference/) match the package in `novolis-msbuild`. CI uses the copy because it clones governance and not `novolis-msbuild`. A full workspace uses the live package files. `verify-project-ref-mode.ps1` fails if the two copies drift.
 
 ## Related
 
