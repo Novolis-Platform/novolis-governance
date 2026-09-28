@@ -743,11 +743,26 @@
     <NovolisPackageProject Include="Novolis.Scheduling.Cron">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-scheduling\src\Novolis.Scheduling.Cron\Novolis.Scheduling.Cron.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Security.Cryptography">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-security\src\Novolis.Security.Cryptography\Novolis.Security.Cryptography.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Security.Encryption">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-security\src\Novolis.Security.Encryption\Novolis.Security.Encryption.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Security.HaveIBeenPwned">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-security\src\Novolis.Security.HaveIBeenPwned\Novolis.Security.HaveIBeenPwned.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Security.Idp">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-security\src\Novolis.Security.Idp\Novolis.Security.Idp.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Security.Idp.Abstractions">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-security\src\Novolis.Security.Idp.Abstractions\Novolis.Security.Idp.Abstractions.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Security.Idp.AspNetCore">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-security\src\Novolis.Security.Idp.AspNetCore\Novolis.Security.Idp.AspNetCore.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Security.Idp.Storage">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-security\src\Novolis.Security.Idp.Storage\Novolis.Security.Idp.Storage.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Security.PasswordHashing">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-security\src\Novolis.Security.PasswordHashing\Novolis.Security.PasswordHashing.csproj</ProjectPath>
