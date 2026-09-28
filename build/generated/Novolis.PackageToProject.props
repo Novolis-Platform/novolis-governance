@@ -365,6 +365,9 @@
     <NovolisPackageProject Include="Novolis.Economy.Population">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-economy\src\Novolis.Economy.Population\Novolis.Economy.Population.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Economy.Primitives">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-economy\src\Novolis.Economy.Primitives\Novolis.Economy.Primitives.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Economy.Production">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-economy\src\Novolis.Economy.Production\Novolis.Economy.Production.csproj</ProjectPath>
     </NovolisPackageProject>
