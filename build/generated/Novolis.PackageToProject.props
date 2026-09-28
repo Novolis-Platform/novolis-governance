@@ -206,6 +206,9 @@
     <NovolisPackageProject Include="Novolis.Avalonia.Manuscript">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-avalonia\src\Novolis.Avalonia.Manuscript\Novolis.Avalonia.Manuscript.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Avalonia.Map">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-avalonia\src\Novolis.Avalonia.Map\Novolis.Avalonia.Map.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Avalonia.Markdown">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-avalonia\src\Novolis.Avalonia.Markdown\Novolis.Avalonia.Markdown.csproj</ProjectPath>
     </NovolisPackageProject>
