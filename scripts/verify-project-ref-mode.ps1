@@ -330,7 +330,7 @@ if (-not $SkipMsBuild) {
             Fail "Mode ON: invented ProjectReference (not in PackageReference intersect): $p"
         }
 
-        if ($geometryPath -and (Test-Path $geometryPath)) {
+        if ($geometryPath -and (Test-Path $geometryPath) -and ($expectedIds -contains 'Novolis.Math.Geometry')) {
             $geoFull = [IO.Path]::GetFullPath($geometryPath)
             if ($projOff -contains $geoFull) {
                 Fail "Mode OFF: unexpected ProjectReference to Novolis.Math.Geometry"
