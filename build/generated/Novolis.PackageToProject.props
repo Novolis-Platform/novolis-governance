@@ -368,6 +368,12 @@
     <NovolisPackageProject Include="Novolis.Economy.Markets">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-economy\src\Novolis.Economy.Markets\Novolis.Economy.Markets.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Economy.Models.DeterministicBounded">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-economy\src\Novolis.Economy.Models.DeterministicBounded\Novolis.Economy.Models.DeterministicBounded.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Economy.Models.SmallOpenRegionalTrade">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-economy\src\Novolis.Economy.Models.SmallOpenRegionalTrade\Novolis.Economy.Models.SmallOpenRegionalTrade.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Economy.Population">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-economy\src\Novolis.Economy.Population\Novolis.Economy.Population.csproj</ProjectPath>
     </NovolisPackageProject>
