@@ -26,6 +26,9 @@
     <NovolisPackageProject Include="Novolis.Analyzers.Licensing">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-analyzers\src\Novolis.Analyzers.Licensing\Novolis.Analyzers.Licensing.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Analyzers.OneTypePerFile">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-analyzers\src\Novolis.Analyzers.OneTypePerFile\Novolis.Analyzers.OneTypePerFile.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Analyzers.StackBoundaries">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-analyzers\src\Novolis.Analyzers.StackBoundaries\Novolis.Analyzers.StackBoundaries.csproj</ProjectPath>
     </NovolisPackageProject>
@@ -931,6 +934,9 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Timeline.Presentation">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-workspaces\src\Novolis.Timeline.Presentation\Novolis.Timeline.Presentation.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Tools.Android.Cli">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-tools\src\Novolis.Tools.Android.Cli\Novolis.Tools.Android.Cli.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Tools.Cli">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-tools\src\Novolis.Tools.Cli\Novolis.Tools.Cli.csproj</ProjectPath>

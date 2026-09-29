@@ -8,6 +8,7 @@
     Applies to Novolis.* libraries (not *.Unit / *.Tests) so NOV2006/NOV2007/NOV2008/NOV2009
     and Conventions (NOV2101/NOV2102) fire on Math → Physics → Simulation → Gaming → Avalonia
     spine + Avalonia isolation + naming conventions.
+    Also imports Novolis.OneTypePerFile.props (NOV2201) for every project.
   -->
   <PropertyGroup>
     <_NovolisAnalyzersRoot>$(MSBuildThisFileDirectory)..\..\novolis-analyzers\src</_NovolisAnalyzersRoot>
@@ -31,4 +32,5 @@
       OutputItemType="Analyzer"
       ReferenceOutputAssembly="false" />
   </ItemGroup>
+  <Import Project="$(MSBuildThisFileDirectory)Novolis.OneTypePerFile.props" />
 </Project>

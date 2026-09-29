@@ -1,0 +1,20 @@
+<Project>
+  <!--
+    NOV2201 — one top-level type per C# file, with a fixer for the current document, project, or solution.
+    ProjectReference (not PackageReference) when novolis-analyzers is checked out beside the consumer.
+    Warning only: NOV2201 stays out of TreatWarningsAsErrors so existing files keep building.
+    Opt out: NovolisOneTypePerFile=false.
+  -->
+  <PropertyGroup>
+    <_NovolisOneTypePerFileProject>$(MSBuildThisFileDirectory)..\..\novolis-analyzers\src\Novolis.Analyzers.OneTypePerFile\Novolis.Analyzers.OneTypePerFile.csproj</_NovolisOneTypePerFileProject>
+  </PropertyGroup>
+  <ItemGroup Condition="'$(NovolisOneTypePerFile)' != 'false' AND '$(MSBuildProjectName)' != 'Novolis.Analyzers.OneTypePerFile' AND Exists('$(_NovolisOneTypePerFileProject)')">
+    <ProjectReference
+      Include="$(_NovolisOneTypePerFileProject)"
+      OutputItemType="Analyzer"
+      ReferenceOutputAssembly="false" />
+  </ItemGroup>
+  <PropertyGroup Condition="'$(NovolisOneTypePerFile)' != 'false' AND Exists('$(_NovolisOneTypePerFileProject)')">
+    <WarningsNotAsErrors>$(WarningsNotAsErrors);NOV2201</WarningsNotAsErrors>
+  </PropertyGroup>
+</Project>
