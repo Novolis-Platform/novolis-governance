@@ -347,6 +347,9 @@
     <NovolisPackageProject Include="Novolis.Documents.Skia">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-documents\src\Novolis.Documents.Skia\Novolis.Documents.Skia.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Economy.Abstractions">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-economy\src\Novolis.Economy.Abstractions\Novolis.Economy.Abstractions.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Economy.Accounting">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-economy\src\Novolis.Economy.Accounting\Novolis.Economy.Accounting.csproj</ProjectPath>
     </NovolisPackageProject>
