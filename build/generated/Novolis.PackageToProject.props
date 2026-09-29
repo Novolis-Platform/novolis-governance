@@ -956,6 +956,9 @@
     <NovolisPackageProject Include="Novolis.Tools.Sqlite.Cli">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-tools\src\Novolis.Tools.Sqlite.Cli\Novolis.Tools.Sqlite.Cli.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Transports.Abstractions">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-transports\src\Novolis.Transports.Abstractions\Novolis.Transports.Abstractions.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Transports.Datagrams">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-transports\src\Novolis.Transports.Datagrams\Novolis.Transports.Datagrams.csproj</ProjectPath>
     </NovolisPackageProject>
@@ -980,8 +983,14 @@
     <NovolisPackageProject Include="Novolis.Transports.LocalIpc">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-transports\src\Novolis.Transports.LocalIpc\Novolis.Transports.LocalIpc.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Transports.Quic">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-transports\src\Novolis.Transports.Quic\Novolis.Transports.Quic.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Transports.Tailscale">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-transports\src\Novolis.Transports.Tailscale\Novolis.Transports.Tailscale.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Transports.Tcp">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-transports\src\Novolis.Transports.Tcp\Novolis.Transports.Tcp.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Transports.Tcp.Abstractions">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-transports\src\Novolis.Transports.Tcp.Abstractions\Novolis.Transports.Tcp.Abstractions.csproj</ProjectPath>
@@ -994,6 +1003,9 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Transports.Torrent">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-transports\src\Novolis.Transports.Torrent\Novolis.Transports.Torrent.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Transports.Udp">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-transports\src\Novolis.Transports.Udp\Novolis.Transports.Udp.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Transports.WireFish">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-transports\src\Novolis.Transports.WireFish\Novolis.Transports.WireFish.csproj</ProjectPath>
