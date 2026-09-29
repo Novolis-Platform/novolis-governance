@@ -89,6 +89,16 @@ Channels (phase one):
 
 Catalog source of truth: `novolis-apps/build/apps.json`. See [apps-repos.md](apps-repos.md) and [installer-data-lifecycle.md](installer-data-lifecycle.md).
 
+Google Play delivery is a separate product distribution path rather than a
+`ship` channel. An app opts in with
+`release.googlePlay.enabled=true` in `novolis-apps/build/apps.json`. The
+`novolis-apps/.github/workflows/play-store.yml` workflow starts from an
+existing GitHub Release tag, builds a signed Android App Bundle, and uploads
+it to a selected Play testing or production track. It does not remove or
+replace the GitHub Release APK. Play uploads require a persistent app upload
+key and the `GOOGLE_PLAY_SERVICE_ACCOUNT_JSON` secret in the selected GitHub
+Environment; the adhoc APK fallback is forbidden for Play.
+
 Older GitHub Releases are pruned to the newest 5 after a successful release (`scripts/prune-github-releases.ps1`).
 
 Shared Windows glue lives in `novolis-workflows` composites: `install-inno-setup`, `write-sha256sums`, and `ensure-github-release`. App catalog publish stays in `novolis-apps` scripts.
@@ -130,7 +140,7 @@ permissions:
   packages: write
 ```
 
-Requires org/repo secret **`NUGET_API_KEY`** for nuget.org library releases. Android APK product releases prefer persistent `ANDROID_KEYSTORE_*` secrets; adhoc keys are allowed for sideload testing and are not upgrade-safe.
+Requires org/repo secret **`NUGET_API_KEY`** for nuget.org library releases. Android APK product releases prefer persistent `ANDROID_KEYSTORE_*` secrets; adhoc keys are allowed for sideload testing and are not upgrade-safe. Google Play releases additionally require app-specific upload-key secrets and a Play Console service account with app-level release permissions.
 
 ## Local development
 
