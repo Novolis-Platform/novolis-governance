@@ -1,6 +1,6 @@
 # Repository policy
 
-- **NuGet-only cross-repo dependencies** — no sibling `ProjectReference`; see [nuget-only-policy.md](nuget-only-policy.md). Enforced by `scripts/verify-nuget-only.ps1`.
+- **NuGet-only cross-repo dependencies** — no sibling `ProjectReference`; see [nuget-only-policy.md](nuget-only-policy.md). Enforced by `scripts/verify-nuget-only.ps1` and `scripts/verify-library-reference-usage.ps1`.
 - All .NET library and tool repositories target **.NET 10** (`net10.0`) with SDK **10.0.100** minimum (`global.json` + `Directory.Build.props`).
 - Public by default unless there is a clear reason otherwise.
 - Use [novolis-template-dotnet](https://github.com/Novolis-Platform/novolis-template-dotnet) for package, tool, utility, and lab repos.

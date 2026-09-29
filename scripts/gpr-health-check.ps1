@@ -93,6 +93,7 @@ if (-not $SkipLocal) {
     Invoke-Check -Name 'find-local-nuget-feeds' -ScriptPath (Join-Path $scripts 'find-local-nuget-feeds.ps1')
     Invoke-Check -Name 'find-stale-package-ids' -ScriptPath (Join-Path $scripts 'find-stale-package-ids.ps1')
     Invoke-Check -Name 'verify-nuget-only' -ScriptPath (Join-Path $scripts 'verify-nuget-only.ps1')
+    Invoke-Check -Name 'verify-library-reference-usage' -ScriptPath (Join-Path $scripts 'verify-library-reference-usage.ps1')
     Invoke-Check -Name 'verify-project-ref-mode' -ScriptPath (Join-Path $scripts 'verify-project-ref-mode.ps1') -ArgumentTable @{ SkipBuild = $true }
     Invoke-Check -Name 'verify-layer-boundaries' -ScriptPath (Join-Path $scripts 'verify-layer-boundaries.ps1')
 }

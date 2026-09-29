@@ -21,13 +21,25 @@ Packages.
 | Scope | Reference style |
 |-------|-----------------|
 | Same repository | `ProjectReference` to projects under that repo's `src/`, `codegen/`, or `tests/` |
-| Another Novolis repo (committed) | `LibraryReference` (governance expands it; version float `2026.1.*`), or `PackageReference` + version in `Directory.Packages.props` (`2026.1.*`) |
+| Another Novolis repo (committed) | `LibraryReference` (governance expands it; version float `2026.1.*`) |
 | Another Novolis repo (local meta build) | `LibraryReference` resolves the sibling project with no mode flag. Remaining `PackageReference` items still substitute via [platform-project-ref-mode.md](platform-project-ref-mode.md) |
 | Third-party | `PackageReference` with a **pinned** version on nuget.org |
 
 Float Novolis packages only on the **platform line** (`2026.1.*`). Do **not** use build-line floats such as `2026.1.10.*` or `2026.1.1.*` — those resolve to the latest CI build number and fail restore when that build was never published (publish race / failed merge).
 
 Never publish throwaway versions such as `2026.1.99` or `1.0.0` to GitHub Packages. Under a `2026.1.*` float, `2026.1.99` sorts **above** real CI builds like `2026.1.10.36` and will silently win restore. Delete such versions from the org feed if they appear.
+
+Direct Novolis `PackageReference` is reserved for reviewed exceptions:
+
+- `Novolis.Raylib` and `Novolis.Raylib.Native`, because their packages carry native runtime assets and transitive native build targets.
+- `Novolis.Avalonia.Packaging.Inno`, because its package supplies installer MSBuild targets.
+- The explicit external-host package allowlist in
+  `scripts/verify-library-reference-usage.ps1`, until those hosts opt into
+  governance packaging imports.
+
+`verify-library-reference-usage.ps1` enforces this distinction for governed
+`novolis-*` repositories and the explicitly listed external hosts. A new
+exception must be added deliberately to that script and documented here.
 
 ## GPR maintenance
 
@@ -54,11 +66,13 @@ Full runbook: [gpr-maintenance.md](gpr-maintenance.md).
 
 ```powershell
 pwsh -File D:\novolis\novolis-governance\scripts\verify-nuget-only.ps1
+pwsh -File D:\novolis\novolis-governance\scripts\verify-library-reference-usage.ps1
 pwsh -File D:\novolis\novolis-governance\scripts\verify-project-ref-mode.ps1 -SkipBuild
 pwsh -File D:\novolis\novolis-governance\scripts\verify-banned-packages.ps1
 ```
 
-CI should run `verify-nuget-only.ps1` on every library repo and on
+CI should run `verify-nuget-only.ps1` and
+`verify-library-reference-usage.ps1` on every library repo and on
 `novolis-lab`, `novolis-utilities`, and `novolis-apps`. Banned third-party
 stacks (Markdig, QuestPDF): [markdown-and-pdf-policy.md](markdown-and-pdf-policy.md).
 
@@ -66,7 +80,8 @@ stacks (Markdig, QuestPDF): [markdown-and-pdf-policy.md](markdown-and-pdf-policy
 
 A dependency cleanup is **not complete** until:
 
-1. `verify-nuget-only.ps1` exits 0 across the org checkout.
+1. `verify-nuget-only.ps1` and `verify-library-reference-usage.ps1` exit 0
+   across the org checkout.
 2. Affected libraries are **published** to GitHub Packages (merge to `main` → CI publish).
 3. Consumers **restore and build** using **nuget.org + github** only (`dotnet restore`, `dotnet build`).
 
