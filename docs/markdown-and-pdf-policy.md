@@ -9,6 +9,7 @@
 | Markdown parse + fluent + HTML | `Novolis.Markup.Markdown` (`MarkdownDocument.Parse`, `MarkdownToHtmlConverter`) |
 | Markdown → paged model | `Novolis.Markup.Markdown.Documents` |
 | Prose / book / report PDF | `Novolis.Documents` + `Novolis.Documents.Layout` + `Novolis.Documents.Skia` |
+| Arbitrary PDF reading | `Novolis.Pdf.*` in [novolis-pdf](https://github.com/Novolis-Platform/novolis-pdf). Viewers stay in `Novolis.Maui.PdfViewer` and product hosts. |
 | Themed MD→PDF CLI | `Novolis.Tools.MarkdownPdf` (`novolis-mdpdf`) |
 | Score / freeform drawing PDF | SkiaSharp in the owning library (e.g. `Novolis.Audio.Midi`) — **not** QuestPDF |
 

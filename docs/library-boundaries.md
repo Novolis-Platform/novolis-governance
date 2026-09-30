@@ -256,6 +256,9 @@ novolis-rendering    →  math only; never → simulation or raylib; never → A
 novolis-maui         →  Markup + Microsoft.Maui.*; never → Avalonia; never pull MAUI into Markup/Audio (except Voice.Platform.Maui)
 novolis-3d           →  Math only; renderer-neutral scene documents and asset import
                          no Avalonia, rendering, Raylib, simulation, CAD, or app-host references
+novolis-pdf          →  PDF reading (parse, text, page plans, Skia raster). Math.Geometry only.
+                         never Avalonia or MAUI; hosts compose Novolis.Maui.PdfViewer
+novolis-documents    →  one-column PDF writing. Math.Measure only. never Avalonia or MAUI
 ```
 
 ```text
