@@ -95,12 +95,7 @@ Under a platform float `2026.1.*`, `2026.1.99` sorts **above** `2026.1.10.36` an
 | `2026.1.10.*` / `2026.1.1.*` | No | Build-line float; fails when that build was never published |
 | Exact `2026.1.10.32` | Avoid | Prefer `2026.1.*`; pins hide publish races and rot |
 
-Normalize checkout floats:
-
-```powershell
-pwsh -File novolis-governance/scripts/fix-novolis-platform-floats.ps1
-pwsh -File novolis-governance/scripts/fix-novolis-platform-floats.ps1 -Apply
-```
+Normalize checkout floats by setting `Novolis.*` versions to `2026.1.*` and re-running `find-build-line-floats.cs`. The one-shot rewrite script was retired.
 
 ## Broken dependency versions (float poison)
 

@@ -95,5 +95,4 @@ foreach ($name in $packageRepos) {
 }
 
 & (Join-Path $PSScriptRoot 'apply-pr-merge-release-workflows.ps1')
-& (Join-Path $PSScriptRoot 'migrate-versioning-to-2026.ps1')
 Write-Host 'Done.'
