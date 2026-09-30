@@ -27,20 +27,20 @@ Cross-repo references: floating **`2026.1.1.*`** in `Directory.Packages.props`.
 
 ## Registries
 
-| Registry | Trigger | Version |
-|----------|---------|---------|
-| GitHub Packages | Push to `main` (`merge.yml`) | `2026.1.1.{run}` |
-| nuget.org | GitHub Release published (`release.yml`) | `2026.1.1.{run}` |
+| Registry | Who | Trigger | Version |
+|----------|-----|---------|---------|
+| GitHub Packages and nuget.org | Libraries | Push to `main` (`merge.yml`) | `2026.1.1.{run}` |
+| GitHub Packages and nuget.org | `novolis-tools`, `novolis-analyzers` | GitHub Release published (`release.yml`) | `2026.1.1.{run}` |
 
-Same version rules for both; only the feed differs.
+The same pack is pushed to both feeds in that one run. nuget.org trust is one policy per repository, owned by the NuGet organization **Novolis**, named for the repository, matching GitHub owner `Novolis-Platform` and package glob `Novolis.*`. The workflow file is `merge.yml` for libraries and `release.yml` for tools and analyzers. The short-lived key comes from `NuGet/login` as nuget.org user `frankhaugen`.
 
 ## Workflows
 
 | File | Trigger | Purpose |
 |------|---------|---------|
 | `pull-request.yml` | PR to `main` | Build + test (cancels superseded PR runs) |
-| `merge.yml` | Push to `main` | Build + test; pack/publish to GitHub Packages only when package surface changes |
-| `release.yml` | Release published | Pack, push to nuget.org |
+| `merge.yml` | Push to `main` | Libraries: build + test; pack/publish to both feeds when the package surface changes. Tools and analyzers: build + test only |
+| `release.yml` | Release published | Tools and analyzers: pack and push to both feeds. Other product releases stay on their own host workflows |
 
 ### Executable repositories
 
@@ -49,7 +49,7 @@ implements the domain:
 
 | Repository | Release artifact | Trigger | Installer |
 |------------|------------------|---------|-----------|
-| `novolis-tools` | NuGet `PackAsTool` packages | Merge publishes to GitHub Packages; a published release can push to nuget.org | None |
+| `novolis-tools` | NuGet `PackAsTool` packages | A published release pushes to GitHub Packages and nuget.org. Merge validates only | None |
 | `novolis-utilities` | Selected framework-dependent executable zips and SHA-256 manifest | Manual selected-utility release | None |
 | `novolis-apps` | Selected app channels such as Inno or APK | Manual selected-app release | Product channel only |
 | `novolis-lab` | None | Changed-lab validation only | None |
@@ -77,7 +77,7 @@ Direct pushes to `main` remain supported. Cross-repo “herds” still run in pa
 | Workflow | Behavior |
 |----------|----------|
 | `pull-request.yml` / `merge.yml` | Changed-app matrices from `build/apps.json` (scoped solutions + tests; Android compile only when declared). No packaging. |
-| `release.yml` | Manual `workflow_dispatch`: selected app (or explicit `All`) and optional channel override restricted to that app's `ship` list |
+| `release.yml` | Manual `workflow_dispatch` with no inputs. Every app, every channel declared in `ship`. |
 
 Channels (phase one):
 
@@ -101,7 +101,7 @@ Environment; the adhoc APK fallback is forbidden for Play.
 
 Older GitHub Releases are pruned to the newest 5 after a successful release (`scripts/prune-github-releases.ps1`).
 
-Shared Windows glue lives in `novolis-workflows` composites: `install-inno-setup`, `write-sha256sums`, and `ensure-github-release`. App catalog publish stays in `novolis-apps` scripts.
+Shared host setup and GitHub Release publish live in `novolis-workflows` composites: `prepare-novolis-build`, `publish-built-release`, `install-inno-setup`, `write-sha256sums`, and `ensure-github-release`. App catalog publish stays in `novolis-apps` scripts. Google Play (`upload-google-play-bundle`, `play-store.yml`) and nuget.org (`publish-nuget-org`, `dotnet-release-publish`) are separate until a release grows an explicit input for them.
 
 ### Utility releases (`novolis-utilities`)
 
@@ -125,9 +125,11 @@ packaging, Start Menu registration, an AppId, or an uninstall lifecycle.
 `dotnet tool install`; they never receive an installer or utility zip.
 
 - Changed tool hosts and their package libraries are validated in PR/merge CI.
-- Merge publishes the affected tool packages to GitHub Packages.
-- A published release may push the same version to nuget.org, following the
-  four-segment version policy.
+- Merge does not publish packages.
+- A published release pushes the same packages to GitHub Packages and nuget.org,
+  following the four-segment version policy.
+- `novolis-analyzers` uses that same release publish. Library repositories publish
+  from `merge.yml` instead.
 - Command names and package IDs must remain stable across host moves.
 
 Release tag: `vYEAR.MAJOR.MINOR.BUILD` from `build/version.json` plus `github.run_number`.
@@ -138,9 +140,10 @@ Release tag: `vYEAR.MAJOR.MINOR.BUILD` from `build/version.json` plus `github.ru
 permissions:
   contents: read
   packages: write
+  id-token: write
 ```
 
-Requires org/repo secret **`NUGET_API_KEY`** for nuget.org library releases. Android APK product releases prefer persistent `ANDROID_KEYSTORE_*` secrets; adhoc keys are allowed for sideload testing and are not upgrade-safe. Google Play releases additionally require app-specific upload-key secrets and a Play Console service account with app-level release permissions.
+Library nuget.org pushes use Trusted Publishing (`id-token: write`). Android APK product releases prefer persistent `ANDROID_KEYSTORE_*` secrets; adhoc keys are allowed for sideload testing and are not upgrade-safe. Google Play releases additionally require app-specific upload-key secrets and a Play Console service account with app-level release permissions.
 
 ## Local development
 
