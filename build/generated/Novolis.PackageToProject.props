@@ -596,6 +596,9 @@
     <NovolisPackageProject Include="Novolis.Maui.Mermaid">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-maui\src\Novolis.Maui.Mermaid\Novolis.Maui.Mermaid.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Maui.PdfViewer">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-maui\src\Novolis.Maui.PdfViewer\Novolis.Maui.PdfViewer.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Maui.WebView">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-maui\src\Novolis.Maui.WebView\Novolis.Maui.WebView.csproj</ProjectPath>
     </NovolisPackageProject>
@@ -791,6 +794,12 @@
     <NovolisPackageProject Include="Novolis.Scheduling.Cron">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-scheduling\src\Novolis.Scheduling.Cron\Novolis.Scheduling.Cron.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Security.Authentication">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-security\src\Novolis.Security.Authentication\Novolis.Security.Authentication.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Security.Authentication.Abstractions">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-security\src\Novolis.Security.Authentication.Abstractions\Novolis.Security.Authentication.Abstractions.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Security.Cryptography">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-security\src\Novolis.Security.Cryptography\Novolis.Security.Cryptography.csproj</ProjectPath>
     </NovolisPackageProject>
@@ -800,17 +809,17 @@
     <NovolisPackageProject Include="Novolis.Security.HaveIBeenPwned">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-security\src\Novolis.Security.HaveIBeenPwned\Novolis.Security.HaveIBeenPwned.csproj</ProjectPath>
     </NovolisPackageProject>
-    <NovolisPackageProject Include="Novolis.Security.Idp">
-      <ProjectPath>$(NovolisLibraryRoot)\novolis-security\src\Novolis.Security.Idp\Novolis.Security.Idp.csproj</ProjectPath>
+    <NovolisPackageProject Include="Novolis.Security.OAuth">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-security\src\Novolis.Security.OAuth\Novolis.Security.OAuth.csproj</ProjectPath>
     </NovolisPackageProject>
-    <NovolisPackageProject Include="Novolis.Security.Idp.Abstractions">
-      <ProjectPath>$(NovolisLibraryRoot)\novolis-security\src\Novolis.Security.Idp.Abstractions\Novolis.Security.Idp.Abstractions.csproj</ProjectPath>
+    <NovolisPackageProject Include="Novolis.Security.OAuth.Abstractions">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-security\src\Novolis.Security.OAuth.Abstractions\Novolis.Security.OAuth.Abstractions.csproj</ProjectPath>
     </NovolisPackageProject>
-    <NovolisPackageProject Include="Novolis.Security.Idp.AspNetCore">
-      <ProjectPath>$(NovolisLibraryRoot)\novolis-security\src\Novolis.Security.Idp.AspNetCore\Novolis.Security.Idp.AspNetCore.csproj</ProjectPath>
+    <NovolisPackageProject Include="Novolis.Security.OAuth.AspNetCore">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-security\src\Novolis.Security.OAuth.AspNetCore\Novolis.Security.OAuth.AspNetCore.csproj</ProjectPath>
     </NovolisPackageProject>
-    <NovolisPackageProject Include="Novolis.Security.Idp.Storage">
-      <ProjectPath>$(NovolisLibraryRoot)\novolis-security\src\Novolis.Security.Idp.Storage\Novolis.Security.Idp.Storage.csproj</ProjectPath>
+    <NovolisPackageProject Include="Novolis.Security.OAuth.Storage">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-security\src\Novolis.Security.OAuth.Storage\Novolis.Security.OAuth.Storage.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Security.PasswordHashing">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-security\src\Novolis.Security.PasswordHashing\Novolis.Security.PasswordHashing.csproj</ProjectPath>
@@ -1090,6 +1099,9 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Windows.Input">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-windows\src\Novolis.Windows.Input\Novolis.Windows.Input.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Windows.Pdf">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-windows\src\Novolis.Windows.Pdf\Novolis.Windows.Pdf.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Windows.Sessions">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-windows\src\Novolis.Windows.Sessions\Novolis.Windows.Sessions.csproj</ProjectPath>
