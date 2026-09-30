@@ -48,6 +48,12 @@ MAUI applications consume `Novolis.Maui.GraphicalProfile`. The packages use
 the same role names and values; they remain separate because MAUI and Avalonia
 are isolated UI layers.
 
+Required consumers are every Avalonia or MAUI executable host and every
+Avalonia/MAUI chrome library: product apps, labs, utilities, UI templates,
+and other UI executables. Opt out only with `NovolisGraphicalProfile=false`
+on a non-UI process. Map tiles, sketch ink, star fields, video, and game
+entities may keep local colors.
+
 Avalonia applications call `GraphicalProfile.Install(this)` from their
 `Application` initialization. The package supplies `Ngp.*` resources for
 `ThemeVariant.Light` and `ThemeVariant.Dark`, plus class-based styles.
@@ -112,5 +118,7 @@ site. Repo banners are regenerated from the same JSON:
 dotnet run --project d:\novolis\novolis-tools\src\Novolis.Tools.Docs.Cli\Novolis.Tools.Docs.Cli.csproj --no-launch-profile -- marketing --root d:\novolis --skip-readmes
 ```
 
-The verifier compares generated tokens with the JSON, checks the app
-consumer package map, and requires a banner SVG for every cataloged repo.
+The verifier compares generated tokens with the JSON, checks UI host
+package references and `GraphicalProfile.Install` / `UseGraphicalProfile`
+calls across apps, labs, utilities, templates, and Treffly, and requires a
+banner SVG for every cataloged repo.

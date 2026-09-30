@@ -30,7 +30,9 @@ if (!File.Exists(catalogPath))
 }
 else
 {
-    using var catalog = JsonDocument.Parse(File.ReadAllText(catalogPath));
+    using var catalog = JsonDocument.Parse(
+        File.ReadAllText(catalogPath),
+        new JsonDocumentOptions { CommentHandling = JsonCommentHandling.Skip, AllowTrailingCommas = true });
     foreach (var property in catalog.RootElement.EnumerateObject())
         required.Add(property.Name == ".github" ? "github-org" : property.Name);
 }
@@ -69,21 +71,52 @@ foreach (var stem in required.OrderBy(s => s, StringComparer.OrdinalIgnoreCase))
         failures.Add($"Missing banner: {bannerPath}");
 }
 
-var appsRoot = Path.Combine(root, "novolis-apps", "src");
-if (Directory.Exists(appsRoot))
+var hostRoots = new[]
 {
-    foreach (var project in NovolisWorkspace.EnumerateFiles(appsRoot, "*.csproj"))
+    Path.Combine(root, "novolis-apps", "src"),
+    Path.Combine(root, "novolis-lab", "labs"),
+    Path.Combine(root, "novolis-utilities", "src"),
+    Path.Combine(root, "novolis-templates", "src"),
+    Path.Combine(root, "treffly-app", "clients"),
+};
+foreach (var hostRoot in hostRoots)
+{
+    if (!Directory.Exists(hostRoot))
+        continue;
+    foreach (var project in NovolisWorkspace.EnumerateFiles(hostRoot, "*.csproj"))
     {
+        if (project.Contains($"{Path.DirectorySeparatorChar}submodules{Path.DirectorySeparatorChar}", StringComparison.OrdinalIgnoreCase))
+            continue;
         var text = File.ReadAllText(project);
         if (Regex.IsMatch(text, @"<IsTestProject>\s*true\s*</IsTestProject>"))
             continue;
+        if (Regex.IsMatch(text, @"<NovolisGraphicalProfile>\s*false\s*</NovolisGraphicalProfile>"))
+            continue;
         var isMaui = Regex.IsMatch(text, @"<UseMaui>\s*true\s*</UseMaui>");
-        var isAvalonia = Regex.IsMatch(text, @"<PackageReference\s+Include=""Avalonia");
+        var isAvalonia = Regex.IsMatch(text, @"<(Package|Library)Reference\s+Include=""Avalonia");
         if (!isMaui && !isAvalonia)
             continue;
         var expected = isMaui ? "Novolis.Maui.GraphicalProfile" : "Novolis.Avalonia.GraphicalProfile";
         if (!text.Contains(expected, StringComparison.Ordinal))
             failures.Add($"{project} is missing {expected}.");
+
+        var dir = Path.GetDirectoryName(project);
+        if (string.IsNullOrEmpty(dir))
+            continue;
+        foreach (var source in Directory.EnumerateFiles(dir, "*.cs", SearchOption.AllDirectories))
+        {
+            if (source.Contains($"{Path.DirectorySeparatorChar}bin{Path.DirectorySeparatorChar}", StringComparison.OrdinalIgnoreCase)
+                || source.Contains($"{Path.DirectorySeparatorChar}obj{Path.DirectorySeparatorChar}", StringComparison.OrdinalIgnoreCase))
+                continue;
+            var src = File.ReadAllText(source);
+            if (!Regex.IsMatch(src, @":\s*Application\b"))
+                continue;
+            if (src.Contains("GraphicalProfile.Install", StringComparison.Ordinal)
+                || src.Contains("UseGraphicalProfile", StringComparison.Ordinal)
+                || src.Contains("profileInstaller.Install", StringComparison.Ordinal))
+                continue;
+            failures.Add($"{source} Application does not call GraphicalProfile.Install or UseGraphicalProfile.");
+        }
     }
 }
 
