@@ -800,6 +800,24 @@
     <NovolisPackageProject Include="Novolis.Security.Authentication.Abstractions">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-security\src\Novolis.Security.Authentication.Abstractions\Novolis.Security.Authentication.Abstractions.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Security.Authentication.AspNetCore">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-security\src\Novolis.Security.Authentication.AspNetCore\Novolis.Security.Authentication.AspNetCore.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Security.Authentication.Storage">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-security\src\Novolis.Security.Authentication.Storage\Novolis.Security.Authentication.Storage.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Security.Authorization">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-security\src\Novolis.Security.Authorization\Novolis.Security.Authorization.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Security.Authorization.Abstractions">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-security\src\Novolis.Security.Authorization.Abstractions\Novolis.Security.Authorization.Abstractions.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Security.Authorization.AspNetCore">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-security\src\Novolis.Security.Authorization.AspNetCore\Novolis.Security.Authorization.AspNetCore.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Security.Authorization.Storage">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-security\src\Novolis.Security.Authorization.Storage\Novolis.Security.Authorization.Storage.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Security.Cryptography">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-security\src\Novolis.Security.Cryptography\Novolis.Security.Cryptography.csproj</ProjectPath>
     </NovolisPackageProject>

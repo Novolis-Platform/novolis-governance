@@ -246,8 +246,10 @@ novolis-machinelearning  (Core, Neural.*, AutoMl — building blocks only; no do
 novolis-chat       → SecureText + Game.Identity; Hosting.AspNetCore may use ASP.NET Core/SignalR
                     no Avalonia, LiveKit, Duende, Raven, or product storage
 novolis-security   → PasswordHashing / Encryption / Secrets / Cryptography / WordLists / HaveIBeenPwned / SecureText
-                    Idp.* (limited JWT IDP, ES384). Idp.AspNetCore may use ASP.NET Core.
-                    Credential store is AccountId + hash only — never email/username.
+                    Authentication.* / OAuth.* / Authorization.*
+                    OAuth and Authorization.AspNetCore may use ASP.NET Core.
+                    Credential store is CredentialReference + hash only — never IdentityId, email, or username.
+                    Authorization depends on Authentication.Abstractions only for IdentityId.
                     never Avalonia, Game.Identity, Duende, or OpenIddict
 novolis-raylib       →  math only (if needed); never → simulation; never → Avalonia
 novolis-rendering    →  math only; never → simulation or raylib; never → Avalonia
