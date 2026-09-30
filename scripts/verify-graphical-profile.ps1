@@ -14,6 +14,40 @@ if (-not $?) {
     $failures.Add('Generated graphical profile token sources are stale.')
 }
 
+$githubRoot = Join-Path $WorkspaceRoot '.github'
+$bannerDir = Join-Path $githubRoot 'brand\banners'
+$catalogPath = Join-Path $githubRoot 'site\repo-catalog.json'
+$requiredStems = [System.Collections.Generic.HashSet[string]]::new([StringComparer]::OrdinalIgnoreCase)
+
+if (-not (Test-Path $catalogPath)) {
+    $failures.Add("Missing generated catalog: $catalogPath")
+} else {
+    $catalog = Get-Content -Raw -Path $catalogPath | ConvertFrom-Json
+    foreach ($property in $catalog.psobject.Properties) {
+        $stem = if ($property.Name -eq '.github') { 'github-org' } else { $property.Name }
+        [void]$requiredStems.Add($stem)
+    }
+}
+
+try {
+    $repos = gh repo list Novolis-Platform --limit 200 --json name,isArchived,visibility 2>$null | ConvertFrom-Json
+    foreach ($repo in @($repos)) {
+        if ($repo.isArchived) { continue }
+        if ($repo.visibility -and $repo.visibility -ne 'PUBLIC') { continue }
+        $stem = if ($repo.name -eq '.github') { 'github-org' } else { $repo.name }
+        [void]$requiredStems.Add($stem)
+    }
+} catch {
+    Write-Host 'verify-graphical-profile: skipped live org repo list (gh unavailable).'
+}
+
+foreach ($stem in ($requiredStems | Sort-Object)) {
+    $bannerPath = Join-Path $bannerDir "$stem.svg"
+    if (-not (Test-Path $bannerPath)) {
+        $failures.Add("Missing banner: $bannerPath")
+    }
+}
+
 if (Test-Path $appsRoot) {
     foreach ($project in Get-ChildItem -Path (Join-Path $appsRoot 'src') -Filter '*.csproj' -Recurse) {
         $text = Get-Content -Raw -Path $project.FullName

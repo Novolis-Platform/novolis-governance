@@ -11,12 +11,15 @@
   When set, updates GitHub repository description + topics via `gh`.
 .PARAMETER SkipBanners
   Skip regenerating SVG banners under brand/banners/.
+.PARAMETER SkipReadmes
+  Write banners and repo-catalog.json only; do not rewrite sibling repository READMEs.
 #>
 param(
     [string] $WorkspaceRoot = '',
     [string] $GitHubBrandRoot = '',
     [switch] $ApplyGitHubMeta,
-    [switch] $SkipBanners
+    [switch] $SkipBanners,
+    [switch] $SkipReadmes
 )
 
 $ErrorActionPreference = 'Stop'
@@ -32,6 +35,8 @@ if (-not $GitHubBrandRoot) {
 $GitHubBrandRoot = (Resolve-Path $GitHubBrandRoot).Path
 $bannerDir = Join-Path $GitHubBrandRoot 'brand\banners'
 New-Item -ItemType Directory -Force -Path $bannerDir | Out-Null
+$profilePath = Join-Path $governanceRoot 'build\graphical-profile\profile.json'
+$profile = Get-Content -Raw -Path $profilePath | ConvertFrom-Json
 
 $org = 'Novolis-Platform'
 $brandLogoUrl = "https://raw.githubusercontent.com/$org/.github/main/brand/logo-brand-transparent.svg"
@@ -49,6 +54,7 @@ $catalog = @{
     'novolis-audio'           = @{ Tag = 'SFX, voice, and live music'; Blurb = 'Cross-platform audio: miniaudio SFX, TTS voice stacks, and live music runtime.'; Desc = 'Cross-platform .NET audio — miniaudio SFX, TTS/voice, and live music.'; Topics = @('dotnet','audio','tts','miniaudio','novolis') }
     'novolis-avalonia'        = @{ Tag = 'UI chrome for the platform'; Blurb = 'Avalonia controls and shells for CAD, gaming, agents, video, and mobile.'; Desc = 'Avalonia UI libraries for Novolis apps (CAD, gaming, agents, video, mobile).'; Topics = @('dotnet','avalonia','ui','novolis') }
     'novolis-3d'              = @{ Tag = 'Renderer-neutral ThreeD domain'; Blurb = 'Scene documents and Assimp asset import over Novolis.Math.Geometry.'; Desc = 'Renderer-neutral ThreeD scene and asset packages for Novolis.'; Topics = @('dotnet','3d','geometry','assets','novolis') }
+    'novolis-chat'            = @{ Tag = 'Realtime chat contracts'; Blurb = 'Directory, live session, and transport-facing chat abstractions for Novolis hosts.'; Desc = 'Realtime chat contracts and live-session helpers for Novolis hosts.'; Topics = @('dotnet','chat','realtime','novolis') }
     'novolis-cad'             = @{ Tag = 'CAD interchange without UI'; Blurb = 'Avalonia-free CAD primitives and interchange (.cadjson / .cadphys).'; Desc = 'CAD interchange primitives (.cadjson / .cadphys) — Avalonia-free DTOs for Novolis.'; Topics = @('dotnet','cad','novolis') }
     'novolis-civics'          = @{ Tag = 'Civic agents and firm bridges'; Blurb = 'Civics agents, core ledgers, and economy bridges for polity sims.'; Desc = 'Civics simulation libraries for Novolis — agents, core, and economy bridges.'; Topics = @('dotnet','simulation','civics','novolis') }
     'novolis-codegen'         = @{ Tag = 'Bindings pipelines that scale'; Blurb = 'Codegen pipeline, reflection, and binding generators used across the platform.'; Desc = 'Code generation pipelines and binding generators for Novolis native stacks.'; Topics = @('dotnet','codegen','novolis') }
@@ -90,6 +96,8 @@ $catalog = @{
     'novolis-transports'      = @{ Tag = 'HTTP, IPC, torrents, and more'; Blurb = 'Transport libraries: HTTP, local IPC, torrent, and related adapters.'; Desc = 'Transport libraries for Novolis — HTTP, local IPC, torrent, and more.'; Topics = @('dotnet','networking','novolis') }
     'novolis-video'           = @{ Tag = 'RTC mesh and movie edit core'; Blurb = 'Realtime video RTC contracts/mesh, Windows capture, and storyboard edit core.'; Desc = 'Realtime video for Novolis — RTC mesh, Windows capture, storyboard edit.'; Topics = @('dotnet','webrtc','video','novolis') }
     'novolis-wirefish'        = @{ Tag = 'Wire inspection tooling'; Blurb = 'Wire/protocol inspection helpers for Novolis debugging.'; Desc = 'Wire inspection tooling for the Novolis ecosystem.'; Topics = @('dotnet','networking','novolis') }
+    'novolis-windows'         = @{ Tag = 'Windows host capabilities'; Blurb = 'Windows-only helpers for audio, clipboard, display, and related host surfaces.'; Desc = 'Windows capability libraries for Novolis hosts.'; Topics = @('dotnet','windows','novolis') }
+    'novolis-workflow-engine' = @{ Tag = 'Workflow runtime'; Blurb = 'Abstractions and channel-backed workflow execution for Novolis services.'; Desc = 'Workflow engine libraries for Novolis — abstractions, channels, and runtime.'; Topics = @('dotnet','workflow','novolis') }
     'novolis-workflows'       = @{ Tag = 'Reusable GitHub Actions'; Blurb = 'Reusable CI workflows for build, pack, and release across Novolis repos.'; Desc = 'Reusable GitHub Actions workflows for Novolis build, pack, and release.'; Topics = @('github-actions','ci','novolis') }
     'novolis-workspaces'      = @{ Tag = 'Snapshots and timelines'; Blurb = 'Workspace, snapshot, and timeline libraries for editor and studio apps.'; Desc = 'Workspace, snapshot, and timeline libraries for Novolis studio apps.'; Topics = @('dotnet','workspaces','novolis') }
     'novolis-xsd'             = @{ Tag = 'XSD and schema tooling'; Blurb = 'XML schema helpers used by Novolis codegen and interchange formats.'; Desc = 'XSD / XML schema tooling for Novolis libraries and codegen.'; Topics = @('dotnet','xml','xsd','novolis') }
@@ -111,7 +119,8 @@ function Export-RepoCatalogJson {
     $json = $ordered | ConvertTo-Json -Depth 6
     $dir = Split-Path $OutPath -Parent
     if ($dir) { New-Item -ItemType Directory -Force -Path $dir | Out-Null }
-    Set-Content -Path $OutPath -Value ($json.TrimEnd() + "`n") -Encoding utf8NoBOM
+    $header = "// Generated by Upgrade-RepoMarketingReadmes.ps1 — do not hand-edit.`n"
+    Set-Content -Path $OutPath -Value ($header + $json.TrimEnd() + "`n") -Encoding utf8NoBOM
 }
 
 function Get-XmlText([xml]$xml, [string]$name) {
@@ -125,36 +134,34 @@ function Get-XmlText([xml]$xml, [string]$name) {
 }
 
 function New-BannerSvg {
-    param([string]$RepoName, [string]$Tagline, [string]$OutPath)
+    param(
+        [string]$RepoName,
+        [string]$Tagline,
+        [string]$OutPath,
+        [Parameter(Mandatory)]
+        $Profile
+    )
     $title = $RepoName -replace '^novolis-', ''
     if ($title -eq '.github') { $title = 'platform' }
     $escTag = [System.Security.SecurityElement]::Escape($Tagline)
     $escTitle = [System.Security.SecurityElement]::Escape($title)
+    $canvas = [string]$Profile.roles.background.dark
+    $accent = [string]$Profile.roles.accent.dark
+    $accentFill = [string]$Profile.roles.accentFill.dark
+    $text = [string]$Profile.roles.text.dark
+    $muted = [string]$Profile.roles.muted.dark
+    $font = [string]$Profile.typography.fontFamily
+    $eyebrowSize = [int]$Profile.typography.pageTitleSize
+    $eyebrowTracking = [string]$Profile.typography.wordmarkTracking
+    $eyebrowWeight = [string]$Profile.typography.eyebrowWeight
     $svg = @"
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 320" width="1200" height="320" role="img" aria-label="Novolis $escTitle">
-  <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="320" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#05070d"/>
-      <stop offset="0.55" stop-color="#0a1530"/>
-      <stop offset="1" stop-color="#121028"/>
-    </linearGradient>
-    <linearGradient id="accent" x1="0" y1="0" x2="1200" y2="0" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#2fdfff"/>
-      <stop offset="0.5" stop-color="#4d86ff"/>
-      <stop offset="1" stop-color="#b246ff"/>
-    </linearGradient>
-    <linearGradient id="glow" x1="900" y1="40" x2="1180" y2="280" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#2fdfff" stop-opacity="0.35"/>
-      <stop offset="1" stop-color="#8f37ff" stop-opacity="0"/>
-    </linearGradient>
-  </defs>
-  <rect width="1200" height="320" fill="url(#bg)"/>
-  <circle cx="1080" cy="60" r="160" fill="url(#glow)"/>
-  <rect x="0" y="0" width="1200" height="4" fill="url(#accent)"/>
-  <text x="56" y="118" fill="#e8f4ff" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif" font-size="28" font-weight="600" letter-spacing="6">NOVOLIS</text>
-  <text x="56" y="188" fill="#ffffff" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif" font-size="64" font-weight="700">$escTitle</text>
-  <text x="56" y="248" fill="#9eb6d4" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif" font-size="26">$escTag</text>
-  <rect x="56" y="280" width="180" height="4" rx="2" fill="url(#accent)"/>
+  <rect width="1200" height="320" fill="$canvas"/>
+  <rect x="0" y="0" width="1200" height="4" fill="$accent"/>
+  <text x="56" y="118" fill="$accent" font-family="$font" font-size="$eyebrowSize" font-weight="$eyebrowWeight" letter-spacing="$eyebrowTracking">NOVOLIS</text>
+  <text x="56" y="188" fill="$text" font-family="$font" font-size="64" font-weight="700">$escTitle</text>
+  <text x="56" y="248" fill="$muted" font-family="$font" font-size="26">$escTag</text>
+  <rect x="56" y="280" width="180" height="4" rx="2" fill="$accentFill"/>
 </svg>
 "@
     Set-Content -Path $OutPath -Value $svg -Encoding utf8NoBOM
@@ -403,7 +410,7 @@ function Sync-PackageIndex {
 if (-not $SkipBanners) {
     foreach ($key in $catalog.Keys) {
         $name = if ($key -eq '.github') { 'github-org' } else { $key }
-        New-BannerSvg -RepoName $key -Tagline $catalog[$key].Tag -OutPath (Join-Path $bannerDir "$name.svg")
+        New-BannerSvg -RepoName $key -Tagline $catalog[$key].Tag -OutPath (Join-Path $bannerDir "$name.svg") -Profile $profile
     }
     Write-Host "Wrote banners to $bannerDir"
 }
@@ -411,6 +418,11 @@ if (-not $SkipBanners) {
 $catalogJson = Join-Path $GitHubBrandRoot 'site\repo-catalog.json'
 Export-RepoCatalogJson -Catalog $catalog -OutPath $catalogJson
 Write-Host "Wrote docs catalog $catalogJson"
+
+if ($SkipReadmes) {
+    Write-Host "SkipReadmes: banners and catalog only."
+    return
+}
 
 # --- Repos ---
 $repoDirs = @(Get-ChildItem $WorkspaceRoot -Directory | Where-Object {

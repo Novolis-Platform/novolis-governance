@@ -95,6 +95,13 @@ pwsh -File d:\novolis\novolis-governance\scripts\Export-GraphicalProfile.ps1
 pwsh -File d:\novolis\novolis-governance\scripts\verify-graphical-profile.ps1
 ```
 
-The exporter updates the generated token source in both library repositories.
-The verifier compares generated tokens with the JSON and checks the app
-consumer package map.
+The exporter updates the generated token source in both library repositories
+and writes `d:\novolis\.github\site\assets\profile.css` for the portfolio docs
+site. Repo banners are regenerated from the same JSON:
+
+```powershell
+pwsh -File d:\novolis\novolis-governance\scripts\Upgrade-RepoMarketingReadmes.ps1 -SkipReadmes
+```
+
+The verifier compares generated tokens with the JSON, checks the app
+consumer package map, and requires a banner SVG for every cataloged repo.
