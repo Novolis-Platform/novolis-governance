@@ -4,8 +4,8 @@ Novolis uses two feeds:
 
 | When | Feed | Workflow |
 |------|------|----------|
-| Every merge to `main` | [GitHub Packages](https://github.com/orgs/Novolis-Platform/packages) | `merge.yml` → `dotnet-merge-publish.yml` |
-| GitHub Release published | [nuget.org](https://www.nuget.org/) | `release.yml` → `dotnet-release-publish.yml` |
+| Merge to `main` when the package surface changes | [GitHub Packages](https://github.com/orgs/Novolis-Platform/packages) and [nuget.org](https://www.nuget.org/) | `merge.yml` → `dotnet-merge-publish.yml` |
+| GitHub Release published | GitHub Packages, and the packages attached to that release | `release.yml` → `dotnet-release-publish.yml` |
 
 PRs only build and test (`pull-request.yml`).
 
@@ -29,12 +29,9 @@ Publishing on merge uses `GITHUB_TOKEN` (`packages: write`) for packages in that
 
 See [github-packages-org-settings.md](./github-packages-org-settings.md) for org defaults.
 
-## nuget.org releases
+## nuget.org
 
-1. Add org or repo secret **`NUGET_API_KEY`** (nuget.org API key with push rights for the package IDs).
-2. Publish a GitHub Release with tag `v{major}.{minor}.{patch}` (optional `v` prefix stripped).
-
-The release workflow packs at that version, pushes to nuget.org (`--skip-duplicate`), and attaches `.nupkg` / `.snupkg` to the release with `gh release upload`.
+Library `merge.yml` pushes to nuget.org with Trusted Publishing (`NuGet/login`, user `frankhaugen`, `id-token: write`). `release.yml` does not push nuget.org. It packs, pushes to GitHub Packages, and attaches `.nupkg` / `.snupkg` to the GitHub Release.
 
 ## Consuming packages
 

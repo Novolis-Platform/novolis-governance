@@ -99,7 +99,7 @@ The delivery surfaces follow the same separation:
 - GitHub Packages carries continuous `2026.1.*` package builds.
 - GitHub Releases carries installable products, Android bundles, and other
   deliberate artifacts.
-- A GitHub Release promotes eligible packages to nuget.org.
+- Library merges promote packages to nuget.org. A GitHub Release does not.
 
 ## Updating the profile
 
