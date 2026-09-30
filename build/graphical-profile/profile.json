@@ -1,36 +1,55 @@
 {
   "schemaVersion": 1,
   "profileId": "novolis-graphical-profile",
-  "source": "Merglyph MAUI chrome",
+  "source": ".github/brand/logo-icon.svg",
+  "markStops": [
+    "#2FDFFF",
+    "#35D8FF",
+    "#16CFFF",
+    "#12C7FF",
+    "#0BA8FF",
+    "#2AA5FF",
+    "#0997FF",
+    "#2F8CFF",
+    "#237CFF",
+    "#4D86FF",
+    "#0677D9",
+    "#6138D9",
+    "#7A42FF",
+    "#8F37FF",
+    "#9C42FF",
+    "#9B60FF",
+    "#B246FF"
+  ],
   "roles": {
     "background": {
-      "dark": "#080D1C",
-      "light": "#F5F7FC",
-      "usage": "Application canvas"
+      "dark": "#010D18",
+      "light": "#F4FDFF",
+      "usage": "Application canvas; shade of #0677D9 and tint of #2FDFFF"
     },
     "surface": {
-      "dark": "#111B31",
-      "light": "#FFFFFF",
+      "dark": "#051730",
+      "light": "#FBFEFF",
       "usage": "Cards, fields, and resting navigation"
     },
     "raised": {
-      "dark": "#172440",
-      "light": "#EEF3FF",
+      "dark": "#072041",
+      "light": "#EEF8FF",
       "usage": "Selected navigation, secondary rows, and mark well"
     },
     "border": {
-      "dark": "#263A60",
-      "light": "#D7E0F0",
+      "dark": "#093D6F",
+      "light": "#D0E9FF",
       "usage": "Structural one-pixel strokes"
     },
     "text": {
-      "dark": "#F4F7FF",
-      "light": "#17213A",
+      "dark": "#E6FBFF",
+      "light": "#0E346C",
       "usage": "Primary text and titles"
     },
     "muted": {
-      "dark": "#9AAECD",
-      "light": "#5B6B86",
+      "dark": "#2AA5FF",
+      "light": "#0677D9",
       "usage": "Supporting copy, metadata, and captions"
     },
     "accent": {
@@ -39,38 +58,38 @@
       "usage": "Eyebrows, focus, selected navigation, and identity"
     },
     "accentFill": {
-      "dark": "#258BFF",
-      "light": "#258BFF",
+      "dark": "#237CFF",
+      "light": "#237CFF",
       "usage": "Open, navigate, and secondary primary actions"
     },
     "onAccentFill": {
-      "dark": "#FFFFFF",
-      "light": "#FFFFFF",
-      "usage": "Text on accentFill"
+      "dark": "#EFFDFF",
+      "light": "#EFFDFF",
+      "usage": "Text on accentFill; tint of #2FDFFF"
     },
     "action": {
-      "dark": "#914BFF",
-      "light": "#914BFF",
+      "dark": "#8F37FF",
+      "light": "#8F37FF",
       "usage": "The one commit action on a view"
     },
     "onAction": {
-      "dark": "#FFFFFF",
-      "light": "#FFFFFF",
-      "usage": "Text on action"
+      "dark": "#EFFDFF",
+      "light": "#EFFDFF",
+      "usage": "Text on action; tint of #2FDFFF"
     },
     "actionSoft": {
-      "dark": "#167C88",
-      "light": "#167C88",
+      "dark": "#0BA8FF",
+      "light": "#0BA8FF",
       "usage": "Informational chips and private/local status"
     },
     "warning": {
-      "dark": "#F0C56A",
-      "light": "#8A5A12",
+      "dark": "#35D8FF",
+      "light": "#0677D9",
       "usage": "Validation and degraded state copy"
     },
     "danger": {
-      "dark": "#FF8D8D",
-      "light": "#C43545",
+      "dark": "#B246FF",
+      "light": "#6138D9",
       "usage": "Failure and destructive state copy"
     }
   },

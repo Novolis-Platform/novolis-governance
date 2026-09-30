@@ -7,17 +7,26 @@ and projected into the Avalonia and MAUI UI libraries.
 
 ## Source of truth
 
-Merglyph is the visual source. The profile keeps its dark and light palette:
+The mark in [`.github/brand/logo-icon.svg`](../../.github/brand/logo-icon.svg)
+is the only color source. Every chrome role is either a stop from that SVG
+or a shade/tint of those same cyan–blue–purple hues. The mark has no navy,
+teal, gold, red, or neutral gray; those hues stay out of the profile.
 
-- navy canvas: `#080D1C` / `#F5F7FC`
-- cyan identity and focus: `#2FDFFF`
-- blue navigation and open: `#258BFF`
-- purple commit action: `#914BFF`
-- teal informational status: `#167C88`
+Identity stops, used as-is:
 
-Warning and danger roles are the only additions required for general product
-surfaces. Product content may retain its own colors for maps, drawings,
-documents, video, data visualization, and game-world entities.
+- cyan identity and focus: `#2FDFFF` (`mark-cyan`)
+- blue navigation and open: `#237CFF` (`mark-left`)
+- purple commit action: `#8F37FF` (`mark-right`)
+- sky informational status: `#0BA8FF` (`mark-left-stem`)
+- warning: `#35D8FF` / `#0677D9` (star cyan / left-stem deep)
+- danger: `#B246FF` / `#6138D9` (lower magenta / right-stem deep)
+
+Canvas, surface, border, and type are nuances of `#0677D9`, `#2FDFFF`,
+`#0997FF`, `#4D86FF`, and `#6138D9`. On-fill type is a high tint of `#2FDFFF`,
+not an outside white.
+
+Product content may retain its own colors for maps, drawings, documents,
+video, data visualization, and game-world entities.
 
 The profile is a visual grammar, not a theme dump:
 
