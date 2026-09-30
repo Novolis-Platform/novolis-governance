@@ -65,14 +65,14 @@ Full runbook: [gpr-maintenance.md](gpr-maintenance.md).
 ## Validation (required before merge)
 
 ```powershell
-pwsh -File D:\novolis\novolis-governance\scripts\verify-nuget-only.ps1
-pwsh -File D:\novolis\novolis-governance\scripts\verify-library-reference-usage.ps1
-pwsh -File D:\novolis\novolis-governance\scripts\verify-project-ref-mode.ps1 -SkipBuild
-pwsh -File D:\novolis\novolis-governance\scripts\verify-banned-packages.ps1
+dotnet run --file d:\novolis\novolis-governance\scripts\verify-nuget-only.cs
+dotnet run --file d:\novolis\novolis-governance\scripts\verify-library-reference-usage.cs
+dotnet run --project d:\novolis\novolis-tools\src\Novolis.Solution.Tool\Novolis.Solution.Tool.csproj --no-launch-profile -- verify --root d:\novolis
+dotnet run --file d:\novolis\novolis-governance\scripts\verify-banned-packages.cs
 ```
 
-CI should run `verify-nuget-only.ps1` and
-`verify-library-reference-usage.ps1` on every library repo and on
+CI should run `verify-nuget-only.cs` and
+`verify-library-reference-usage.cs` on every library repo and on
 `novolis-lab`, `novolis-utilities`, and `novolis-apps`. Banned third-party
 stacks (Markdig, QuestPDF): [markdown-and-pdf-policy.md](markdown-and-pdf-policy.md).
 

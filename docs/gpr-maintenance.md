@@ -15,7 +15,7 @@ pwsh -File novolis-governance/scripts/gpr-health-check.ps1 -SkipRemote
 pwsh -File novolis-governance/scripts/gpr-health-check.ps1 -CheckBrokenDeps
 
 # Inventory table (latest version, repo link, junk flags)
-pwsh -File novolis-governance/scripts/gpr-package-overview.ps1
+dotnet run --file d:\novolis\novolis-governance\scripts\gpr-package-overview.cs
 ```
 
 Requires `gh` authenticated with `read:packages` (delete needs `delete:packages` / org admin).
@@ -33,10 +33,9 @@ Requires `gh` authenticated with `read:packages` (delete needs `delete:packages`
 | [`find-build-line-floats.ps1`](../scripts/find-build-line-floats.ps1) | Scan `Directory.Packages.props` for `2026.1.N.*` floats | 1 if found |
 | [`find-local-nuget-feeds.ps1`](../scripts/find-local-nuget-feeds.ps1) | Scan `nuget.config` for `novolis-local` / folder feeds | 1 if found |
 | [`find-stale-package-ids.ps1`](../scripts/find-stale-package-ids.ps1) | Scan for renamed ids (`Host.NAudio`, `Live.Repl`, …) | 1 if found |
-| [`fix-novolis-platform-floats.ps1`](../scripts/fix-novolis-platform-floats.ps1) | Rewrite build-line floats (and optional pins) to `2026.1.*` | 0 |
-| [`verify-nuget-only.ps1`](../scripts/verify-nuget-only.ps1) | Cross-repo `ProjectReference` / sibling-src hacks in committed `.csproj` | 1 if found |
-| [`verify-layer-boundaries.ps1`](../scripts/verify-layer-boundaries.ps1) | Avalonia isolation + Math→…→Avalonia upward `PackageReference` scan | 1 if found |
-| [`verify-project-ref-mode.ps1`](../scripts/verify-project-ref-mode.ps1) | Package→project map + intersect-only MSBuild smoke | 1 if map/substitution wrong |
+| [`verify-nuget-only.cs`](../scripts/verify-nuget-only.cs) | Cross-repo `ProjectReference` / sibling-src hacks in committed `.csproj` | 1 if found |
+| [`verify-layer-boundaries.cs`](../scripts/verify-layer-boundaries.cs) | Avalonia isolation + Math→…→Avalonia upward `PackageReference` scan | 1 if found |
+| `novolis-solution verify` | Package→project map + LibraryReference copy-drift | 1 if map/copy is wrong |
 | [`set-org-nuget-packages-public.ps1`](../scripts/set-org-nuget-packages-public.ps1) | List package visibility (public via UI only) | 1 if any private |
 | [`configure-gpr-user-nuget.ps1`](../scripts/configure-gpr-user-nuget.ps1) | Local restore credentials | 0 |
 

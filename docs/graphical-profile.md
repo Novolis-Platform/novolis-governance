@@ -100,8 +100,8 @@ The delivery surfaces follow the same separation:
 Edit `profile.json`, run:
 
 ```powershell
-pwsh -File d:\novolis\novolis-governance\scripts\Export-GraphicalProfile.ps1
-pwsh -File d:\novolis\novolis-governance\scripts\verify-graphical-profile.ps1
+dotnet run --file d:\novolis\novolis-governance\scripts\Export-GraphicalProfile.cs
+dotnet run --file d:\novolis\novolis-governance\scripts\verify-graphical-profile.cs
 ```
 
 The exporter updates the generated token source in both library repositories
@@ -109,7 +109,7 @@ and writes `d:\novolis\.github\site\assets\profile.css` for the portfolio docs
 site. Repo banners are regenerated from the same JSON:
 
 ```powershell
-pwsh -File d:\novolis\novolis-governance\scripts\Upgrade-RepoMarketingReadmes.ps1 -SkipReadmes
+dotnet run --project d:\novolis\novolis-tools\src\Novolis.Tools.Docs.Cli\Novolis.Tools.Docs.Cli.csproj --no-launch-profile -- marketing --root d:\novolis --skip-readmes
 ```
 
 The verifier compares generated tokens with the JSON, checks the app

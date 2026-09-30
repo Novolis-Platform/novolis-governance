@@ -16,6 +16,9 @@ novolis-coverage list --platform
 # Analyze an existing Cobertura (library API; no test run)
 novolis-coverage gaps --cobertura d:\novolis\coverage\report\Cobertura.xml --target 95 --write d:\novolis\coverage\GAPS.md
 
+# Static test-host / assembly linkage gaps (no test run)
+novolis-coverage test-gaps --no-fail --out d:\novolis\artifacts\test-gaps
+
 # One markdown file: Platform.slnx Cobertura fan-in (parallel), caller's cwd or --out
 novolis-coverage crap --fail-above -1
 novolis-coverage crap --out d:\novolis\CRAP.md --coverage-dir d:\novolis\coverage
@@ -73,7 +76,7 @@ Do **not** pass `--nologo` to `dotnet test` under MTP — it is treated as an un
 ## Test gaps (no coverage run needed)
 
 ```powershell
-pwsh -File d:\novolis\novolis-governance\scripts\get-test-gap-report.ps1 -FailOnGaps:`$false
+dotnet run --project d:\novolis\novolis-tools\src\Novolis.Tools.Coverage.Cli\Novolis.Tools.Coverage.Cli.csproj --no-launch-profile -- test-gaps --no-fail
 ```
 
 Reports:

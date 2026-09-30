@@ -29,9 +29,9 @@ Committed `.csproj` files stay PackageReference-only. Per-repo solutions and CI 
 ## Regenerate map + meta solution
 
 ```powershell
-pwsh -File novolis-governance/build/Generate-Platform-Slnx.ps1
-# or map only:
-pwsh -File novolis-governance/build/Generate-PackageToProjectMap.ps1
+dotnet run --project d:\novolis\novolis-tools\src\Novolis.Solution.Tool\Novolis.Solution.Tool.csproj --no-launch-profile -- generate --root d:\novolis
+# or the thin PowerShell front door:
+pwsh -File d:\novolis\novolis-governance\build\Generate-Platform-Slnx.ps1
 ```
 
 Outputs:
@@ -57,12 +57,12 @@ dotnet build path/to/Consumer.csproj -p:NovolisUseProjectReferences=true -p:Novo
 ## Verify
 
 ```powershell
-pwsh -File novolis-governance/scripts/verify-project-ref-mode.ps1
-pwsh -File novolis-governance/scripts/verify-nuget-only.ps1
-pwsh -File novolis-governance/scripts/gpr-health-check.ps1 -SkipRemote
+dotnet run --project d:\novolis\novolis-tools\src\Novolis.Solution.Tool\Novolis.Solution.Tool.csproj --no-launch-profile -- verify --root d:\novolis
+dotnet run --file d:\novolis\novolis-governance\scripts\verify-nuget-only.cs
+pwsh -File d:\novolis\novolis-governance\scripts\gpr-health-check.ps1 -SkipRemote
 ```
 
-`verify-project-ref-mode.ps1` checks map completeness, static intersect dry-run, and MSBuild smoke (PackageReference ∩ map only).
+`novolis-solution verify` checks map completeness and LibraryReference copy-drift.
 
 ## Implementation files
 
@@ -73,7 +73,7 @@ pwsh -File novolis-governance/scripts/gpr-health-check.ps1 -SkipRemote
 | [`Novolis.LibraryReferenceBridge.props`](../build/Novolis.LibraryReferenceBridge.props) | Copy map → `LibraryProjectMap` |
 | [`Novolis.LibraryReference.targets`](../build/Novolis.LibraryReference.targets) | Expand `LibraryReference` after the map; default version `2026.1.*` |
 | [`Novolis.Packaging.targets`](../build/Novolis.Packaging.targets) | Imports mode targets (all repos) |
-| [`Generate-PackageToProjectMap.ps1`](../build/Generate-PackageToProjectMap.ps1) | Map generator |
+| `Novolis.Workspaces.DotNet.Slnx` + `novolis-solution generate` | Map + meta-solution generator |
 
 Stack analyzers (`Novolis.StackAnalyzers.props`) stay a separate analyzer `ProjectReference` (no PackageReference in csproj to substitute).
 
