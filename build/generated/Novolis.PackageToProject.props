@@ -586,6 +586,12 @@
     <NovolisPackageProject Include="Novolis.Math.Topology">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-math\src\Novolis.Math.Topology\Novolis.Math.Topology.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Maui.Agent">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-maui\src\Novolis.Maui.Agent\Novolis.Maui.Agent.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Maui.Agent.Protocol">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-maui\src\Novolis.Maui.Agent.Protocol\Novolis.Maui.Agent.Protocol.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Maui.GraphicalProfile">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-maui\src\Novolis.Maui.GraphicalProfile\Novolis.Maui.GraphicalProfile.csproj</ProjectPath>
     </NovolisPackageProject>
@@ -951,6 +957,9 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Templates">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-templates\src\Novolis.Templates\Novolis.Templates.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Testing.Appium">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-testing\src\Novolis.Testing.Appium\Novolis.Testing.Appium.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Testing.Coverage">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-testing\src\Novolis.Testing.Coverage\Novolis.Testing.Coverage.csproj</ProjectPath>
