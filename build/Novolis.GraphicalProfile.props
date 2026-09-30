@@ -1,0 +1,22 @@
+<Project>
+  <!--
+    The product UI contract is opt-out only for non-UI processes. Avalonia
+    and MAUI application projects must carry the matching profile package so
+    the shared visual baseline cannot silently disappear from a new host.
+  -->
+  <PropertyGroup>
+    <NovolisGraphicalProfile Condition="'$(NovolisGraphicalProfile)' == ''">true</NovolisGraphicalProfile>
+  </PropertyGroup>
+
+  <Target
+    Name="VerifyNovolisGraphicalProfileReference"
+    BeforeTargets="ResolveReferences"
+    Condition="'$(NovolisGraphicalProfile)' != 'false' and '$(IsTestProject)' != 'true'">
+    <Error
+      Condition="'$(UseMaui)' == 'true' and !$([System.String]::Copy('@(LibraryReference)').Contains('Novolis.Maui.GraphicalProfile'))"
+      Text="MAUI UI projects must reference Novolis.Maui.GraphicalProfile through LibraryReference." />
+    <Error
+      Condition="'$(UseMaui)' != 'true' and $([System.String]::Copy('@(PackageReference)').Contains('Avalonia')) and !$([System.String]::Copy('@(LibraryReference)').Contains('Novolis.Avalonia.GraphicalProfile'))"
+      Text="Avalonia UI projects must reference Novolis.Avalonia.GraphicalProfile through LibraryReference." />
+  </Target>
+</Project>

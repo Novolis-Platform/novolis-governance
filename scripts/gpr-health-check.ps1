@@ -96,6 +96,7 @@ if (-not $SkipLocal) {
     Invoke-Check -Name 'verify-library-reference-usage' -ScriptPath (Join-Path $scripts 'verify-library-reference-usage.ps1')
     Invoke-Check -Name 'verify-project-ref-mode' -ScriptPath (Join-Path $scripts 'verify-project-ref-mode.ps1') -ArgumentTable @{ SkipBuild = $true }
     Invoke-Check -Name 'verify-layer-boundaries' -ScriptPath (Join-Path $scripts 'verify-layer-boundaries.ps1')
+    Invoke-Check -Name 'verify-graphical-profile' -ScriptPath (Join-Path $scripts 'verify-graphical-profile.ps1')
 }
 
 Write-Host ''

@@ -200,6 +200,9 @@
     <NovolisPackageProject Include="Novolis.Avalonia.Git">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-avalonia\src\Novolis.Avalonia.Git\Novolis.Avalonia.Git.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Avalonia.GraphicalProfile">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-avalonia\src\Novolis.Avalonia.GraphicalProfile\Novolis.Avalonia.GraphicalProfile.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Avalonia.Layout">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-avalonia\src\Novolis.Avalonia.Layout\Novolis.Avalonia.Layout.csproj</ProjectPath>
     </NovolisPackageProject>
@@ -584,6 +587,9 @@
     <NovolisPackageProject Include="Novolis.Math.Topology">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-math\src\Novolis.Math.Topology\Novolis.Math.Topology.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Maui.GraphicalProfile">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-maui\src\Novolis.Maui.GraphicalProfile\Novolis.Maui.GraphicalProfile.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Maui.Markdown">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-maui\src\Novolis.Maui.Markdown\Novolis.Maui.Markdown.csproj</ProjectPath>
     </NovolisPackageProject>
@@ -628,6 +634,30 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.MSBuild.LibraryReference">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-msbuild\src\Novolis.MSBuild.LibraryReference\Novolis.MSBuild.LibraryReference.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Pdf.Abstractions">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-pdf\src\Novolis.Pdf.Abstractions\Novolis.Pdf.Abstractions.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Pdf.Core">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-pdf\src\Novolis.Pdf.Core\Novolis.Pdf.Core.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Pdf.Documents">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-pdf\src\Novolis.Pdf.Documents\Novolis.Pdf.Documents.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Pdf.Parsing">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-pdf\src\Novolis.Pdf.Parsing\Novolis.Pdf.Parsing.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Pdf.Platform">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-pdf\src\Novolis.Pdf.Platform\Novolis.Pdf.Platform.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Pdf.Rendering">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-pdf\src\Novolis.Pdf.Rendering\Novolis.Pdf.Rendering.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Pdf.Rendering.Skia">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-pdf\src\Novolis.Pdf.Rendering.Skia\Novolis.Pdf.Rendering.Skia.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Pdf.Text">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-pdf\src\Novolis.Pdf.Text\Novolis.Pdf.Text.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Physics">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-physics\src\Novolis.Physics\Novolis.Physics.csproj</ProjectPath>
@@ -940,6 +970,12 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Tools.Cli">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-tools\src\Novolis.Tools.Cli\Novolis.Tools.Cli.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Tools.CodeLayout">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-tools\src\Novolis.Tools.CodeLayout\Novolis.Tools.CodeLayout.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Tools.CodeLayout.Cli">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-tools\src\Novolis.Tools.CodeLayout.Cli\Novolis.Tools.CodeLayout.Cli.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Tools.Coverage">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-tools\src\Novolis.Tools.Coverage\Novolis.Tools.Coverage.csproj</ProjectPath>

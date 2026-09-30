@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "profileId": "novolis-graphical-profile",
+  "source": "Merglyph MAUI chrome",
+  "roles": {
+    "background": {
+      "dark": "#080D1C",
+      "light": "#F5F7FC",
+      "usage": "Application canvas"
+    },
+    "surface": {
+      "dark": "#111B31",
+      "light": "#FFFFFF",
+      "usage": "Cards, fields, and resting navigation"
+    },
+    "raised": {
+      "dark": "#172440",
+      "light": "#EEF3FF",
+      "usage": "Selected navigation, secondary rows, and mark well"
+    },
+    "border": {
+      "dark": "#263A60",
+      "light": "#D7E0F0",
+      "usage": "Structural one-pixel strokes"
+    },
+    "text": {
+      "dark": "#F4F7FF",
+      "light": "#17213A",
+      "usage": "Primary text and titles"
+    },
+    "muted": {
+      "dark": "#9AAECD",
+      "light": "#5B6B86",
+      "usage": "Supporting copy, metadata, and captions"
+    },
+    "accent": {
+      "dark": "#2FDFFF",
+      "light": "#2FDFFF",
+      "usage": "Eyebrows, focus, selected navigation, and identity"
+    },
+    "accentFill": {
+      "dark": "#258BFF",
+      "light": "#258BFF",
+      "usage": "Open, navigate, and secondary primary actions"
+    },
+    "onAccentFill": {
+      "dark": "#FFFFFF",
+      "light": "#FFFFFF",
+      "usage": "Text on accentFill"
+    },
+    "action": {
+      "dark": "#914BFF",
+      "light": "#914BFF",
+      "usage": "The one commit action on a view"
+    },
+    "onAction": {
+      "dark": "#FFFFFF",
+      "light": "#FFFFFF",
+      "usage": "Text on action"
+    },
+    "actionSoft": {
+      "dark": "#167C88",
+      "light": "#167C88",
+      "usage": "Informational chips and private/local status"
+    },
+    "warning": {
+      "dark": "#F0C56A",
+      "light": "#8A5A12",
+      "usage": "Validation and degraded state copy"
+    },
+    "danger": {
+      "dark": "#FF8D8D",
+      "light": "#C43545",
+      "usage": "Failure and destructive state copy"
+    }
+  },
+  "typography": {
+    "fontFamily": "Segoe UI, Candara, Calibri, sans-serif",
+    "monoFontFamily": "Cascadia Mono, Consolas, Courier New, monospace",
+    "eyebrowSize": 10,
+    "eyebrowWeight": "bold",
+    "eyebrowTracking": 1.4,
+    "wordmarkSize": 18,
+    "wordmarkTracking": 2.2,
+    "pageTitleSize": 28,
+    "heroTitleSize": 24,
+    "sectionTitleSize": 18,
+    "intervalTitleSize": 17,
+    "bodySize": 14,
+    "metaSize": 12,
+    "captionSize": 11,
+    "badgeSize": 10,
+    "buttonSize": 14,
+    "navigationSize": 13,
+    "debugSize": 12
+  },
+  "geometry": {
+    "pageInset": 16,
+    "cardPadding": 18,
+    "sectionGap": 14,
+    "controlGap": 8,
+    "touchTarget": 42,
+    "iconControl": 44,
+    "controlRadius": 8,
+    "badgeRadius": 14,
+    "markRadius": 16,
+    "cardRadius": 18,
+    "primaryRadius": 22,
+    "stroke": 1
+  }
+}
