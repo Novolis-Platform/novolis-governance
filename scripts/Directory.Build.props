@@ -1,0 +1,11 @@
+<Project>
+  <!-- Isolate file-based apps from any future forest-level Directory.Build.props. -->
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>false</ManagePackageVersionsCentrally>
+    <PublishAot>false</PublishAot>
+    <PackAsTool>false</PackAsTool>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <TargetFramework>net10.0</TargetFramework>
+  </PropertyGroup>
+</Project>
