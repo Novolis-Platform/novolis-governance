@@ -13,9 +13,6 @@
     <NovolisPackageProject Include="Novolis.Agent.Testing">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-agent\src\Novolis.Agent.Testing\Novolis.Agent.Testing.csproj</ProjectPath>
     </NovolisPackageProject>
-    <NovolisPackageProject Include="Novolis.Analyzers.AutoMapper">
-      <ProjectPath>$(NovolisLibraryRoot)\novolis-analyzers\src\Novolis.Analyzers.AutoMapper\Novolis.Analyzers.AutoMapper.csproj</ProjectPath>
-    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Analyzers.CodeLength">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-analyzers\src\Novolis.Analyzers.CodeLength\Novolis.Analyzers.CodeLength.csproj</ProjectPath>
     </NovolisPackageProject>

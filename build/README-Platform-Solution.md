@@ -151,7 +151,6 @@ The generated `.slnx` file has this hierarchical structure:
 Solution/
 ├── /novolis-analyzers/
 │   ├── /src/
-│   │   ├── Novolis.Analyzers.AutoMapper.csproj
 │   │   └── Novolis.Analyzers.CodeLength.csproj
 │   └── /tests/
 │       └── Novolis.Analyzers.Tests.csproj
