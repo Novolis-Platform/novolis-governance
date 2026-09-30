@@ -31,7 +31,7 @@ See [github-packages-org-settings.md](./github-packages-org-settings.md) for org
 
 ## nuget.org
 
-Library `merge.yml` pushes to nuget.org with Trusted Publishing (`NuGet/login`, user `frankhaugen`, `id-token: write`). `release.yml` does not push nuget.org. It packs, pushes to GitHub Packages, and attaches `.nupkg` / `.snupkg` to the GitHub Release.
+Library `merge.yml` pushes to nuget.org with Trusted Publishing (`NuGet/login`, user `frankhaugen`, `id-token: write`) in a job of that caller workflow. `novolis-tools` and `novolis-analyzers` do the same from `release.yml`. A library `release.yml` packs, pushes to GitHub Packages, and attaches `.nupkg` / `.snupkg` to the GitHub Release.
 
 ## Consuming packages
 
