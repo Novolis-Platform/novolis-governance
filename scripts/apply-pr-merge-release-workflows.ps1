@@ -47,6 +47,27 @@ jobs:
     permissions:
       contents: read
       packages: write
+      id-token: write
+
+  nuget:
+    needs: ci
+    if: needs.ci.outputs.run_publish == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: nuget-packages
+          path: artifacts/packages
+      - uses: NuGet/login@v1
+        id: nuget-login
+        with:
+          user: frankhaugen
+      - uses: Novolis-Platform/novolis-workflows/actions/publish-nuget-org@main
+        with:
+          api_key: `${{ steps.nuget-login.outputs.NUGET_API_KEY }}
 "@
 
 $releaseYml = @"
@@ -102,6 +123,10 @@ foreach ($name in $packageRepos) {
     Write-Host "Workflows: $name"
     $wf = Join-Path $repo '.github/workflows'
     Write-Utf8 (Join-Path $wf 'pull-request.yml') $pullRequestYml
+    # WireFish publishes from novolis-transports. Analyzers publish nuget.org from release.yml.
+    if ($name -eq 'novolis-wirefish' -or $name -eq 'novolis-analyzers') {
+        continue
+    }
     Write-Utf8 (Join-Path $wf 'merge.yml') $mergeYml
     # Avalonia keeps a custom Windows installer release workflow.
     if ($name -ne 'novolis-avalonia') {
