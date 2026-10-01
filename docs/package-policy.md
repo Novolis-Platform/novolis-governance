@@ -12,11 +12,13 @@ Required package metadata:
 <Title>Novolis X</Title>
 <Description>...</Description>
 <Authors>Novolis</Authors>
-<RepositoryUrl>...</RepositoryUrl>
+<RepositoryUrl>https://github.com/Novolis-Platform/novolis-example</RepositoryUrl>
 <RepositoryType>git</RepositoryType>
+<PackageProjectUrl>https://novolis-platform.github.io/.github/novolis-example/</PackageProjectUrl>
 <PackageLicenseExpression>MIT</PackageLicenseExpression>
 <PackageReadmeFile>README.md</PackageReadmeFile>
 <PackageIcon>icon.png</PackageIcon>
+<PackageTags>novolis</PackageTags>
 <PublishRepositoryUrl>true</PublishRepositoryUrl>
 <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
 <EmbedUntrackedSources>true</EmbedUntrackedSources>

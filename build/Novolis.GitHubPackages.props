@@ -1,12 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project>
-  <!-- Links published .nupkg to the source repo so GPR inherits public-repo read access. -->
-  <PropertyGroup Condition="'$(NovolisGitHubRepository)' != '' And '$(RepositoryUrl)' == ''">
-    <RepositoryUrl>https://github.com/Novolis-Platform/$(NovolisGitHubRepository)</RepositoryUrl>
-    <PackageProjectUrl>https://github.com/Novolis-Platform/$(NovolisGitHubRepository)</PackageProjectUrl>
+  <!-- Source repository stays the GitHub repo. Project website is the portfolio docs page. -->
+  <PropertyGroup Condition="'$(NovolisGitHubRepository)' != ''">
+    <RepositoryUrl Condition="'$(RepositoryUrl)' == ''">https://github.com/Novolis-Platform/$(NovolisGitHubRepository)</RepositoryUrl>
+    <RepositoryType Condition="'$(RepositoryType)' == ''">git</RepositoryType>
+    <PackageProjectUrl Condition="'$(PackageProjectUrl)' == ''">https://novolis-platform.github.io/.github/$(NovolisGitHubRepository)/</PackageProjectUrl>
   </PropertyGroup>
 
   <Import Project="$(MSBuildThisFileDirectory)Novolis.PackageIcon.props"
           Condition="Exists('$(MSBuildThisFileDirectory)Novolis.PackageIcon.props')" />
+
+  <!-- Runs after the project body sets PackageId and Description. -->
+  <Target Name="NovolisPackageGalleryMetadata" BeforeTargets="GenerateNuspec" Condition="'$(IsPackable)' == 'true'">
+    <PropertyGroup>
+      <RepositoryType Condition="'$(RepositoryType)' == ''">git</RepositoryType>
+      <PackageProjectUrl Condition="'$(NovolisGitHubRepository)' != '' and ('$(PackageProjectUrl)' == '' or $(PackageProjectUrl.StartsWith('https://github.com/Novolis-Platform/')))">https://novolis-platform.github.io/.github/$(NovolisGitHubRepository)/</PackageProjectUrl>
+      <PackageTags Condition="'$(PackageTags)' == '' and '$(PackageId)' != ''">novolis $([System.String]::Copy('$(PackageId)').Replace('Novolis.','').Replace('.',' ').ToLowerInvariant())</PackageTags>
+    </PropertyGroup>
+
+    <ReadLinesFromFile File="$(MSBuildProjectDirectory)\README.md"
+                       Condition="Exists('$(MSBuildProjectDirectory)\README.md') and ('$(Description)' == '' or '$(Description)' == 'Package Description')">
+      <Output TaskParameter="Lines" ItemName="_NovolisReadmeLine" />
+    </ReadLinesFromFile>
+    <ItemGroup Condition="'$(Description)' == '' or '$(Description)' == 'Package Description'">
+      <_NovolisReadmeProse Include="@(_NovolisReadmeLine)"
+                           Condition="$([System.String]::Copy('%(Identity)').Trim().Length) &gt; 40
+                                     and !$([System.String]::Copy('%(Identity)').Trim().StartsWith('#'))
+                                     and !$([System.String]::Copy('%(Identity)').Trim().StartsWith('&lt;'))
+                                     and !$([System.String]::Copy('%(Identity)').Trim().StartsWith('!'))
+                                     and !$([System.String]::Copy('%(Identity)').Trim().StartsWith('['))
+                                     and !$([System.String]::Copy('%(Identity)').Trim().StartsWith('`'))
+                                     and !$([System.String]::Copy('%(Identity)').Trim().StartsWith('|'))
+                                     and !$([System.String]::Copy('%(Identity)').Trim().StartsWith('-'))" />
+    </ItemGroup>
+    <PropertyGroup Condition="'$(Description)' == '' or '$(Description)' == 'Package Description'">
+      <_NovolisJoined Condition="'@(_NovolisReadmeProse)' != ''">@(_NovolisReadmeProse, '|')</_NovolisJoined>
+      <Description Condition="'$(_NovolisJoined)' != ''">$([System.String]::Copy('$(_NovolisJoined)').Split('|')[0].Trim())</Description>
+      <Description Condition="'$(Description)' == '' or '$(Description)' == 'Package Description'">$(PackageId) for the Novolis platform.</Description>
+      <PackageDescription>$(Description)</PackageDescription>
+    </PropertyGroup>
+  </Target>
 </Project>
 
