@@ -14,6 +14,9 @@
   <Target Name="NovolisPackageGalleryMetadata" BeforeTargets="GenerateNuspec" Condition="'$(IsPackable)' == 'true'">
     <PropertyGroup>
       <RepositoryType Condition="'$(RepositoryType)' == ''">git</RepositoryType>
+      <Authors Condition="'$(Authors)' == ''">Novolis</Authors>
+      <Copyright Condition="'$(Copyright)' == ''">Copyright (c) Novolis-Platform</Copyright>
+      <PackageLicenseExpression Condition="'$(PackageLicenseExpression)' == ''">MIT</PackageLicenseExpression>
       <PackageProjectUrl Condition="'$(NovolisGitHubRepository)' != '' and ('$(PackageProjectUrl)' == '' or $(PackageProjectUrl.StartsWith('https://github.com/Novolis-Platform/')))">https://novolis-platform.github.io/.github/$(NovolisGitHubRepository)/</PackageProjectUrl>
       <PackageTags Condition="'$(PackageTags)' == '' and '$(PackageId)' != ''">novolis $([System.String]::Copy('$(PackageId)').Replace('Novolis.','').Replace('.',' ').ToLowerInvariant())</PackageTags>
     </PropertyGroup>
