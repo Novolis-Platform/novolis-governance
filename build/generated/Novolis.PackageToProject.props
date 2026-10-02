@@ -763,6 +763,18 @@
     <NovolisPackageProject Include="Novolis.Raylib.Testing">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-raylib\src\Novolis.Raylib.Testing\Novolis.Raylib.Testing.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Registry">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-registry\src\Novolis.Registry\Novolis.Registry.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Registry.Abstractions">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-registry\src\Novolis.Registry.Abstractions\Novolis.Registry.Abstractions.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Registry.GitHub">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-registry\src\Novolis.Registry.GitHub\Novolis.Registry.GitHub.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Registry.Primitives">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-registry\src\Novolis.Registry.Primitives\Novolis.Registry.Primitives.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Rendering">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-rendering\src\Novolis.Rendering\Novolis.Rendering.csproj</ProjectPath>
     </NovolisPackageProject>

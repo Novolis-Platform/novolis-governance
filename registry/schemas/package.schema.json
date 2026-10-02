@@ -1,1 +1,38 @@
-{"`$schema":"https://json-schema.org/draft/2020-12/schema","type":"object","required":["id","name","type","version","sha256","downloadUrl"],"properties":{"id":{"type":"string"},"name":{"type":"string"},"type":{"type":"string"},"version":{"type":"string"},"sha256":{"type":"string"},"downloadUrl":{"type":"string","format":"uri"}}}
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Novolis registry package entry",
+  "type": "object",
+  "required": ["id", "name", "type", "version"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "type": {
+      "type": "string",
+      "minLength": 1
+    },
+    "version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "repository": {
+      "type": "string",
+      "format": "uri"
+    },
+    "packageId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sha256": {
+      "type": "string"
+    },
+    "downloadUrl": {
+      "type": "string"
+    }
+  }
+}
