@@ -1,0 +1,8 @@
+{
+  "id": "novolis.registry.updates",
+  "name": "Novolis.Registry.Updates",
+  "type": "nuget",
+  "version": "2026.1.1.0",
+  "repository": "https://github.com/Novolis-Platform/novolis-registry",
+  "packageId": "Novolis.Registry.Updates"
+}

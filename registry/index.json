@@ -767,6 +767,15 @@
       "packageId": "Novolis.Avalonia.Torrent"
     },
     {
+      "id": "novolis.avalonia.updates",
+      "name": "Novolis.Avalonia.Updates",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-avalonia",
+      "packageId": "Novolis.Avalonia.Updates"
+    },
+    {
       "id": "novolis.avalonia.video",
       "name": "Novolis.Avalonia.Video",
       "kind": "package",
@@ -1865,6 +1874,15 @@
       "packageId": "Novolis.Maui.PdfViewer"
     },
     {
+      "id": "novolis.maui.updates",
+      "name": "Novolis.Maui.Updates",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-maui",
+      "packageId": "Novolis.Maui.Updates"
+    },
+    {
       "id": "novolis.maui.webview",
       "name": "Novolis.Maui.WebView",
       "kind": "package",
@@ -2313,6 +2331,15 @@
       "channel": "stable",
       "repository": "https://github.com/Novolis-Platform/novolis-registry",
       "packageId": "Novolis.Registry.Primitives"
+    },
+    {
+      "id": "novolis.registry.updates",
+      "name": "Novolis.Registry.Updates",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-registry",
+      "packageId": "Novolis.Registry.Updates"
     },
     {
       "id": "novolis.rendering",
@@ -2979,6 +3006,15 @@
       "channel": "stable",
       "repository": "https://github.com/Novolis-Platform/novolis-testing",
       "packageId": "Novolis.Testing.Appium"
+    },
+    {
+      "id": "novolis.testing.budgets",
+      "name": "Novolis.Testing.Budgets",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-testing",
+      "packageId": "Novolis.Testing.Budgets"
     },
     {
       "id": "novolis.testing.coverage",
