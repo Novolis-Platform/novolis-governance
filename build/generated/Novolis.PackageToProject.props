@@ -454,6 +454,9 @@
     <NovolisPackageProject Include="Novolis.IO.Paths">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-io\src\Novolis.IO.Paths\Novolis.IO.Paths.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.IO.Platform.Android">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-io\src\Novolis.IO.Platform.Android\Novolis.IO.Platform.Android.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.IO.Processes">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-io\src\Novolis.IO.Processes\Novolis.IO.Processes.csproj</ProjectPath>
     </NovolisPackageProject>
