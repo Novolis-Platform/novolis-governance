@@ -1,0 +1,8 @@
+{
+  "id": "novolis.avalonia.cad.ship",
+  "name": "Novolis.Avalonia.Cad.Ship",
+  "type": "nuget",
+  "version": "2026.1.1.0",
+  "repository": "https://github.com/Novolis-Platform/novolis-avalonia",
+  "packageId": "Novolis.Avalonia.Cad.Ship"
+}

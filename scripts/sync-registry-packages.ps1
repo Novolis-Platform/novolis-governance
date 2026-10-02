@@ -1,8 +1,8 @@
 #Requires -Version 7.0
-# Generate novolis-registry/packages/*.json for every IsPackable project.
+# Generate governance/registry/packages/*.json for every IsPackable project.
 $ErrorActionPreference = 'Stop'
 $Root = Split-Path (Split-Path $PSScriptRoot -Parent) -Parent
-$RegistryDir = Join-Path $Root 'novolis-registry\packages'
+$RegistryDir = Join-Path $Root 'novolis-governance\registry\packages'
 $VersionJson = Join-Path $PSScriptRoot '..\build\version.json'
 $v = Get-Content $VersionJson -Raw | ConvertFrom-Json
 $year = [int]($v.year ?? $v.sdkYear)
@@ -22,7 +22,7 @@ New-Item -ItemType Directory -Force -Path $RegistryDir | Out-Null
 
 $entries = @()
 Get-ChildItem $Root -Directory -Filter 'novolis-*' |
-    Where-Object { $_.Name -notmatch 'workflows|governance|registry|lab|installer' } |
+    Where-Object { $_.Name -notmatch 'workflows|governance|lab|installer' } |
     ForEach-Object {
         $repoName = $_.Name
         Get-ChildItem $_.FullName -Recurse -Filter '*.csproj' |
@@ -55,4 +55,26 @@ foreach ($e in $entries) {
     $written++
 }
 
-Write-Host "Wrote $written registry entries at version $stable"
+$indexEntries = @(
+    $entries | ForEach-Object {
+        [ordered]@{
+            id         = To-RegistryId $_.packageId
+            name       = $_.packageId
+            kind       = 'package'
+            version    = $stable
+            channel    = 'stable'
+            repository = "https://github.com/Novolis-Platform/$($_.repo)"
+            packageId  = $_.packageId
+        }
+    }
+)
+
+$index = [ordered]@{
+    schemaVersion = 1
+    entries       = $indexEntries
+} | ConvertTo-Json -Depth 5
+
+$indexPath = Join-Path $Root 'novolis-governance\registry\index.json'
+Set-Content -Path $indexPath -Value $index -Encoding utf8NoBOM
+
+Write-Host "Wrote $written registry entries and index at version $stable"

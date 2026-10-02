@@ -1,0 +1,8 @@
+{
+  "id": "novolis.messaging.servicebus.broker.almost",
+  "name": "Novolis.Messaging.ServiceBus.Broker.Almost",
+  "type": "nuget",
+  "version": "2026.1.1.0",
+  "repository": "https://github.com/Novolis-Platform/novolis-messaging",
+  "packageId": "Novolis.Messaging.ServiceBus.Broker.Almost"
+}

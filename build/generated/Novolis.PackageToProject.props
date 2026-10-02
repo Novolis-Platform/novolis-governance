@@ -499,6 +499,12 @@
     <NovolisPackageProject Include="Novolis.Logging.Faster">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-logging\src\Novolis.Logging.Faster\Novolis.Logging.Faster.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Logging.Ndjson">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-logging\src\Novolis.Logging.Ndjson\Novolis.Logging.Ndjson.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Logging.Telemetry">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-logging\src\Novolis.Logging.Telemetry\Novolis.Logging.Telemetry.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Logging.Transports">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-logging\src\Novolis.Logging.Transports\Novolis.Logging.Transports.csproj</ProjectPath>
     </NovolisPackageProject>
@@ -966,6 +972,9 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Storage.LiteDb">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-storage\src\Novolis.Storage.LiteDb\Novolis.Storage.LiteDb.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Storage.Ndjson">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-storage\src\Novolis.Storage.Ndjson\Novolis.Storage.Ndjson.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Storage.Sqlite">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-storage\src\Novolis.Storage.Sqlite\Novolis.Storage.Sqlite.csproj</ProjectPath>

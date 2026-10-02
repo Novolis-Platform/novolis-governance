@@ -1,0 +1,8 @@
+{
+  "id": "novolis.economy.accounting",
+  "name": "Novolis.Economy.Accounting",
+  "type": "nuget",
+  "version": "2026.1.1.0",
+  "repository": "https://github.com/Novolis-Platform/novolis-economy",
+  "packageId": "Novolis.Economy.Accounting"
+}

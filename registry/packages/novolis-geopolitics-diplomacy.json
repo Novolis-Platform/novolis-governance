@@ -1,0 +1,8 @@
+{
+  "id": "novolis.geopolitics.diplomacy",
+  "name": "Novolis.Geopolitics.Diplomacy",
+  "type": "nuget",
+  "version": "2026.1.1.0",
+  "repository": "https://github.com/Novolis-Platform/novolis-geopolitics",
+  "packageId": "Novolis.Geopolitics.Diplomacy"
+}

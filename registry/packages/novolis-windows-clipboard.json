@@ -1,0 +1,8 @@
+{
+  "id": "novolis.windows.clipboard",
+  "name": "Novolis.Windows.Clipboard",
+  "type": "nuget",
+  "version": "2026.1.1.0",
+  "repository": "https://github.com/Novolis-Platform/novolis-windows",
+  "packageId": "Novolis.Windows.Clipboard"
+}

@@ -17,7 +17,7 @@ var nonLibrary = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
 {
     "novolis-tools", "novolis-utilities", "novolis-apps", "novolis-lab",
     "novolis-experimental", "novolis-smoketest", "novolis-template-dotnet",
-    "novolis-templates", "novolis-governance", "novolis-workflows", "novolis-registry",
+    "novolis-templates", "novolis-governance", "novolis-workflows",
 };
 var violations = new List<string>();
 var cliOrTool = new Regex(@"(\.Cli|\.Tool)$", RegexOptions.IgnoreCase);

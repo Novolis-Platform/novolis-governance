@@ -1,0 +1,8 @@
+{
+  "id": "novolis.manuscript.export.markdown",
+  "name": "Novolis.Manuscript.Export.Markdown",
+  "type": "nuget",
+  "version": "2026.1.1.0",
+  "repository": "https://github.com/Novolis-Platform/novolis-manuscript",
+  "packageId": "Novolis.Manuscript.Export.Markdown"
+}

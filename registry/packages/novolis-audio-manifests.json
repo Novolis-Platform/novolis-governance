@@ -1,0 +1,8 @@
+{
+  "id": "novolis.audio.manifests",
+  "name": "Novolis.Audio.Manifests",
+  "type": "nuget",
+  "version": "2026.1.1.0",
+  "repository": "https://github.com/Novolis-Platform/novolis-audio",
+  "packageId": "Novolis.Audio.Manifests"
+}

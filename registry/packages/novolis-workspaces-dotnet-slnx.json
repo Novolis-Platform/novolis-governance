@@ -1,0 +1,8 @@
+{
+  "id": "novolis.workspaces.dotnet.slnx",
+  "name": "Novolis.Workspaces.DotNet.Slnx",
+  "type": "nuget",
+  "version": "2026.1.1.0",
+  "repository": "https://github.com/Novolis-Platform/novolis-workspaces",
+  "packageId": "Novolis.Workspaces.DotNet.Slnx"
+}

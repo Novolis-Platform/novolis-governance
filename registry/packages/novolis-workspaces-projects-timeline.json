@@ -1,0 +1,8 @@
+{
+  "id": "novolis.workspaces.projects.timeline",
+  "name": "Novolis.Workspaces.Projects.Timeline",
+  "type": "nuget",
+  "version": "2026.1.1.0",
+  "repository": "https://github.com/Novolis-Platform/novolis-workspaces",
+  "packageId": "Novolis.Workspaces.Projects.Timeline"
+}

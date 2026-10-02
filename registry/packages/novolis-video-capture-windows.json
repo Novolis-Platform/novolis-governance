@@ -1,0 +1,8 @@
+{
+  "id": "novolis.video.capture.windows",
+  "name": "Novolis.Video.Capture.Windows",
+  "type": "nuget",
+  "version": "2026.1.1.0",
+  "repository": "https://github.com/Novolis-Platform/novolis-video",
+  "packageId": "Novolis.Video.Capture.Windows"
+}

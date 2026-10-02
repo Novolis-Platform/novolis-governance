@@ -10,7 +10,7 @@ $SyncRegistry = Join-Path $Root 'novolis-governance\scripts\sync-registry-packag
 & $SyncRegistry
 
 $repos = Get-ChildItem $Root -Directory -Filter 'novolis-*' |
-    Where-Object { $_.Name -notmatch 'workflows|governance|registry|installer' }
+    Where-Object { $_.Name -notmatch 'workflows|governance|installer' }
 
 foreach ($repo in $repos) {
     if (Test-Path (Join-Path $repo.FullName 'build\version.json')) {

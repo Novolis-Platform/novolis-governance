@@ -1,0 +1,8 @@
+{
+  "id": "novolis.video.edit",
+  "name": "Novolis.Video.Edit",
+  "type": "nuget",
+  "version": "2026.1.1.0",
+  "repository": "https://github.com/Novolis-Platform/novolis-video",
+  "packageId": "Novolis.Video.Edit"
+}

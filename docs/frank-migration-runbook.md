@@ -17,7 +17,7 @@ Extract/rebuild playbook for P0 libraries. Do not transfer git history.
 5. Update `Novolis.<Domain>.slnx` and [.novolis/packages.json](frank-naming-and-structure.md) on the repo.
 6. `dotnet build` / `dotnet test` locally.
 7. PR → CI green → preview release (trusted publishing on that repo).
-8. Registry entry in `novolis-registry/packages/`.
+8. Registry entry in `registry/packages/`.
 9. Frank source README banner + archive when wave complete.
 
 ## Pilot order
@@ -37,7 +37,7 @@ Extract/rebuild playbook for P0 libraries. Do not transfer git history.
 
 ## Registry entry (template)
 
-Create `novolis-registry/packages/<package-id-kebab>.json`:
+Create `registry/packages/<package-id-kebab>.json`:
 
 ```json
 {
@@ -50,4 +50,4 @@ Create `novolis-registry/packages/<package-id-kebab>.json`:
 }
 ```
 
-Adjust fields to match [package.schema.json](https://github.com/Novolis-Platform/novolis-registry/blob/main/schemas/package.schema.json).
+Adjust fields to match [package.schema.json](https://github.com/Novolis-Platform/novolis-governance/blob/main/registry/schemas/package.schema.json).

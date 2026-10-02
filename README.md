@@ -64,4 +64,5 @@ Organization-wide policies, contribution model, naming rules, package rules, sec
 | Completed plans | [docs/completed-plans/](docs/completed-plans/) |
 | Roadmap | [docs/roadmap.md](docs/roadmap.md) |
 | NuGet setup | [docs/nuget-setup.md](docs/nuget-setup.md) |
+| Static registry data | [registry/README.md](registry/README.md) |
 

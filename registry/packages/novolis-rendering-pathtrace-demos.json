@@ -1,0 +1,8 @@
+{
+  "id": "novolis.rendering.pathtrace.demos",
+  "name": "Novolis.Rendering.PathTrace.Demos",
+  "type": "nuget",
+  "version": "2026.1.1.0",
+  "repository": "https://github.com/Novolis-Platform/novolis-rendering",
+  "packageId": "Novolis.Rendering.PathTrace.Demos"
+}

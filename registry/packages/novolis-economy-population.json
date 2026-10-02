@@ -1,0 +1,8 @@
+{
+  "id": "novolis.economy.population",
+  "name": "Novolis.Economy.Population",
+  "type": "nuget",
+  "version": "2026.1.1.0",
+  "repository": "https://github.com/Novolis-Platform/novolis-economy",
+  "packageId": "Novolis.Economy.Population"
+}

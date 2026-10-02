@@ -1,0 +1,8 @@
+{
+  "id": "novolis.logging.transports",
+  "name": "Novolis.Logging.Transports",
+  "type": "nuget",
+  "version": "2026.1.1.0",
+  "repository": "https://github.com/Novolis-Platform/novolis-logging",
+  "packageId": "Novolis.Logging.Transports"
+}

@@ -1,0 +1,8 @@
+{
+  "id": "novolis.cad.primitives",
+  "name": "Novolis.Cad.Primitives",
+  "type": "nuget",
+  "version": "2026.1.1.0",
+  "repository": "https://github.com/Novolis-Platform/novolis-cad",
+  "packageId": "Novolis.Cad.Primitives"
+}

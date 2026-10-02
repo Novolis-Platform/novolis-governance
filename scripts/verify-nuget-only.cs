@@ -41,7 +41,6 @@ var nonLibraryRepos = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
     "novolis-templates",
     "novolis-governance",
     "novolis-workflows",
-    "novolis-registry",
 };
 
 var violations = new List<string>();

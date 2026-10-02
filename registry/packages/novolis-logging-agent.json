@@ -1,0 +1,8 @@
+{
+  "id": "novolis.logging.agent",
+  "name": "Novolis.Logging.Agent",
+  "type": "nuget",
+  "version": "2026.1.1.0",
+  "repository": "https://github.com/Novolis-Platform/novolis-logging",
+  "packageId": "Novolis.Logging.Agent"
+}
