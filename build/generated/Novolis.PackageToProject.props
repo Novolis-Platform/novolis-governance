@@ -448,8 +448,14 @@
     <NovolisPackageProject Include="Novolis.IO.Indexing">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-io\src\Novolis.IO.Indexing\Novolis.IO.Indexing.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.IO.Maps">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-io\src\Novolis.IO.Maps\Novolis.IO.Maps.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.IO.Mobile.Android">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-io\src\Novolis.IO.Mobile.Android\Novolis.IO.Mobile.Android.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.IO.Ndjson">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-io\src\Novolis.IO.Ndjson\Novolis.IO.Ndjson.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.IO.Paths">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-io\src\Novolis.IO.Paths\Novolis.IO.Paths.csproj</ProjectPath>
@@ -594,6 +600,9 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Maui.GraphicalProfile">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-maui\src\Novolis.Maui.GraphicalProfile\Novolis.Maui.GraphicalProfile.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Maui.Map">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-maui\src\Novolis.Maui.Map\Novolis.Maui.Map.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Maui.Markdown">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-maui\src\Novolis.Maui.Markdown\Novolis.Maui.Markdown.csproj</ProjectPath>
