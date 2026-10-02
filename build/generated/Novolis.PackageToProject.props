@@ -1036,6 +1036,24 @@
     <NovolisPackageProject Include="Novolis.ThreeD.Scene">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-3d\src\Novolis.ThreeD.Scene\Novolis.ThreeD.Scene.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Time">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-time\src\Novolis.Time\Novolis.Time.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Time.Calendar">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-time\src\Novolis.Time.Calendar\Novolis.Time.Calendar.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Time.Calendar.PublicHoliday">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-time\src\Novolis.Time.Calendar.PublicHoliday\Novolis.Time.Calendar.PublicHoliday.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Time.Week">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-time\src\Novolis.Time.Week\Novolis.Time.Week.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Time.Worktime">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-time\src\Novolis.Time.Worktime\Novolis.Time.Worktime.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Time.Worktime.Legal">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-time\src\Novolis.Time.Worktime.Legal\Novolis.Time.Worktime.Legal.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Timeline.Abstractions">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-workspaces\src\Novolis.Timeline.Abstractions\Novolis.Timeline.Abstractions.csproj</ProjectPath>
     </NovolisPackageProject>
