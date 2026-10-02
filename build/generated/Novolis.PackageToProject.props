@@ -610,6 +610,9 @@
     <NovolisPackageProject Include="Novolis.Maui.Mermaid">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-maui\src\Novolis.Maui.Mermaid\Novolis.Maui.Mermaid.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Maui.Ndjson">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-maui\src\Novolis.Maui.Ndjson\Novolis.Maui.Ndjson.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Maui.PdfViewer">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-maui\src\Novolis.Maui.PdfViewer\Novolis.Maui.PdfViewer.csproj</ProjectPath>
     </NovolisPackageProject>
