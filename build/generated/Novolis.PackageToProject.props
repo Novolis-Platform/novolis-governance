@@ -226,6 +226,9 @@
     <NovolisPackageProject Include="Novolis.Avalonia.Mobile.Desktop">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-avalonia\src\Novolis.Avalonia.Mobile.Desktop\Novolis.Avalonia.Mobile.Desktop.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Avalonia.Ndjson">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-avalonia\src\Novolis.Avalonia.Ndjson\Novolis.Avalonia.Ndjson.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Avalonia.Packaging.Inno">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-avalonia\src\Novolis.Avalonia.Packaging.Inno\Novolis.Avalonia.Packaging.Inno.csproj</ProjectPath>
     </NovolisPackageProject>
