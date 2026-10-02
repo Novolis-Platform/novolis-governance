@@ -19,7 +19,7 @@ All four repositories consume `Novolis.*` packages from GitHub Packages only (`2
 | Small technical executable with no installer | `novolis-utilities/src/<UtilityName>/` |
 | Product / sustained-use hosts (GeoPolity, CAD Studio, Live Studio, Merglyph, …) | `novolis-apps/src/<AppName>/` |
 | Package demos, labs, smokes, Hello* / RenderingAvalonia-style walkthroughs | `novolis-lab/labs/<…>/` |
-| Library repos (`novolis-geopolitics`, `novolis-raylib`, …) | **No `apps/` or `samples/` hosts** — packable `src/`, unit `tests/`, and `tools/` (codegen, seed gen) only |
+| Library repos (`novolis-geopolitics`, `novolis-raylib`, …) | **No `apps/` or `samples/` hosts** — packable `src/`, unit `tests/`, `benchmarks/` (BenchmarkDotNet, compile-only), and `tools/` (codegen, seed gen) only |
 
 Do not leave a playable Avalonia/Spectre/Raylib/MAUI host or a shipped CLI under a library repo “for convenience.” Point README run commands at `novolis-apps`, `novolis-utilities`, or `novolis-lab`.
 

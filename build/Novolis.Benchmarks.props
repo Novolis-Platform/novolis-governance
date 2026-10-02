@@ -1,0 +1,13 @@
+<Project>
+  <!--
+    Profile executables under benchmarks/. They compile with the solution.
+    Merge CI does not run them, and they are not packages.
+  -->
+  <PropertyGroup>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>false</IsTestProject>
+    <IsTestingPlatformApplication>false</IsTestingPlatformApplication>
+    <NovolisGraphicalProfile>false</NovolisGraphicalProfile>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+  </PropertyGroup>
+</Project>

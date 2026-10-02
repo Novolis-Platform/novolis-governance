@@ -259,6 +259,9 @@
     <NovolisPackageProject Include="Novolis.Avalonia.Torrent">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-avalonia\src\Novolis.Avalonia.Torrent\Novolis.Avalonia.Torrent.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Avalonia.Updates">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-avalonia\src\Novolis.Avalonia.Updates\Novolis.Avalonia.Updates.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Avalonia.Video">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-avalonia\src\Novolis.Avalonia.Video\Novolis.Avalonia.Video.csproj</ProjectPath>
     </NovolisPackageProject>
@@ -625,6 +628,9 @@
     <NovolisPackageProject Include="Novolis.Maui.PdfViewer">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-maui\src\Novolis.Maui.PdfViewer\Novolis.Maui.PdfViewer.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Maui.Updates">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-maui\src\Novolis.Maui.Updates\Novolis.Maui.Updates.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Maui.WebView">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-maui\src\Novolis.Maui.WebView\Novolis.Maui.WebView.csproj</ProjectPath>
     </NovolisPackageProject>
@@ -774,6 +780,9 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Registry.Primitives">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-registry\src\Novolis.Registry.Primitives\Novolis.Registry.Primitives.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Registry.Updates">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-registry\src\Novolis.Registry.Updates\Novolis.Registry.Updates.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Rendering">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-rendering\src\Novolis.Rendering\Novolis.Rendering.csproj</ProjectPath>
@@ -996,6 +1005,9 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Testing.Appium">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-testing\src\Novolis.Testing.Appium\Novolis.Testing.Appium.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Testing.Budgets">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-testing\src\Novolis.Testing.Budgets\Novolis.Testing.Budgets.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Testing.Coverage">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-testing\src\Novolis.Testing.Coverage\Novolis.Testing.Coverage.csproj</ProjectPath>

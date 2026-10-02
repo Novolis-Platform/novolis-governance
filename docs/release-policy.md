@@ -65,7 +65,7 @@ Reusable `dotnet-merge-publish.yml` classifies the push:
 | Change set | CI | GPR publish |
 |------------|----|-------------|
 | `src/**`, `*.csproj`, `Directory.Packages.props`, … | yes | yes |
-| `tests/**`, `Directory.Build.props` (policy/warnings), `scripts/**` | yes | **no** |
+| `tests/**`, `benchmarks/**`, `tools/**`, `Directory.Build.props` (policy/warnings), `scripts/**` | yes | **no** |
 | docs / `**.md` / version bump props (paths-ignore) | skipped | skipped |
 
 Direct pushes to `main` remain supported. Cross-repo “herds” still run in parallel; same-repo re-pushes cancel in-progress merge runs.

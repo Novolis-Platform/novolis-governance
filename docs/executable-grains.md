@@ -18,7 +18,7 @@ Novolis has four executable grains. Use the first matching row; do not promote a
 
 ## Hard placement rules
 
-- Library repositories contain packable libraries, tests, and repo-private `tools/` only.
+- Library repositories contain packable libraries, tests, repo-private `benchmarks/` profile executables, and repo-private `tools/` only. Profile executables are unpackable, are not shipped, and are not test hosts.
 - A library repository must not publish a `PackAsTool`, shipped CLI, executable zip, Windows installer, or Android APK.
 - All installable .NET tools live in `novolis-tools`, even when their domain library lives elsewhere.
 - All no-installer technical executables live in `novolis-utilities`.
