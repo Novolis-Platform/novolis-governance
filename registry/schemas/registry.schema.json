@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Novolis registry document",
+  "type": "object",
+  "required": ["schemaVersion", "entries"],
+  "properties": {
+    "schemaVersion": {
+      "type": "integer",
+      "const": 1
+    },
+    "generatedAt": {
+      "type": ["string", "null"],
+      "format": "date-time"
+    },
+    "entries": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/entry"
+      }
+    }
+  },
+  "$defs": {
+    "entry": {
+      "type": "object",
+      "required": ["id", "name", "kind", "version"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "enum": ["package", "application", "tool"]
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "packageId": {
+          "type": ["string", "null"]
+        },
+        "channel": {
+          "enum": ["stable", "preview", "nightly"]
+        },
+        "repository": {
+          "type": ["string", "null"],
+          "format": "uri"
+        },
+        "release": {
+          "type": ["string", "null"],
+          "format": "uri"
+        },
+        "artifacts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/artifact"
+          }
+        }
+      }
+    },
+    "artifact": {
+      "type": "object",
+      "required": ["name", "kind", "downloadUri"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "platform": {
+          "enum": ["any", "windows", "linux", "android", "macOS"]
+        },
+        "architecture": {
+          "type": ["string", "null"]
+        },
+        "kind": {
+          "type": "string",
+          "minLength": 1
+        },
+        "downloadUri": {
+          "type": "string",
+          "format": "uri"
+        },
+        "sha256": {
+          "type": ["string", "null"]
+        }
+      }
+    }
+  }
+}
