@@ -1066,6 +1066,9 @@
     <NovolisPackageProject Include="Novolis.Storage.Abstractions">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-storage\src\Novolis.Storage.Abstractions\Novolis.Storage.Abstractions.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Storage.AzureBlob">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-storage\src\Novolis.Storage.AzureBlob\Novolis.Storage.AzureBlob.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Storage.AzureCombinedStorage">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-storage\src\Novolis.Storage.AzureCombinedStorage\Novolis.Storage.AzureCombinedStorage.csproj</ProjectPath>
     </NovolisPackageProject>
