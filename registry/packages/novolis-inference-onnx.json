@@ -1,0 +1,8 @@
+{
+  "id": "novolis.inference.onnx",
+  "name": "Novolis.Inference.Onnx",
+  "type": "nuget",
+  "version": "2026.1.1.0",
+  "repository": "https://github.com/Novolis-Platform/novolis-inference",
+  "packageId": "Novolis.Inference.Onnx"
+}

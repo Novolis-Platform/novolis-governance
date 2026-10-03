@@ -54,7 +54,7 @@ flowchart TB
 | [Frank.BedrockSlim](https://github.com/frankhaugen/Frank.BedrockSlim) | 5/4/4 | **13** | `novolis-transports` | `Novolis.Transports.Tcp.Server`, `.Client` | Extract | 1.1 | 1 fact | Cryptography (internal) | Skip Cryptography unless needed |
 | [Frank.Testing](https://github.com/frankhaugen/Frank.Testing) | 5/4/4 | **13** | `novolis-testing` | `Novolis.Testing.TUnit`, `.Logging`, `.Testcontainers`, `.TestBases`, `.TestServer` | Extract | 2.0 | sparse | Reflection | Wave 1 — unblocks all migrations |
 | [Frank.DataStorage](https://github.com/frankhaugen/Frank.DataStorage) | 4/4/4 | **12** | `novolis-storage` | **Wave 3 subset:** `.Json`, `.Sqlite` + `Abstractions` | Extract subset | 3.1 | 6 facts | Reflection, Testing | 10 packable backends — do not migrate all at once |
-| [Frank.Http](https://github.com/frankhaugen/Frank.Http) | 4/4/4 | **12** | `novolis-transports` | `Novolis.Transports.Http` (+ abstractions/auth/extensions) | Extract | 1.1 | 0 facts | none | Add tests during migration |
+| [Frank.Http](https://github.com/frankhaugen/Frank.Http) | 4/4/4 | **12** | `novolis-http` | `Novolis.Http.*` (documents, variables, client, auth, extensions) | Rebuild | 1.1 | 0 facts | none | Keep request documents presentation-free |
 | [Frank.Security](https://github.com/frankhaugen/Frank.Security) | 4/4/3 | **11** | `novolis-security` | `Novolis.Security.Secrets`, `.PasswordHashing`, `.Encryption`, `.HaveIBeenPwned`; `WordLists` internal | Extract | 0.2 | 8 facts | Testing | Word lists in `Novolis.Security.WordLists` |
 
 ## P1 — Evaluate (spike complete)
@@ -98,7 +98,7 @@ flowchart TB
 | `Frank.Channels.DependencyInjection` | `Novolis.Messaging.Channels` | `novolis-messaging` |
 | `Frank.PulseFlow` | `Novolis.Messaging` | `novolis-messaging` |
 | `Frank.BedrockSlim.Server` / `.Client` | `Novolis.Transports.Tcp.Server` / `.Client` | `novolis-transports` |
-| `Frank.Http` (+ abstractions) | `Novolis.Transports.Http` (+ facets) | `novolis-transports` |
+| `Frank.Http` (+ abstractions) | `Novolis.Http.*` | `novolis-http` |
 | `Frank.Testing.*` | `Novolis.Testing.*` | `novolis-testing` |
 | `Frank.DataStorage.Json` / `.Sqlite` | `Novolis.Storage.Json` / `.Sqlite` | `novolis-storage` |
 | `Frank.Security.Cryptography` / `.HaveIBeenPwned` | `Novolis.Security.Secrets`, `.PasswordHashing`, `.Encryption`, `.HaveIBeenPwned` | `novolis-security` |

@@ -1,0 +1,8 @@
+{
+  "id": "novolis.time.calendar.publicholiday",
+  "name": "Novolis.Time.Calendar.PublicHoliday",
+  "type": "nuget",
+  "version": "2026.1.1.0",
+  "repository": "https://github.com/Novolis-Platform/novolis-time",
+  "packageId": "Novolis.Time.Calendar.PublicHoliday"
+}

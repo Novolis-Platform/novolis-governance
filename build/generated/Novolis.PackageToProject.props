@@ -268,6 +268,9 @@
     <NovolisPackageProject Include="Novolis.Avalonia.Voice">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-avalonia\src\Novolis.Avalonia.Voice\Novolis.Avalonia.Voice.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Blazor.Mermaid">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-blazor\src\Novolis.Blazor.Mermaid\Novolis.Blazor.Mermaid.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Cad.Blueprint">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-cad\src\Novolis.Cad.Blueprint\Novolis.Cad.Blueprint.csproj</ProjectPath>
     </NovolisPackageProject>
@@ -442,6 +445,60 @@
     <NovolisPackageProject Include="Novolis.Geopolitics.Trade">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-geopolitics\src\Novolis.Geopolitics.Trade\Novolis.Geopolitics.Trade.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Http.Abstractions">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-http\src\Novolis.Http.Abstractions\Novolis.Http.Abstractions.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Http.Authentication">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-http\src\Novolis.Http.Authentication\Novolis.Http.Authentication.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Http.Client">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-http\src\Novolis.Http.Client\Novolis.Http.Client.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Http.Documents">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-http\src\Novolis.Http.Documents\Novolis.Http.Documents.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Http.Extensions">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-http\src\Novolis.Http.Extensions\Novolis.Http.Extensions.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Http.Variables">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-http\src\Novolis.Http.Variables\Novolis.Http.Variables.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Inference.Abstractions">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-inference\src\Novolis.Inference.Abstractions\Novolis.Inference.Abstractions.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Inference.AgentFramework">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-inference\src\Novolis.Inference.AgentFramework\Novolis.Inference.AgentFramework.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Inference.Images">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-inference\src\Novolis.Inference.Images\Novolis.Inference.Images.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Inference.Ollama">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-inference\src\Novolis.Inference.Ollama\Novolis.Inference.Ollama.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Inference.Onnx">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-inference\src\Novolis.Inference.Onnx\Novolis.Inference.Onnx.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Inference.Safety">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-inference\src\Novolis.Inference.Safety\Novolis.Inference.Safety.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Inference.SharpMind">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-inference\src\Novolis.Inference.SharpMind\Novolis.Inference.SharpMind.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Inspection">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-inspection\src\Novolis.Inspection\Novolis.Inspection.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Inspection.Http">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-inspection\src\Novolis.Inspection.Http\Novolis.Inspection.Http.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Inspection.Json">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-inspection\src\Novolis.Inspection.Json\Novolis.Inspection.Json.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Inspection.ObjectGraph">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-inspection\src\Novolis.Inspection.ObjectGraph\Novolis.Inspection.ObjectGraph.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Inspection.Xml">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-inspection\src\Novolis.Inspection.Xml\Novolis.Inspection.Xml.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Install">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-tools\src\Novolis.Install\Novolis.Install.csproj</ProjectPath>
     </NovolisPackageProject>
@@ -486,6 +543,21 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.IO.Workspace.Testing">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-io\src\Novolis.IO.Workspace.Testing\Novolis.IO.Workspace.Testing.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Language.Diagnostics">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-language\src\Novolis.Language.Diagnostics\Novolis.Language.Diagnostics.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Language.Execution">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-language\src\Novolis.Language.Execution\Novolis.Language.Execution.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Language.RoboSharp">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-language\src\Novolis.Language.RoboSharp\Novolis.Language.RoboSharp.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Language.Syntax">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-language\src\Novolis.Language.Syntax\Novolis.Language.Syntax.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Language.Text">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-language\src\Novolis.Language.Text\Novolis.Language.Text.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Logging.Agent">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-logging\src\Novolis.Logging.Agent\Novolis.Logging.Agent.csproj</ProjectPath>
@@ -841,6 +913,15 @@
     <NovolisPackageProject Include="Novolis.Scheduling.Cron">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-scheduling\src\Novolis.Scheduling.Cron\Novolis.Scheduling.Cron.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Scripting.Completion">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-scripting\src\Novolis.Scripting.Completion\Novolis.Scripting.Completion.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Scripting.CSharp">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-scripting\src\Novolis.Scripting.CSharp\Novolis.Scripting.CSharp.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Scripting.Hosting">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-scripting\src\Novolis.Scripting.Hosting\Novolis.Scripting.Hosting.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Security.Authentication">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-security\src\Novolis.Security.Authentication\Novolis.Security.Authentication.csproj</ProjectPath>
     </NovolisPackageProject>
@@ -1131,18 +1212,6 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Transports.Framing">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-transports\src\Novolis.Transports.Framing\Novolis.Transports.Framing.csproj</ProjectPath>
-    </NovolisPackageProject>
-    <NovolisPackageProject Include="Novolis.Transports.Http">
-      <ProjectPath>$(NovolisLibraryRoot)\novolis-transports\src\Novolis.Transports.Http\Novolis.Transports.Http.csproj</ProjectPath>
-    </NovolisPackageProject>
-    <NovolisPackageProject Include="Novolis.Transports.Http.Abstractions">
-      <ProjectPath>$(NovolisLibraryRoot)\novolis-transports\src\Novolis.Transports.Http.Abstractions\Novolis.Transports.Http.Abstractions.csproj</ProjectPath>
-    </NovolisPackageProject>
-    <NovolisPackageProject Include="Novolis.Transports.Http.Authentication">
-      <ProjectPath>$(NovolisLibraryRoot)\novolis-transports\src\Novolis.Transports.Http.Authentication\Novolis.Transports.Http.Authentication.csproj</ProjectPath>
-    </NovolisPackageProject>
-    <NovolisPackageProject Include="Novolis.Transports.Http.Extensions">
-      <ProjectPath>$(NovolisLibraryRoot)\novolis-transports\src\Novolis.Transports.Http.Extensions\Novolis.Transports.Http.Extensions.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Transports.LocalIpc">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-transports\src\Novolis.Transports.LocalIpc\Novolis.Transports.LocalIpc.csproj</ProjectPath>

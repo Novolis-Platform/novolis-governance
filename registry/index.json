@@ -794,6 +794,15 @@
       "packageId": "Novolis.Avalonia.Voice"
     },
     {
+      "id": "novolis.blazor.mermaid",
+      "name": "Novolis.Blazor.Mermaid",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-blazor",
+      "packageId": "Novolis.Blazor.Mermaid"
+    },
+    {
       "id": "novolis.cad.blueprint",
       "name": "Novolis.Cad.Blueprint",
       "kind": "package",
@@ -1316,6 +1325,168 @@
       "packageId": "Novolis.Geopolitics.Trade"
     },
     {
+      "id": "novolis.http.abstractions",
+      "name": "Novolis.Http.Abstractions",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-http",
+      "packageId": "Novolis.Http.Abstractions"
+    },
+    {
+      "id": "novolis.http.authentication",
+      "name": "Novolis.Http.Authentication",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-http",
+      "packageId": "Novolis.Http.Authentication"
+    },
+    {
+      "id": "novolis.http.client",
+      "name": "Novolis.Http.Client",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-http",
+      "packageId": "Novolis.Http.Client"
+    },
+    {
+      "id": "novolis.http.documents",
+      "name": "Novolis.Http.Documents",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-http",
+      "packageId": "Novolis.Http.Documents"
+    },
+    {
+      "id": "novolis.http.extensions",
+      "name": "Novolis.Http.Extensions",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-http",
+      "packageId": "Novolis.Http.Extensions"
+    },
+    {
+      "id": "novolis.http.variables",
+      "name": "Novolis.Http.Variables",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-http",
+      "packageId": "Novolis.Http.Variables"
+    },
+    {
+      "id": "novolis.inference.abstractions",
+      "name": "Novolis.Inference.Abstractions",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-inference",
+      "packageId": "Novolis.Inference.Abstractions"
+    },
+    {
+      "id": "novolis.inference.agentframework",
+      "name": "Novolis.Inference.AgentFramework",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-inference",
+      "packageId": "Novolis.Inference.AgentFramework"
+    },
+    {
+      "id": "novolis.inference.images",
+      "name": "Novolis.Inference.Images",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-inference",
+      "packageId": "Novolis.Inference.Images"
+    },
+    {
+      "id": "novolis.inference.ollama",
+      "name": "Novolis.Inference.Ollama",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-inference",
+      "packageId": "Novolis.Inference.Ollama"
+    },
+    {
+      "id": "novolis.inference.onnx",
+      "name": "Novolis.Inference.Onnx",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-inference",
+      "packageId": "Novolis.Inference.Onnx"
+    },
+    {
+      "id": "novolis.inference.safety",
+      "name": "Novolis.Inference.Safety",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-inference",
+      "packageId": "Novolis.Inference.Safety"
+    },
+    {
+      "id": "novolis.inference.sharpmind",
+      "name": "Novolis.Inference.SharpMind",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-inference",
+      "packageId": "Novolis.Inference.SharpMind"
+    },
+    {
+      "id": "novolis.inspection",
+      "name": "Novolis.Inspection",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-inspection",
+      "packageId": "Novolis.Inspection"
+    },
+    {
+      "id": "novolis.inspection.http",
+      "name": "Novolis.Inspection.Http",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-inspection",
+      "packageId": "Novolis.Inspection.Http"
+    },
+    {
+      "id": "novolis.inspection.json",
+      "name": "Novolis.Inspection.Json",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-inspection",
+      "packageId": "Novolis.Inspection.Json"
+    },
+    {
+      "id": "novolis.inspection.objectgraph",
+      "name": "Novolis.Inspection.ObjectGraph",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-inspection",
+      "packageId": "Novolis.Inspection.ObjectGraph"
+    },
+    {
+      "id": "novolis.inspection.xml",
+      "name": "Novolis.Inspection.Xml",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-inspection",
+      "packageId": "Novolis.Inspection.Xml"
+    },
+    {
       "id": "novolis.install",
       "name": "Novolis.Install",
       "kind": "package",
@@ -1449,6 +1620,51 @@
       "channel": "stable",
       "repository": "https://github.com/Novolis-Platform/novolis-io",
       "packageId": "Novolis.IO.Workspace.Testing"
+    },
+    {
+      "id": "novolis.language.diagnostics",
+      "name": "Novolis.Language.Diagnostics",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-language",
+      "packageId": "Novolis.Language.Diagnostics"
+    },
+    {
+      "id": "novolis.language.execution",
+      "name": "Novolis.Language.Execution",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-language",
+      "packageId": "Novolis.Language.Execution"
+    },
+    {
+      "id": "novolis.language.robosharp",
+      "name": "Novolis.Language.RoboSharp",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-language",
+      "packageId": "Novolis.Language.RoboSharp"
+    },
+    {
+      "id": "novolis.language.syntax",
+      "name": "Novolis.Language.Syntax",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-language",
+      "packageId": "Novolis.Language.Syntax"
+    },
+    {
+      "id": "novolis.language.text",
+      "name": "Novolis.Language.Text",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-language",
+      "packageId": "Novolis.Language.Text"
     },
     {
       "id": "novolis.logging.agent",
@@ -2513,6 +2729,33 @@
       "packageId": "Novolis.Scheduling.Cron"
     },
     {
+      "id": "novolis.scripting.completion",
+      "name": "Novolis.Scripting.Completion",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-scripting",
+      "packageId": "Novolis.Scripting.Completion"
+    },
+    {
+      "id": "novolis.scripting.csharp",
+      "name": "Novolis.Scripting.CSharp",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-scripting",
+      "packageId": "Novolis.Scripting.CSharp"
+    },
+    {
+      "id": "novolis.scripting.hosting",
+      "name": "Novolis.Scripting.Hosting",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-scripting",
+      "packageId": "Novolis.Scripting.Hosting"
+    },
+    {
       "id": "novolis.security.authentication",
       "name": "Novolis.Security.Authentication",
       "kind": "package",
@@ -2945,6 +3188,33 @@
       "packageId": "Novolis.Storage.Abstractions"
     },
     {
+      "id": "novolis.storage.azurecombinedstorage",
+      "name": "Novolis.Storage.AzureCombinedStorage",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-storage",
+      "packageId": "Novolis.Storage.AzureCombinedStorage"
+    },
+    {
+      "id": "novolis.storage.azuretables",
+      "name": "Novolis.Storage.AzureTables",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-storage",
+      "packageId": "Novolis.Storage.AzureTables"
+    },
+    {
+      "id": "novolis.storage.indexing",
+      "name": "Novolis.Storage.Indexing",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-storage",
+      "packageId": "Novolis.Storage.Indexing"
+    },
+    {
       "id": "novolis.storage.inmemory",
       "name": "Novolis.Storage.InMemory",
       "kind": "package",
@@ -2979,6 +3249,15 @@
       "channel": "stable",
       "repository": "https://github.com/Novolis-Platform/novolis-storage",
       "packageId": "Novolis.Storage.Ndjson"
+    },
+    {
+      "id": "novolis.storage.query",
+      "name": "Novolis.Storage.Query",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-storage",
+      "packageId": "Novolis.Storage.Query"
     },
     {
       "id": "novolis.storage.sqlite",
@@ -3096,6 +3375,60 @@
       "channel": "stable",
       "repository": "https://github.com/Novolis-Platform/novolis-3d",
       "packageId": "Novolis.ThreeD.Scene"
+    },
+    {
+      "id": "novolis.time",
+      "name": "Novolis.Time",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-time",
+      "packageId": "Novolis.Time"
+    },
+    {
+      "id": "novolis.time.calendar",
+      "name": "Novolis.Time.Calendar",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-time",
+      "packageId": "Novolis.Time.Calendar"
+    },
+    {
+      "id": "novolis.time.calendar.publicholiday",
+      "name": "Novolis.Time.Calendar.PublicHoliday",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-time",
+      "packageId": "Novolis.Time.Calendar.PublicHoliday"
+    },
+    {
+      "id": "novolis.time.week",
+      "name": "Novolis.Time.Week",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-time",
+      "packageId": "Novolis.Time.Week"
+    },
+    {
+      "id": "novolis.time.worktime",
+      "name": "Novolis.Time.Worktime",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-time",
+      "packageId": "Novolis.Time.Worktime"
+    },
+    {
+      "id": "novolis.time.worktime.legal",
+      "name": "Novolis.Time.Worktime.Legal",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-time",
+      "packageId": "Novolis.Time.Worktime.Legal"
     },
     {
       "id": "novolis.timeline.abstractions",
@@ -3294,42 +3627,6 @@
       "channel": "stable",
       "repository": "https://github.com/Novolis-Platform/novolis-transports",
       "packageId": "Novolis.Transports.Framing"
-    },
-    {
-      "id": "novolis.transports.http",
-      "name": "Novolis.Transports.Http",
-      "kind": "package",
-      "version": "2026.1.1.0",
-      "channel": "stable",
-      "repository": "https://github.com/Novolis-Platform/novolis-transports",
-      "packageId": "Novolis.Transports.Http"
-    },
-    {
-      "id": "novolis.transports.http.abstractions",
-      "name": "Novolis.Transports.Http.Abstractions",
-      "kind": "package",
-      "version": "2026.1.1.0",
-      "channel": "stable",
-      "repository": "https://github.com/Novolis-Platform/novolis-transports",
-      "packageId": "Novolis.Transports.Http.Abstractions"
-    },
-    {
-      "id": "novolis.transports.http.authentication",
-      "name": "Novolis.Transports.Http.Authentication",
-      "kind": "package",
-      "version": "2026.1.1.0",
-      "channel": "stable",
-      "repository": "https://github.com/Novolis-Platform/novolis-transports",
-      "packageId": "Novolis.Transports.Http.Authentication"
-    },
-    {
-      "id": "novolis.transports.http.extensions",
-      "name": "Novolis.Transports.Http.Extensions",
-      "kind": "package",
-      "version": "2026.1.1.0",
-      "channel": "stable",
-      "repository": "https://github.com/Novolis-Platform/novolis-transports",
-      "packageId": "Novolis.Transports.Http.Extensions"
     },
     {
       "id": "novolis.transports.localipc",

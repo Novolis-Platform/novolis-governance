@@ -1,0 +1,8 @@
+{
+  "id": "novolis.language.syntax",
+  "name": "Novolis.Language.Syntax",
+  "type": "nuget",
+  "version": "2026.1.1.0",
+  "repository": "https://github.com/Novolis-Platform/novolis-language",
+  "packageId": "Novolis.Language.Syntax"
+}
