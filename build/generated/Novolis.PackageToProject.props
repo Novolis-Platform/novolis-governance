@@ -985,8 +985,14 @@
     <NovolisPackageProject Include="Novolis.Storage.Abstractions">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-storage\src\Novolis.Storage.Abstractions\Novolis.Storage.Abstractions.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Storage.AzureCombinedStorage">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-storage\src\Novolis.Storage.AzureCombinedStorage\Novolis.Storage.AzureCombinedStorage.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Storage.AzureTables">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-storage\src\Novolis.Storage.AzureTables\Novolis.Storage.AzureTables.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Storage.Indexing">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-storage\src\Novolis.Storage.Indexing\Novolis.Storage.Indexing.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Storage.InMemory">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-storage\src\Novolis.Storage.InMemory\Novolis.Storage.InMemory.csproj</ProjectPath>
@@ -999,6 +1005,9 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Storage.Ndjson">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-storage\src\Novolis.Storage.Ndjson\Novolis.Storage.Ndjson.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Storage.Query">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-storage\src\Novolis.Storage.Query\Novolis.Storage.Query.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Storage.Sqlite">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-storage\src\Novolis.Storage.Sqlite\Novolis.Storage.Sqlite.csproj</ProjectPath>
