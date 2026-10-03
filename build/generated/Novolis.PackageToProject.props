@@ -985,6 +985,9 @@
     <NovolisPackageProject Include="Novolis.Storage.Abstractions">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-storage\src\Novolis.Storage.Abstractions\Novolis.Storage.Abstractions.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Storage.AzureTables">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-storage\src\Novolis.Storage.AzureTables\Novolis.Storage.AzureTables.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Storage.InMemory">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-storage\src\Novolis.Storage.InMemory\Novolis.Storage.InMemory.csproj</ProjectPath>
     </NovolisPackageProject>
