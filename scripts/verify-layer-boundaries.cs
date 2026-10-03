@@ -31,10 +31,11 @@ foreach (var repo in NovolisWorkspace.NovolisRepos(root))
         var selfRank = SpineRank(name);
         var isAvaloniaLayer = name.StartsWith("Novolis.Avalonia", StringComparison.Ordinal);
         var isMauiLayer = name.StartsWith("Novolis.Maui", StringComparison.Ordinal);
+        var isBlazorLayer = name.StartsWith("Novolis.Blazor", StringComparison.Ordinal);
         var isAvaloniaRepoSource = csproj.Replace('/', '\\').Contains(@"\novolis-avalonia\src\", StringComparison.OrdinalIgnoreCase);
 
         if (isAvaloniaRepoSource && !name.StartsWith("Novolis.Avalonia.", StringComparison.Ordinal))
-            violations.Add($"NOV2012 {csproj}: '{name}' is under novolis-avalonia/src; only Novolis.Avalonia.* projects may live there");
+            violations.Add($"NOV2014 {csproj}: '{name}' is under novolis-avalonia/src; only Novolis.Avalonia.* projects may live there");
 
         foreach (var reference in refs)
         {
@@ -46,6 +47,12 @@ foreach (var repo in NovolisWorkspace.NovolisRepos(root))
                 violations.Add($"NOV2011 {csproj}: '{name}' PackageReference '{reference}' (MAUI must not take Avalonia)");
             if (isAvaloniaLayer && IsMauiPackage(reference))
                 violations.Add($"NOV2011 {csproj}: '{name}' PackageReference '{reference}' (Avalonia must not take MAUI)");
+            if (IsBlazorPackage(reference) && !isBlazorLayer)
+                violations.Add($"NOV2012 {csproj}: library '{name}' PackageReference '{reference}' (Blazor reserved for Novolis.Blazor.*)");
+            if (isBlazorLayer && (IsAvaloniaPackage(reference) || IsMauiPackage(reference)))
+                violations.Add($"NOV2013 {csproj}: '{name}' PackageReference '{reference}' (Blazor must not take Avalonia or MAUI)");
+            if ((isAvaloniaLayer || isMauiLayer) && IsBlazorPackage(reference))
+                violations.Add($"NOV2013 {csproj}: '{name}' PackageReference '{reference}' (Avalonia and MAUI must not take Blazor)");
 
             var refRank = SpineRank(reference);
             if (selfRank is int sr && refRank is int rr && sr < rr)
@@ -67,6 +74,7 @@ return 0;
 
 static bool IsAvaloniaPackage(string id) => id == "Avalonia" || id.StartsWith("Avalonia.", StringComparison.Ordinal);
 static bool IsMauiPackage(string id) => id == "Microsoft.Maui" || id.StartsWith("Microsoft.Maui.", StringComparison.Ordinal);
+static bool IsBlazorPackage(string id) => id == "Microsoft.AspNetCore.Components" || id.StartsWith("Microsoft.AspNetCore.Components.", StringComparison.Ordinal);
 
 static int? SpineRank(string name)
 {

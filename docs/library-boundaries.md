@@ -24,11 +24,13 @@ Apps
 
 Lower layers **must not** reference higher layers. Same-layer / peer facet refs are fine. **Apps** compose any combination.
 
-**Avalonia isolation:** only `Novolis.Avalonia.*` libraries may take `Avalonia` / `Avalonia.*` package references. Math, Physics, Simulation, Gaming, Economy, Astro, Rendering, Raylib, Agent, Cad, Audio, Markup, etc. stay Avalonia-free. Product apps may reference Avalonia directly.
+**Avalonia isolation:** only `Novolis.Avalonia.*` libraries may take `Avalonia` / `Avalonia.*` package references. Math, Physics, Simulation, Gaming, Economy, Astro, Rendering, Raylib, Agent, Cad, Audio, Markup, Blazor, etc. stay Avalonia-free. Product apps may reference Avalonia directly.
 
 **MAUI isolation:** only `Novolis.Maui.*` libraries may take `Microsoft.Maui.*` package references (orthogonal island, not on the closed spine). Must not take Avalonia; Avalonia must not take MAUI. Product apps (Merglyph) may compose MAUI. Grandfathered adapter: `Novolis.Audio.Voice.Platform.Maui`.
 
-Enforced by `Novolis.Analyzers.StackBoundaries` (`NOV2006`, `NOV2007`, `NOV2010`, `NOV2011`) and `scripts/verify-layer-boundaries.ps1`.
+**Blazor isolation:** only `Novolis.Blazor.*` libraries may take `Microsoft.AspNetCore.Components*` package or assembly references. Blazor is an independent UI island: Blazor libraries must not reference Avalonia or MAUI, and Avalonia/MAUI libraries must not reference Blazor. Product apps may compose Blazor directly.
+
+Enforced by `Novolis.Analyzers.StackBoundaries` (`NOV2006`, `NOV2007`, `NOV2010`–`NOV2013`) and `scripts/verify-layer-boundaries.ps1`.
 
 **`novolis-raylib`** remains a separate graphics/input host — orthogonal to the spine (never ↔ Simulation).
 
