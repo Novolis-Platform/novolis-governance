@@ -1,0 +1,8 @@
+{
+  "id": "novolis.storage.azureblob",
+  "name": "Novolis.Storage.AzureBlob",
+  "type": "nuget",
+  "version": "2026.1.1.0",
+  "repository": "https://github.com/Novolis-Platform/novolis-storage",
+  "packageId": "Novolis.Storage.AzureBlob"
+}

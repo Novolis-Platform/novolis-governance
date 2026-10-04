@@ -695,6 +695,15 @@
       "packageId": "Novolis.Avalonia.Raylib"
     },
     {
+      "id": "novolis.avalonia.reach",
+      "name": "Novolis.Avalonia.Reach",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-avalonia",
+      "packageId": "Novolis.Avalonia.Reach"
+    },
+    {
       "id": "novolis.avalonia.rendering",
       "name": "Novolis.Avalonia.Rendering",
       "kind": "package",
@@ -792,6 +801,15 @@
       "channel": "stable",
       "repository": "https://github.com/Novolis-Platform/novolis-avalonia",
       "packageId": "Novolis.Avalonia.Voice"
+    },
+    {
+      "id": "novolis.blazor.graphicalprofile",
+      "name": "Novolis.Blazor.GraphicalProfile",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-blazor",
+      "packageId": "Novolis.Blazor.GraphicalProfile"
     },
     {
       "id": "novolis.blazor.mermaid",
@@ -2000,6 +2018,15 @@
       "packageId": "Novolis.Math.Topology"
     },
     {
+      "id": "novolis.maui.activation",
+      "name": "Novolis.Maui.Activation",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-maui",
+      "packageId": "Novolis.Maui.Activation"
+    },
+    {
       "id": "novolis.maui.agent",
       "name": "Novolis.Maui.Agent",
       "kind": "package",
@@ -2495,6 +2522,51 @@
       "packageId": "Novolis.Raylib.Testing"
     },
     {
+      "id": "novolis.reach.client",
+      "name": "Novolis.Reach.Client",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-reach",
+      "packageId": "Novolis.Reach.Client"
+    },
+    {
+      "id": "novolis.reach.host.server",
+      "name": "Novolis.Reach.Host.Server",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-reach",
+      "packageId": "Novolis.Reach.Host.Server"
+    },
+    {
+      "id": "novolis.reach.host.windows.session",
+      "name": "Novolis.Reach.Host.Windows.Session",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-reach",
+      "packageId": "Novolis.Reach.Host.Windows.Session"
+    },
+    {
+      "id": "novolis.reach.protocol",
+      "name": "Novolis.Reach.Protocol",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-reach",
+      "packageId": "Novolis.Reach.Protocol"
+    },
+    {
+      "id": "novolis.reach.transport",
+      "name": "Novolis.Reach.Transport",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-reach",
+      "packageId": "Novolis.Reach.Transport"
+    },
+    {
       "id": "novolis.registry",
       "name": "Novolis.Registry",
       "kind": "package",
@@ -2864,6 +2936,15 @@
       "packageId": "Novolis.Security.OAuth.AspNetCore"
     },
     {
+      "id": "novolis.security.oauth.client",
+      "name": "Novolis.Security.OAuth.Client",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-security",
+      "packageId": "Novolis.Security.OAuth.Client"
+    },
+    {
       "id": "novolis.security.oauth.storage",
       "name": "Novolis.Security.OAuth.Storage",
       "kind": "package",
@@ -3170,6 +3251,15 @@
       "packageId": "Novolis.Storage.Abstractions"
     },
     {
+      "id": "novolis.storage.azureblob",
+      "name": "Novolis.Storage.AzureBlob",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-storage",
+      "packageId": "Novolis.Storage.AzureBlob"
+    },
+    {
       "id": "novolis.storage.azurecombinedstorage",
       "name": "Novolis.Storage.AzureCombinedStorage",
       "kind": "package",
@@ -3368,15 +3458,6 @@
       "packageId": "Novolis.Time"
     },
     {
-      "id": "novolis.time.workday",
-      "name": "Novolis.Time.Workday",
-      "kind": "package",
-      "version": "2026.1.1.0",
-      "channel": "stable",
-      "repository": "https://github.com/Novolis-Platform/novolis-time",
-      "packageId": "Novolis.Time.Workday"
-    },
-    {
       "id": "novolis.time.week",
       "name": "Novolis.Time.Week",
       "kind": "package",
@@ -3384,6 +3465,15 @@
       "channel": "stable",
       "repository": "https://github.com/Novolis-Platform/novolis-time",
       "packageId": "Novolis.Time.Week"
+    },
+    {
+      "id": "novolis.time.workday",
+      "name": "Novolis.Time.Workday",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-time",
+      "packageId": "Novolis.Time.Workday"
     },
     {
       "id": "novolis.time.worktime",

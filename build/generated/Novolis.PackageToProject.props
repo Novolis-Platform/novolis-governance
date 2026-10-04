@@ -235,6 +235,9 @@
     <NovolisPackageProject Include="Novolis.Avalonia.Raylib">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-avalonia\src\Novolis.Avalonia.Raylib\Novolis.Avalonia.Raylib.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Avalonia.Reach">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-avalonia\src\Novolis.Avalonia.Reach\Novolis.Avalonia.Reach.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Avalonia.Rendering">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-avalonia\src\Novolis.Avalonia.Rendering\Novolis.Avalonia.Rendering.csproj</ProjectPath>
     </NovolisPackageProject>
@@ -673,6 +676,9 @@
     <NovolisPackageProject Include="Novolis.Math.Topology">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-math\src\Novolis.Math.Topology\Novolis.Math.Topology.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Maui.Activation">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-maui\src\Novolis.Maui.Activation\Novolis.Maui.Activation.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Maui.Agent">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-maui\src\Novolis.Maui.Agent\Novolis.Maui.Agent.csproj</ProjectPath>
     </NovolisPackageProject>
@@ -837,6 +843,21 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Raylib.Testing">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-raylib\src\Novolis.Raylib.Testing\Novolis.Raylib.Testing.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Reach.Client">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-reach\src\Novolis.Reach.Client\Novolis.Reach.Client.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Reach.Host.Server">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-reach\src\Novolis.Reach.Host.Server\Novolis.Reach.Host.Server.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Reach.Host.Windows.Session">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-reach\src\Novolis.Reach.Host.Windows.Session\Novolis.Reach.Host.Windows.Session.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Reach.Protocol">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-reach\src\Novolis.Reach.Protocol\Novolis.Reach.Protocol.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Reach.Transport">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-reach\src\Novolis.Reach.Transport\Novolis.Reach.Transport.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Registry">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-registry\src\Novolis.Registry\Novolis.Registry.csproj</ProjectPath>
