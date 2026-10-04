@@ -1114,6 +1114,9 @@
     <NovolisPackageProject Include="Novolis.Testing.Logging">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-testing\src\Novolis.Testing.Logging\Novolis.Testing.Logging.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Testing.Playwright">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-testing\src\Novolis.Testing.Playwright\Novolis.Testing.Playwright.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Testing.ServiceBus">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-testing\src\Novolis.Testing.ServiceBus\Novolis.Testing.ServiceBus.csproj</ProjectPath>
     </NovolisPackageProject>
@@ -1164,6 +1167,12 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Tools.Android.Cli">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-tools\src\Novolis.Tools.Android.Cli\Novolis.Tools.Android.Cli.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Tools.CanvasHtml">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-tools\src\Novolis.Tools.CanvasHtml\Novolis.Tools.CanvasHtml.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Tools.CanvasHtml.Cli">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-tools\src\Novolis.Tools.CanvasHtml.Cli\Novolis.Tools.CanvasHtml.Cli.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Tools.Cli">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-tools\src\Novolis.Tools.Cli\Novolis.Tools.Cli.csproj</ProjectPath>

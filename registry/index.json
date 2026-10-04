@@ -3305,6 +3305,15 @@
       "packageId": "Novolis.Testing.Appium"
     },
     {
+      "id": "novolis.testing.playwright",
+      "name": "Novolis.Testing.Playwright",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-testing",
+      "packageId": "Novolis.Testing.Playwright"
+    },
+    {
       "id": "novolis.testing.budgets",
       "name": "Novolis.Testing.Budgets",
       "kind": "package",
