@@ -110,7 +110,7 @@ CadBlueprint companion (walls / interiors / exteriors / openings + HTML sheets):
 ## Consumers
 
 - **Ship Designer** (`novolis-apps/src/ShipDesigner`) — freighter authoring home: Open/Save `.cadjson`, hatches, airtight validate, Calypso seed import
-- **Novolis CAD Studio 3D** (`novolis-apps/src/CadStudio3D`) — product shell: Draft 2D/3D + Model + Stage/Render; Cad + Scene agent attach
+- **Novolis CAD Studio** (`novolis-apps/src/CadStudio`) — product shell: Draft 2D/3D + Model + Stage/Render + explicit Ship mode; Cad + Scene agent attach when enabled
 - **Draft Studio** — Cad-only author of `.cadjson`; optional Export Phys for `.cadphys.json`
 - **CalypsoCad** (dogfood) — generates Calypso Rev G walls/spaces; headless PNG / regenerate; exterior solids authored in Ship Designer survive regenerate
 - Future DXF / glTF / STEP converters — schemas keep layers, ACI-friendly `colorIndex`, NURBS, and mesh normals/UVs
