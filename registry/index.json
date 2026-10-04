@@ -695,15 +695,6 @@
       "packageId": "Novolis.Avalonia.Raylib"
     },
     {
-      "id": "novolis.avalonia.reach",
-      "name": "Novolis.Avalonia.Reach",
-      "kind": "package",
-      "version": "2026.1.1.0",
-      "channel": "stable",
-      "repository": "https://github.com/Novolis-Platform/novolis-avalonia",
-      "packageId": "Novolis.Avalonia.Reach"
-    },
-    {
       "id": "novolis.avalonia.rendering",
       "name": "Novolis.Avalonia.Rendering",
       "kind": "package",
@@ -2520,51 +2511,6 @@
       "channel": "stable",
       "repository": "https://github.com/Novolis-Platform/novolis-raylib",
       "packageId": "Novolis.Raylib.Testing"
-    },
-    {
-      "id": "novolis.reach.client",
-      "name": "Novolis.Reach.Client",
-      "kind": "package",
-      "version": "2026.1.1.0",
-      "channel": "stable",
-      "repository": "https://github.com/Novolis-Platform/novolis-reach",
-      "packageId": "Novolis.Reach.Client"
-    },
-    {
-      "id": "novolis.reach.host.server",
-      "name": "Novolis.Reach.Host.Server",
-      "kind": "package",
-      "version": "2026.1.1.0",
-      "channel": "stable",
-      "repository": "https://github.com/Novolis-Platform/novolis-reach",
-      "packageId": "Novolis.Reach.Host.Server"
-    },
-    {
-      "id": "novolis.reach.host.windows.session",
-      "name": "Novolis.Reach.Host.Windows.Session",
-      "kind": "package",
-      "version": "2026.1.1.0",
-      "channel": "stable",
-      "repository": "https://github.com/Novolis-Platform/novolis-reach",
-      "packageId": "Novolis.Reach.Host.Windows.Session"
-    },
-    {
-      "id": "novolis.reach.protocol",
-      "name": "Novolis.Reach.Protocol",
-      "kind": "package",
-      "version": "2026.1.1.0",
-      "channel": "stable",
-      "repository": "https://github.com/Novolis-Platform/novolis-reach",
-      "packageId": "Novolis.Reach.Protocol"
-    },
-    {
-      "id": "novolis.reach.transport",
-      "name": "Novolis.Reach.Transport",
-      "kind": "package",
-      "version": "2026.1.1.0",
-      "channel": "stable",
-      "repository": "https://github.com/Novolis-Platform/novolis-reach",
-      "packageId": "Novolis.Reach.Transport"
     },
     {
       "id": "novolis.registry",

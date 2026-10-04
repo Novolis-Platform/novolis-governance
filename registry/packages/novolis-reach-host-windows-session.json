@@ -1,8 +1,0 @@
-{
-  "id": "novolis.reach.host.windows.session",
-  "name": "Novolis.Reach.Host.Windows.Session",
-  "type": "nuget",
-  "version": "2026.1.1.0",
-  "repository": "https://github.com/Novolis-Platform/novolis-reach",
-  "packageId": "Novolis.Reach.Host.Windows.Session"
-}
