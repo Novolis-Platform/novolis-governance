@@ -3413,6 +3413,15 @@
       "packageId": "Novolis.Time"
     },
     {
+      "id": "novolis.time.month",
+      "name": "Novolis.Time.Month",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-time",
+      "packageId": "Novolis.Time.Month"
+    },
+    {
       "id": "novolis.time.week",
       "name": "Novolis.Time.Week",
       "kind": "package",

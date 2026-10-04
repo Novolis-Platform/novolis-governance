@@ -1141,6 +1141,9 @@
     <NovolisPackageProject Include="Novolis.Time">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-time\src\Novolis.Time\Novolis.Time.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Time.Month">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-time\src\Novolis.Time.Month\Novolis.Time.Month.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Time.Week">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-time\src\Novolis.Time.Week\Novolis.Time.Week.csproj</ProjectPath>
     </NovolisPackageProject>
