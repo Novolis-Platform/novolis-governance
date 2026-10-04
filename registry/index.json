@@ -3386,22 +3386,13 @@
       "packageId": "Novolis.Time"
     },
     {
-      "id": "novolis.time.calendar",
-      "name": "Novolis.Time.Calendar",
+      "id": "novolis.time.workday",
+      "name": "Novolis.Time.Workday",
       "kind": "package",
       "version": "2026.1.1.0",
       "channel": "stable",
       "repository": "https://github.com/Novolis-Platform/novolis-time",
-      "packageId": "Novolis.Time.Calendar"
-    },
-    {
-      "id": "novolis.time.calendar.publicholiday",
-      "name": "Novolis.Time.Calendar.PublicHoliday",
-      "kind": "package",
-      "version": "2026.1.1.0",
-      "channel": "stable",
-      "repository": "https://github.com/Novolis-Platform/novolis-time",
-      "packageId": "Novolis.Time.Calendar.PublicHoliday"
+      "packageId": "Novolis.Time.Workday"
     },
     {
       "id": "novolis.time.week",

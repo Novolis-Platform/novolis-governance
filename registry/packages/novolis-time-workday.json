@@ -1,8 +1,8 @@
 {
-  "id": "novolis.time.calendar",
-  "name": "Novolis.Time.Calendar",
+  "id": "novolis.time.workday",
+  "name": "Novolis.Time.Workday",
   "type": "nuget",
   "version": "2026.1.1.0",
   "repository": "https://github.com/Novolis-Platform/novolis-time",
-  "packageId": "Novolis.Time.Calendar"
+  "packageId": "Novolis.Time.Workday"
 }
