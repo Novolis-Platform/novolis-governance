@@ -44,9 +44,10 @@ structural strokes. There are no shadows, blur, or gradients in the chrome.
 ## Consumer packages
 
 Avalonia applications consume `Novolis.Avalonia.GraphicalProfile`.
-MAUI applications consume `Novolis.Maui.GraphicalProfile`. The packages use
-the same role names and values; they remain separate because MAUI and Avalonia
-are isolated UI layers.
+MAUI applications consume `Novolis.Maui.GraphicalProfile`.
+Blazor applications consume `Novolis.Blazor.GraphicalProfile` (generated
+`--ngp-*` CSS). The packages use the same role names and values; they remain
+separate because Avalonia, MAUI, and Blazor are isolated UI islands.
 
 Required consumers are every Avalonia or MAUI executable host and every
 Avalonia/MAUI chrome library: product apps, labs, utilities, UI templates,
@@ -110,9 +111,11 @@ dotnet run --file d:\novolis\novolis-governance\scripts\Export-GraphicalProfile.
 dotnet run --file d:\novolis\novolis-governance\scripts\verify-graphical-profile.cs
 ```
 
-The exporter updates the generated token source in both library repositories
-and writes `d:\novolis\.github\site\assets\profile.css` for the portfolio docs
-site. Repo banners are regenerated from the same JSON:
+The exporter updates the generated token source in the Avalonia and MAUI
+libraries, writes `d:\novolis\.github\site\assets\profile.css` for the portfolio
+docs site, and writes
+`d:\novolis\novolis-blazor\src\Novolis.Blazor.GraphicalProfile\wwwroot\css\graphical-profile.css`
+for Blazor hosts. Repo banners are regenerated from the same JSON:
 
 ```powershell
 dotnet run --project d:\novolis\novolis-tools\src\Novolis.Tools.Docs.Cli\Novolis.Tools.Docs.Cli.csproj --no-launch-profile -- marketing --root d:\novolis --skip-readmes

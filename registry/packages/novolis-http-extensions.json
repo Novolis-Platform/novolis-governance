@@ -1,8 +1,0 @@
-{
-  "id": "novolis.http.extensions",
-  "name": "Novolis.Http.Extensions",
-  "type": "nuget",
-  "version": "2026.1.1.0",
-  "repository": "https://github.com/Novolis-Platform/novolis-http",
-  "packageId": "Novolis.Http.Extensions"
-}

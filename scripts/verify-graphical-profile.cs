@@ -94,9 +94,15 @@ foreach (var hostRoot in hostRoots)
             continue;
         var isMaui = Regex.IsMatch(text, @"<UseMaui>\s*true\s*</UseMaui>");
         var isAvalonia = Regex.IsMatch(text, @"<(Package|Library)Reference\s+Include=""Avalonia");
-        if (!isMaui && !isAvalonia)
+        var isBlazor = text.Contains("Microsoft.AspNetCore.Components.WebAssembly", StringComparison.Ordinal)
+            || text.Contains("Sdk.BlazorWebAssembly", StringComparison.Ordinal);
+        if (!isMaui && !isAvalonia && !isBlazor)
             continue;
-        var expected = isMaui ? "Novolis.Maui.GraphicalProfile" : "Novolis.Avalonia.GraphicalProfile";
+        var expected = isMaui
+            ? "Novolis.Maui.GraphicalProfile"
+            : isAvalonia
+                ? "Novolis.Avalonia.GraphicalProfile"
+                : "Novolis.Blazor.GraphicalProfile";
         if (!text.Contains(expected, StringComparison.Ordinal))
             failures.Add($"{project} is missing {expected}.");
 

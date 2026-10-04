@@ -268,6 +268,9 @@
     <NovolisPackageProject Include="Novolis.Avalonia.Voice">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-avalonia\src\Novolis.Avalonia.Voice\Novolis.Avalonia.Voice.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Blazor.GraphicalProfile">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-blazor\src\Novolis.Blazor.GraphicalProfile\Novolis.Blazor.GraphicalProfile.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Blazor.Mermaid">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-blazor\src\Novolis.Blazor.Mermaid\Novolis.Blazor.Mermaid.csproj</ProjectPath>
     </NovolisPackageProject>
@@ -445,9 +448,6 @@
     <NovolisPackageProject Include="Novolis.Geopolitics.Trade">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-geopolitics\src\Novolis.Geopolitics.Trade\Novolis.Geopolitics.Trade.csproj</ProjectPath>
     </NovolisPackageProject>
-    <NovolisPackageProject Include="Novolis.Http.Abstractions">
-      <ProjectPath>$(NovolisLibraryRoot)\novolis-http\src\Novolis.Http.Abstractions\Novolis.Http.Abstractions.csproj</ProjectPath>
-    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Http.Authentication">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-http\src\Novolis.Http.Authentication\Novolis.Http.Authentication.csproj</ProjectPath>
     </NovolisPackageProject>
@@ -456,9 +456,6 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Http.Documents">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-http\src\Novolis.Http.Documents\Novolis.Http.Documents.csproj</ProjectPath>
-    </NovolisPackageProject>
-    <NovolisPackageProject Include="Novolis.Http.Extensions">
-      <ProjectPath>$(NovolisLibraryRoot)\novolis-http\src\Novolis.Http.Extensions\Novolis.Http.Extensions.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Http.Variables">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-http\src\Novolis.Http.Variables\Novolis.Http.Variables.csproj</ProjectPath>
@@ -963,6 +960,9 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Security.OAuth.AspNetCore">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-security\src\Novolis.Security.OAuth.AspNetCore\Novolis.Security.OAuth.AspNetCore.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Security.OAuth.Client">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-security\src\Novolis.Security.OAuth.Client\Novolis.Security.OAuth.Client.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Security.OAuth.Storage">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-security\src\Novolis.Security.OAuth.Storage\Novolis.Security.OAuth.Storage.csproj</ProjectPath>

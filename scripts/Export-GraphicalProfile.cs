@@ -32,6 +32,7 @@ var targets = new (string Path, string Kind, string? Namespace)[]
     (Path.Combine(workspaceRoot, "novolis-avalonia", "src", "Novolis.Avalonia.GraphicalProfile", "Generated", "GraphicalProfileColors.g.cs"), "csharp", "Novolis.Avalonia.GraphicalProfile"),
     (Path.Combine(workspaceRoot, "novolis-maui", "src", "Novolis.Maui.GraphicalProfile", "Generated", "GraphicalProfileColors.g.cs"), "csharp", "Novolis.Maui.GraphicalProfile"),
     (Path.Combine(workspaceRoot, ".github", "site", "assets", "profile.css"), "css", null),
+    (Path.Combine(workspaceRoot, "novolis-blazor", "src", "Novolis.Blazor.GraphicalProfile", "wwwroot", "css", "graphical-profile.css"), "css", null),
 };
 
 var failed = false;

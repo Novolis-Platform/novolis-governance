@@ -1325,15 +1325,6 @@
       "packageId": "Novolis.Geopolitics.Trade"
     },
     {
-      "id": "novolis.http.abstractions",
-      "name": "Novolis.Http.Abstractions",
-      "kind": "package",
-      "version": "2026.1.1.0",
-      "channel": "stable",
-      "repository": "https://github.com/Novolis-Platform/novolis-http",
-      "packageId": "Novolis.Http.Abstractions"
-    },
-    {
       "id": "novolis.http.authentication",
       "name": "Novolis.Http.Authentication",
       "kind": "package",
@@ -1359,15 +1350,6 @@
       "channel": "stable",
       "repository": "https://github.com/Novolis-Platform/novolis-http",
       "packageId": "Novolis.Http.Documents"
-    },
-    {
-      "id": "novolis.http.extensions",
-      "name": "Novolis.Http.Extensions",
-      "kind": "package",
-      "version": "2026.1.1.0",
-      "channel": "stable",
-      "repository": "https://github.com/Novolis-Platform/novolis-http",
-      "packageId": "Novolis.Http.Extensions"
     },
     {
       "id": "novolis.http.variables",

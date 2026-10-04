@@ -1,8 +1,0 @@
-{
-  "id": "novolis.http.abstractions",
-  "name": "Novolis.Http.Abstractions",
-  "type": "nuget",
-  "version": "2026.1.1.0",
-  "repository": "https://github.com/Novolis-Platform/novolis-http",
-  "packageId": "Novolis.Http.Abstractions"
-}
