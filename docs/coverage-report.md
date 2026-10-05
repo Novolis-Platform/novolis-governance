@@ -113,9 +113,9 @@ These packables are intentionally without headless unit `ProjectReference` linka
 | `Novolis.Markup.Html` | HTML layout/render host surface |
 | `Novolis.Analyzers.Licensing` | Roslyn licensing analyzer (excluded via ReportGenerator assembly filter; netstandard2.0 cannot use assembly-level `ExcludeFromCodeCoverage`) |
 | `Novolis.Geopolitics.Scenarios` | Scenario pack host helpers |
-| `Novolis.Rendering.Presentation.Abstractions` / `.Raylib` / `.Silk` | GPU presentation bridge / hosts |
-| `Novolis.Rendering.Backends.Vulkan` / `.Igpu` | GPU device backends |
-| `Novolis.Rendering.Backends.TwoD.Silk` | Silk.NET OpenGL 2D window / game-loop host |
+| `Novolis.Rendering.Presentation.Abstractions` / `.Raylib` | GPU presentation bridge / Raylib host |
+| `Novolis.Rendering.Backends.Vulkan` / `.Igpu` | GPU device backends (Vulkan GPU compile is `Novolis.Silk.Compute`) |
+| `Novolis.Silk` | Silk.NET OpenGL / GLFW window, blit, compute |
 | `Novolis.Rendering.PathTrace.Demos` | GPU path-trace demos |
 | `Novolis.Simulation.View` | Camera / view rig (GPU presentation bridge; headless sim tests skip) |
 | `Novolis.Transports.Torrent` | BitTorrent / P2P network host |

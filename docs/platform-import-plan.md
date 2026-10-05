@@ -88,7 +88,7 @@ Policy: [`imports-todo/third-party-inspiration-policy.md`](imports-todo/third-pa
 |------|----------|----------|
 | Simulation replay (FC patterns) | `novolis-simulation/src/Novolis.Simulation.Replay` | [fleetcommander-patterns](imports-todo/fleetcommander-patterns-for-platform.md) |
 | TCP middleware + memory transport | `novolis-transports/src/Novolis.Transports.Tcp.Abstractions` | [bedrockframework-transports](imports-todo/bedrockframework-transports-inspiration.md) |
-| 2D platformer lane | `Novolis.Rendering.TwoD` + `Backends.TwoD.Silk` | [gameengine-2d](imports-todo/gameengine-2d-scene-rendering.md) — Raylib `Scene2D` **cancelled** |
+| 2D platformer lane | `Novolis.Rendering.TwoD` + `Novolis.Silk` | [gameengine-2d](imports-todo/gameengine-2d-scene-rendering.md) — Raylib `Scene2D` **cancelled** |
 
 **Follow-ups:** GPR publish Replay + Tcp.Abstractions; SCR/FC product adoption of Replay.
 
