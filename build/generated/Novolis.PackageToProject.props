@@ -862,6 +862,9 @@
     <NovolisPackageProject Include="Novolis.Rendering.Abstractions">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-rendering\src\Novolis.Rendering.Abstractions\Novolis.Rendering.Abstractions.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Rendering.Appearance">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-rendering\src\Novolis.Rendering.Appearance\Novolis.Rendering.Appearance.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Rendering.Backends.Cpu">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-rendering\src\Novolis.Rendering.Backends.Cpu\Novolis.Rendering.Backends.Cpu.csproj</ProjectPath>
     </NovolisPackageProject>

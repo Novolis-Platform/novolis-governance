@@ -2576,6 +2576,15 @@
       "packageId": "Novolis.Rendering.Abstractions"
     },
     {
+      "id": "novolis.rendering.appearance",
+      "name": "Novolis.Rendering.Appearance",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-rendering",
+      "packageId": "Novolis.Rendering.Appearance"
+    },
+    {
       "id": "novolis.rendering.backends.cpu",
       "name": "Novolis.Rendering.Backends.Cpu",
       "kind": "package",
