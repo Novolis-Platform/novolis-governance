@@ -109,12 +109,14 @@ function Remove-DuplicateGithubPackagesImport([string]$TargetsPath) {
 }
 
 $packageRepos = @(
-    'novolis-analyzers', 'novolis-aspire', 'novolis-astro', 'novolis-audio', 'novolis-avalonia', 'novolis-3d', 'novolis-cad', 'novolis-codegen',
-    'novolis-commands', 'novolis-economy', 'novolis-gaming', 'novolis-install', 'novolis-io', 'novolis-machinelearning', 'novolis-markup',
-    'novolis-maui', 'novolis-math', 'novolis-messaging', 'novolis-pdf', 'novolis-physics', 'novolis-raylib', 'novolis-rendering',
-    'novolis-security', 'novolis-simulation', 'novolis-smoketest', 'novolis-storage',
-    'novolis-template-dotnet', 'novolis-templates', 'novolis-testing',
-    'novolis-transports', 'novolis-video', 'novolis-wirefish', 'novolis-workspaces'
+    'novolis-3d', 'novolis-agent', 'novolis-analyzers', 'novolis-aspire', 'novolis-astro', 'novolis-audio', 'novolis-avalonia',
+    'novolis-blazor', 'novolis-cad', 'novolis-chat', 'novolis-civics', 'novolis-codegen', 'novolis-commands', 'novolis-documents',
+    'novolis-economy', 'novolis-gaming', 'novolis-geopolitics', 'novolis-io', 'novolis-logging', 'novolis-machinelearning',
+    'novolis-manuscript', 'novolis-mapping', 'novolis-markup', 'novolis-math', 'novolis-maui', 'novolis-messaging', 'novolis-msbuild',
+    'novolis-pdf', 'novolis-physics', 'novolis-raylib', 'novolis-registry', 'novolis-rendering', 'novolis-scheduling',
+    'novolis-security', 'novolis-ship', 'novolis-silk', 'novolis-simulation', 'novolis-smoketest', 'novolis-storage',
+    'novolis-template-dotnet', 'novolis-templates', 'novolis-testing', 'novolis-time', 'novolis-transports', 'novolis-video',
+    'novolis-windows', 'novolis-wirefish', 'novolis-workflow-engine', 'novolis-workspaces', 'novolis-xsd'
 )
 
 foreach ($name in $packageRepos) {
