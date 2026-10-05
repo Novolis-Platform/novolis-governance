@@ -2594,15 +2594,6 @@
       "packageId": "Novolis.Rendering.Backends.Igpu"
     },
     {
-      "id": "novolis.rendering.backends.twod.silk",
-      "name": "Novolis.Rendering.Backends.TwoD.Silk",
-      "kind": "package",
-      "version": "2026.1.1.0",
-      "channel": "stable",
-      "repository": "https://github.com/Novolis-Platform/novolis-rendering",
-      "packageId": "Novolis.Rendering.Backends.TwoD.Silk"
-    },
-    {
       "id": "novolis.rendering.backends.vulkan",
       "name": "Novolis.Rendering.Backends.Vulkan",
       "kind": "package",
@@ -2664,15 +2655,6 @@
       "channel": "stable",
       "repository": "https://github.com/Novolis-Platform/novolis-rendering",
       "packageId": "Novolis.Rendering.Presentation.Raylib"
-    },
-    {
-      "id": "novolis.rendering.presentation.silk",
-      "name": "Novolis.Rendering.Presentation.Silk",
-      "kind": "package",
-      "version": "2026.1.1.0",
-      "channel": "stable",
-      "repository": "https://github.com/Novolis-Platform/novolis-rendering",
-      "packageId": "Novolis.Rendering.Presentation.Silk"
     },
     {
       "id": "novolis.rendering.runtime",
@@ -2979,6 +2961,51 @@
       "channel": "stable",
       "repository": "https://github.com/Novolis-Platform/novolis-ship",
       "packageId": "Novolis.Ship.Validation"
+    },
+    {
+      "id": "novolis.silk",
+      "name": "Novolis.Silk",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-silk",
+      "packageId": "Novolis.Silk"
+    },
+    {
+      "id": "novolis.silk.capture",
+      "name": "Novolis.Silk.Capture",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-silk",
+      "packageId": "Novolis.Silk.Capture"
+    },
+    {
+      "id": "novolis.silk.compute",
+      "name": "Novolis.Silk.Compute",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-silk",
+      "packageId": "Novolis.Silk.Compute"
+    },
+    {
+      "id": "novolis.silk.game",
+      "name": "Novolis.Silk.Game",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-silk",
+      "packageId": "Novolis.Silk.Game"
+    },
+    {
+      "id": "novolis.silk.runtime",
+      "name": "Novolis.Silk.Runtime",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-silk",
+      "packageId": "Novolis.Silk.Runtime"
     },
     {
       "id": "novolis.simulation",
@@ -3305,15 +3332,6 @@
       "packageId": "Novolis.Testing.Appium"
     },
     {
-      "id": "novolis.testing.playwright",
-      "name": "Novolis.Testing.Playwright",
-      "kind": "package",
-      "version": "2026.1.1.0",
-      "channel": "stable",
-      "repository": "https://github.com/Novolis-Platform/novolis-testing",
-      "packageId": "Novolis.Testing.Playwright"
-    },
-    {
       "id": "novolis.testing.budgets",
       "name": "Novolis.Testing.Budgets",
       "kind": "package",
@@ -3339,6 +3357,15 @@
       "channel": "stable",
       "repository": "https://github.com/Novolis-Platform/novolis-testing",
       "packageId": "Novolis.Testing.Logging"
+    },
+    {
+      "id": "novolis.testing.playwright",
+      "name": "Novolis.Testing.Playwright",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-testing",
+      "packageId": "Novolis.Testing.Playwright"
     },
     {
       "id": "novolis.testing.servicebus",
@@ -3501,6 +3528,24 @@
       "channel": "stable",
       "repository": "https://github.com/Novolis-Platform/novolis-tools",
       "packageId": "Novolis.Tools.Android.Cli"
+    },
+    {
+      "id": "novolis.tools.canvashtml",
+      "name": "Novolis.Tools.CanvasHtml",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-tools",
+      "packageId": "Novolis.Tools.CanvasHtml"
+    },
+    {
+      "id": "novolis.tools.canvashtml.cli",
+      "name": "Novolis.Tools.CanvasHtml.Cli",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-tools",
+      "packageId": "Novolis.Tools.CanvasHtml.Cli"
     },
     {
       "id": "novolis.tools.cli",

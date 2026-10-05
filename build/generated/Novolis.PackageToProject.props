@@ -868,9 +868,6 @@
     <NovolisPackageProject Include="Novolis.Rendering.Backends.Igpu">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-rendering\src\Novolis.Rendering.Backends.Igpu\Novolis.Rendering.Backends.Igpu.csproj</ProjectPath>
     </NovolisPackageProject>
-    <NovolisPackageProject Include="Novolis.Rendering.Backends.TwoD.Silk">
-      <ProjectPath>$(NovolisLibraryRoot)\novolis-rendering\src\Novolis.Rendering.Backends.TwoD.Silk\Novolis.Rendering.Backends.TwoD.Silk.csproj</ProjectPath>
-    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Rendering.Backends.Vulkan">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-rendering\src\Novolis.Rendering.Backends.Vulkan\Novolis.Rendering.Backends.Vulkan.csproj</ProjectPath>
     </NovolisPackageProject>
@@ -891,9 +888,6 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Rendering.Presentation.Raylib">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-rendering\src\Novolis.Rendering.Presentation.Raylib\Novolis.Rendering.Presentation.Raylib.csproj</ProjectPath>
-    </NovolisPackageProject>
-    <NovolisPackageProject Include="Novolis.Rendering.Presentation.Silk">
-      <ProjectPath>$(NovolisLibraryRoot)\novolis-rendering\src\Novolis.Rendering.Presentation.Silk\Novolis.Rendering.Presentation.Silk.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Rendering.Runtime">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-rendering\src\Novolis.Rendering.Runtime\Novolis.Rendering.Runtime.csproj</ProjectPath>
@@ -996,6 +990,21 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Ship.Validation">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-ship\src\Novolis.Ship.Validation\Novolis.Ship.Validation.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Silk">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-silk\src\Novolis.Silk\Novolis.Silk.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Silk.Capture">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-silk\src\Novolis.Silk.Capture\Novolis.Silk.Capture.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Silk.Compute">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-silk\src\Novolis.Silk.Compute\Novolis.Silk.Compute.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Silk.Game">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-silk\src\Novolis.Silk.Game\Novolis.Silk.Game.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Silk.Runtime">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-silk\src\Novolis.Silk.Runtime\Novolis.Silk.Runtime.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Simulation">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-simulation\src\Novolis.Simulation\Novolis.Simulation.csproj</ProjectPath>

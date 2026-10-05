@@ -54,6 +54,15 @@ foreach (var repo in NovolisWorkspace.NovolisRepos(root))
             if ((isAvaloniaLayer || isMauiLayer) && IsBlazorPackage(reference))
                 violations.Add($"NOV2013 {csproj}: '{name}' PackageReference '{reference}' (Avalonia and MAUI must not take Blazor)");
 
+            if (IsSilkNetPackage(reference) && !IsSilkRepoPath(csproj))
+                violations.Add($"NOV2015 {csproj}: library '{name}' PackageReference '{reference}' (Silk.NET reserved for novolis-silk)");
+            if (IsSilkPackage(reference) && IsRenderingName(name))
+                violations.Add($"NOV2016 {csproj}: '{name}' PackageReference '{reference}' (Rendering must not take Novolis.Silk)");
+            if (IsRenderingPackage(reference) && IsSilkName(name))
+                violations.Add($"NOV2016 {csproj}: '{name}' PackageReference '{reference}' (Silk must not take Novolis.Rendering)");
+            if (IsSilkPackage(reference) && IsGamingName(name))
+                violations.Add($"NOV2017 {csproj}: '{name}' PackageReference '{reference}' (Gaming must not take Novolis.Silk)");
+
             var refRank = SpineRank(reference);
             if (selfRank is int sr && refRank is int rr && sr < rr)
                 violations.Add($"NOV2007 {csproj}: '{name}' (rank {sr}) → '{reference}' (rank {rr}) upward spine reference");
@@ -75,6 +84,17 @@ return 0;
 static bool IsAvaloniaPackage(string id) => id == "Avalonia" || id.StartsWith("Avalonia.", StringComparison.Ordinal);
 static bool IsMauiPackage(string id) => id == "Microsoft.Maui" || id.StartsWith("Microsoft.Maui.", StringComparison.Ordinal);
 static bool IsBlazorPackage(string id) => id == "Microsoft.AspNetCore.Components" || id.StartsWith("Microsoft.AspNetCore.Components.", StringComparison.Ordinal);
+static bool IsSilkNetPackage(string id) => id == "Silk.NET" || id.StartsWith("Silk.NET.", StringComparison.Ordinal);
+static bool IsSilkPackage(string id) => id == "Novolis.Silk" || id.StartsWith("Novolis.Silk.", StringComparison.Ordinal);
+static bool IsRenderingPackage(string id) => id == "Novolis.Rendering" || id.StartsWith("Novolis.Rendering.", StringComparison.Ordinal);
+static bool IsSilkName(string name) => name == "Novolis.Silk" || name.StartsWith("Novolis.Silk.", StringComparison.Ordinal);
+static bool IsRenderingName(string name) => name == "Novolis.Rendering" || name.StartsWith("Novolis.Rendering.", StringComparison.Ordinal);
+static bool IsGamingName(string name) => name == "Novolis.Game" || name.StartsWith("Novolis.Game.", StringComparison.Ordinal);
+static bool IsSilkRepoPath(string path)
+{
+    var p = path.Replace('/', '\\');
+    return p.Contains(@"\novolis-silk\", StringComparison.OrdinalIgnoreCase);
+}
 
 static int? SpineRank(string name)
 {

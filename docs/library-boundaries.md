@@ -30,9 +30,11 @@ Lower layers **must not** reference higher layers. Same-layer / peer facet refs 
 
 **Blazor isolation:** only `Novolis.Blazor.*` libraries may take `Microsoft.AspNetCore.Components*` package or assembly references. Blazor is an independent UI island: Blazor libraries must not reference Avalonia or MAUI, and Avalonia/MAUI libraries must not reference Blazor. Product apps may compose Blazor directly.
 
-Enforced by `Novolis.Analyzers.StackBoundaries` (`NOV2006`, `NOV2007`, `NOV2010`–`NOV2013`) and `scripts/verify-layer-boundaries.ps1`.
+Enforced by `Novolis.Analyzers.StackBoundaries` (`NOV2006`, `NOV2007`, `NOV2010`–`NOV2013`, `NOV2015`–`NOV2017`) and `scripts/verify-layer-boundaries.cs`.
 
 **`novolis-raylib`** remains a separate graphics/input host — orthogonal to the spine (never ↔ Simulation).
+
+**`novolis-silk`** is a closed island like Raylib, stricter: only that repo may `PackageReference` `Silk.NET.*` or `using Silk.NET.*`. Silk ↛ Rendering and Rendering ↛ `Novolis.Silk` / `Silk.NET` (no `Presentation.Silk` exception). Handshake is Math/BCL (`PlanarDrawList`, `Rgba32`, `Vector3`, UV floats). Apps, labs, and `Novolis.Avalonia.*` compose both. `Novolis.Game.*` takes neither (NOV2009 / NOV2017). Vulkan/Shaderc GPU compile lives in `Novolis.Silk.Compute`; `Novolis.Rendering.Backends.Vulkan` keeps `IRayTracingBackend` via CPU fallback.
 
 **Simulation is not a game engine.** It is neutral orchestration: worlds, objects, systems, time, observation, recording, and replay. HexGame-style game ticks belong in Simulation and apps — not in Physics (see [hexgame-authoritative-core.md](architectural-ideals/hexgame-authoritative-core.md)).
 
@@ -210,7 +212,7 @@ Product rules, HUD, networking, highly specific camera feel (run bobbing, recoil
 | Run bobbing / recoil / game-specific camera juice | App |
 | Bridge Simulation camera → `CameraSnapshot` for trace | App (uses Rendering + Simulation; neither lib references the other) |
 | `IMaterial`, `Scene`, `CompiledScene`, `IRayTracingBackend` | Rendering (`Novolis.Rendering.*`) |
-| `IFramePresenter`, CPU/GPU blit adapters | `Novolis.Rendering.Presentation.Raylib`, `Novolis.Rendering.Presentation.Silk` |
+| `IFramePresenter`, CPU/GPU blit adapters | `Novolis.Rendering.Presentation.Raylib`; Silk blit is `Novolis.Silk.Runtime` (`GlHost.Blit` / `Submit`) |
 | Material compile → `GpuMaterial` | `Novolis.Rendering.Materials` |
 | Scene compile → BVH + flat buffers | `Novolis.Rendering.Compile` (+ BVH structure in `Novolis.Math.Geometry`) |
 | `Camera3D`, draw loop | Raylib only |
@@ -254,7 +256,8 @@ novolis-security   → PasswordHashing / Encryption / Secrets / Cryptography / W
                     Authorization depends on Authentication.Abstractions only for IdentityId.
                     never Avalonia, Game.Identity, Duende, or OpenIddict
 novolis-raylib       →  math only (if needed); never → simulation; never → Avalonia
-novolis-rendering    →  math only; never → simulation or raylib; never → Avalonia
+novolis-silk         →  math only; Silk.NET only here; never → rendering; never → Avalonia
+novolis-rendering    →  math only; never → simulation, raylib, or silk; never → Avalonia
 novolis-maui         →  Markup + Microsoft.Maui.*; never → Avalonia; never pull MAUI into Markup/Audio (except Voice.Platform.Maui)
 novolis-3d           →  Math only; renderer-neutral scene documents and asset import
                          no Avalonia, rendering, Raylib, simulation, CAD, or app-host references
