@@ -29,7 +29,7 @@ Cross-check [frank-inventory.md](../frank-inventory.md). In-repo completion item
 | [frank-scheduling-cronjobs.md](frank-scheduling-cronjobs.md) | **2** — done → `novolis-scheduling` |
 | [frank-messaging-facade.md](frank-messaging-facade.md) | **2** — done → `Novolis.Messaging.Abstractions` |
 | [gameengine-audio.md](gameengine-audio.md) | **2** — done → `novolis-audio` stub |
-| [gameengine-2d-scene-rendering.md](gameengine-2d-scene-rendering.md) | **cancelled** — see `Novolis.Rendering.TwoD` |
+| [gameengine-2d-scene-rendering.md](gameengine-2d-scene-rendering.md) | **cancelled** — see `Novolis.Rendering.Planar` |
 | [frank-workflow-engine.md](frank-workflow-engine.md) | **4** |
 | [frank-entityframeworkcore.md](frank-entityframeworkcore.md) | **4** |
 | [frank-codegen-devtools.md](frank-codegen-devtools.md) | **4** |

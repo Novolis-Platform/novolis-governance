@@ -59,7 +59,7 @@ Presenters / hosts (Raylib, Rendering, Avalonia) execute effects and present
 | Authoritative world / systems / clock / replay | `Novolis.Simulation.*` |
 | Physical laws if needed | `Novolis.Physics.*` — called from Simulation systems or domain step |
 | Keys → intents | Host input adapter → `Simulation.View` intents (or future `Game.Intent`) |
-| Window host loop (non-authoritative) | `Novolis.Raylib.Hosting` / Silk TwoD game host |
+| Window host loop (non-authoritative) | `Novolis.Raylib.Hosting` / Silk planar game host |
 | Present snapshot | App presenter → Raylib / Rendering |
 | Headless tests | App tests → application core → Simulation (+ Physics only if domain uses it) |
 | Lobby / identity / packaging | `Novolis.Game.*` |

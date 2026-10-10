@@ -132,7 +132,7 @@ The master solution organizes projects from these repositories:
 
 - **Audio Stack**: novolis-audio (30 projects)
 - **UI Frameworks**: novolis-avalonia (34 projects), novolis-raylib (4 projects)
-- **ThreeD Domain**: novolis-3d (3 projects)
+- **Modeling Domain**: novolis-modeling (3 projects)
 - **Infrastructure**: novolis-aspire (2 projects), novolis-messaging (2 projects), novolis-transports (3 projects)
 - **Core Services**: novolis-storage (7 projects), novolis-scheduling (3 projects), novolis-security (2 projects)
 - **Developer Tools**: novolis-analyzers (3 projects), novolis-codegen (8 projects), novolis-commands (6 projects)

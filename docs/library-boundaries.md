@@ -264,7 +264,7 @@ novolis-raylib       →  math only (if needed); never → simulation; never →
 novolis-silk         →  math only; Silk.NET only here; never → rendering; never → Avalonia
 novolis-rendering    →  math only; never → simulation, raylib, or silk; never → Avalonia
 novolis-maui         →  Markup + Microsoft.Maui.*; never → Avalonia; never pull MAUI into Markup/Audio (except Voice.Platform.Maui)
-novolis-3d           →  Math only; renderer-neutral scene documents and asset import
+novolis-modeling     →  Math only; renderer-neutral scene documents and asset import
                          no Avalonia, rendering, Raylib, simulation, CAD, or app-host references
 novolis-pdf          →  PDF reading (parse, text, page plans, Skia raster). Math.Geometry only.
                          never Avalonia or MAUI; hosts compose Novolis.Maui.PdfViewer
@@ -274,15 +274,15 @@ novolis-documents    →  one-column PDF writing. Math.Measure only. never Avalo
 ```text
 novolis-cad          →  Math only (Cad.Primitives, Cad.Blueprint, Cad.Evaluation, Cad.SceneBridge)
                          Avalonia-free .cadjson interchange + Cad→3D bridge
-                         Must not host mesh scene graphs (those are Novolis.3D.*)
+                         Must not host mesh scene graphs (those are Novolis.Modeling.*)
 novolis-avalonia     →  Novolis.Avalonia.* UI controls and shells only
-                         including Novolis.Avalonia.ThreeD / Cad / Ship.Design
+                         including Novolis.Avalonia.Modeling / Cad / Ship.Design
                          Novolis.Avalonia.Chat binds Chat DTOs; it does not host ChatHub
-novolis-3d           →  Novolis.ThreeD.Scene / Novolis.ThreeD.Import.Assimp
+novolis-modeling     →  Novolis.Modeling.Scene / Novolis.Modeling.Import.Assimp
                          (.nov3djson scene graph and Assimp import); no UI or renderer bridge
 ```
 
-**Cad vs 3D cameras:** document pose bags (`CadCamera`, `CameraNode`) may live in Cad/3D DTOs. Orbit / free-look **controllers** and `ViewPose` stay in `Novolis.Simulation.View`. Apps/Avalonia compose DTO poses → ViewPose. Do not put Rendering soft-bridges in Cad libraries — Avalonia and Lab.Compose wire Cad/3D lights → Rendering.
+**Cad vs modeling cameras:** document pose bags (`CadCamera`, `CameraNode`) may live in Cad/Modeling DTOs. Orbit / free-look **controllers** and `ViewPose` stay in `Novolis.Simulation.View`. Apps/Avalonia compose DTO poses → ViewPose. Do not put Rendering soft-bridges in Cad libraries — Avalonia and Lab.Compose wire Cad/Modeling lights → Rendering.
 
 **Apps** may reference any combination; they own cross-repo glue.
 

@@ -1,6 +1,6 @@
 # Import: `Frank.GameEngine` 2D scene + `IRenderer2D`
 
-> **Status (2026-05-25):** **Cancelled** for Raylib `Scene2D` import. Platform lane is [`Novolis.Rendering.TwoD`](../../../novolis-rendering/docs/design-two-d.md) + [`Novolis.Rendering.Backends.TwoD.Silk`](../../../novolis-rendering/src/Novolis.Rendering.Backends.TwoD.Silk). Optional later: `Board<T>` only. Master plan: [platform-import-plan.md](../platform-import-plan.md).
+> **Status (2026-05-25):** **Cancelled** for Raylib `Scene2D` import. Platform lane is [`Novolis.Rendering.Planar`](../../../novolis-rendering/docs/design-planar.md) + [`Novolis.Silk`](https://github.com/Novolis-Platform/novolis-silk). Optional later: `Board<T>` only. Master plan: [platform-import-plan.md](../platform-import-plan.md).
 
 **Source:**
 
