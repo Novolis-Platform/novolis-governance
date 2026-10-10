@@ -1,0 +1,8 @@
+{
+  "id": "novolis.modeling.scene",
+  "name": "Novolis.Modeling.Scene",
+  "type": "nuget",
+  "version": "2026.1.1.0",
+  "repository": "https://github.com/Novolis-Platform/novolis-modeling",
+  "packageId": "Novolis.Modeling.Scene"
+}

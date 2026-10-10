@@ -59,7 +59,7 @@ Studio-style lab hosts may move from `novolis-lab` to `novolis-apps` when they b
 
 - **novolis-tools:** `src/<ToolName>/` + `build/tools.json`
 - **novolis-utilities:** `src/<UtilityName>/` + `build/utilities.json`
-- **novolis-lab:** `labs/<Name>/` + `build/labs.json`
+- **novolis-lab:** `labs/<category>/<Name>/` + `build/labs.json` (category is the repo name with the `novolis-` prefix removed; cross-repo product hosts use `apps`)
 - **novolis-apps:** `src/<AppName>/` + per-app `.slnx` + `build/apps.json`
 
 `novolis-apps`, `novolis-utilities`, and `novolis-lab` are included in `Novolis.Platform.slnx` so platform work can be performed in one solution context. They retain their per-app, per-utility, and per-lab `.slnx` files for focused work. `novolis-tools` remains in the platform map because its reusable tool libraries are packable; its executable hosts consume published packages.

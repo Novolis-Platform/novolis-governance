@@ -668,6 +668,15 @@
       "packageId": "Novolis.Avalonia.Mobile.Desktop"
     },
     {
+      "id": "novolis.avalonia.modeling",
+      "name": "Novolis.Avalonia.Modeling",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-avalonia",
+      "packageId": "Novolis.Avalonia.Modeling"
+    },
+    {
       "id": "novolis.avalonia.ndjson",
       "name": "Novolis.Avalonia.Ndjson",
       "kind": "package",
@@ -747,15 +756,6 @@
       "channel": "stable",
       "repository": "https://github.com/Novolis-Platform/novolis-avalonia",
       "packageId": "Novolis.Avalonia.Studio"
-    },
-    {
-      "id": "novolis.avalonia.threed",
-      "name": "Novolis.Avalonia.ThreeD",
-      "kind": "package",
-      "version": "2026.1.1.0",
-      "channel": "stable",
-      "repository": "https://github.com/Novolis-Platform/novolis-avalonia",
-      "packageId": "Novolis.Avalonia.ThreeD"
     },
     {
       "id": "novolis.avalonia.torrent",
@@ -1269,6 +1269,15 @@
       "channel": "stable",
       "repository": "https://github.com/Novolis-Platform/novolis-gaming",
       "packageId": "Novolis.Game.Procedural"
+    },
+    {
+      "id": "novolis.game.scenes",
+      "name": "Novolis.Game.Scenes",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-gaming",
+      "packageId": "Novolis.Game.Scenes"
     },
     {
       "id": "novolis.geopolitics.conflict",
@@ -2207,6 +2216,24 @@
       "packageId": "Novolis.Messaging.ServiceBus.Primitives"
     },
     {
+      "id": "novolis.modeling.import.assimp",
+      "name": "Novolis.Modeling.Import.Assimp",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-modeling",
+      "packageId": "Novolis.Modeling.Import.Assimp"
+    },
+    {
+      "id": "novolis.modeling.scene",
+      "name": "Novolis.Modeling.Scene",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-modeling",
+      "packageId": "Novolis.Modeling.Scene"
+    },
+    {
       "id": "novolis.msbuild.libraryreference",
       "name": "Novolis.MSBuild.LibraryReference",
       "kind": "package",
@@ -2648,6 +2675,15 @@
       "packageId": "Novolis.Rendering.PathTrace.Demos"
     },
     {
+      "id": "novolis.rendering.planar",
+      "name": "Novolis.Rendering.Planar",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-rendering",
+      "packageId": "Novolis.Rendering.Planar"
+    },
+    {
       "id": "novolis.rendering.presentation.abstractions",
       "name": "Novolis.Rendering.Presentation.Abstractions",
       "kind": "package",
@@ -2691,15 +2727,6 @@
       "channel": "stable",
       "repository": "https://github.com/Novolis-Platform/novolis-rendering",
       "packageId": "Novolis.Rendering.Testing"
-    },
-    {
-      "id": "novolis.rendering.twod",
-      "name": "Novolis.Rendering.TwoD",
-      "kind": "package",
-      "version": "2026.1.1.0",
-      "channel": "stable",
-      "repository": "https://github.com/Novolis-Platform/novolis-rendering",
-      "packageId": "Novolis.Rendering.TwoD"
     },
     {
       "id": "novolis.scheduling",
@@ -3420,24 +3447,6 @@
       "channel": "stable",
       "repository": "https://github.com/Novolis-Platform/novolis-testing",
       "packageId": "Novolis.Testing.TUnit"
-    },
-    {
-      "id": "novolis.threed.import.assimp",
-      "name": "Novolis.ThreeD.Import.Assimp",
-      "kind": "package",
-      "version": "2026.1.1.0",
-      "channel": "stable",
-      "repository": "https://github.com/Novolis-Platform/novolis-3d",
-      "packageId": "Novolis.ThreeD.Import.Assimp"
-    },
-    {
-      "id": "novolis.threed.scene",
-      "name": "Novolis.ThreeD.Scene",
-      "kind": "package",
-      "version": "2026.1.1.0",
-      "channel": "stable",
-      "repository": "https://github.com/Novolis-Platform/novolis-3d",
-      "packageId": "Novolis.ThreeD.Scene"
     },
     {
       "id": "novolis.time",

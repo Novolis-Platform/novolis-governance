@@ -62,6 +62,8 @@ foreach (var repo in NovolisWorkspace.NovolisRepos(root))
                 violations.Add($"NOV2016 {csproj}: '{name}' PackageReference '{reference}' (Silk must not take Novolis.Rendering)");
             if (IsSilkPackage(reference) && IsGamingName(name))
                 violations.Add($"NOV2017 {csproj}: '{name}' PackageReference '{reference}' (Gaming must not take Novolis.Silk)");
+            if (IsRaylibPackage(reference) && IsGamingName(name))
+                violations.Add($"NOV2009 {csproj}: '{name}' PackageReference '{reference}' (Gaming must not take Novolis.Raylib)");
 
             var refRank = SpineRank(reference);
             if (selfRank is int sr && refRank is int rr && sr < rr)
@@ -87,6 +89,7 @@ static bool IsBlazorPackage(string id) => id == "Microsoft.AspNetCore.Components
 static bool IsSilkNetPackage(string id) => id == "Silk.NET" || id.StartsWith("Silk.NET.", StringComparison.Ordinal);
 static bool IsSilkPackage(string id) => id == "Novolis.Silk" || id.StartsWith("Novolis.Silk.", StringComparison.Ordinal);
 static bool IsRenderingPackage(string id) => id == "Novolis.Rendering" || id.StartsWith("Novolis.Rendering.", StringComparison.Ordinal);
+static bool IsRaylibPackage(string id) => id == "Novolis.Raylib" || id.StartsWith("Novolis.Raylib.", StringComparison.Ordinal);
 static bool IsSilkName(string name) => name == "Novolis.Silk" || name.StartsWith("Novolis.Silk.", StringComparison.Ordinal);
 static bool IsRenderingName(string name) => name == "Novolis.Rendering" || name.StartsWith("Novolis.Rendering.", StringComparison.Ordinal);
 static bool IsGamingName(string name) => name == "Novolis.Game" || name.StartsWith("Novolis.Game.", StringComparison.Ordinal);

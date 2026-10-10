@@ -226,6 +226,9 @@
     <NovolisPackageProject Include="Novolis.Avalonia.Mobile.Desktop">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-avalonia\src\Novolis.Avalonia.Mobile.Desktop\Novolis.Avalonia.Mobile.Desktop.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Avalonia.Modeling">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-avalonia\src\Novolis.Avalonia.Modeling\Novolis.Avalonia.Modeling.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Avalonia.Ndjson">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-avalonia\src\Novolis.Avalonia.Ndjson\Novolis.Avalonia.Ndjson.csproj</ProjectPath>
     </NovolisPackageProject>
@@ -252,9 +255,6 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Avalonia.Studio">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-avalonia\src\Novolis.Avalonia.Studio\Novolis.Avalonia.Studio.csproj</ProjectPath>
-    </NovolisPackageProject>
-    <NovolisPackageProject Include="Novolis.Avalonia.ThreeD">
-      <ProjectPath>$(NovolisLibraryRoot)\novolis-avalonia\src\Novolis.Avalonia.ThreeD\Novolis.Avalonia.ThreeD.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Avalonia.Torrent">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-avalonia\src\Novolis.Avalonia.Torrent\Novolis.Avalonia.Torrent.csproj</ProjectPath>
@@ -426,6 +426,9 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Game.Procedural">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-gaming\src\Novolis.Game.Procedural\Novolis.Game.Procedural.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Game.Scenes">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-gaming\src\Novolis.Game.Scenes\Novolis.Game.Scenes.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Geopolitics.Conflict">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-geopolitics\src\Novolis.Geopolitics.Conflict\Novolis.Geopolitics.Conflict.csproj</ProjectPath>
@@ -739,6 +742,12 @@
     <NovolisPackageProject Include="Novolis.Messaging.ServiceBus.Primitives">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-messaging\src\Novolis.Messaging.ServiceBus.Primitives\Novolis.Messaging.ServiceBus.Primitives.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Modeling.Import.Assimp">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-modeling\src\Novolis.Modeling.Import.Assimp\Novolis.Modeling.Import.Assimp.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Modeling.Scene">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-modeling\src\Novolis.Modeling.Scene\Novolis.Modeling.Scene.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.MSBuild.LibraryReference">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-msbuild\src\Novolis.MSBuild.LibraryReference\Novolis.MSBuild.LibraryReference.csproj</ProjectPath>
     </NovolisPackageProject>
@@ -886,6 +895,9 @@
     <NovolisPackageProject Include="Novolis.Rendering.PathTrace.Demos">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-rendering\src\Novolis.Rendering.PathTrace.Demos\Novolis.Rendering.PathTrace.Demos.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Rendering.Planar">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-rendering\src\Novolis.Rendering.Planar\Novolis.Rendering.Planar.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Rendering.Presentation.Abstractions">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-rendering\src\Novolis.Rendering.Presentation.Abstractions\Novolis.Rendering.Presentation.Abstractions.csproj</ProjectPath>
     </NovolisPackageProject>
@@ -900,9 +912,6 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Rendering.Testing">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-rendering\src\Novolis.Rendering.Testing\Novolis.Rendering.Testing.csproj</ProjectPath>
-    </NovolisPackageProject>
-    <NovolisPackageProject Include="Novolis.Rendering.TwoD">
-      <ProjectPath>$(NovolisLibraryRoot)\novolis-rendering\src\Novolis.Rendering.TwoD\Novolis.Rendering.TwoD.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Scheduling">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-scheduling\src\Novolis.Scheduling\Novolis.Scheduling.csproj</ProjectPath>
@@ -1143,12 +1152,6 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Testing.TUnit">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-testing\src\Novolis.Testing.TUnit\Novolis.Testing.TUnit.csproj</ProjectPath>
-    </NovolisPackageProject>
-    <NovolisPackageProject Include="Novolis.ThreeD.Import.Assimp">
-      <ProjectPath>$(NovolisLibraryRoot)\novolis-3d\src\Novolis.ThreeD.Import.Assimp\Novolis.ThreeD.Import.Assimp.csproj</ProjectPath>
-    </NovolisPackageProject>
-    <NovolisPackageProject Include="Novolis.ThreeD.Scene">
-      <ProjectPath>$(NovolisLibraryRoot)\novolis-3d\src\Novolis.ThreeD.Scene\Novolis.ThreeD.Scene.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Time">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-time\src\Novolis.Time\Novolis.Time.csproj</ProjectPath>

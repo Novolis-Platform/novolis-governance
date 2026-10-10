@@ -1,0 +1,8 @@
+{
+  "id": "novolis.modeling.import.assimp",
+  "name": "Novolis.Modeling.Import.Assimp",
+  "type": "nuget",
+  "version": "2026.1.1.0",
+  "repository": "https://github.com/Novolis-Platform/novolis-modeling",
+  "packageId": "Novolis.Modeling.Import.Assimp"
+}

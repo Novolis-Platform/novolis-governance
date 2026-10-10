@@ -53,5 +53,5 @@ Set via `setsceneprops` (`key`, optional `value` to clear).
 ## Related
 
 - SceneLab lab: `novolis-lab/labs/avalonia/SceneLab` (`--spatial-smoke`)
-- MCP proxy: `novolis-lab/labs/AvaloniaAgentMcp` (`scene_*` tools)
+- MCP proxy: `novolis-lab/labs/commands/AvaloniaAgentMcp` (`scene_*` tools)
 - Canvas placement: workspace `canvases/awesome-llm-3d-infrastructure.canvas.tsx`

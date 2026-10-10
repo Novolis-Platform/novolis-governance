@@ -1,6 +1,6 @@
 # Library boundaries — platform layer stack
 
-Authoritative dependency law for Novolis libraries. Numeric spine: `novolis-math`, `novolis-physics`, `novolis-simulation`. Product spine continues through `novolis-gaming` and `novolis-avalonia` into apps.
+Authoritative dependency law for Novolis libraries. Numeric foundation: `novolis-math`, then `novolis-physics`. **Simulation and Rendering are peers** on Math (Simulation also takes Physics). Product spine continues through `novolis-gaming`, then host frameworks, then the game.
 
 **`novolis-raylib` is not part of this stack** — no package reference between Raylib and Simulation (either direction). Apps that need both wire them at the product layer.
 
@@ -11,18 +11,20 @@ There are **no “Kit” layers** in the platform (no GameKit, CadKit, LabKit pa
 ```text
 Math
   ↓
-Physics
-  ↓
-Simulation
+Physics          Rendering
+  ↓                 ↓
+Simulation ─────────┘     (Sim and Render are peers; they do not reference each other)
   ↓
 Gaming (Novolis.Game.*)
   ↓
-Avalonia (Novolis.Avalonia.*)
+Maui, Avalonia, Web, Tui   (host frameworks)
   ↓
-Apps
+GAME
 ```
 
-Lower layers **must not** reference higher layers. Same-layer / peer facet refs are fine. **Apps** compose any combination.
+Lower layers **must not** reference higher layers. Same-layer / peer facet refs are fine. **Simulation ↔ Rendering** stay isolated (`NOV2008`) — Gaming and hosts compose both. Do not add new **TwoD** / **ThreeD**-named libraries; dimension is not a layer.
+
+**GAME** (product apps and labs) lists a host framework plus `Novolis.Game.*` — not Math topology, Presentation abstractions, or Appearance as first-class game dependencies.
 
 **Avalonia isolation:** only `Novolis.Avalonia.*` libraries may take `Avalonia` / `Avalonia.*` package references. Math, Physics, Simulation, Gaming, Economy, Astro, Rendering, Raylib, Agent, Cad, Audio, Markup, Blazor, etc. stay Avalonia-free. Product apps may reference Avalonia directly.
 
@@ -34,7 +36,7 @@ Enforced by `Novolis.Analyzers.StackBoundaries` (`NOV2006`, `NOV2007`, `NOV2010`
 
 **`novolis-raylib`** remains a separate graphics/input host — orthogonal to the spine (never ↔ Simulation).
 
-**`novolis-silk`** is a closed island like Raylib, stricter: only that repo may `PackageReference` `Silk.NET.*` or `using Silk.NET.*`. Silk ↛ Rendering and Rendering ↛ `Novolis.Silk` / `Silk.NET` (no `Presentation.Silk` exception). Handshake is Math/BCL (`PlanarDrawList`, `Rgba32`, `Vector3`, UV floats). Apps, labs, and `Novolis.Avalonia.*` compose both. `Novolis.Game.*` takes neither (NOV2009 / NOV2017). Vulkan/Shaderc GPU compile lives in `Novolis.Silk.Compute`; `Novolis.Rendering.Backends.Vulkan` keeps `IRayTracingBackend` via CPU fallback.
+**`novolis-silk`** is the window / Tui host island: only that repo may `PackageReference` `Silk.NET.*` or `using Silk.NET.*`. Silk ↛ Rendering and Rendering ↛ `Novolis.Silk` / `Silk.NET` (no `Presentation.Silk` exception). Handshake is Math/BCL (`PlanarDrawList`, `Rgba32`, `Vector3`, UV floats). Hosts (`Novolis.Avalonia.*`) and GAME compose Silk + Gaming. `Novolis.Game.*` may take Rendering; it must not take Silk (`NOV2017`) or Raylib (`NOV2009`). Vulkan/Shaderc GPU compile lives in `Novolis.Silk.Compute`; `Novolis.Rendering.Backends.Vulkan` keeps `IRayTracingBackend` via CPU fallback.
 
 **Simulation is not a game engine.** It is neutral orchestration: worlds, objects, systems, time, observation, recording, and replay. HexGame-style game ticks belong in Simulation and apps — not in Physics (see [hexgame-authoritative-core.md](architectural-ideals/hexgame-authoritative-core.md)).
 
@@ -45,10 +47,12 @@ Enforced by `Novolis.Analyzers.StackBoundaries` (`NOV2006`, `NOV2007`, `NOV2010`
 | **Math** | Numbers, transforms, geometry, topology — **no time** |
 | **Physics** | Physical evolution over time (forces, motion, collision response) |
 | **Simulation** | Orchestration over time (world, systems, clocks, **all cameras**) |
-| **Gaming** | Authoring / shipping glue (`Novolis.Game.*`) — no Avalonia |
-| **Avalonia** | UI controls and hosts (`Novolis.Avalonia.*`) — only layer that may depend on Avalonia UI packages |
-| **MAUI** | UI controls and hosts (`Novolis.Maui.*`) — only library layer that may depend on Microsoft.Maui (orthogonal to Avalonia) |
-| **Executable hosts** | Product composition in `novolis-apps`; package experiments in `novolis-lab`; MAUI hosts such as Merglyph (not under library `apps/`) |
+| **Gaming** | Authoring / shipping glue (`Novolis.Game.*`) — sits on Sim and Render; no host frameworks |
+| **Avalonia** | UI host (`Novolis.Avalonia.*`) — only layer that may depend on Avalonia UI packages |
+| **MAUI** | UI host (`Novolis.Maui.*`) — only library layer that may depend on Microsoft.Maui (orthogonal to Avalonia) |
+| **Web** | UI host (`Novolis.Blazor.*`) — ASP.NET Core Components only in this layer |
+| **Tui** | Window / console host (`Novolis.Silk.*`, Spectre hosts) — Silk.NET only in `novolis-silk` |
+| **GAME** | Product composition in `novolis-apps`; package experiments in `novolis-lab`; MAUI hosts such as Merglyph (not under library `apps/`) |
 
 ---
 
@@ -139,7 +143,7 @@ If a concept needs **time**, `deltaTime`, clocks, ticks, integration steps, or �
 ```text
 StaticCameraRig, OrbitCameraRig, TrackingCameraRig, FreeLookCameraRig
 FirstPersonCameraRig, ThirdPersonCameraRig, CharacterCameraDirector, CharacterMotor
-LookIntent / MoveIntent, YawPitchController, ViewPose, ObserverFrame
+LookIntent / MoveIntent, YawPitchController, ViewPose
 ```
 
 - **Tiles** (`Novolis.Simulation.Tiles`) — Prison Architect–style layered maps, edge walls/doors, room flood-fill, grid A*
@@ -235,9 +239,10 @@ novolis-math          (Arrays, Geometry, Topology, core numerics)
 novolis-physics       →  math
 novolis-simulation    →  math, physics
   (facets: Abstractions, World, View, Tiles, Voxels, Voxels.Meshing, Kinematics, World.Builders, Racing, …)
-novolis-gaming        →  math / physics / simulation as needed; never → Avalonia UI packages
+novolis-gaming        →  math / physics / simulation / rendering as needed
+                         never → Avalonia, MAUI, Blazor, Silk, or Raylib
 novolis-avalonia      →  math…gaming + Avalonia.* ; never pull Avalonia into lower layers
-novolis-lab / apps    →  compose freely (including Avalonia + Raylib + Simulation)
+novolis-lab / apps    →  GAME: host framework + Novolis.Game.* (compose Silk + Rendering here)
 ```
 
 **Orthogonal (not on the spine ranks; still Avalonia-free libraries):**
@@ -277,7 +282,7 @@ novolis-3d           →  Novolis.ThreeD.Scene / Novolis.ThreeD.Import.Assimp
                          (.nov3djson scene graph and Assimp import); no UI or renderer bridge
 ```
 
-**Cad vs 3D cameras:** document pose bags (`CadCamera`, `CameraNode`) may live in Cad/3D DTOs. Orbit / free-look **controllers** and `ViewPose` stay in `Novolis.Simulation.View`. Apps/Avalonia compose DTO poses → ViewPose. Do not put Rendering soft-bridges in Cad libraries — apps wire Cad/3D lights → Rendering.
+**Cad vs 3D cameras:** document pose bags (`CadCamera`, `CameraNode`) may live in Cad/3D DTOs. Orbit / free-look **controllers** and `ViewPose` stay in `Novolis.Simulation.View`. Apps/Avalonia compose DTO poses → ViewPose. Do not put Rendering soft-bridges in Cad libraries — Avalonia and Lab.Compose wire Cad/3D lights → Rendering.
 
 **Apps** may reference any combination; they own cross-repo glue.
 
