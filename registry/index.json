@@ -83,6 +83,42 @@
       "packageId": "Novolis.Aspire.Hosting.Signoz"
     },
     {
+      "id": "novolis.assetstudio",
+      "name": "Novolis.AssetStudio",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-tools",
+      "packageId": "Novolis.AssetStudio"
+    },
+    {
+      "id": "novolis.assetstudio.core",
+      "name": "Novolis.AssetStudio.Core",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-visual",
+      "packageId": "Novolis.AssetStudio.Core"
+    },
+    {
+      "id": "novolis.assetstudio.export",
+      "name": "Novolis.AssetStudio.Export",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-visual",
+      "packageId": "Novolis.AssetStudio.Export"
+    },
+    {
+      "id": "novolis.assetstudio.import",
+      "name": "Novolis.AssetStudio.Import",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-visual",
+      "packageId": "Novolis.AssetStudio.Import"
+    },
+    {
       "id": "novolis.astro.abstractions",
       "name": "Novolis.Astro.Abstractions",
       "kind": "package",
@@ -486,6 +522,15 @@
       "channel": "stable",
       "repository": "https://github.com/Novolis-Platform/novolis-avalonia",
       "packageId": "Novolis.Avalonia.Agent.Protocol"
+    },
+    {
+      "id": "novolis.avalonia.assetstudio",
+      "name": "Novolis.Avalonia.AssetStudio",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-avalonia",
+      "packageId": "Novolis.Avalonia.AssetStudio"
     },
     {
       "id": "novolis.avalonia.audio",
@@ -2657,6 +2702,15 @@
       "packageId": "Novolis.Rendering.DependencyInjection"
     },
     {
+      "id": "novolis.rendering.framegraph",
+      "name": "Novolis.Rendering.FrameGraph",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-rendering",
+      "packageId": "Novolis.Rendering.FrameGraph"
+    },
+    {
       "id": "novolis.rendering.materials",
       "name": "Novolis.Rendering.Materials",
       "kind": "package",
@@ -3890,6 +3944,60 @@
       "packageId": "Novolis.Video.Rtc.Abstractions"
     },
     {
+      "id": "novolis.visual.adapters.rendering",
+      "name": "Novolis.Visual.Adapters.Rendering",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-visual",
+      "packageId": "Novolis.Visual.Adapters.Rendering"
+    },
+    {
+      "id": "novolis.visual.baking",
+      "name": "Novolis.Visual.Baking",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-visual",
+      "packageId": "Novolis.Visual.Baking"
+    },
+    {
+      "id": "novolis.visual.codegen",
+      "name": "Novolis.Visual.CodeGen",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-visual",
+      "packageId": "Novolis.Visual.CodeGen"
+    },
+    {
+      "id": "novolis.visual.compile",
+      "name": "Novolis.Visual.Compile",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-visual",
+      "packageId": "Novolis.Visual.Compile"
+    },
+    {
+      "id": "novolis.visual.definitions",
+      "name": "Novolis.Visual.Definitions",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-visual",
+      "packageId": "Novolis.Visual.Definitions"
+    },
+    {
+      "id": "novolis.visual.evaluation",
+      "name": "Novolis.Visual.Evaluation",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-visual",
+      "packageId": "Novolis.Visual.Evaluation"
+    },
+    {
       "id": "novolis.windows.audio",
       "name": "Novolis.Windows.Audio",
       "kind": "package",
@@ -3996,6 +4104,33 @@
       "channel": "stable",
       "repository": "https://github.com/Novolis-Platform/novolis-workflow-engine",
       "packageId": "Novolis.WorkflowEngine.Graph"
+    },
+    {
+      "id": "novolis.workflowengine.graph.export.mermaid",
+      "name": "Novolis.WorkflowEngine.Graph.Export.Mermaid",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-workflow-engine",
+      "packageId": "Novolis.WorkflowEngine.Graph.Export.Mermaid"
+    },
+    {
+      "id": "novolis.workflowengine.graph.export.svg",
+      "name": "Novolis.WorkflowEngine.Graph.Export.Svg",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-workflow-engine",
+      "packageId": "Novolis.WorkflowEngine.Graph.Export.Svg"
+    },
+    {
+      "id": "novolis.workflowengine.graph.layout",
+      "name": "Novolis.WorkflowEngine.Graph.Layout",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-workflow-engine",
+      "packageId": "Novolis.WorkflowEngine.Graph.Layout"
     },
     {
       "id": "novolis.workflowengine.hosting",

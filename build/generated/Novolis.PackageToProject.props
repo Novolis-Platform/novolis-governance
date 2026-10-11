@@ -31,6 +31,18 @@
     <NovolisPackageProject Include="Novolis.Aspire.Hosting.Signoz">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-aspire\src\Novolis.Aspire.Hosting.Signoz\Novolis.Aspire.Hosting.Signoz.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.AssetStudio">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-tools\src\Novolis.AssetStudio\Novolis.AssetStudio.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.AssetStudio.Core">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-visual\src\Novolis.AssetStudio.Core\Novolis.AssetStudio.Core.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.AssetStudio.Export">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-visual\src\Novolis.AssetStudio.Export\Novolis.AssetStudio.Export.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.AssetStudio.Import">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-visual\src\Novolis.AssetStudio.Import\Novolis.AssetStudio.Import.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Astro.Abstractions">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-astro\src\Novolis.Astro.Abstractions\Novolis.Astro.Abstractions.csproj</ProjectPath>
     </NovolisPackageProject>
@@ -165,6 +177,9 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Avalonia.Agent.Protocol">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-avalonia\src\Novolis.Avalonia.Agent.Protocol\Novolis.Avalonia.Agent.Protocol.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Avalonia.AssetStudio">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-avalonia\src\Novolis.Avalonia.AssetStudio\Novolis.Avalonia.AssetStudio.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Avalonia.Audio">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-avalonia\src\Novolis.Avalonia.Audio\Novolis.Avalonia.Audio.csproj</ProjectPath>
@@ -664,6 +679,9 @@
     <NovolisPackageProject Include="Novolis.Markup.Mermaid.Rendering">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-markup\src\Novolis.Markup.Mermaid.Rendering\Novolis.Markup.Mermaid.Rendering.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Markup.Svg">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-markup\src\Novolis.Markup.Svg\Novolis.Markup.Svg.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Math.Arrays">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-math\src\Novolis.Math.Arrays\Novolis.Math.Arrays.csproj</ProjectPath>
     </NovolisPackageProject>
@@ -888,6 +906,9 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Rendering.DependencyInjection">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-rendering\src\Novolis.Rendering.DependencyInjection\Novolis.Rendering.DependencyInjection.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Rendering.FrameGraph">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-rendering\src\Novolis.Rendering.FrameGraph\Novolis.Rendering.FrameGraph.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Rendering.Materials">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-rendering\src\Novolis.Rendering.Materials\Novolis.Rendering.Materials.csproj</ProjectPath>
@@ -1299,6 +1320,24 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Video.Rtc.Abstractions">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-video\src\Novolis.Video.Rtc.Abstractions\Novolis.Video.Rtc.Abstractions.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Visual.Adapters.Rendering">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-visual\src\Novolis.Visual.Adapters.Rendering\Novolis.Visual.Adapters.Rendering.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Visual.Baking">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-visual\src\Novolis.Visual.Baking\Novolis.Visual.Baking.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Visual.CodeGen">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-visual\src\Novolis.Visual.CodeGen\Novolis.Visual.CodeGen.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Visual.Compile">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-visual\src\Novolis.Visual.Compile\Novolis.Visual.Compile.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Visual.Definitions">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-visual\src\Novolis.Visual.Definitions\Novolis.Visual.Definitions.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Visual.Evaluation">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-visual\src\Novolis.Visual.Evaluation\Novolis.Visual.Evaluation.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Windows.Audio">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-windows\src\Novolis.Windows.Audio\Novolis.Windows.Audio.csproj</ProjectPath>

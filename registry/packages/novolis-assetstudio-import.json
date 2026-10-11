@@ -1,0 +1,8 @@
+{
+  "id": "novolis.assetstudio.import",
+  "name": "Novolis.AssetStudio.Import",
+  "type": "nuget",
+  "version": "2026.1.1.0",
+  "repository": "https://github.com/Novolis-Platform/novolis-visual",
+  "packageId": "Novolis.AssetStudio.Import"
+}

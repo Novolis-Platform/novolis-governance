@@ -1,0 +1,8 @@
+{
+  "id": "novolis.visual.evaluation",
+  "name": "Novolis.Visual.Evaluation",
+  "type": "nuget",
+  "version": "2026.1.1.0",
+  "repository": "https://github.com/Novolis-Platform/novolis-visual",
+  "packageId": "Novolis.Visual.Evaluation"
+}
