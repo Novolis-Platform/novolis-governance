@@ -1336,6 +1336,15 @@
     <NovolisPackageProject Include="Novolis.WorkflowEngine.Graph">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-workflow-engine\src\Novolis.WorkflowEngine.Graph\Novolis.WorkflowEngine.Graph.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.WorkflowEngine.Graph.Export.Mermaid">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-workflow-engine\src\Novolis.WorkflowEngine.Graph.Export.Mermaid\Novolis.WorkflowEngine.Graph.Export.Mermaid.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.WorkflowEngine.Graph.Export.Svg">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-workflow-engine\src\Novolis.WorkflowEngine.Graph.Export.Svg\Novolis.WorkflowEngine.Graph.Export.Svg.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.WorkflowEngine.Graph.Layout">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-workflow-engine\src\Novolis.WorkflowEngine.Graph.Layout\Novolis.WorkflowEngine.Graph.Layout.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.WorkflowEngine.Hosting">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-workflow-engine\src\Novolis.WorkflowEngine.Hosting\Novolis.WorkflowEngine.Hosting.csproj</ProjectPath>
     </NovolisPackageProject>
