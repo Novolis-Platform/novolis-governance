@@ -3719,6 +3719,15 @@
       "packageId": "Novolis.Transports.Discovery"
     },
     {
+      "id": "novolis.transports.ed2k",
+      "name": "Novolis.Transports.Ed2k",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-transports",
+      "packageId": "Novolis.Transports.Ed2k"
+    },
+    {
       "id": "novolis.transports.framing",
       "name": "Novolis.Transports.Framing",
       "kind": "package",
@@ -3726,6 +3735,15 @@
       "channel": "stable",
       "repository": "https://github.com/Novolis-Platform/novolis-transports",
       "packageId": "Novolis.Transports.Framing"
+    },
+    {
+      "id": "novolis.transports.kad",
+      "name": "Novolis.Transports.Kad",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-transports",
+      "packageId": "Novolis.Transports.Kad"
     },
     {
       "id": "novolis.transports.localipc",
@@ -3953,6 +3971,33 @@
       "packageId": "Novolis.WorkflowEngine.Channels"
     },
     {
+      "id": "novolis.workflowengine.flow",
+      "name": "Novolis.WorkflowEngine.Flow",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-workflow-engine",
+      "packageId": "Novolis.WorkflowEngine.Flow"
+    },
+    {
+      "id": "novolis.workflowengine.flowgraph",
+      "name": "Novolis.WorkflowEngine.FlowGraph",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-workflow-engine",
+      "packageId": "Novolis.WorkflowEngine.FlowGraph"
+    },
+    {
+      "id": "novolis.workflowengine.graph",
+      "name": "Novolis.WorkflowEngine.Graph",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-workflow-engine",
+      "packageId": "Novolis.WorkflowEngine.Graph"
+    },
+    {
       "id": "novolis.workflowengine.hosting",
       "name": "Novolis.WorkflowEngine.Hosting",
       "kind": "package",
@@ -3969,6 +4014,15 @@
       "channel": "stable",
       "repository": "https://github.com/Novolis-Platform/novolis-workflow-engine",
       "packageId": "Novolis.WorkflowEngine.Mapping"
+    },
+    {
+      "id": "novolis.workflowengine.pipeline",
+      "name": "Novolis.WorkflowEngine.Pipeline",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-workflow-engine",
+      "packageId": "Novolis.WorkflowEngine.Pipeline"
     },
     {
       "id": "novolis.workflowengine.scheduling",
