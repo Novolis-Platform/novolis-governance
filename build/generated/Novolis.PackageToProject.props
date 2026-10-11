@@ -1150,6 +1150,9 @@
     <NovolisPackageProject Include="Novolis.Testing.TestServer">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-testing\src\Novolis.Testing.TestServer\Novolis.Testing.TestServer.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Testing.Timeline">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-testing\src\Novolis.Testing.Timeline\Novolis.Testing.Timeline.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Testing.TUnit">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-testing\src\Novolis.Testing.TUnit\Novolis.Testing.TUnit.csproj</ProjectPath>
     </NovolisPackageProject>
