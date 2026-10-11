@@ -3728,6 +3728,15 @@
       "packageId": "Novolis.Tools.MarkdownPdf.Cli"
     },
     {
+      "id": "novolis.tools.networkpath.cli",
+      "name": "Novolis.Tools.NetworkPath.Cli",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-tools",
+      "packageId": "Novolis.Tools.NetworkPath.Cli"
+    },
+    {
       "id": "novolis.tools.sqlite",
       "name": "Novolis.Tools.Sqlite",
       "kind": "package",
@@ -3807,6 +3816,15 @@
       "channel": "stable",
       "repository": "https://github.com/Novolis-Platform/novolis-transports",
       "packageId": "Novolis.Transports.LocalIpc"
+    },
+    {
+      "id": "novolis.transports.networkpath",
+      "name": "Novolis.Transports.NetworkPath",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-transports",
+      "packageId": "Novolis.Transports.NetworkPath"
     },
     {
       "id": "novolis.transports.quic",

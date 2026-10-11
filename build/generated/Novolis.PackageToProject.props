@@ -1249,6 +1249,9 @@
     <NovolisPackageProject Include="Novolis.Tools.MarkdownPdf.Cli">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-tools\src\Novolis.Tools.MarkdownPdf.Cli\Novolis.Tools.MarkdownPdf.Cli.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Tools.NetworkPath.Cli">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-tools\src\Novolis.Tools.NetworkPath.Cli\Novolis.Tools.NetworkPath.Cli.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Tools.Sqlite">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-tools\src\Novolis.Tools.Sqlite\Novolis.Tools.Sqlite.csproj</ProjectPath>
     </NovolisPackageProject>
@@ -1275,6 +1278,9 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Transports.LocalIpc">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-transports\src\Novolis.Transports.LocalIpc\Novolis.Transports.LocalIpc.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Transports.NetworkPath">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-transports\src\Novolis.Transports.NetworkPath\Novolis.Transports.NetworkPath.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Transports.Quic">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-transports\src\Novolis.Transports.Quic\Novolis.Transports.Quic.csproj</ProjectPath>
