@@ -1243,8 +1243,14 @@
     <NovolisPackageProject Include="Novolis.Transports.Discovery">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-transports\src\Novolis.Transports.Discovery\Novolis.Transports.Discovery.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Transports.Ed2k">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-transports\src\Novolis.Transports.Ed2k\Novolis.Transports.Ed2k.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Transports.Framing">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-transports\src\Novolis.Transports.Framing\Novolis.Transports.Framing.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Transports.Kad">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-transports\src\Novolis.Transports.Kad\Novolis.Transports.Kad.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Transports.LocalIpc">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-transports\src\Novolis.Transports.LocalIpc\Novolis.Transports.LocalIpc.csproj</ProjectPath>
@@ -1321,11 +1327,23 @@
     <NovolisPackageProject Include="Novolis.WorkflowEngine.Channels">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-workflow-engine\src\Novolis.WorkflowEngine.Channels\Novolis.WorkflowEngine.Channels.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.WorkflowEngine.Flow">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-workflow-engine\src\Novolis.WorkflowEngine.Flow\Novolis.WorkflowEngine.Flow.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.WorkflowEngine.FlowGraph">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-workflow-engine\src\Novolis.WorkflowEngine.FlowGraph\Novolis.WorkflowEngine.FlowGraph.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.WorkflowEngine.Graph">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-workflow-engine\src\Novolis.WorkflowEngine.Graph\Novolis.WorkflowEngine.Graph.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.WorkflowEngine.Hosting">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-workflow-engine\src\Novolis.WorkflowEngine.Hosting\Novolis.WorkflowEngine.Hosting.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.WorkflowEngine.Mapping">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-workflow-engine\src\Novolis.WorkflowEngine.Mapping\Novolis.WorkflowEngine.Mapping.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.WorkflowEngine.Pipeline">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-workflow-engine\src\Novolis.WorkflowEngine.Pipeline\Novolis.WorkflowEngine.Pipeline.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.WorkflowEngine.Scheduling">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-workflow-engine\src\Novolis.WorkflowEngine.Scheduling\Novolis.WorkflowEngine.Scheduling.csproj</ProjectPath>
