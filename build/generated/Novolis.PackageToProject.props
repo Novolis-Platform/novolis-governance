@@ -1237,6 +1237,9 @@
     <NovolisPackageProject Include="Novolis.Tools.Docs.Cli">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-tools\src\Novolis.Tools.Docs.Cli\Novolis.Tools.Docs.Cli.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Tools.Doom.Cli">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-tools\src\Novolis.Tools.Doom.Cli\Novolis.Tools.Doom.Cli.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Tools.LiteDb">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-tools\src\Novolis.Tools.LiteDb\Novolis.Tools.LiteDb.csproj</ProjectPath>
     </NovolisPackageProject>
@@ -1330,6 +1333,9 @@
     <NovolisPackageProject Include="Novolis.Visual.Adapters.Rendering">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-visual\src\Novolis.Visual.Adapters.Rendering\Novolis.Visual.Adapters.Rendering.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Visual.Assets">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-visual\src\Novolis.Visual.Assets\Novolis.Visual.Assets.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Visual.Baking">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-visual\src\Novolis.Visual.Baking\Novolis.Visual.Baking.csproj</ProjectPath>
     </NovolisPackageProject>
@@ -1344,6 +1350,12 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Visual.Evaluation">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-visual\src\Novolis.Visual.Evaluation\Novolis.Visual.Evaluation.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Visual.Materials">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-visual\src\Novolis.Visual.Materials\Novolis.Visual.Materials.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Visual.Presets">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-visual\src\Novolis.Visual.Presets\Novolis.Visual.Presets.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Windows.Audio">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-windows\src\Novolis.Windows.Audio\Novolis.Windows.Audio.csproj</ProjectPath>
