@@ -244,6 +244,9 @@
     <NovolisPackageProject Include="Novolis.Avalonia.Modeling">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-avalonia\src\Novolis.Avalonia.Modeling\Novolis.Avalonia.Modeling.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Avalonia.Navigation">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-avalonia\src\Novolis.Avalonia.Navigation\Novolis.Avalonia.Navigation.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Avalonia.Ndjson">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-avalonia\src\Novolis.Avalonia.Ndjson\Novolis.Avalonia.Ndjson.csproj</ProjectPath>
     </NovolisPackageProject>
@@ -360,6 +363,9 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Commands.Expressions">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-commands\src\Novolis.Commands.Expressions\Novolis.Commands.Expressions.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Commands.Navigation">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-commands\src\Novolis.Commands.Navigation\Novolis.Commands.Navigation.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Commands.Queueing">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-commands\src\Novolis.Commands.Queueing\Novolis.Commands.Queueing.csproj</ProjectPath>
@@ -519,6 +525,9 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Install">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-tools\src\Novolis.Install\Novolis.Install.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.IO.ConnectedDevices">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-io\src\Novolis.IO.ConnectedDevices\Novolis.IO.ConnectedDevices.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.IO.Git">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-io\src\Novolis.IO.Git\Novolis.IO.Git.csproj</ProjectPath>
@@ -720,6 +729,9 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Maui.Mermaid">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-maui\src\Novolis.Maui.Mermaid\Novolis.Maui.Mermaid.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Maui.Navigation">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-maui\src\Novolis.Maui.Navigation\Novolis.Maui.Navigation.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Maui.Ndjson">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-maui\src\Novolis.Maui.Ndjson\Novolis.Maui.Ndjson.csproj</ProjectPath>
@@ -1077,6 +1089,9 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Simulation.Kinematics">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-simulation\src\Novolis.Simulation.Kinematics\Novolis.Simulation.Kinematics.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Simulation.Logic">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-simulation\src\Novolis.Simulation.Logic\Novolis.Simulation.Logic.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Simulation.Mesh">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-simulation\src\Novolis.Simulation.Mesh\Novolis.Simulation.Mesh.csproj</ProjectPath>

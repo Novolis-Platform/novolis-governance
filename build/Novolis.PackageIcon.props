@@ -19,7 +19,7 @@
   <ItemGroup Condition="'$(_NovolisPackageIconPath)' != '' And '$(PackageIcon)' == 'icon.png'">
     <None Include="$(_NovolisPackageIconPath)" Pack="true" PackagePath="\" Link="icon.png" Visible="false"
           Condition="!Exists('$(MSBuildProjectDirectory)\icon.png')" />
-    <None Include="icon.png" Pack="true" PackagePath="\" Visible="false"
+    <None Update="icon.png" Pack="true" PackagePath="\" Visible="false"
           Condition="Exists('$(MSBuildProjectDirectory)\icon.png')" />
   </ItemGroup>
 </Project>

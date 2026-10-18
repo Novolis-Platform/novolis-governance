@@ -10,14 +10,15 @@
     identical to the package (verify-project-ref-mode.ps1).
   -->
   <PropertyGroup>
-    <LibraryReferenceDefaultVersion Condition="'$(LibraryReferenceDefaultVersion)' == ''">2026.1.*</LibraryReferenceDefaultVersion>
-    <_NovolisLibraryReferenceBuild>$(NovolisWorkspaceRoot)novolis-msbuild\src\Novolis.MSBuild.LibraryReference\build\</_NovolisLibraryReferenceBuild>
-    <_NovolisLibraryReferenceBuild Condition="!Exists('$(_NovolisLibraryReferenceBuild)Novolis.MSBuild.LibraryReference.targets')">$(NovolisWorkspaceRoot)\novolis-msbuild\src\Novolis.MSBuild.LibraryReference\build\</_NovolisLibraryReferenceBuild>
-    <_NovolisLibraryReferenceBuild Condition="!Exists('$(_NovolisLibraryReferenceBuild)Novolis.MSBuild.LibraryReference.targets')">$(MSBuildThisFileDirectory)libraryreference\</_NovolisLibraryReferenceBuild>
+    <LibraryReferenceDefaultVersion Condition="'$(LibraryReferenceDefaultVersion)' == '' and '$(NovolisPlatformVersion)' != ''">$(NovolisPlatformVersion)</LibraryReferenceDefaultVersion>
+    <LibraryReferenceDefaultVersion Condition="'$(LibraryReferenceDefaultVersion)' == ''">2026.1.1</LibraryReferenceDefaultVersion>
+    <_NovolisLibraryReferenceBuild>$([System.IO.Path]::Combine('$(NovolisWorkspaceRoot)', 'novolis-msbuild', 'src', 'Novolis.MSBuild.LibraryReference', 'build'))</_NovolisLibraryReferenceBuild>
+    <_NovolisLibraryReferenceTargets>$([System.IO.Path]::Combine('$(_NovolisLibraryReferenceBuild)', 'Novolis.MSBuild.LibraryReference.targets'))</_NovolisLibraryReferenceTargets>
+    <_NovolisLibraryReferenceBuild Condition="!Exists('$(_NovolisLibraryReferenceTargets)')">$([System.IO.Path]::Combine('$(MSBuildThisFileDirectory)', 'libraryreference'))</_NovolisLibraryReferenceBuild>
+    <_NovolisLibraryReferenceProps>$([System.IO.Path]::Combine('$(_NovolisLibraryReferenceBuild)', 'Novolis.MSBuild.LibraryReference.props'))</_NovolisLibraryReferenceProps>
+    <_NovolisLibraryReferenceTargets>$([System.IO.Path]::Combine('$(_NovolisLibraryReferenceBuild)', 'Novolis.MSBuild.LibraryReference.targets'))</_NovolisLibraryReferenceTargets>
   </PropertyGroup>
 
-  <Import Project="$(_NovolisLibraryReferenceBuild)Novolis.MSBuild.LibraryReference.props"
-          Condition="Exists('$(_NovolisLibraryReferenceBuild)Novolis.MSBuild.LibraryReference.props')" />
-  <Import Project="$(_NovolisLibraryReferenceBuild)Novolis.MSBuild.LibraryReference.targets"
-          Condition="Exists('$(_NovolisLibraryReferenceBuild)Novolis.MSBuild.LibraryReference.targets')" />
+  <Import Project="$(_NovolisLibraryReferenceProps)" Condition="Exists('$(_NovolisLibraryReferenceProps)')" />
+  <Import Project="$(_NovolisLibraryReferenceTargets)" Condition="Exists('$(_NovolisLibraryReferenceTargets)')" />
 </Project>

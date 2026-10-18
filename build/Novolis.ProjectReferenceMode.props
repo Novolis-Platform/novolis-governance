@@ -9,6 +9,7 @@
   <!-- Workspace root = parent of novolis-governance (this file lives in build/). -->
   <PropertyGroup>
     <NovolisWorkspaceRoot Condition="'$(NovolisWorkspaceRoot)' == ''">$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\..\'))</NovolisWorkspaceRoot>
+    <NovolisWorkspaceRoot Condition="'$(NovolisWorkspaceRoot)' != ''">$([System.IO.Path]::GetFullPath('$(NovolisWorkspaceRoot)'))</NovolisWorkspaceRoot>
     <!-- Labs may point this at a selected-library checkout root such as
          d:\novolis\novolis-lab\submodules. The default is the workspace forest. -->
     <NovolisLibraryRoot Condition="'$(NovolisLibraryRoot)' == ''">$(NovolisWorkspaceRoot)</NovolisLibraryRoot>
@@ -22,13 +23,6 @@
     <NovolisUseProjectReferences Condition="'$(NovolisUseProjectReferences)' == ''">false</NovolisUseProjectReferences>
   </PropertyGroup>
 
-  <!-- Cross-repo graph evaluates multiple nuget.configs; CPM + nuget.org+github raises NU1507. -->
-  <PropertyGroup Condition="'$(NovolisUseProjectReferences)' == 'true'">
-    <WarningsNotAsErrors>$(WarningsNotAsErrors);NU1507</WarningsNotAsErrors>
-    <NoWarn>$(NoWarn);NU1507</NoWarn>
-    <!-- Multi-repo unify can leave Roslyn version conflicts as MSB3277 noise. -->
-    <MSBuildWarningsAsMessages>$(MSBuildWarningsAsMessages);MSB3277</MSBuildWarningsAsMessages>
-  </PropertyGroup>
 
   <Import Project="$(MSBuildThisFileDirectory)generated\Novolis.PackageToProject.props"
           Condition="Exists('$(MSBuildThisFileDirectory)generated\Novolis.PackageToProject.props')" />
@@ -38,8 +32,9 @@
           Condition="Exists('$(MSBuildThisFileDirectory)Novolis.LibraryReferenceBridge.props')" />
 
   <PropertyGroup>
-    <_NovolisMSBuildInfrastructureBridgeEnabled Condition="'$(NovolisUseProjectReferences)' == 'true'">true</_NovolisMSBuildInfrastructureBridgeEnabled>
-    <_NovolisMSBuildInfrastructureBridgeEnabled Condition="Exists('$(NovolisWorkspaceRoot)novolis-msbuild\src')">true</_NovolisMSBuildInfrastructureBridgeEnabled>
+    <NovolisUseMSBuildInfrastructureBridge Condition="'$(NovolisUseMSBuildInfrastructureBridge)' == '' and '$(NovolisUseProjectReferences)' == 'true'">true</NovolisUseMSBuildInfrastructureBridge>
+    <NovolisUseMSBuildInfrastructureBridge Condition="'$(NovolisUseMSBuildInfrastructureBridge)' == ''">false</NovolisUseMSBuildInfrastructureBridge>
+    <_NovolisMSBuildInfrastructureBridgeEnabled Condition="'$(NovolisUseMSBuildInfrastructureBridge)' == 'true'">true</_NovolisMSBuildInfrastructureBridgeEnabled>
   </PropertyGroup>
 
   <Import Project="$(MSBuildThisFileDirectory)Novolis.MSBuild.InfrastructureBridge.props"

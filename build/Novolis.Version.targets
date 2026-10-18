@@ -30,6 +30,12 @@
     <InformationalVersion>$(Version)</InformationalVersion>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(PackageVersion)' != ''">
+    <Version Condition="'$(Version)' == ''">$(PackageVersion)</Version>
+    <FileVersion Condition="'$(FileVersion)' == ''">$([System.String]::Copy('$(PackageVersion)').Split('-')[0])</FileVersion>
+    <InformationalVersion Condition="'$(InformationalVersion)' == ''">$(PackageVersion)</InformationalVersion>
+  </PropertyGroup>
+
   <PropertyGroup Condition="'$(NovolisYear)' != '' AND '$(AssemblyVersion)' == ''">
     <AssemblyVersion>$(NovolisYear).$(NovolisMajor).0.0</AssemblyVersion>
   </PropertyGroup>

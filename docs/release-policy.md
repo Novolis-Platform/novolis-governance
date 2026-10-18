@@ -32,7 +32,7 @@ Cross-repo references: floating **`2026.1.1.*`** in `Directory.Packages.props`.
 | GitHub Packages and nuget.org | Libraries | Push to `main` (`merge.yml`) | `2026.1.1.{run}` |
 | GitHub Packages and nuget.org | `novolis-tools`, `novolis-analyzers` | GitHub Release published (`release.yml`) | `2026.1.1.{run}` |
 
-Library `merge.yml` pushes the same pack to GitHub Packages and nuget.org. Library `release.yml` does not push nuget.org. `novolis-tools` and `novolis-analyzers` push both feeds from `release.yml`. nuget.org trust is one policy per repository, owned by the NuGet organization **Novolis**, named for the repository, matching GitHub owner `Novolis-Platform` and package glob `Novolis.*`. `NuGet/login` (user `frankhaugen`) runs in that repository's own workflow. A reusable workflow's `job_workflow_ref` names `novolis-workflows`, which does not match the policy.
+Library `merge.yml` pushes the same pack to GitHub Packages and nuget.org. Library `release.yml` does not push nuget.org. `novolis-tools` and `novolis-analyzers` push both feeds from `release.yml`. nuget.org trust is one policy per repository, owned by the NuGet organization **Novolis**, named for the repository, matching GitHub owner `Novolis-Platform` and package glob `Novolis.*`. `NuGet/login` (user `Novolis`) runs in that repository's own workflow. A reusable workflow's `job_workflow_ref` names `novolis-workflows`, which does not match the policy.
 
 ## Workflows
 

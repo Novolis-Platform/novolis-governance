@@ -4,9 +4,9 @@
 
 This tool generates a unified master `.slnx` (Visual Studio solution) file that combines all included domain repositories in the Novolis Platform into a single hierarchical solution. This allows developers to work with the entire platform as one cohesive solution while preserving individual repository structure and organization.
 
-**Canonical (open/build)**: `d:\novolis\Novolis.Platform.slnx`  
-**Checked-in copy** (build-relative paths): `d:\novolis\novolis-governance\build\Novolis.Platform.slnx`  
-**Script location**: `d:\novolis\novolis-governance\build\Generate-Platform-Slnx.ps1`
+**Canonical (open/build)**: `<workspace-root>/Novolis.Platform.slnx`  
+**Checked-in copy** (build-relative paths): `<workspace-root>/novolis-governance/build/Novolis.Platform.slnx`  
+**Script location**: `<workspace-root>/novolis-governance/build/Generate-Platform-Slnx.ps1`
 
 ---
 
@@ -15,19 +15,19 @@ This tool generates a unified master `.slnx` (Visual Studio solution) file that 
 ### Generate the Master Solution
 
 ```powershell
-pwsh -ExecutionPolicy Bypass -File d:\novolis\novolis-governance\build\Generate-Platform-Slnx.ps1
+pwsh -ExecutionPolicy Bypass -File .\novolis-governance\build\Generate-Platform-Slnx.ps1
 ```
 
 ### With Verbose Output (Recommended for Troubleshooting)
 
 ```powershell
-pwsh -ExecutionPolicy Bypass -File d:\novolis\novolis-governance\build\Generate-Platform-Slnx.ps1 -Verbose
+pwsh -ExecutionPolicy Bypass -File .\novolis-governance\build\Generate-Platform-Slnx.ps1 -Verbose
 ```
 
 ### Open in Visual Studio
 
 1. In Visual Studio: **File → Open → Solution**
-2. Navigate to: `d:\novolis\Novolis.Platform.slnx`
+2. Navigate to: `<workspace-root>/Novolis.Platform.slnx`
 3. Click **Open**
 
 All projects load organized by repository and folder type (src/, tests/, codegen/, samples/).
@@ -43,7 +43,7 @@ The checked-in file under `novolis-governance/build/` uses `..\..\`-prefixed pat
 ## Script Features
 
 ### Automatic Discovery
-- Scans `d:\novolis` for all directories containing `.slnx` files
+- Scans the configured workspace root for all directories containing `.slnx` files
 - Extracts project references from each repository's solution
 - Validates all referenced `.csproj` files exist
 
@@ -56,7 +56,7 @@ The checked-in file under `novolis-governance/build/` uses `..\..\`-prefixed pat
 - Validates generated XML syntax
 - Reports missing project files with warnings
 - Idempotent: Safe to run anytime (regenerates from scratch each time)
-- No side effects or temporary files
+- Writes the generated solution and package-to-project map; it does not modify individual repository solutions
 
 ### Comprehensive Logging
 - Summary statistics: repositories, projects, validation results
@@ -77,39 +77,20 @@ When you add new projects to individual repos, regenerate the master solution:
 
 The script will detect new projects and update the master `.slnx`.
 
-### 2. Skip Validation (Faster for Large Operations)
+### 2. Validation
 
-If project file validation is slow and you've already verified files:
+The solution tool validates the discovered project references as part of generation. The wrapper does not expose a validation bypass.
 
-```powershell
-.\Generate-Platform-Slnx.ps1 -ValidateProjectReferences $false
-```
-
-### 3. Exclude Specific Repositories
-
-By default, these repos are excluded:
-- `.github`
-- `novolis-experimental` (local-only; not a GitHub repo — copyrighted IP)
-- `novolis-smoketest`
-- `novolis-template-dotnet`
-
-To exclude additional repos:
-
-```powershell
-$exclude = @('novolis-raylib', 'novolis-physics')
-.\Generate-Platform-Slnx.ps1 -ExcludeRepos $exclude
-```
-
-### 4. Generate to a Custom Location
+### 3. Generate to a Custom Location
 
 ```powershell
 .\Generate-Platform-Slnx.ps1 -OutputPath "d:\custom-location\Novolis.Platform.slnx"
 ```
 
-### 5. Specify Workspace Root Explicitly
+### 4. Specify Workspace Root Explicitly
 
 ```powershell
-.\Generate-Platform-Slnx.ps1 -WorkspaceRoot "d:\novolis"
+.\Generate-Platform-Slnx.ps1 -WorkspaceRoot "C:\source\novolis-platform"
 ```
 
 ---
@@ -118,13 +99,9 @@ $exclude = @('novolis-raylib', 'novolis-physics')
 
 | Metric | Count |
 |--------|-------|
-| Total Repositories | 34 |
-| Included Repositories | 29 |
-| Excluded Repositories | 5 (experimental, lab, utilities, apps, template) |
-| Total Projects | 286 |
-| Missing Project Files | 0 |
-| File Size | ~63 KB |
-| XML Validation | ✓ Passed |
+| Repository and project counts | Printed by the generator for the current workspace |
+| Missing project files | Reported as generator warnings |
+| Output size and XML validity | Check the generated file after regeneration |
 
 ### Repository Breakdown
 
@@ -162,10 +139,10 @@ Solution/
 │   ├── /src/
 │   └── /tests/
 ├── /novolis-avalonia/
-└── ... (27 repositories total)
+└── ... (remaining repositories in the current workspace)
 ```
 
-Each project path is relative to `d:\novolis`:
+Each project path is relative to the configured workspace root:
 ```
 novolis-audio\src\Novolis.Audio.Live.Visuals\Novolis.Audio.Live.Visuals.csproj
 ```
@@ -195,7 +172,7 @@ To auto-regenerate when `.slnx` files change locally:
 2. Add:
    ```powershell
    #!/bin/sh
-   pwsh -File "novolis-governance/build/Generate-Platform-Slnx.ps1" -ValidateProjectReferences $false
+   pwsh -File "novolis-governance/build/Generate-Platform-Slnx.ps1"
    ```
 
 ### Scheduled Regeneration
@@ -206,7 +183,7 @@ Run periodically to ensure the master solution stays in sync:
 # Windows Task Scheduler
 $trigger = New-ScheduledTaskTrigger -Daily -At 9AM
 $action = New-ScheduledTaskAction -Execute "pwsh.exe" `
-  -Argument "-ExecutionPolicy Bypass -File d:\novolis\novolis-governance\build\Generate-Platform-Slnx.ps1"
+  -Argument "-ExecutionPolicy Bypass -File C:\source\novolis-platform\novolis-governance\build\Generate-Platform-Slnx.ps1"
 Register-ScheduledTask -TaskName "Novolis-Regenerate-Platform-Solution" -Trigger $trigger -Action $action
 ```
 
@@ -215,13 +192,13 @@ Register-ScheduledTask -TaskName "Novolis-Regenerate-Platform-Solution" -Trigger
 ## Troubleshooting
 
 ### "No .slnx files found"
-- Ensure you're running from the correct workspace root (`d:\novolis`)
+- Ensure the configured workspace root contains the domain repositories
 - Verify all domain repositories have `.slnx` files in their root
 
 ### "Missing project references"
 - Check the warning output; paths shown are relative to workspace root
 - Verify the `.csproj` file exists at the full path
-- Run with `-ValidateProjectReferences $false` to skip validation if files are external to workspace
+- The current solution tool does not provide a validation bypass; ensure external repositories are present under the workspace root
 
 ### "XML validation failed"
 - Rarely occurs; indicates a bug in the script
@@ -248,31 +225,18 @@ Register-ScheduledTask -TaskName "Novolis-Regenerate-Platform-Solution" -Trigger
 ### `-WorkspaceRoot`
 **Type**: `[string]`  
 **Default**: Auto-detected from script location  
-**Example**: `"d:\novolis"` or `"C:\source\novolis-platform"`
-
-### `-ExcludeRepos`
-**Type**: `[string[]]`  
-**Default**: `.github`, `novolis-experimental`, `novolis-smoketest`, `novolis-template-dotnet`
-**Example**: 
-```powershell
--ExcludeRepos @('novolis-raylib', 'novolis-gaming')
-```
+**Example**: `"C:\source\novolis-platform"`
 
 ### `-OutputPath`
 **Type**: `[string]`  
 **Default**: `<WorkspaceRoot>/Novolis.Platform.slnx`  
-**Example**: `"d:\artifacts\Novolis.Platform.slnx"`
+**Example**: `"C:\artifacts\Novolis.Platform.slnx"`
 
 When the primary output is not the governance build path, the script also writes a path-adjusted copy to `novolis-governance/build/Novolis.Platform.slnx` (project paths prefixed with `..\..\`).
 
-### `-ValidateProjectReferences`
-**Type**: `[bool]`  
-**Default**: `$true`  
-**Note**: Set to `$false` to skip file validation (faster for CI/CD)
-
 ### `-Verbose` (PowerShell Common Parameter)
 **Type**: `[switch]`  
-**Shows**: Detailed step-by-step progress for debugging
+**Shows**: The wrapper command and its arguments for debugging
 
 ---
 
@@ -281,7 +245,7 @@ When the primary output is not the governance build path, the script also writes
 - The script is **idempotent**: Running it multiple times produces the same result
 - All project paths are **Windows-style backslashes** (`\`) — this is standard for `.slnx` files on Windows
 - The master solution does **not** modify individual repository `.slnx` files
-- Projects from excluded repos can still be opened individually via their repository's own `.slnx`
+- Projects from repositories omitted by the generator can still be opened individually via their repository's own `.slnx`
 
 ---
 

@@ -31,7 +31,10 @@
       Path transform only — evaluation forbids %(CustomMeta) in Condition (MSB4191).
       Missing sibling checkouts fail at restore/build with a clear path error.
     -->
-    <ProjectReference Include="@(_NovolisToReplace->'%(ProjectPath)')" />
+    <_NovolisToReplace Update="@(_NovolisToReplace)">
+      <_NovolisNormalizedPath>$([System.String]::Copy('%(ProjectPath)').Replace('\', '/'))</_NovolisNormalizedPath>
+    </_NovolisToReplace>
+    <ProjectReference Include="@(_NovolisToReplace->'%(_NovolisNormalizedPath)')" />
     <ProjectReference Remove="$(MSBuildProjectFullPath)" />
 
     <PackageReference Remove="@(_NovolisToReplace)" />

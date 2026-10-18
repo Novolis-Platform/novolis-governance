@@ -13,14 +13,26 @@
     BeforeTargets="ResolveReferences"
     Condition="'$(NovolisGraphicalProfile)' != 'false' and '$(IsTestProject)' != 'true' and ('$(UseMaui)' == 'true' or '$(OutputType)' == 'Exe' or '$(OutputType)' == 'WinExe')">
     <PropertyGroup>
-      <_NovolisGraphicalProfileRefs>@(PackageReference);@(ProjectReference);@(LibraryReference)</_NovolisGraphicalProfileRefs>
-      <_NovolisReferencesAvaloniaPackage>@(PackageReference->AnyHaveMetadataValue('Identity', 'Avalonia'))</_NovolisReferencesAvaloniaPackage>
+      <_NovolisHasMauiProfile>@(LibraryReference->WithMetadataValue('Identity', 'Novolis.Maui.GraphicalProfile'))</_NovolisHasMauiProfile>
+      <_NovolisHasAvaloniaProfile>@(LibraryReference->WithMetadataValue('Identity', 'Novolis.Avalonia.GraphicalProfile'))</_NovolisHasAvaloniaProfile>
     </PropertyGroup>
+    <ItemGroup>
+      <_NovolisAvaloniaPackage Include="@(PackageReference)"
+                               Condition="$([System.String]::Copy('%(Identity)').StartsWith('Avalonia'))" />
+      <_NovolisMauiProfileProject Include="@(ProjectReference)"
+                                  Condition="$([System.String]::Copy('%(Identity)').Contains('Novolis.Maui.GraphicalProfile.csproj'))" />
+      <_NovolisAvaloniaProfileProject Include="@(ProjectReference)"
+                                      Condition="$([System.String]::Copy('%(Identity)').Contains('Novolis.Avalonia.GraphicalProfile.csproj'))" />
+      <_NovolisMauiProfilePackage Include="@(PackageReference)"
+                                  Condition="'%(Identity)' == 'Novolis.Maui.GraphicalProfile'" />
+      <_NovolisAvaloniaProfilePackage Include="@(PackageReference)"
+                                      Condition="'%(Identity)' == 'Novolis.Avalonia.GraphicalProfile'" />
+    </ItemGroup>
     <Error
-      Condition="'$(UseMaui)' == 'true' and !$(_NovolisGraphicalProfileRefs.Contains('Novolis.Maui.GraphicalProfile'))"
+      Condition="'$(UseMaui)' == 'true' and '@(_NovolisHasMauiProfile)' == '' and '@(_NovolisMauiProfileProject)' == '' and '@(_NovolisMauiProfilePackage)' == ''"
       Text="MAUI UI projects must reference Novolis.Maui.GraphicalProfile through LibraryReference." />
     <Error
-      Condition="'$(UseMaui)' != 'true' and '$(_NovolisReferencesAvaloniaPackage)' == 'true' and !$(_NovolisGraphicalProfileRefs.Contains('Novolis.Avalonia.GraphicalProfile'))"
+      Condition="'$(UseMaui)' != 'true' and '@(_NovolisAvaloniaPackage)' != '' and '@(_NovolisHasAvaloniaProfile)' == '' and '@(_NovolisAvaloniaProfileProject)' == '' and '@(_NovolisAvaloniaProfilePackage)' == ''"
       Text="Avalonia UI projects must reference Novolis.Avalonia.GraphicalProfile through LibraryReference." />
   </Target>
 </Project>
