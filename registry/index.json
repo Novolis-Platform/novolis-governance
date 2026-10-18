@@ -1631,6 +1631,15 @@
       "packageId": "Novolis.IO.Recovery"
     },
     {
+      "id": "novolis.io.system-metrics",
+      "name": "Novolis.IO.SystemMetrics",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-io",
+      "packageId": "Novolis.IO.SystemMetrics"
+    },
+    {
       "id": "novolis.io.watching",
       "name": "Novolis.IO.Watching",
       "kind": "package",

@@ -547,6 +547,9 @@
     <NovolisPackageProject Include="Novolis.IO.Recovery">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-io\src\Novolis.IO.Recovery\Novolis.IO.Recovery.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.IO.SystemMetrics">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-io\src\Novolis.IO.SystemMetrics\Novolis.IO.SystemMetrics.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.IO.Watching">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-io\src\Novolis.IO.Watching\Novolis.IO.Watching.csproj</ProjectPath>
     </NovolisPackageProject>
