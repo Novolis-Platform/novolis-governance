@@ -445,6 +445,9 @@
     <NovolisPackageProject Include="Novolis.Game.Scenes">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-gaming\src\Novolis.Game.Scenes\Novolis.Game.Scenes.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Game.Sudoku">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-gaming\src\Novolis.Game.Sudoku\Novolis.Game.Sudoku.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Geopolitics.Conflict">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-geopolitics\src\Novolis.Geopolitics.Conflict\Novolis.Geopolitics.Conflict.csproj</ProjectPath>
     </NovolisPackageProject>
