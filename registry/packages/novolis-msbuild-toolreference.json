@@ -1,0 +1,8 @@
+{
+  "id": "novolis.msbuild.toolreference",
+  "name": "Novolis.MSBuild.ToolReference",
+  "type": "nuget",
+  "version": "2026.1.1.0",
+  "repository": "https://github.com/Novolis-Platform/novolis-msbuild",
+  "packageId": "Novolis.MSBuild.ToolReference"
+}

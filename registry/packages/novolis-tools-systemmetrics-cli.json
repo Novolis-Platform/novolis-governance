@@ -1,5 +1,5 @@
 {
-  "id": "novolis.tools.system-metrics.cli",
+  "id": "novolis.tools.systemmetrics.cli",
   "name": "Novolis.Tools.SystemMetrics.Cli",
   "type": "nuget",
   "version": "2026.1.1.0",

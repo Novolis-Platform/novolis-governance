@@ -92,13 +92,13 @@
       "packageId": "Novolis.AssetStudio"
     },
     {
-      "id": "novolis.assetstudio.core",
-      "name": "Novolis.AssetStudio.Core",
+      "id": "novolis.assetstudio.authoring",
+      "name": "Novolis.AssetStudio.Authoring",
       "kind": "package",
       "version": "2026.1.1.0",
       "channel": "stable",
-      "repository": "https://github.com/Novolis-Platform/novolis-visual",
-      "packageId": "Novolis.AssetStudio.Core"
+      "repository": "https://github.com/Novolis-Platform/novolis-tools",
+      "packageId": "Novolis.AssetStudio.Authoring"
     },
     {
       "id": "novolis.assetstudio.export",
@@ -106,7 +106,7 @@
       "kind": "package",
       "version": "2026.1.1.0",
       "channel": "stable",
-      "repository": "https://github.com/Novolis-Platform/novolis-visual",
+      "repository": "https://github.com/Novolis-Platform/novolis-tools",
       "packageId": "Novolis.AssetStudio.Export"
     },
     {
@@ -115,7 +115,7 @@
       "kind": "package",
       "version": "2026.1.1.0",
       "channel": "stable",
-      "repository": "https://github.com/Novolis-Platform/novolis-visual",
+      "repository": "https://github.com/Novolis-Platform/novolis-tools",
       "packageId": "Novolis.AssetStudio.Import"
     },
     {
@@ -1631,7 +1631,7 @@
       "packageId": "Novolis.IO.Recovery"
     },
     {
-      "id": "novolis.io.system-metrics",
+      "id": "novolis.io.systemmetrics",
       "name": "Novolis.IO.SystemMetrics",
       "kind": "package",
       "version": "2026.1.1.0",
@@ -2036,6 +2036,15 @@
       "packageId": "Novolis.Markup.Mermaid.Rendering"
     },
     {
+      "id": "novolis.markup.svg",
+      "name": "Novolis.Markup.Svg",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-markup",
+      "packageId": "Novolis.Markup.Svg"
+    },
+    {
       "id": "novolis.math.arrays",
       "name": "Novolis.Math.Arrays",
       "kind": "package",
@@ -2288,6 +2297,24 @@
       "packageId": "Novolis.Modeling.Scene"
     },
     {
+      "id": "novolis.msbuild.buildreference",
+      "name": "Novolis.MSBuild.BuildReference",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-msbuild",
+      "packageId": "Novolis.MSBuild.BuildReference"
+    },
+    {
+      "id": "novolis.msbuild.codegen",
+      "name": "Novolis.MSBuild.CodeGen",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-msbuild",
+      "packageId": "Novolis.MSBuild.CodeGen"
+    },
+    {
       "id": "novolis.msbuild.libraryreference",
       "name": "Novolis.MSBuild.LibraryReference",
       "kind": "package",
@@ -2295,6 +2322,24 @@
       "channel": "stable",
       "repository": "https://github.com/Novolis-Platform/novolis-msbuild",
       "packageId": "Novolis.MSBuild.LibraryReference"
+    },
+    {
+      "id": "novolis.msbuild.packaging",
+      "name": "Novolis.MSBuild.Packaging",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-msbuild",
+      "packageId": "Novolis.MSBuild.Packaging"
+    },
+    {
+      "id": "novolis.msbuild.toolreference",
+      "name": "Novolis.MSBuild.ToolReference",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-msbuild",
+      "packageId": "Novolis.MSBuild.ToolReference"
     },
     {
       "id": "novolis.pdf.abstractions",
@@ -3701,6 +3746,15 @@
       "packageId": "Novolis.Tools.Docs.Cli"
     },
     {
+      "id": "novolis.tools.doom.cli",
+      "name": "Novolis.Tools.Doom.Cli",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-tools",
+      "packageId": "Novolis.Tools.Doom.Cli"
+    },
+    {
       "id": "novolis.tools.litedb",
       "name": "Novolis.Tools.LiteDb",
       "kind": "package",
@@ -3764,7 +3818,7 @@
       "packageId": "Novolis.Tools.Sqlite.Cli"
     },
     {
-      "id": "novolis.tools.system-metrics.cli",
+      "id": "novolis.tools.systemmetrics.cli",
       "name": "Novolis.Tools.SystemMetrics.Cli",
       "kind": "package",
       "version": "2026.1.1.0",
@@ -3989,6 +4043,15 @@
       "packageId": "Novolis.Visual.Adapters.Rendering"
     },
     {
+      "id": "novolis.visual.assets",
+      "name": "Novolis.Visual.Assets",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-visual",
+      "packageId": "Novolis.Visual.Assets"
+    },
+    {
       "id": "novolis.visual.baking",
       "name": "Novolis.Visual.Baking",
       "kind": "package",
@@ -4032,6 +4095,24 @@
       "channel": "stable",
       "repository": "https://github.com/Novolis-Platform/novolis-visual",
       "packageId": "Novolis.Visual.Evaluation"
+    },
+    {
+      "id": "novolis.visual.materials",
+      "name": "Novolis.Visual.Materials",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-visual",
+      "packageId": "Novolis.Visual.Materials"
+    },
+    {
+      "id": "novolis.visual.presets",
+      "name": "Novolis.Visual.Presets",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-visual",
+      "packageId": "Novolis.Visual.Presets"
     },
     {
       "id": "novolis.windows.audio",
