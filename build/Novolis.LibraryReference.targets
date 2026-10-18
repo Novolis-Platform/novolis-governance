@@ -10,8 +10,9 @@
     identical to the package (verify-project-ref-mode.ps1).
   -->
   <PropertyGroup>
-    <LibraryReferenceDefaultVersion Condition="'$(LibraryReferenceDefaultVersion)' == '' and '$(NovolisPlatformVersion)' != ''">$(NovolisPlatformVersion)</LibraryReferenceDefaultVersion>
-    <LibraryReferenceDefaultVersion Condition="'$(LibraryReferenceDefaultVersion)' == ''">2026.1.1</LibraryReferenceDefaultVersion>
+    <LibraryReferenceDefaultVersion Condition="'$(LibraryReferenceDefaultVersion)' == '' and '$(NovolisPackageFloatVersion)' != ''">$(NovolisPackageFloatVersion)</LibraryReferenceDefaultVersion>
+    <LibraryReferenceDefaultVersion Condition="'$(LibraryReferenceDefaultVersion)' == '' and '$(NovolisYear)' != '' and '$(NovolisMajor)' != ''">$(NovolisYear).$(NovolisMajor).*</LibraryReferenceDefaultVersion>
+    <LibraryReferenceDefaultVersion Condition="'$(LibraryReferenceDefaultVersion)' == ''">2026.1.*</LibraryReferenceDefaultVersion>
     <_NovolisLibraryReferenceBuild>$([System.IO.Path]::Combine('$(NovolisWorkspaceRoot)', 'novolis-msbuild', 'src', 'Novolis.MSBuild.LibraryReference', 'build'))</_NovolisLibraryReferenceBuild>
     <_NovolisLibraryReferenceTargets>$([System.IO.Path]::Combine('$(_NovolisLibraryReferenceBuild)', 'Novolis.MSBuild.LibraryReference.targets'))</_NovolisLibraryReferenceTargets>
     <_NovolisLibraryReferenceBuild Condition="!Exists('$(_NovolisLibraryReferenceTargets)')">$([System.IO.Path]::Combine('$(MSBuildThisFileDirectory)', 'libraryreference'))</_NovolisLibraryReferenceBuild>
