@@ -3764,6 +3764,15 @@
       "packageId": "Novolis.Tools.Sqlite.Cli"
     },
     {
+      "id": "novolis.tools.system-metrics.cli",
+      "name": "Novolis.Tools.SystemMetrics.Cli",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-tools",
+      "packageId": "Novolis.Tools.SystemMetrics.Cli"
+    },
+    {
       "id": "novolis.transports.abstractions",
       "name": "Novolis.Transports.Abstractions",
       "kind": "package",

@@ -769,8 +769,20 @@
     <NovolisPackageProject Include="Novolis.Modeling.Scene">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-modeling\src\Novolis.Modeling.Scene\Novolis.Modeling.Scene.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.MSBuild.BuildReference">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-msbuild\src\Novolis.MSBuild.BuildReference\Novolis.MSBuild.BuildReference.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.MSBuild.CodeGen">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-msbuild\src\Novolis.MSBuild.CodeGen\Novolis.MSBuild.CodeGen.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.MSBuild.LibraryReference">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-msbuild\src\Novolis.MSBuild.LibraryReference\Novolis.MSBuild.LibraryReference.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.MSBuild.Packaging">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-msbuild\src\Novolis.MSBuild.Packaging\Novolis.MSBuild.Packaging.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.MSBuild.ToolReference">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-msbuild\src\Novolis.MSBuild.ToolReference\Novolis.MSBuild.ToolReference.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Pdf.Abstractions">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-pdf\src\Novolis.Pdf.Abstractions\Novolis.Pdf.Abstractions.csproj</ProjectPath>
@@ -1263,6 +1275,9 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Tools.Sqlite.Cli">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-tools\src\Novolis.Tools.Sqlite.Cli\Novolis.Tools.Sqlite.Cli.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Tools.SystemMetrics.Cli">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-tools\src\Novolis.Tools.SystemMetrics.Cli\Novolis.Tools.SystemMetrics.Cli.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Transports.Abstractions">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-transports\src\Novolis.Transports.Abstractions\Novolis.Transports.Abstractions.csproj</ProjectPath>
