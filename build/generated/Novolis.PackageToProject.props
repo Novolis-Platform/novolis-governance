@@ -34,14 +34,14 @@
     <NovolisPackageProject Include="Novolis.AssetStudio">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-tools\src\Novolis.AssetStudio\Novolis.AssetStudio.csproj</ProjectPath>
     </NovolisPackageProject>
-    <NovolisPackageProject Include="Novolis.AssetStudio.Core">
-      <ProjectPath>$(NovolisLibraryRoot)\novolis-visual\src\Novolis.AssetStudio.Core\Novolis.AssetStudio.Core.csproj</ProjectPath>
+    <NovolisPackageProject Include="Novolis.AssetStudio.Authoring">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-tools\src\Novolis.AssetStudio.Authoring\Novolis.AssetStudio.Authoring.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.AssetStudio.Export">
-      <ProjectPath>$(NovolisLibraryRoot)\novolis-visual\src\Novolis.AssetStudio.Export\Novolis.AssetStudio.Export.csproj</ProjectPath>
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-tools\src\Novolis.AssetStudio.Export\Novolis.AssetStudio.Export.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.AssetStudio.Import">
-      <ProjectPath>$(NovolisLibraryRoot)\novolis-visual\src\Novolis.AssetStudio.Import\Novolis.AssetStudio.Import.csproj</ProjectPath>
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-tools\src\Novolis.AssetStudio.Import\Novolis.AssetStudio.Import.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Astro.Abstractions">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-astro\src\Novolis.Astro.Abstractions\Novolis.Astro.Abstractions.csproj</ProjectPath>

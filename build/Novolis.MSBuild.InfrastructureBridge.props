@@ -1,0 +1,19 @@
+<Project>
+  <PropertyGroup>
+    <_NovolisMSBuildRoot>$(NovolisWorkspaceRoot)novolis-msbuild\src</_NovolisMSBuildRoot>
+    <NovolisPackagingUseGovernanceContract>true</NovolisPackagingUseGovernanceContract>
+  </PropertyGroup>
+
+  <Import Project="$(_NovolisMSBuildRoot)\Novolis.MSBuild.BuildReference\build\Novolis.MSBuild.BuildReference.props"
+          Condition="'$(_NovolisMSBuildInfrastructureBridgeEnabled)' == 'true'
+            and Exists('$(_NovolisMSBuildRoot)\Novolis.MSBuild.BuildReference\build\Novolis.MSBuild.BuildReference.props')" />
+  <Import Project="$(_NovolisMSBuildRoot)\Novolis.MSBuild.CodeGen\build\Novolis.MSBuild.CodeGen.props"
+          Condition="'$(_NovolisMSBuildInfrastructureBridgeEnabled)' == 'true'
+            and Exists('$(_NovolisMSBuildRoot)\Novolis.MSBuild.CodeGen\build\Novolis.MSBuild.CodeGen.props')" />
+  <Import Project="$(_NovolisMSBuildRoot)\Novolis.MSBuild.Packaging\build\Novolis.MSBuild.Packaging.props"
+          Condition="'$(_NovolisMSBuildInfrastructureBridgeEnabled)' == 'true'
+            and Exists('$(_NovolisMSBuildRoot)\Novolis.MSBuild.Packaging\build\Novolis.MSBuild.Packaging.props')" />
+  <Import Project="$(_NovolisMSBuildRoot)\Novolis.MSBuild.ToolReference\build\Novolis.MSBuild.ToolReference.props"
+          Condition="'$(_NovolisMSBuildInfrastructureBridgeEnabled)' == 'true'
+            and Exists('$(_NovolisMSBuildRoot)\Novolis.MSBuild.ToolReference\build\Novolis.MSBuild.ToolReference.props')" />
+</Project>

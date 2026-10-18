@@ -36,4 +36,12 @@
   <!-- Optional LibraryReference map (Novolis.MSBuild.LibraryReference). -->
   <Import Project="$(MSBuildThisFileDirectory)Novolis.LibraryReferenceBridge.props"
           Condition="Exists('$(MSBuildThisFileDirectory)Novolis.LibraryReferenceBridge.props')" />
+
+  <PropertyGroup>
+    <_NovolisMSBuildInfrastructureBridgeEnabled Condition="'$(NovolisUseProjectReferences)' == 'true'">true</_NovolisMSBuildInfrastructureBridgeEnabled>
+    <_NovolisMSBuildInfrastructureBridgeEnabled Condition="Exists('$(NovolisWorkspaceRoot)novolis-msbuild\src')">true</_NovolisMSBuildInfrastructureBridgeEnabled>
+  </PropertyGroup>
+
+  <Import Project="$(MSBuildThisFileDirectory)Novolis.MSBuild.InfrastructureBridge.props"
+          Condition="Exists('$(MSBuildThisFileDirectory)Novolis.MSBuild.InfrastructureBridge.props')" />
 </Project>

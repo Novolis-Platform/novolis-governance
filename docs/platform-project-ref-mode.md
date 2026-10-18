@@ -81,6 +81,11 @@ Stack analyzers (`Novolis.StackAnalyzers.props`) stay a separate analyzer `Proje
 
 Every repo that imports [`Novolis.Packaging.targets`](../build/Novolis.Packaging.targets) already expands `LibraryReference`. No per-repo copy of the targets, and no `PackageReference` to `Novolis.MSBuild.LibraryReference` inside the forest (that package is for consumers outside the workspace; its targets are not on disk for the first static-graph restore).
 
+The same mode imports the source `build/` assets for the opt-in
+`Novolis.MSBuild.*` infrastructure packages when their projects are present.
+This keeps local project-reference builds equivalent to the published package
+imports without adding cross-repository project references to consumer files.
+
 ```xml
 <ItemGroup>
   <LibraryReference Include="Novolis.Math.Geometry" />
