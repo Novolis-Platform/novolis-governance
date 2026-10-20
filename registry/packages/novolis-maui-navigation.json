@@ -1,0 +1,8 @@
+{
+  "id": "novolis.maui.navigation",
+  "name": "Novolis.Maui.Navigation",
+  "type": "nuget",
+  "version": "2026.1.1.0",
+  "repository": "https://github.com/Novolis-Platform/novolis-maui",
+  "packageId": "Novolis.Maui.Navigation"
+}

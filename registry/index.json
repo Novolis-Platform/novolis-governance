@@ -722,6 +722,15 @@
       "packageId": "Novolis.Avalonia.Modeling"
     },
     {
+      "id": "novolis.avalonia.navigation",
+      "name": "Novolis.Avalonia.Navigation",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-avalonia",
+      "packageId": "Novolis.Avalonia.Navigation"
+    },
+    {
       "id": "novolis.avalonia.ndjson",
       "name": "Novolis.Avalonia.Ndjson",
       "kind": "package",
@@ -774,6 +783,15 @@
       "channel": "stable",
       "repository": "https://github.com/Novolis-Platform/novolis-avalonia",
       "packageId": "Novolis.Avalonia.Ship.Design"
+    },
+    {
+      "id": "novolis.avalonia.slate",
+      "name": "Novolis.Avalonia.Slate",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-avalonia",
+      "packageId": "Novolis.Avalonia.Slate"
     },
     {
       "id": "novolis.avalonia.speech",
@@ -1073,6 +1091,15 @@
       "packageId": "Novolis.Commands.Expressions"
     },
     {
+      "id": "novolis.commands.navigation",
+      "name": "Novolis.Commands.Navigation",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-commands",
+      "packageId": "Novolis.Commands.Navigation"
+    },
+    {
       "id": "novolis.commands.queueing",
       "name": "Novolis.Commands.Queueing",
       "kind": "package",
@@ -1325,6 +1352,15 @@
       "packageId": "Novolis.Game.Scenes"
     },
     {
+      "id": "novolis.game.sudoku",
+      "name": "Novolis.Game.Sudoku",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-gaming",
+      "packageId": "Novolis.Game.Sudoku"
+    },
+    {
       "id": "novolis.geopolitics.conflict",
       "name": "Novolis.Geopolitics.Conflict",
       "kind": "package",
@@ -1539,6 +1575,15 @@
       "channel": "stable",
       "repository": "https://github.com/Novolis-Platform/novolis-tools",
       "packageId": "Novolis.Install"
+    },
+    {
+      "id": "novolis.io.connecteddevices",
+      "name": "Novolis.IO.ConnectedDevices",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-io",
+      "packageId": "Novolis.IO.ConnectedDevices"
     },
     {
       "id": "novolis.io.git",
@@ -2036,6 +2081,15 @@
       "packageId": "Novolis.Markup.Mermaid.Rendering"
     },
     {
+      "id": "novolis.markup.slate",
+      "name": "Novolis.Markup.Slate",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-markup",
+      "packageId": "Novolis.Markup.Slate"
+    },
+    {
       "id": "novolis.markup.svg",
       "name": "Novolis.Markup.Svg",
       "kind": "package",
@@ -2142,6 +2196,15 @@
       "channel": "stable",
       "repository": "https://github.com/Novolis-Platform/novolis-maui",
       "packageId": "Novolis.Maui.Mermaid"
+    },
+    {
+      "id": "novolis.maui.navigation",
+      "name": "Novolis.Maui.Navigation",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-maui",
+      "packageId": "Novolis.Maui.Navigation"
     },
     {
       "id": "novolis.maui.ndjson",
@@ -3969,6 +4032,24 @@
       "channel": "stable",
       "repository": "https://github.com/Novolis-Platform/novolis-transports",
       "packageId": "Novolis.Transports.Torrent"
+    },
+    {
+      "id": "novolis.transports.torrent.search",
+      "name": "Novolis.Transports.Torrent.Search",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-transports",
+      "packageId": "Novolis.Transports.Torrent.Search"
+    },
+    {
+      "id": "novolis.transports.torrent.trackers",
+      "name": "Novolis.Transports.Torrent.Trackers",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-transports",
+      "packageId": "Novolis.Transports.Torrent.Trackers"
     },
     {
       "id": "novolis.transports.udp",

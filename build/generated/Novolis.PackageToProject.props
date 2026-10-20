@@ -1342,6 +1342,12 @@
     <NovolisPackageProject Include="Novolis.Transports.Torrent">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-transports\src\Novolis.Transports.Torrent\Novolis.Transports.Torrent.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Transports.Torrent.Search">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-transports\src\Novolis.Transports.Torrent.Search\Novolis.Transports.Torrent.Search.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Transports.Torrent.Trackers">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-transports\src\Novolis.Transports.Torrent.Trackers\Novolis.Transports.Torrent.Trackers.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Transports.Udp">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-transports\src\Novolis.Transports.Udp\Novolis.Transports.Udp.csproj</ProjectPath>
     </NovolisPackageProject>
@@ -1359,6 +1365,9 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Video.Edit">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-video\src\Novolis.Video.Edit\Novolis.Video.Edit.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Video.Playback.Android">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-video\src\Novolis.Video.Playback.Android\Novolis.Video.Playback.Android.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Video.Rtc">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-video\src\Novolis.Video.Rtc\Novolis.Video.Rtc.csproj</ProjectPath>
