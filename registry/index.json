@@ -3728,6 +3728,24 @@
       "packageId": "Novolis.Timeline.Presentation"
     },
     {
+      "id": "novolis.tools.agentdev",
+      "name": "Novolis.Tools.AgentDev",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-tools",
+      "packageId": "Novolis.Tools.AgentDev"
+    },
+    {
+      "id": "novolis.tools.agentdev.cli",
+      "name": "Novolis.Tools.AgentDev.Cli",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-tools",
+      "packageId": "Novolis.Tools.AgentDev.Cli"
+    },
+    {
       "id": "novolis.tools.android.cli",
       "name": "Novolis.Tools.Android.Cli",
       "kind": "package",
