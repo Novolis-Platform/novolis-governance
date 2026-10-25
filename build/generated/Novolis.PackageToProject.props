@@ -286,6 +286,9 @@
     <NovolisPackageProject Include="Novolis.Avalonia.Voice">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-avalonia\src\Novolis.Avalonia.Voice\Novolis.Avalonia.Voice.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Blazor.Components">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-blazor\src\Novolis.Blazor.Components\Novolis.Blazor.Components.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Blazor.GraphicalProfile">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-blazor\src\Novolis.Blazor.GraphicalProfile\Novolis.Blazor.GraphicalProfile.csproj</ProjectPath>
     </NovolisPackageProject>

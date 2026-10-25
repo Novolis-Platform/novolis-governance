@@ -857,6 +857,15 @@
       "packageId": "Novolis.Avalonia.Voice"
     },
     {
+      "id": "novolis.blazor.components",
+      "name": "Novolis.Blazor.Components",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-blazor",
+      "packageId": "Novolis.Blazor.Components"
+    },
+    {
       "id": "novolis.blazor.graphicalprofile",
       "name": "Novolis.Blazor.GraphicalProfile",
       "kind": "package",
