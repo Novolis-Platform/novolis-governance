@@ -45,4 +45,23 @@ if (stdout.Contains("FAIL fab release:", StringComparison.Ordinal))
     Environment.Exit(1);
 }
 
+var visual = new ProcessStartInfo("dotnet")
+{
+    Arguments = "run --file d:\\novolis\\novolis-governance\\scripts\\verify-calypso-visual-gate.cs",
+    UseShellExecute = false,
+    RedirectStandardOutput = true,
+    RedirectStandardError = true,
+    CreateNoWindow = true,
+};
+using var vis = Process.Start(visual) ?? throw new InvalidOperationException("Failed to start visual gate");
+stdout = vis.StandardOutput.ReadToEnd();
+stderr = vis.StandardError.ReadToEnd();
+vis.WaitForExit();
+Console.WriteLine(stdout);
+if (vis.ExitCode != 0)
+{
+    Console.Error.WriteLine(stderr);
+    Environment.Exit(vis.ExitCode);
+}
+
 Console.WriteLine("Calypso fab release verify OK");
