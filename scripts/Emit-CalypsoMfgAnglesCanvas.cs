@@ -1,0 +1,35 @@
+#:property TargetFramework=net10.0
+#:property PublishAot=false
+#:property PackAsTool=false
+#:property ImplicitUsings=enable
+#:property Nullable=enable
+
+using System.Diagnostics;
+
+var canvas = args.Length > 0
+    ? args[0]
+    : Path.Combine(
+        Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
+        ".cursor", "projects", "d-novolis", "canvases", "calypso-mfg-angles.canvas.tsx");
+
+var withHeadless = args.Any(a => string.Equals(a, "--headless", StringComparison.OrdinalIgnoreCase));
+var project = @"d:\novolis\novolis-lab\labs\cad\CalypsoCad\CalypsoCad.csproj";
+var headlessFlag = withHeadless ? " --headless" : "";
+var psi = new ProcessStartInfo("dotnet")
+{
+    Arguments =
+        $"run --project \"{project}\" -p:NovolisUseProjectReferences=true -- --emit-mfg-angles-canvas \"{canvas}\"{headlessFlag}",
+    RedirectStandardOutput = true,
+    RedirectStandardError = true,
+    UseShellExecute = false,
+    CreateNoWindow = true,
+};
+using var proc = Process.Start(psi) ?? throw new InvalidOperationException("Failed to start dotnet.");
+var stdout = proc.StandardOutput.ReadToEnd();
+var stderr = proc.StandardError.ReadToEnd();
+proc.WaitForExit();
+if (!string.IsNullOrWhiteSpace(stdout))
+    Console.Write(stdout);
+if (!string.IsNullOrWhiteSpace(stderr))
+    Console.Error.Write(stderr);
+Environment.Exit(proc.ExitCode);
