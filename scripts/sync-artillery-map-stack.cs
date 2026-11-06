@@ -1,5 +1,5 @@
-// Moved next to the lab app. Prefer:
-//   dotnet run --file d:\novolis\novolis-lab\labs\simulation\ArtillerySimulator\tools\sync-artillery-map-stack.cs
+// Prefer the ArtillerySimulator workflow script:
+//   dotnet run --file d:\novolis\novolis-lab\labs\simulation\ArtillerySimulator\scripts\build-kristiansand-map.cs -p:NovolisUseProjectReferences=true
 #:property TargetFramework=net10.0
 #:property PublishAot=false
 #:property ImplicitUsings=enable
@@ -7,7 +7,7 @@
 using System.Diagnostics;
 
 return Forward(
-    @"d:\novolis\novolis-lab\labs\simulation\ArtillerySimulator\tools\sync-artillery-map-stack.cs",
+    @"d:\novolis\novolis-lab\labs\simulation\ArtillerySimulator\scripts\build-kristiansand-map.cs",
     args);
 
 static int Forward(string target, string[] args)
@@ -23,6 +23,7 @@ static int Forward(string target, string[] args)
     psi.ArgumentList.Add("run");
     psi.ArgumentList.Add("--file");
     psi.ArgumentList.Add(target);
+    psi.ArgumentList.Add("-p:NovolisUseProjectReferences=true");
     psi.ArgumentList.Add("--");
     foreach (var a in args)
         psi.ArgumentList.Add(a);
