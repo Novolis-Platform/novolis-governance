@@ -27,6 +27,26 @@ using var relief = SKBitmap.Decode(reliefPath) ?? throw new FileNotFoundExceptio
 using var roads = File.Exists(roadsPath) ? SKBitmap.Decode(roadsPath) : null;
 using var mask = File.Exists(maskPath) ? SKBitmap.Decode(maskPath) : null;
 
+if (roads is not null)
+{
+    var compositePath = Path.Combine(mapDir, "kristiansand-relief-roads-composite.png");
+    using var roadsAligned = roads.Width == relief.Width && roads.Height == relief.Height
+        ? roads.Copy()
+        : Resize(roads, relief.Width, relief.Height);
+    using var composite = new SKBitmap(relief.Width, relief.Height, SKColorType.Rgba8888, SKAlphaType.Premul);
+    using (var c = new SKCanvas(composite))
+    {
+        c.DrawBitmap(relief, 0, 0);
+        using var paint = new SKPaint { Color = new SKColor(255, 60, 60, 110), BlendMode = SKBlendMode.SrcOver };
+        c.DrawBitmap(roadsAligned, 0, 0, paint);
+    }
+
+    using var compImage = SKImage.FromBitmap(composite);
+    using var compData = compImage.Encode(SKEncodedImageFormat.Png, 92);
+    await File.WriteAllBytesAsync(compositePath, compData.ToArray());
+    Console.WriteLine($"Wrote single-sheet composite: {compositePath} ({compData.Size} bytes)");
+}
+
 var panelW = relief.Width;
 var panelH = relief.Height;
 var legendH = 72;

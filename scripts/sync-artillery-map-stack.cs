@@ -1,5 +1,8 @@
 // Build kristiansand-map-stack.json: shared markers, north-up georef, cropped Norgeskart layers.
 //
+//   dotnet run --file d:\novolis\novolis-governance\scripts\sync-artillery-map-stack.cs
+// (reads novolis-lab/.../map/kristiansand-norgeskart-source-pdfs.json when CLI PDFs omitted)
+//
 //   dotnet run --file d:\novolis\novolis-governance\scripts\sync-artillery-map-stack.cs -- --heightmap-pdf "C:\...\height.pdf" --roads-pdf "C:\...\roads.pdf"
 //
 #:project d:\novolis\novolis-governance\scripts\InspectNorgeskartPdf\InspectNorgeskartPdf.csproj
@@ -23,7 +26,7 @@ using ProjNet.CoordinateSystems.Transformations;
 
 string? heightmapPdf = null;
 string? roadsPdf = null;
-var dpi = 220;
+int? dpiOverride = null;
 for (var i = 0; i < args.Length - 1; i++)
 {
     if (args[i] == "--heightmap-pdf")
@@ -31,11 +34,31 @@ for (var i = 0; i < args.Length - 1; i++)
     if (args[i] == "--roads-pdf")
         roadsPdf = Path.GetFullPath(args[i + 1]);
     if (args[i] == "--dpi" && int.TryParse(args[i + 1], out var parsed))
-        dpi = parsed;
+        dpiOverride = parsed;
 }
 
 var root = ResolveRoot();
 var mapDir = Path.Combine(root, "novolis-lab", "labs", "simulation", "ArtillerySimulator", "map");
+var dpi = dpiOverride ?? 220;
+
+if (heightmapPdf is null || roadsPdf is null)
+{
+    var configPath = Path.Combine(mapDir, "kristiansand-norgeskart-source-pdfs.json");
+    if (File.Exists(configPath)
+        && JsonSerializer.Deserialize<NorgeskartSourceConfig>(
+            File.ReadAllText(configPath),
+            new JsonSerializerOptions { PropertyNameCaseInsensitive = true }) is { } cfg)
+    {
+        if (heightmapPdf is null && !string.IsNullOrWhiteSpace(cfg.ReliefPdf))
+            heightmapPdf = Path.GetFullPath(cfg.ReliefPdf.Trim());
+        if (roadsPdf is null && !string.IsNullOrWhiteSpace(cfg.RoadsPdf))
+            roadsPdf = Path.GetFullPath(cfg.RoadsPdf.Trim());
+        if (dpiOverride is null && cfg.Dpi is > 0)
+            dpi = cfg.Dpi;
+        if (heightmapPdf is not null || roadsPdf is not null)
+            Console.WriteLine($"Using PDF paths from {configPath}");
+    }
+}
 var cutoutPath = Path.Combine(mapDir, "kristiansand-norgeskart-cutout.json");
 var stackPath = Path.Combine(mapDir, "kristiansand-map-stack.json");
 var cutout = JsonSerializer.Deserialize<CutoutDoc>(
@@ -54,6 +77,7 @@ LayerRecord? relief = null;
 LayerRecord? roads = null;
 if (heightmapPdf is not null)
 {
+    Console.WriteLine($"relief PDF: {heightmapPdf}");
     relief = await ImportLayerAsync(heightmapPdf, dpi, mapDir, "relief", "kristiansand-reference.png", "land_sea_mask");
     stack.Layers.RemoveAll(l => l.Id == "relief");
     stack.Layers.Add(relief);
@@ -61,6 +85,7 @@ if (heightmapPdf is not null)
 
 if (roadsPdf is not null)
 {
+    Console.WriteLine($"roads PDF: {roadsPdf}");
     roads = await ImportLayerAsync(roadsPdf, dpi, mapDir, "roads", "kristiansand-roads-reference.png", "roads_overlay");
     stack.Layers.RemoveAll(l => l.Id == "roads");
     stack.Layers.Add(roads);
@@ -172,6 +197,7 @@ static async Task<LayerRecord> ImportLayerAsync(
         Role = role,
         ImageFile = imageFile,
         SourcePdf = Path.GetFileName(pdfPath),
+        SourcePdfPath = pdfPath,
         Dpi = dpi,
         PixelWidth = pw,
         PixelHeight = ph,
@@ -251,6 +277,8 @@ sealed class LayerRecord
     public string Role { get; set; } = "";
     public string ImageFile { get; set; } = "";
     public string? SourcePdf { get; set; }
+    /// <summary>Absolute path last used by sync (audit).</summary>
+    public string? SourcePdfPath { get; set; }
     public int Dpi { get; set; }
     public int PixelWidth { get; set; }
     public int PixelHeight { get; set; }
@@ -280,4 +308,19 @@ sealed class PixelPointJson
 {
     public int X { get; set; }
     public int Y { get; set; }
+}
+
+sealed class NorgeskartSourceConfig
+{
+    [JsonPropertyName("reliefPdf")]
+    public string? ReliefPdf { get; set; }
+
+    [JsonPropertyName("roadsPdf")]
+    public string? RoadsPdf { get; set; }
+
+    [JsonPropertyName("dpi")]
+    public int Dpi { get; set; }
+
+    [JsonPropertyName("citation")]
+    public string? Citation { get; set; }
 }

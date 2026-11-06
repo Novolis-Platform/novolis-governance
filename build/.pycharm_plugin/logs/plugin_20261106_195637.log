@@ -1,0 +1,13 @@
+[2026-11-06 19:56:37.557] [INFO] Using logs directory: D:\novolis\novolis-governance\build\.pycharm_plugin\logs
+[2026-11-06 19:56:37.562] [INFO] ================================================================================
+[2026-11-06 19:56:37.562] [INFO] Learning Flow Visualizer Plugin Started
+[2026-11-06 19:56:37.562] [INFO] Version: 1.0.679
+[2026-11-06 19:56:37.562] [INFO] Project: Novolis.Platform
+[2026-11-06 19:56:37.562] [INFO] Log file: D:\novolis\novolis-governance\build\.pycharm_plugin\logs\plugin_20261106_195637.log
+[2026-11-06 19:56:37.562] [INFO] ================================================================================
+[2026-11-06 19:56:37.562] [INFO] Project opened: Novolis.Platform
+[2026-11-06 19:56:37.563] [INFO] Project base path: D:/novolis/novolis-governance/build
+[2026-11-06 19:56:52.577] [INFO] Logger already initialized for project: Novolis.Platform
+[2026-11-06 19:56:52.577] [INFO] Plugin startup activity started for project: Novolis.Platform
+[2026-11-06 19:56:52.577] [WARN] Tool window 'SequenceDiagramPython' not found
+[2026-11-06 19:56:52.577] [INFO] Plugin startup completed successfully

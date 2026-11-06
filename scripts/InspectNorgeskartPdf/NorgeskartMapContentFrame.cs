@@ -20,17 +20,12 @@ public readonly record struct NorgeskartMapContentFrame(
         var minY = double.MaxValue;
         var maxX = double.MinValue;
         var maxY = double.MinValue;
-        var seen = new HashSet<string>();
         foreach (var command in plan.Commands)
         {
             if (command is not PdfImageCommand image)
                 continue;
 
             var m = image.Matrix;
-            var key = $"{image.Width}x{image.Height}:{m.E:F2}:{m.F:F2}:{m.A:F2}:{m.D:F2}";
-            if (!seen.Add(key))
-                continue;
-
             minX = System.Math.Min(minX, m.E);
             minY = System.Math.Min(minY, m.F);
             maxX = System.Math.Max(maxX, m.E + m.A);

@@ -40,4 +40,7 @@
 
   <Import Project="$(MSBuildThisFileDirectory)Novolis.MSBuild.InfrastructureBridge.props"
           Condition="Exists('$(MSBuildThisFileDirectory)Novolis.MSBuild.InfrastructureBridge.props')" />
+
+  <Import Project="$(MSBuildThisFileDirectory)Novolis.Android.JavaSdk.props"
+          Condition="'$(_NovolisAndroidJavaSdkPropsImported)' != 'true' and Exists('$(MSBuildThisFileDirectory)Novolis.Android.JavaSdk.props')" />
 </Project>

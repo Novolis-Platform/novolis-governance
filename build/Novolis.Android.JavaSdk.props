@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <!--
+    .NET for Android ManifestMerger requires JDK 17+ (class file 61). Rider / VS often
+    still inject Microsoft OpenJDK 11 via JavaSdkDirectory. Prefer a modern JDK when
+    present, and replace an explicit jdk-11 path so IDE builds match CLI.
+  -->
+  <PropertyGroup>
+    <_NovolisAndroidJavaSdkPropsImported>true</_NovolisAndroidJavaSdkPropsImported>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(_NovolisAndroidJavaSdkApplied)' != 'true' and ('$(TargetFramework)' == '' or $(TargetFramework.Contains('-android')) or $([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android')">
+    <_NovolisJavaSdkCandidate Condition="'$(_NovolisJavaSdkCandidate)' == '' and '$(JAVA_HOME)' != '' and !$(JAVA_HOME.Contains('jdk-11')) and Exists('$(JAVA_HOME)\bin\java.exe')">$(JAVA_HOME)</_NovolisJavaSdkCandidate>
+    <_NovolisJavaSdkCandidate Condition="'$(_NovolisJavaSdkCandidate)' == '' and Exists('$(ProgramW6432)\Java\jdk-21\bin\java.exe')">$(ProgramW6432)\Java\jdk-21</_NovolisJavaSdkCandidate>
+    <_NovolisJavaSdkCandidate Condition="'$(_NovolisJavaSdkCandidate)' == '' and Exists('$(ProgramFiles)\Java\jdk-21\bin\java.exe')">$(ProgramFiles)\Java\jdk-21</_NovolisJavaSdkCandidate>
+    <_NovolisJavaSdkCandidate Condition="'$(_NovolisJavaSdkCandidate)' == '' and Exists('$(ProgramW6432)\Eclipse Adoptium\jdk-21.0.7-hotspot\bin\java.exe')">$(ProgramW6432)\Eclipse Adoptium\jdk-21.0.7-hotspot</_NovolisJavaSdkCandidate>
+    <_NovolisJavaSdkCandidate Condition="'$(_NovolisJavaSdkCandidate)' == '' and Exists('$(ProgramW6432)\Android\openjdk\jdk-17.0.8.1-hotspot\bin\java.exe')">$(ProgramW6432)\Android\openjdk\jdk-17.0.8.1-hotspot</_NovolisJavaSdkCandidate>
+    <_NovolisJavaSdkCandidate Condition="'$(_NovolisJavaSdkCandidate)' == '' and Exists('$(ProgramFiles)\Microsoft\jdk-17.0.16.8-hotspot\bin\java.exe')">$(ProgramFiles)\Microsoft\jdk-17.0.16.8-hotspot</_NovolisJavaSdkCandidate>
+
+    <JavaSdkDirectory Condition="'$(_NovolisJavaSdkCandidate)' != '' and ('$(JavaSdkDirectory)' == '' or $(JavaSdkDirectory.Contains('jdk-11')))">$(_NovolisJavaSdkCandidate)</JavaSdkDirectory>
+    <_NovolisAndroidJavaSdkApplied>true</_NovolisAndroidJavaSdkApplied>
+  </PropertyGroup>
+</Project>
