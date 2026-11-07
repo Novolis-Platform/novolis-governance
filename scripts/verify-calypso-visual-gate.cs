@@ -1,16 +1,11 @@
 // dotnet run --file d:\novolis\novolis-governance\scripts\verify-calypso-visual-gate.cs
-// Set CALYPSO_PREVIEW_SYNC=1 to refresh docs/preview from latest headless exports.
+// Set CALYPSO_PREVIEW_SYNC=1 to refresh docs/preview from docs/renders.
 using System.Diagnostics;
 using System.Security.Cryptography;
 
 var project = @"d:\novolis\novolis-lab\labs\cad\CalypsoCad\CalypsoCad.csproj";
 var previewDir = @"d:\novolis\novolis-lab\labs\cad\CalypsoCad\docs\preview";
-var exportsDir = Path.Combine(
-    Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
-    "Novolis",
-    "CalypsoCad",
-    "generated",
-    "exports");
+var exportsDir = @"d:\novolis\novolis-lab\labs\cad\CalypsoCad\docs\renders";
 
 string[] curated =
 [
@@ -18,6 +13,7 @@ string[] curated =
     "layer-cutaway-structure.png",
     "plan-deck-0.png",
     "interior-solid-bridge.png",
+    "layer-structure-wire.png",
 ];
 
 var psi = new ProcessStartInfo("dotnet")
