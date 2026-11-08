@@ -298,14 +298,26 @@
     <NovolisPackageProject Include="Novolis.Cad.Blueprint">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-cad\src\Novolis.Cad.Blueprint\Novolis.Cad.Blueprint.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Cad.Drawing">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-cad\src\Novolis.Cad.Drawing\Novolis.Cad.Drawing.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Cad.Evaluation">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-cad\src\Novolis.Cad.Evaluation\Novolis.Cad.Evaluation.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Cad.Generation">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-cad\src\Novolis.Cad.Generation\Novolis.Cad.Generation.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Cad.Hierarchy">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-cad\src\Novolis.Cad.Hierarchy\Novolis.Cad.Hierarchy.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Cad.Primitives">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-cad\src\Novolis.Cad.Primitives\Novolis.Cad.Primitives.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Cad.SceneBridge">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-cad\src\Novolis.Cad.SceneBridge\Novolis.Cad.SceneBridge.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Cad.Visibility">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-cad\src\Novolis.Cad.Visibility\Novolis.Cad.Visibility.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Chat.Abstractions">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-chat\src\Novolis.Chat.Abstractions\Novolis.Chat.Abstractions.csproj</ProjectPath>
