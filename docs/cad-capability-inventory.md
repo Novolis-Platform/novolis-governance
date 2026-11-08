@@ -10,7 +10,7 @@ CalypsoCad remains the freighter generator + CLI + thin host.
 | CadDocument / CadEntity / .cadjson | `Novolis.Cad.Primitives` | Exists |
 | Scene bridge / .nov3djson | `Novolis.Cad.SceneBridge` | Exists |
 | Mesh evaluation / phys export | `Novolis.Cad.Evaluation` | Exists |
-| Building-oriented blueprint DOM | `Novolis.Cad.Blueprint` | Exists (partial for ship drawings) |
+| Building-oriented blueprint export | `Novolis.Cad.Blueprint` | Export package (JSON + validate + smart HTML) |
 | Semantic hierarchy (assemblies/parts/refs) | `Novolis.Cad.Hierarchy` | Extracted from Calypso |
 | Inherit / Visible / Hidden | `Novolis.Cad.Visibility` | Extracted from Calypso |
 | Orthographic / section drawing | `Novolis.Cad.Drawing` | Extracted from Calypso |

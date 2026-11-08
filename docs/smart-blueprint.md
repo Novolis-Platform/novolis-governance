@@ -15,7 +15,7 @@ Intended for **spaceships, space stations, seagoing ships, houses, and skyscrape
 Smart HTML5 sheets (toggleable layer folders, print profiles) are **presentation** attached as `sheets[]` — not a second geometry SoT.
 
 Schema: [`schemas/cad/novolis.cad.blueprint.schema.json`](../schemas/cad/novolis.cad.blueprint.schema.json)  
-C#: `Novolis.Cad.Blueprint` (`CadBlueprint`, `CadBlueprintProjector`, `CadBlueprintDom`)  
+C#: `Novolis.Cad.Blueprint` (`CadBlueprint`, `CadBlueprintProjector`, `CadBlueprintJson`, `CadBlueprintValidator`, `CadBlueprintExporter`, `CadBlueprintHtmlExporter`, `CadBlueprintDom`)  
 HTML skeleton: [`schemas/cad/examples/smart-blueprint-skeleton.html`](../schemas/cad/examples/smart-blueprint-skeleton.html)
 
 Related: [cadjson.md](./cadjson.md), [`novolis.cad.layers`](../schemas/cad/novolis.cad.layers.schema.json).
@@ -59,29 +59,30 @@ See `CadBlueprintDom` for constants. Prefer CSS `:has()` toggles; script is prog
 .cadjson  (+ .cadlayers.json)
     │
     ▼
-CadBlueprintProjector.FromCadDocument
+CadBlueprintExporter.Export  (project → validate → write)
     │
-    ▼
-.cadblueprint.json
-    │
-    ├─ app / Ship Designer review
-    └─ HTML emitter → smart .html (sheets[])
+    ├─ .cadblueprint.json
+    └─ smart/*.html  (CadBlueprintHtmlExporter / data-nbp-*)
+         │
+         ├─ app / Ship Designer review
+         └─ hosts may also emit ISO detail packages via Novolis.Cad.Drawing
 ```
 
 ## Library placement
 
 | Package | Owns |
 | --- | --- |
-| `Novolis.Cad.Blueprint` | `CadBlueprint` model, `CadBlueprintProjector`, sheet DTOs, DOM constants, (future) HTML writer |
+| `Novolis.Cad.Blueprint` | `CadBlueprint` model, projector, JSON I/O, validator/diagnostics, smart HTML exporter, DOM constants |
 | `Novolis.Cad.Primitives` | `CadDocument` only |
 | `Novolis.Ship.*` | Optional ship adapters — must not be required to compile Cad.Blueprint |
-| CalypsoCad | Golden consumer / lock → CAD → blueprint |
+| CalypsoCad | Golden consumer / lock → CAD → blueprint companion + ISO package chrome |
 
 **Genericity test:** Draft Studio house → `CadBlueprint` with walls/spaces/openings and a plan sheet — zero Ship/Calypso references.
 
-## Non-goals (v1)
+## Non-goals
 
 - Replacing `.cadjson` authoring
 - Interactive 2D CAD inside the HTML file
 - Requiring npm/Node
 - SceneBridge / 3D on the print path
+- Ship ISO numbered packages (CAL-xxx) / hull loft chrome — host / Cad.Drawing composition
