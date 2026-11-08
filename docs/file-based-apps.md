@@ -31,6 +31,12 @@ Every file-based app starts with:
 
 [scripts/Directory.Build.props](../scripts/Directory.Build.props) stops a future forest-level props file from leaking into these apps. Do not place file-based apps next to a `.csproj`. Do not `#:project` a sibling checkout (NuGet-only). `#:package` published `Novolis.*` `2026.1.*` is allowed when BCL is not enough.
 
+## What belongs here
+
+**Yes:** forest-wide policy gates (NuGet-only, layer boundaries, graphical profile, GPR health).
+
+**No:** product- or lab-specific acceptance (Calypso BH spine, fab visual gate, blueprint drafting). Those live next to the host — e.g. `novolis-lab/labs/cad/CalypsoCad/scripts/` — with their own isolating `Directory.Build.props` and `#:property ManagePackageVersionsCentrally=false`.
+
 ## Grow-ups
 
 Large shared commands belong in existing families, not new repos:
