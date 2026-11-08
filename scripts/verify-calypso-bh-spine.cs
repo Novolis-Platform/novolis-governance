@@ -34,7 +34,8 @@ var oahMid = LoadOahMid(); // loft verts / BH spine = OAH/2, not height/2 from k
 var groups = new Dictionary<string, List<CadEntity>>(StringComparer.OrdinalIgnoreCase);
 foreach (var e in doc.Entities)
 {
-    if (e.Kind != "box" || e.Name is null || e.Points is not { Count: >= 2 })
+    // Heavy BH plates are Kind=mesh; deck seats remain boxes. Both share the BH assembly key.
+    if ((e.Kind is not ("box" or "mesh")) || e.Name is null || e.Points is not { Count: >= 2 })
         continue;
     var key = BhGroupKey(e.Name);
     if (key is null)
@@ -114,7 +115,11 @@ static string? BhGroupKey(string name)
     if (!name.StartsWith("bh-", StringComparison.OrdinalIgnoreCase))
         return null;
     var rest = name["bh-".Length..];
-    var cut = rest.IndexOf("-web-", StringComparison.OrdinalIgnoreCase);
+    var cut = rest.IndexOf("-plate", StringComparison.OrdinalIgnoreCase);
+    if (cut < 0)
+        cut = rest.IndexOf("-deckseat", StringComparison.OrdinalIgnoreCase);
+    if (cut < 0)
+        cut = rest.IndexOf("-web-", StringComparison.OrdinalIgnoreCase);
     if (cut < 0)
         cut = rest.IndexOf("-webplate-", StringComparison.OrdinalIgnoreCase);
     return cut > 0 ? "bh-" + rest[..cut] : "bh-" + rest;
