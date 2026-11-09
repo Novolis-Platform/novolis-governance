@@ -29,6 +29,20 @@
     <NovolisUseProjectReferences Condition="'$(NovolisUseProjectReferences)' == ''">false</NovolisUseProjectReferences>
   </PropertyGroup>
 
+  <!--
+    Forest ProjectRef restores evaluate every sibling library project. Those repos
+    enable SourceLink + NuGetAudit by default; SourceLink then calls GitHub and
+    under rate limits `dotnet run` sits on Restore for tens of seconds.
+  -->
+  <PropertyGroup Condition="'$(NovolisUseProjectReferences)' == 'true'">
+    <EnableSourceLink>false</EnableSourceLink>
+    <EmbedUntrackedSources>false</EmbedUntrackedSources>
+    <EnableSourceControlManagerQueries>false</EnableSourceControlManagerQueries>
+    <NuGetAudit>false</NuGetAudit>
+  </PropertyGroup>
+  <ItemGroup Condition="'$(NovolisUseProjectReferences)' == 'true'">
+    <PackageReference Remove="Microsoft.SourceLink.GitHub" />
+  </ItemGroup>
 
   <Import Project="$(MSBuildThisFileDirectory)generated\Novolis.PackageToProject.props"
           Condition="Exists('$(MSBuildThisFileDirectory)generated\Novolis.PackageToProject.props')" />
