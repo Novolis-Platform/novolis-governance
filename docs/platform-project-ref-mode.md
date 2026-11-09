@@ -21,8 +21,9 @@ Committed `.csproj` files stay PackageReference-only. Per-repo solutions and CI 
 | How | Effect |
 |-----|--------|
 | `SolutionName == Novolis.Platform` | Auto-enable |
+| Local forest checkout (map + sibling `novolis-math` / `novolis-rendering` / `novolis-raylib` src, and not CI) | Auto-enable — avoids slow GitHub Packages float resolves when the workspace is present |
 | `-p:NovolisUseProjectReferences=true` | Force on (any solution / single project) |
-| `-p:NovolisUseProjectReferences=false` | Force off (wins over SolutionName) |
+| `-p:NovolisUseProjectReferences=false` | Force off (wins over SolutionName / forest auto) |
 | Env `NOVOLIS_USE_PROJECT_REFERENCES=true` | Force on when property unset |
 | `-p:NovolisLibraryRoot=PATH` | Resolve mapped library projects from a selected checkout root, such as `d:\novolis\novolis-lab\submodules`; defaults to the workspace forest |
 

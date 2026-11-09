@@ -17,10 +17,15 @@
     <NovolisLibraryRoot Condition="'$(NovolisLibraryRoot)' != ''">$([MSBuild]::NormalizePath('$(MSBuildProjectDirectory)', '$(NovolisLibraryRoot)'))</NovolisLibraryRoot>
   </PropertyGroup>
 
-  <!-- Explicit -p / env wins; otherwise auto-enable for meta solution. -->
+  <!-- Explicit -p / env wins; otherwise auto-enable for meta solution or a local forest checkout. -->
   <PropertyGroup>
+    <_NovolisCiBuild Condition="'$(CI)' == 'true' Or '$(GITHUB_ACTIONS)' == 'true' Or '$(TF_BUILD)' == 'true' Or '$(ContinuousIntegrationBuild)' == 'true'">true</_NovolisCiBuild>
+    <!-- Forest = generated map + at least one sibling library src tree (CI clones lack these). -->
+    <_NovolisForestMapPresent Condition="Exists('$(MSBuildThisFileDirectory)generated\Novolis.PackageToProject.props')">true</_NovolisForestMapPresent>
+    <_NovolisForestLibrariesPresent Condition="Exists('$(NovolisWorkspaceRoot)novolis-math\src') Or Exists('$(NovolisWorkspaceRoot)novolis-rendering\src') Or Exists('$(NovolisWorkspaceRoot)novolis-raylib\src')">true</_NovolisForestLibrariesPresent>
     <NovolisUseProjectReferences Condition="'$(NovolisUseProjectReferences)' == '' and '$(SolutionName)' == 'Novolis.Platform'">true</NovolisUseProjectReferences>
     <NovolisUseProjectReferences Condition="'$(NovolisUseProjectReferences)' == '' and ('$(NOVOLIS_USE_PROJECT_REFERENCES)' == 'true' or '$(NOVOLIS_USE_PROJECT_REFERENCES)' == '1')">true</NovolisUseProjectReferences>
+    <NovolisUseProjectReferences Condition="'$(NovolisUseProjectReferences)' == '' and '$(_NovolisCiBuild)' != 'true' and '$(_NovolisForestMapPresent)' == 'true' and '$(_NovolisForestLibrariesPresent)' == 'true'">true</NovolisUseProjectReferences>
     <NovolisUseProjectReferences Condition="'$(NovolisUseProjectReferences)' == ''">false</NovolisUseProjectReferences>
   </PropertyGroup>
 
