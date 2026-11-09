@@ -307,6 +307,9 @@
     <NovolisPackageProject Include="Novolis.Cad.Drawing">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-cad\src\Novolis.Cad.Drawing\Novolis.Cad.Drawing.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Cad.Dxf">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-cad\src\Novolis.Cad.Dxf\Novolis.Cad.Dxf.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Cad.Evaluation">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-cad\src\Novolis.Cad.Evaluation\Novolis.Cad.Evaluation.csproj</ProjectPath>
     </NovolisPackageProject>
@@ -1293,6 +1296,12 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Tools.CodeLayout.Cli">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-tools\src\Novolis.Tools.CodeLayout.Cli\Novolis.Tools.CodeLayout.Cli.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Tools.CodeQuality">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-tools\src\Novolis.Tools.CodeQuality\Novolis.Tools.CodeQuality.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Tools.CodeQuality.Cli">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-tools\src\Novolis.Tools.CodeQuality.Cli\Novolis.Tools.CodeQuality.Cli.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Tools.Coverage">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-tools\src\Novolis.Tools.Coverage\Novolis.Tools.Coverage.csproj</ProjectPath>
