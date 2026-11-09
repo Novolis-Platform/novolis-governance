@@ -1,0 +1,20 @@
+<Project>
+  <!--
+    NOV2301 — readability-complexity advisory warnings for executable bodies.
+    ProjectReference (not PackageReference) when novolis-analyzers is checked out beside the consumer.
+    Warning only: NOV2301 stays out of TreatWarningsAsErrors while the heuristic is validated.
+    Opt out: NovolisReadabilityComplexity=false.
+  -->
+  <PropertyGroup>
+    <_NovolisReadabilityComplexityProject>$(MSBuildThisFileDirectory)..\..\novolis-analyzers\src\Novolis.Analyzers.ReadabilityComplexity\Novolis.Analyzers.ReadabilityComplexity.csproj</_NovolisReadabilityComplexityProject>
+  </PropertyGroup>
+  <ItemGroup Condition="'$(NovolisReadabilityComplexity)' != 'false' AND '$(MSBuildProjectName)' != 'Novolis.Analyzers.ReadabilityComplexity' AND Exists('$(_NovolisReadabilityComplexityProject)')">
+    <ProjectReference
+      Include="$(_NovolisReadabilityComplexityProject)"
+      OutputItemType="Analyzer"
+      ReferenceOutputAssembly="false" />
+  </ItemGroup>
+  <PropertyGroup Condition="'$(NovolisReadabilityComplexity)' != 'false' AND Exists('$(_NovolisReadabilityComplexityProject)')">
+    <WarningsNotAsErrors>$(WarningsNotAsErrors);NOV2301</WarningsNotAsErrors>
+  </PropertyGroup>
+</Project>

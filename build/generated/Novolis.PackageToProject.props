@@ -25,6 +25,9 @@
     <NovolisPackageProject Include="Novolis.Analyzers.OneTypePerFile">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-analyzers\src\Novolis.Analyzers.OneTypePerFile\Novolis.Analyzers.OneTypePerFile.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Analyzers.ReadabilityComplexity">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-analyzers\src\Novolis.Analyzers.ReadabilityComplexity\Novolis.Analyzers.ReadabilityComplexity.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Analyzers.StackBoundaries">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-analyzers\src\Novolis.Analyzers.StackBoundaries\Novolis.Analyzers.StackBoundaries.csproj</ProjectPath>
     </NovolisPackageProject>

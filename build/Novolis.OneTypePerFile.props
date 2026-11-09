@@ -17,4 +17,11 @@
   <PropertyGroup Condition="'$(NovolisOneTypePerFile)' != 'false' AND Exists('$(_NovolisOneTypePerFileProject)')">
     <WarningsNotAsErrors>$(WarningsNotAsErrors);NOV2201</WarningsNotAsErrors>
   </PropertyGroup>
+  <!--
+    Code-quality analyzers that should run everywhere OneTypePerFile already does.
+    Skip Novolis.Analyzers.* projects to avoid ProjectReference restore cycles among analyzer packages.
+  -->
+  <Import Project="$(MSBuildThisFileDirectory)Novolis.ReadabilityComplexity.props"
+          Condition="Exists('$(MSBuildThisFileDirectory)Novolis.ReadabilityComplexity.props') AND !$(MSBuildProjectName.StartsWith('Novolis.Analyzers.'))" />
 </Project>
+

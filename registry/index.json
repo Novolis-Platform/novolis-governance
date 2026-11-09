@@ -65,6 +65,15 @@
       "packageId": "Novolis.Analyzers.OneTypePerFile"
     },
     {
+      "id": "novolis.analyzers.readabilitycomplexity",
+      "name": "Novolis.Analyzers.ReadabilityComplexity",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-analyzers",
+      "packageId": "Novolis.Analyzers.ReadabilityComplexity"
+    },
+    {
       "id": "novolis.analyzers.stackboundaries",
       "name": "Novolis.Analyzers.StackBoundaries",
       "kind": "package",
@@ -434,6 +443,15 @@
       "packageId": "Novolis.Audio.Voice.Design"
     },
     {
+      "id": "novolis.audio.voice.edgetts",
+      "name": "Novolis.Audio.Voice.EdgeTts",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-audio",
+      "packageId": "Novolis.Audio.Voice.EdgeTts"
+    },
+    {
       "id": "novolis.audio.voice.kokoro",
       "name": "Novolis.Audio.Voice.Kokoro",
       "kind": "package",
@@ -785,15 +803,6 @@
       "packageId": "Novolis.Avalonia.Ship.Design"
     },
     {
-      "id": "novolis.avalonia.slate",
-      "name": "Novolis.Avalonia.Slate",
-      "kind": "package",
-      "version": "2026.1.1.0",
-      "channel": "stable",
-      "repository": "https://github.com/Novolis-Platform/novolis-avalonia",
-      "packageId": "Novolis.Avalonia.Slate"
-    },
-    {
       "id": "novolis.avalonia.speech",
       "name": "Novolis.Avalonia.Speech",
       "kind": "package",
@@ -893,6 +902,15 @@
       "packageId": "Novolis.Cad.Blueprint"
     },
     {
+      "id": "novolis.cad.drawing",
+      "name": "Novolis.Cad.Drawing",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-cad",
+      "packageId": "Novolis.Cad.Drawing"
+    },
+    {
       "id": "novolis.cad.evaluation",
       "name": "Novolis.Cad.Evaluation",
       "kind": "package",
@@ -900,6 +918,24 @@
       "channel": "stable",
       "repository": "https://github.com/Novolis-Platform/novolis-cad",
       "packageId": "Novolis.Cad.Evaluation"
+    },
+    {
+      "id": "novolis.cad.generation",
+      "name": "Novolis.Cad.Generation",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-cad",
+      "packageId": "Novolis.Cad.Generation"
+    },
+    {
+      "id": "novolis.cad.hierarchy",
+      "name": "Novolis.Cad.Hierarchy",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-cad",
+      "packageId": "Novolis.Cad.Hierarchy"
     },
     {
       "id": "novolis.cad.primitives",
@@ -918,6 +954,15 @@
       "channel": "stable",
       "repository": "https://github.com/Novolis-Platform/novolis-cad",
       "packageId": "Novolis.Cad.SceneBridge"
+    },
+    {
+      "id": "novolis.cad.visibility",
+      "name": "Novolis.Cad.Visibility",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-cad",
+      "packageId": "Novolis.Cad.Visibility"
     },
     {
       "id": "novolis.chat.abstractions",
@@ -2088,15 +2133,6 @@
       "channel": "stable",
       "repository": "https://github.com/Novolis-Platform/novolis-markup",
       "packageId": "Novolis.Markup.Mermaid.Rendering"
-    },
-    {
-      "id": "novolis.markup.slate",
-      "name": "Novolis.Markup.Slate",
-      "kind": "package",
-      "version": "2026.1.1.0",
-      "channel": "stable",
-      "repository": "https://github.com/Novolis-Platform/novolis-markup",
-      "packageId": "Novolis.Markup.Slate"
     },
     {
       "id": "novolis.markup.svg",
@@ -3791,6 +3827,24 @@
       "packageId": "Novolis.Tools.Cli"
     },
     {
+      "id": "novolis.tools.clockify",
+      "name": "Novolis.Tools.Clockify",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-tools",
+      "packageId": "Novolis.Tools.Clockify"
+    },
+    {
+      "id": "novolis.tools.clockify.cli",
+      "name": "Novolis.Tools.Clockify.Cli",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-tools",
+      "packageId": "Novolis.Tools.Clockify.Cli"
+    },
+    {
       "id": "novolis.tools.codelayout",
       "name": "Novolis.Tools.CodeLayout",
       "kind": "package",
@@ -4131,6 +4185,15 @@
       "channel": "stable",
       "repository": "https://github.com/Novolis-Platform/novolis-video",
       "packageId": "Novolis.Video.Edit"
+    },
+    {
+      "id": "novolis.video.playback.android",
+      "name": "Novolis.Video.Playback.Android",
+      "kind": "package",
+      "version": "2026.1.1.0",
+      "channel": "stable",
+      "repository": "https://github.com/Novolis-Platform/novolis-video",
+      "packageId": "Novolis.Video.Playback.Android"
     },
     {
       "id": "novolis.video.rtc",
