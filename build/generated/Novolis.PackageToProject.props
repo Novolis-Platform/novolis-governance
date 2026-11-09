@@ -1009,6 +1009,9 @@
     <NovolisPackageProject Include="Novolis.Security.Authentication.AspNetCore">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-security\src\Novolis.Security.Authentication.AspNetCore\Novolis.Security.Authentication.AspNetCore.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Security.Authentication.Entra">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-security\src\Novolis.Security.Authentication.Entra\Novolis.Security.Authentication.Entra.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Security.Authentication.Storage">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-security\src\Novolis.Security.Authentication.Storage\Novolis.Security.Authentication.Storage.csproj</ProjectPath>
     </NovolisPackageProject>
