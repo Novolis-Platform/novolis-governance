@@ -148,6 +148,9 @@
     <NovolisPackageProject Include="Novolis.Audio.Voice.Design">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-audio\src\Novolis.Audio.Voice.Design\Novolis.Audio.Voice.Design.csproj</ProjectPath>
     </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Audio.Voice.EdgeTts">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-audio\src\Novolis.Audio.Voice.EdgeTts\Novolis.Audio.Voice.EdgeTts.csproj</ProjectPath>
+    </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Audio.Voice.Kokoro">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-audio\src\Novolis.Audio.Voice.Kokoro\Novolis.Audio.Voice.Kokoro.csproj</ProjectPath>
     </NovolisPackageProject>
@@ -1272,6 +1275,12 @@
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Tools.Cli">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-tools\src\Novolis.Tools.Cli\Novolis.Tools.Cli.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Tools.Clockify">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-tools\src\Novolis.Tools.Clockify\Novolis.Tools.Clockify.csproj</ProjectPath>
+    </NovolisPackageProject>
+    <NovolisPackageProject Include="Novolis.Tools.Clockify.Cli">
+      <ProjectPath>$(NovolisLibraryRoot)\novolis-tools\src\Novolis.Tools.Clockify.Cli\Novolis.Tools.Clockify.Cli.csproj</ProjectPath>
     </NovolisPackageProject>
     <NovolisPackageProject Include="Novolis.Tools.CodeLayout">
       <ProjectPath>$(NovolisLibraryRoot)\novolis-tools\src\Novolis.Tools.CodeLayout\Novolis.Tools.CodeLayout.csproj</ProjectPath>
